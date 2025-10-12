@@ -1,27 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spero Restoration Corp</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spero Restoration Corp</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 <body>
-    <header>
-        <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo" class="logo">
-        <h1>Spero Restoration Corp</h1>
-        <p>Expert restoration and remodeling in Clermont & Orlando, FL</p>
-    </header>
+  <header>
+    <img src="{{ url_for('static', filename='logo_original.png') }}" alt="Spero Restoration Logo" class="logo">
+    <h1>Spero Restoration Corp</h1>
+    <p>Expert Restoration & Remodeling in Clermont & Orlando, FL</p>
+  </header>
 
-    <section class="main">
-        <h2>Get a Free Estimate</h2>
-        <p>Fast, reliable, and professional restoration services for your home or business.</p>
-        <a href="#" class="button">Contact Us</a>
-    </section>
+  <section class="hero">
+    <h2>Get a Free Estimate</h2>
+    <p>Professional, reliable, and expert restoration services for homes and businesses.</p>
+  </section>
 
-    <footer>
-        <p>© 2025 Spero Restoration Corp — Licensed & Insured | Based in Clermont & Orlando, FL</p>
-    </footer>
+  <section class="contact">
+    <h3>Contact Us</h3>
+    {% if success %}
+      <p class="success">✅ Message sent successfully! We'll get back to you soon.</p>
+    {% endif %}
+    <form method="POST" action="/send">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/14077246310?text=Hi%2C%20I%27d%20like%20a%20free%20estimate%20from%20Spero%20Restoration!"
+     class="whatsapp-float" target="_blank">
+    💬 Chat with us on WhatsApp
+  </a>
+
+  <footer>
+    <p>© 2025 Spero Restoration Corp | Clermont & Orlando, FL | Licensed & Insured</p>
+  </footer>
 </body>
 </html>
