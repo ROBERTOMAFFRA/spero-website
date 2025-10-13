@@ -1,46 +1,48 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spero Restoration Corp</title>
-
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Spero Restoration - Contact</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}">
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f6fa; color: #222; margin: 0; }
+    header { background: #0a3d62; color: white; padding: 20px 0; text-align: center; }
+    form { background: white; max-width: 500px; margin: 40px auto; padding: 25px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    input, textarea { width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 4px; }
+    button { background: #004aad; color: white; border: none; padding: 12px; cursor: pointer; width: 100%; border-radius: 4px; font-size: 16px; }
+    button:hover { background: #0065d1; }
+    footer { text-align: center; padding: 15px; background: #f2f2f2; color: #555; }
+    .flash { text-align: center; margin-top: 10px; }
+  </style>
 </head>
 <body>
   <header>
-    <img src="{{ url_for('static', filename='logo_original.png') }}" alt="Spero Restoration Logo" class="logo">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo" width="160">
     <h1>Spero Restoration Corp</h1>
-    <p>Expert Restoration & Remodeling in Clermont & Orlando, FL</p>
+    <p>Water • Fire • Mold • Remodeling Experts</p>
   </header>
 
-  <section class="hero">
-    <h2>Get a Free Estimate</h2>
-    <p>Professional, reliable, and expert restoration services for homes and businesses.</p>
-  </section>
+  <form method="POST" action="/send_email">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
 
-  <section class="contact">
-    <h3>Contact Us</h3>
-    {% if success %}
-      <p class="success">✅ Message sent successfully! We'll get back to you soon.</p>
-    {% endif %}
-    <form method="POST" action="/send">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
-  <a href="https://wa.me/14077246310?text=Hi%2C%20I%27d%20like%20a%20free%20estimate%20from%20Spero%20Restoration!"
-     class="whatsapp-float" target="_blank">
-    💬 Chat with us on WhatsApp
-  </a>
+  <div class="flash">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <p style="color: {{ 'green' if category == 'success' else 'red' }}">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
 
   <footer>
-    <p>© 2025 Spero Restoration Corp | Clermont & Orlando, FL | Licensed & Insured</p>
+    <p>📍 Serving Clermont & Greater Orlando • 📞 (407) 724-6310 • ✉ contact@spero-restoration.com</p>
   </footer>
 </body>
 </html>
+
