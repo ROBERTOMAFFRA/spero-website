@@ -1,52 +1,50 @@
-from flask import Flask, render_template, request, redirect, flash
+from flask import Flask, render_template, request, redirect
 import os
 import sendgrid
-from sendgrid.helpers.mail import Mail, Email, To, Content
+from sendgrid.helpers.mail import Mail
 
 app = Flask(__name__)
-app.secret_key = "spero_secret_key"
 
-# Carrega a chave do SendGrid do Render
+# SendGrid API Key (configure in Render → Environment)
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
-FROM_EMAIL = "contact@spero-restoration.com"
+TO_EMAIL = "contact@spero-restoration.com"  # destination email
 
-@app.route("/")
-def index():
-    return render_template("index.html")
+@app.route('/')
+def home():
+    return render_template('index.html')
 
-@app.route("/send_email", methods=["POST"])
+@app.route('/send_email', methods=['POST'])
 def send_email():
-    name = request.form["name"]
-    email = request.form["email"]
-    message = request.form["message"]
+    name = request.form['name']
+    email = request.form['email']
+    message = request.form['message']
 
     sg = sendgrid.SendGridAPIClient(api_key=SENDGRID_API_KEY)
 
-    html_content = f"""
-    <h2>New message from Spero Restoration Website</h2>
-    <p><strong>Name:</strong> {name}</p>
-    <p><strong>Email:</strong> {email}</p>
-    <p><strong>Message:</strong><br>{message}</p>
-    """
-
+    # Email for Spero Restoration
+    content = f"New message from {name} ({email}):\n\n{message}"
     mail = Mail(
-        from_email=Email(FROM_EMAIL),
-        to_emails=[
-            To("contact@spero-restoration.com"),
-            To("roberto.maffra@gmail.com")
-        ],
-        subject="New Contact Form Submission - Spero Restoration",
-        html_content=Content("text/html", html_content)
+        from_email=email,
+        to_emails=TO_EMAIL,
+        subject=f"Website Contact: {name}",
+        plain_text_content=content
     )
+    sg.send(mail)
 
-    try:
-        sg.send(mail)
-        flash("✅ Message sent successfully! We'll get back to you soon.", "success")
-    except Exception as e:
-        flash("❌ Error sending message. Please try again later.", "error")
-        print("SendGrid Error:", str(e))
+    # Auto-reply
+    reply = Mail(
+        from_email=TO_EMAIL,
+        to_emails=email,
+        subject="Thank you for contacting Spero Restoration",
+        plain_text_content=f"Hello {name},\n\nThank you for contacting Spero Restoration. We’ve received your message and will respond shortly.\n\n— Spero Restoration Team"
+    )
+    sg.send(reply)
 
-    return redirect("/")
+    return redirect('/thankyou')
 
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.route('/thankyou')
+def thankyou():
+    return render_template('thankyou.html')
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
