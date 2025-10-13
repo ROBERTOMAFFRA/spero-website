@@ -29,8 +29,11 @@ def send_email():
                   recipients=['contact@spero-restoration.com', 'roberto.maffra@gmail.com'])
     msg.body = f"Name: {name}\nEmail: {email}\nMessage:\n{message}"
 
+try:
     mail.send(msg)
-    return render_template('index.html', success=True)
+    print("Email successfully sent!")
+except Exception as e:
+    print("Email sending failed:", e)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
