@@ -37,18 +37,14 @@ def send_email():
 
     try:
         with mail.connect() as conn:
+            conn.connection.timeout = 15  # força limite de 15 segundos
             conn.send(msg)
         print("✅ Email successfully sent!")
         return "Message sent successfully!"
-    except smtplib.SMTPAuthenticationError:
-        print("❌ Authentication failed. Check username or password.")
-        return "Authentication error — check Zoho credentials."
-    except smtplib.SMTPConnectError:
-        print("❌ Connection failed to Zoho SMTP server.")
-        return "Connection error — check mail server settings."
     except Exception as e:
-        print(f"⚠️ General error: {e}")
-        return "Error sending message."
+        print(f"⚠️ Error: {e}")
+        return f"Error sending message: {e}"
+
 
 
 if __name__ == '__main__':
