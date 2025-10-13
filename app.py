@@ -1,61 +1,52 @@
-from flask import Flask, render_template, request
-from flask_mail import Mail, Message
+from flask import Flask, render_template, request, redirect, flash
 import os
-import smtplib
+import sendgrid
+from sendgrid.helpers.mail import Mail, Email, To, Content
 
 app = Flask(__name__)
+app.secret_key = "spero_secret_key"
 
-# ---- Zoho Mail Configuration ----
-app.config['MAIL_SERVER'] = 'smtp.zoho.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
-app.config['MAIL_DEFAULT_SENDER'] = app.config['MAIL_USERNAME']
+# Carrega a chave do SendGrid do Render
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
+FROM_EMAIL = "contact@spero-restoration.com"
 
-mail = Mail(app)
-
-
-@app.route('/')
+@app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template("index.html")
 
-
-@app.route('/send', methods=['POST'])
+@app.route("/send_email", methods=["POST"])
 def send_email():
-    name = request.form.get('name')
-    email = request.form.get('email')
-    message = request.form.get('message')
+    name = request.form["name"]
+    email = request.form["email"]
+    message = request.form["message"]
 
-    msg = Message(
-        subject=f"New message from {name}",
-        sender=app.config['MAIL_USERNAME'],
-        recipients=['contact@spero-restoration.com', 'roberto.maffra@gmail.com'],
-        body=f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+    sg = sendgrid.SendGridAPIClient(api_key=SENDGRID_API_KEY)
+
+    html_content = f"""
+    <h2>New message from Spero Restoration Website</h2>
+    <p><strong>Name:</strong> {name}</p>
+    <p><strong>Email:</strong> {email}</p>
+    <p><strong>Message:</strong><br>{message}</p>
+    """
+
+    mail = Mail(
+        from_email=Email(FROM_EMAIL),
+        to_emails=[
+            To("contact@spero-restoration.com"),
+            To("roberto.maffra@gmail.com")
+        ],
+        subject="New Contact Form Submission - Spero Restoration",
+        html_content=Content("text/html", html_content)
     )
 
     try:
-        print("🔧 Connecting to Zoho SMTP server...")
-        with mail.connect() as conn:
-            # habilita log detalhado SMTP
-            conn.connection.set_debuglevel(1)
-            conn.connection.timeout = 15
-            conn.send(msg)
-        print("✅ Email successfully sent!")
-        return "Message sent successfully!"
-    except smtplib.SMTPAuthenticationError as e:
-        print(f"❌ Authentication error: {e}")
-        return "Authentication failed — please check username or app password."
-    except smtplib.SMTPConnectError as e:
-        print(f"❌ Connection error: {e}")
-        return "Connection failed — please check Zoho SMTP settings."
+        sg.send(mail)
+        flash("✅ Message sent successfully! We'll get back to you soon.", "success")
     except Exception as e:
-        print(f"⚠️ General error: {e}")
-        return f"Error sending message: {e}"
+        flash("❌ Error sending message. Please try again later.", "error")
+        print("SendGrid Error:", str(e))
 
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    return redirect("/")
 
-
+if __name__ == "__main__":
+    app.run(debug=True)
