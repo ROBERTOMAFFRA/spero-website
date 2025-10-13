@@ -5,7 +5,7 @@ import smtplib
 
 app = Flask(__name__)
 
-# ---- Email Configuration ----
+# ---- Zoho Mail Configuration ----
 app.config['MAIL_SERVER'] = 'smtp.zoho.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USE_TLS'] = False
@@ -36,15 +36,23 @@ def send_email():
     )
 
     try:
+        print("🔧 Connecting to Zoho SMTP server...")
         with mail.connect() as conn:
-            conn.connection.timeout = 15  # força limite de 15 segundos
+            # habilita log detalhado SMTP
+            conn.connection.set_debuglevel(1)
+            conn.connection.timeout = 15
             conn.send(msg)
         print("✅ Email successfully sent!")
         return "Message sent successfully!"
+    except smtplib.SMTPAuthenticationError as e:
+        print(f"❌ Authentication error: {e}")
+        return "Authentication failed — please check username or app password."
+    except smtplib.SMTPConnectError as e:
+        print(f"❌ Connection error: {e}")
+        return "Connection failed — please check Zoho SMTP settings."
     except Exception as e:
-        print(f"⚠️ Error: {e}")
+        print(f"⚠️ General error: {e}")
         return f"Error sending message: {e}"
-
 
 
 if __name__ == '__main__':
