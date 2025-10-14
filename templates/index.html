@@ -1,38 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spero Restoration</title>
-  <link rel="stylesheet" href="/static/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Spero Restoration Corp - Experts in water damage, fire restoration, mold remediation, and remodeling near Orlando and Clermont.">
+    <title>Spero Restoration Corp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
 </head>
 <body>
-  <header>
-    <img src="/static/logo.png" alt="Spero Restoration Logo" class="logo">
-    <h1>Spero Restoration</h1>
-    <p class="slogan">Restoration • Water Damage • Mold • Fire</p>
-  </header>
 
-  <div class="container">
+<header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo" class="hero-logo">
+        <h1>Restoration, Water Damage, Fire and Mold Near You</h1>
+        <a href="#contact" class="btn-main">Get a Free Estimate</a>
+    </div>
+</header>
+
+<section class="about">
+    <h2>About Us</h2>
+    <p>At Spero Restoration Corp, we bring your property back to life after damage caused by water, fire, or mold. Serving the Orlando and Clermont area, our certified team ensures top-quality restoration and remodeling services.</p>
+</section>
+
+<section class="services">
+    <h2>Our Services</h2>
+    <div class="service-grid">
+        <div class="service-card">
+            <h3>Water Damage</h3>
+            <p>24/7 emergency response for water extraction and drying to prevent further damage.</p>
+        </div>
+        <div class="service-card">
+            <h3>Fire Restoration</h3>
+            <p>Comprehensive fire and smoke damage cleanup to restore your home safely and quickly.</p>
+        </div>
+        <div class="service-card">
+            <h3>Mold Remediation</h3>
+            <p>Professional mold detection, removal, and prevention for a safe environment.</p>
+        </div>
+        <div class="service-card">
+            <h3>Remodeling</h3>
+            <p>From drywall to full remodeling — we transform your space with precision and care.</p>
+        </div>
+    </div>
+</section>
+
+<section class="gallery">
+    <h2>Our Work</h2>
+    <div class="gallery-grid">
+        <img src="{{ url_for('static', filename='images/gallery1.jpg') }}" alt="Restoration project 1">
+        <img src="{{ url_for('static', filename='images/gallery2.jpg') }}" alt="Restoration project 2">
+        <img src="{{ url_for('static', filename='images/gallery3.jpg') }}" alt="Restoration project 3">
+        <img src="{{ url_for('static', filename='images/gallery4.jpg') }}" alt="Restoration project 4">
+    </div>
+</section>
+
+<section class="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonial">
+        <p>“Spero Restoration responded fast after our water damage — amazing service!”</p>
+        <span>- John D., Clermont</span>
+    </div>
+    <div class="testimonial">
+        <p>“Professional, reliable, and honest. Highly recommend!”</p>
+        <span>- Maria P., Windermere</span>
+    </div>
+    <div class="testimonial">
+        <p>“They handled our mold problem perfectly — 5 stars!”</p>
+        <span>- Kevin L., Winter Garden</span>
+    </div>
+</section>
+
+<section id="contact" class="contact">
     <h2>Contact Us</h2>
-    <p class="intro">Get a free estimate today — our team will reach out as soon as possible.</p>
-
-    <form action="/send_email" method="POST" autocomplete="off">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email address" required>
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" placeholder="Describe your needs..." required></textarea>
-
-      <button type="submit">Get a Free Estimate</button>
+    <form action="/send_message" method="POST" autocomplete="off">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn-main">Send Message</button>
     </form>
-  </div>
+</section>
 
-  <footer>
-    &copy; 2025 Spero Restoration Corp | Orlando, FL | contact@spero-restoration.com | (407) 724-6310
-  </footer>
+<footer>
+    <p>© 2025 Spero Restoration Corp | All Rights Reserved</p>
+</footer>
+
+<a href="https://wa.me/14077246310" class="whatsapp-float" target="_blank">💬</a>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
