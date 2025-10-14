@@ -7,33 +7,53 @@
 
 body {
   font-family: "Segoe UI", Arial, sans-serif;
-  background-color: #f4f7fa;
+  background: linear-gradient(135deg, #004aad, #007bff);
   color: #333;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 /* ---------- HEADER ---------- */
 header {
-  background: linear-gradient(135deg, #004aad, #007bff);
-  color: white;
   text-align: center;
-  padding: 1.5rem 1rem;
-  font-size: 1.8rem;
-  font-weight: bold;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  color: white;
+  padding: 40px 20px 20px;
+}
+
+.logo {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.slogan {
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  color: #e8f0ff;
 }
 
 /* ---------- CONTAINER ---------- */
 .container {
-  flex: 1;
-  max-width: 600px;
-  margin: 40px auto;
   background: #fff;
+  max-width: 600px;
+  margin: 30px auto;
   border-radius: 12px;
-  padding: 30px 25px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  text-align: left;
+}
+
+.container h2 {
+  color: #004aad;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.intro {
+  color: #444;
+  font-size: 0.95rem;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 /* ---------- FORM ---------- */
@@ -45,29 +65,26 @@ form {
 
 label {
   font-weight: 600;
-  color: #222;
+  color: #333;
 }
 
-input,
-textarea {
+input, textarea {
   width: 100%;
   padding: 12px;
   border: 1.5px solid #ccc;
   border-radius: 8px;
   font-size: 1rem;
-  transition: border-color 0.2s ease-in-out;
+  transition: border-color 0.2s;
 }
 
-input:focus,
-textarea:focus {
+input:focus, textarea:focus {
   border-color: #004aad;
   outline: none;
-  box-shadow: 0 0 5px rgba(0, 74, 173, 0.3);
 }
 
 /* ---------- BUTTON ---------- */
 button {
-  background-color: #004aad;
+  background: linear-gradient(90deg, #004aad, #007bff);
   color: white;
   border: none;
   padding: 14px;
@@ -79,32 +96,65 @@ button {
 }
 
 button:hover {
-  background-color: #003780;
+  background: linear-gradient(90deg, #003780, #0063cc);
   transform: scale(1.03);
+}
+
+/* ---------- THANK YOU PAGE ---------- */
+.thankyou-page {
+  background: linear-gradient(135deg, #004aad, #007bff);
+  color: white;
+  text-align: center;
+}
+
+.thankyou-container {
+  margin: auto;
+  padding: 80px 20px;
+}
+
+.thankyou-container h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.thankyou-container p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+}
+
+.back-home {
+  background: white;
+  color: #004aad;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.back-home:hover {
+  background: #e8f0ff;
 }
 
 /* ---------- FOOTER ---------- */
 footer {
   text-align: center;
+  color: #fff;
   font-size: 0.9rem;
-  color: #666;
   padding: 15px 0;
-  background-color: #f1f1f1;
   margin-top: auto;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 600px) {
   header {
-    font-size: 1.4rem;
+    padding: 25px 10px;
   }
-
+  .logo {
+    width: 80px;
+  }
   .container {
     margin: 20px;
     padding: 20px;
-  }
-
-  button {
-    font-size: 0.95rem;
   }
 }
