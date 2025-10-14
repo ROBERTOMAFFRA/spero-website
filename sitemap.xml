@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://spero-restoration.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://spero-restoration.com/orlando</loc></url>
-  <url><loc>https://spero-restoration.com/clermont</loc></url>
-  <url><loc>https://spero-restoration.com/windermere</loc></url>
-  <url><loc>https://spero-restoration.com/winter-garden</loc></url>
-  <url><loc>https://spero-restoration.com/lake-nona</loc></url>
-  <url><loc>https://spero-restoration.com/davenport</loc></url>
+  <url>
+    <loc>https://spero-website.onrender.com/</loc>
+    <priority>1.0</priority>
+  </url>
 </urlset>
