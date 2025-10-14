@@ -1,78 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spero Restoration Corp | Restoration, Water Damage & Remodeling</title>
-  <meta name="description" content="Spero Restoration Corp provides expert restoration, remodeling, water damage repair, fire restoration, and mold remediation services across Orlando and Central Florida. Get your free estimate today.">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Spero Restoration Corp - Expert in Water, Fire, and Mold Restoration Services in Orlando and Clermont. Fast 24/7 Response.">
+    <meta name="keywords" content="Restoration, Water Damage, Fire Damage, Mold Remediation, Storm Damage, Flood Damage, Orlando, Clermont, Windermere">
+    <title>Spero Restoration Corp | Water, Fire & Mold Experts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
 </head>
-
 <body>
-  <header class="hero">
-    <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo" class="logo">
-    <h1>Restoration, Water Damage, Fire & Mold Near You</h1>
-    <h2>Expert Restoration and Remodeling Services in Central Florida</h2>
-    <a href="#contact" class="cta-button">Get a Free Estimate</a>
-  </header>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo">
+            <h1>Spero Restoration Corp</h1>
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-  <main>
-    <!-- OUR SERVICES SECTION -->
+    <section class="hero">
+        <h2>Restoration, Water Damage, Fire & Mold Near You</h2>
+        <p>Serving Orlando, Clermont, Windermere, Lake Nona & Surroundings — 24/7 Emergency Response.</p>
+        <a href="#contact" class="btn-primary">Get a Free Estimate</a>
+    </section>
+
     <section class="services">
-      <h2>Our Services</h2>
-      <ul>
-        <li>Home Remodeling</li>
-        <li>Water Damage</li>
-        <li>Fire Damage</li>
-        <li>Mold Remediation</li>
-        <li>Storm Damage</li>
-        <li>Flood Damage</li>
-      </ul>
+        <h2>Our Services</h2>
+        <div class="service-grid">
+            <div class="card">Home Remodeling</div>
+            <div class="card">Water Damage</div>
+            <div class="card">Fire Damage</div>
+            <div class="card">Mold Remediation</div>
+            <div class="card">Storm Damage</div>
+            <div class="card">Flood Damage</div>
+        </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section class="about">
-      <h2>Why Choose Spero Restoration Corp?</h2>
-      <p>
-        Based in <strong>Clermont, FL</strong> and serving the greater Orlando area, 
-        Spero Restoration Corp offers comprehensive property restoration and remodeling 
-        services. Whether it’s water damage, mold remediation, or full remodeling, 
-        our expert team restores homes with care, precision, and professionalism.
-      </p>
+    <section class="testimonials">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonial">
+            <p>"They saved our home after severe water damage. Highly recommended!"</p>
+            <span>- Emily R., Orlando</span>
+        </div>
+        <div class="testimonial">
+            <p>"Fast and professional fire restoration. Excellent service!"</p>
+            <span>- John S., Clermont</span>
+        </div>
+        <div class="testimonial">
+            <p>"Mold removal was quick and thorough. Thank you Spero Restoration!"</p>
+            <span>- Maria L., Windermere</span>
+        </div>
     </section>
 
-    <!-- CONTACT SECTION -->
     <section id="contact" class="contact">
-      <h2>Contact Us</h2>
-      <form action="/contact" method="POST" autocomplete="off">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-
-        <button type="submit" class="cta-button">Send Message</button>
-      </form>
+        <h2>Contact Us</h2>
+        <form action="/send_email" method="POST" autocomplete="off">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <textarea name="message" placeholder="How can we help?" required></textarea>
+            <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+        <p class="contact-info">📞 (407) 724-6310 | ✉️ contact@spero-restoration.com</p>
     </section>
-  </main>
 
-  <footer>
-    <div class="footer-links">
-      <a href="/about">About Us</a> |
-      <a href="/privacy">Privacy Policy</a> |
-      <a href="/terms">Terms of Use</a>
-    </div>
-    <p>📞 (407) 724-6310 | Orlando • Clermont • Windermere • Lake Nona • Davenport</p>
-    <p>© 2025 Spero Restoration Corp. All rights reserved.</p>
-  </footer>
+    <footer>
+        <p>&copy; 2025 Spero Restoration Corp. All Rights Reserved.</p>
+        <p>
+            <a href="/about">About</a> |
+            <a href="/privacy">Privacy</a> |
+            <a href="/terms">Terms</a>
+        </p>
+    </footer>
 
-  <!-- WHATSAPP BUTTON -->
-  <a href="https://wa.me/14077246310" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-    💬
-  </a>
+    <a href="https://wa.me/14077246310" class="whatsapp" target="_blank">💬</a>
 </body>
 </html>
