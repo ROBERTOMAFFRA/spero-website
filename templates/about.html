@@ -4,16 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us | Spero Restoration Corp</title>
+  <meta name="description" content="Learn more about Spero Restoration Corp — a trusted restoration and remodeling company serving Central Florida.">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 </head>
+
 <body>
-  <header class="hero small">
-    <h1>About Spero Restoration</h1>
+  <header class="hero">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo" class="logo">
+    <h1>About Spero Restoration Corp</h1>
+    <h2>Your Trusted Partner for Restoration and Remodeling</h2>
   </header>
-  <main class="content">
-    <p>Based in Clermont, Spero Restoration Corp proudly serves the greater Orlando area, including Windermere, Winter Garden, and Lake Nona. We specialize in water, fire, and mold restoration, as well as home remodeling.</p>
-    <p>Our mission is to restore your home quickly, safely, and beautifully — so you can get back to what matters most.</p>
-    <a href="/" class="cta-button">Back to Home</a>
+
+  <main>
+    <section>
+      <p>
+        At <strong>Spero Restoration Corp</strong>, we are dedicated to providing top-quality 
+        restoration and remodeling services across Central Florida. Our certified professionals 
+        specialize in <strong>water damage repair, fire restoration, mold remediation, and full 
+        home remodeling</strong>.
+      </p>
+
+      <p>
+        We understand that property damage can be stressful. That’s why our team responds quickly, 
+        works transparently, and delivers outstanding results. We combine technical expertise with 
+        genuine care for our clients — ensuring every project is completed to perfection.
+      </p>
+
+      <p>
+        Based in <strong>Clermont, FL</strong>, we proudly serve Orlando, Windermere, Lake Nona, 
+        Davenport, and surrounding areas.
+      </p>
+
+      <a href="/" class="cta-button">Back to Home</a>
+    </section>
   </main>
+
+  <footer>
+    <p>© 2025 Spero Restoration Corp | Orlando • Clermont • Windermere • Lake Nona • Davenport</p>
+  </footer>
 </body>
 </html>
