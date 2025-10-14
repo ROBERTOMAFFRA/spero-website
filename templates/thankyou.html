@@ -3,16 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thank You | Spero Restoration</title>
+  <title>Thank You | Spero Restoration Corp</title>
+  <meta name="description" content="Thank you for contacting Spero Restoration Corp. Our team will respond shortly to your restoration request.">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 </head>
+
 <body>
-  <header class="hero small">
+  <header class="hero">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo" class="logo">
     <h1>Thank You!</h1>
+    <h2>We’ve received your message.</h2>
   </header>
-  <main class="content">
-    <p>Your message has been received. Our team will contact you shortly.</p>
-    <a href="/" class="cta-button">Back to Home</a>
+
+  <main>
+    <section class="thankyou-content">
+      <p>Thank you for contacting <strong>Spero Restoration Corp</strong>.  
+      Our team will review your message and get back to you as soon as possible.</p>
+
+      <p>If your matter is urgent, please call us right away at  
+      <a href="tel:4077246310"><strong>407-724-6310</strong></a>.</p>
+
+      <a href="/" class="cta-button">Back to Home</a>
+    </section>
   </main>
+
+  <footer>
+    <p>© 2025 Spero Restoration Corp | Orlando • Clermont • Windermere • Lake Nona • Davenport</p>
+  </footer>
 </body>
 </html>
