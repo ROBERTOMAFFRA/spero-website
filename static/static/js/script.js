@@ -1,4 +1,3 @@
-document.querySelector('.cta-button').addEventListener('click', function(e) {
-  e.preventDefault();
-  document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+document.addEventListener("DOMContentLoaded", function() {
+  console.log("Spero Restoration site loaded successfully!");
 });
