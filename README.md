@@ -1,40 +1,23 @@
-# 🏗️ Spero Restoration Corp Website
+# 🏠 Spero Restoration Corp
 
-Official website for **Spero Restoration Corp**, a professional restoration and remodeling company serving Central Florida — including **Orlando, Clermont, Windermere, Winter Garden, Lake Nona, and Davenport**.
+**Spero Restoration Corp** is a professional restoration and remodeling company based in **Clermont, FL**, proudly serving **Orlando, Windermere, Winter Garden, Lake Nona**, and surrounding areas.  
+We specialize in **Water Damage**, **Fire Damage**, **Mold Remediation**, **Storm & Flood Restoration**, and **Home Remodeling**.
 
-The site showcases company services, testimonials, and a contact form powered by **Flask** and **SendGrid**, allowing clients to request free estimates online.
-
----
-
-## 🌐 Live Website
-
-**[https://spero-website.onrender.com](https://spero-website.onrender.com)**  
-Deployed on Render (Flask + Gunicorn)
+Visit our live website: [https://spero-restoration.onrender.com](https://spero-restoration.onrender.com)
 
 ---
 
-## 🚀 Features
+## 🌟 Features
 
-✅ Modern and responsive layout  
-✅ SEO optimized with meta title, description, and sitemap  
-✅ “Get a Free Estimate” call-to-action button  
-✅ WhatsApp floating button (📱 +1 407-724-6310)  
-✅ Contact form integrated with SendGrid  
-✅ Fast loading and mobile-friendly  
-✅ Compatible with Google indexing and search ranking  
-✅ Secure deployment with environment variables  
-
----
-
-## 🧩 Tech Stack
-
-- **Frontend:** HTML5, CSS3, JavaScript  
-- **Backend:** Python Flask  
-- **Email Service:** SendGrid API  
-- **Server:** Render  
-- **Version Control:** GitHub  
+✅ Responsive design for desktop and mobile  
+✅ Contact form with SendGrid integration (email + CSV leads)  
+✅ SEO-optimized meta tags  
+✅ WhatsApp quick contact button  
+✅ Google-friendly structure for lead generation  
+✅ Built with Flask (Python) + HTML5 + CSS3  
+✅ Ready for deployment on Render or any cloud platform
 
 ---
 
-## 📁 Project Structure
+## 🧱 Project Structure
 
