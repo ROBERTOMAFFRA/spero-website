@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spero Restoration Corp | Water, Fire & Mold Damage Experts</title>
-  <meta name="description" content="Spero Restoration Corp provides expert restoration and remodeling services in Orlando, Clermont, and surrounding areas. Specialists in water, fire, and mold damage repair.">
+  <title>Spero Restoration Corp | Water, Fire & Mold Experts</title>
+  <meta name="description" content="Spero Restoration provides expert restoration and remodeling in Orlando, Clermont, and surrounding areas. Specialists in water, fire, and mold damage repair.">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
 </head>
@@ -54,13 +54,16 @@
     </form>
   </section>
 
-  <a href="https://wa.me/14077246310?text=Hello%20Spero%20Restoration%2C%20I'd%20like%20a%20free%20estimate." class="whatsapp-float" target="_blank">💬</a>
+  <a href="https://wa.me/14077246310?text=Hello%20Spero%20Restoration%2C%20I'd%20like%20a%20free%20estimate." 
+     class="whatsapp-float" 
+     target="_blank" 
+     rel="noopener noreferrer">💬</a>
 
   <footer>
     <div class="footer-links">
-      <a href="/about">About Us</a> |
-      <a href="/privacy">Privacy Policy</a> |
-      <a href="/terms">Terms of Use</a>
+      <a href="{{ url_for('about') }}">About Us</a> |
+      <a href="{{ url_for('privacy') }}">Privacy Policy</a> |
+      <a href="{{ url_for('terms') }}">Terms of Use</a>
     </div>
     <p>📞 (407) 724-6310 | ✉️ contact@spero-restoration.com</p>
     <p>Serving Orlando · Clermont · Windermere · Lake Nona · Winter Garden</p>
