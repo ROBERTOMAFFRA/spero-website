@@ -3,26 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spero Restoration Corp | Water, Fire & Mold Restoration Near You</title>
-  <meta name="description" content="Spero Restoration Corp offers expert water, fire, and mold restoration services across Orlando, Clermont, Windermere, Winter Garden, and Lake Nona. Get a free estimate today!">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-  <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+  <title>Spero Restoration Corp | Water, Fire & Mold Experts</title>
+  <meta name="description" content="Spero Restoration Corp - Professional restoration and remodeling services in Orlando, Clermont, Windermere, Lake Nona, and Davenport. Water Damage, Fire, and Mold specialists.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 <body>
 
   <header>
-    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo" class="logo">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo" class="logo">
     <h1>Restoration . Water Damage . Fire . Mold near you</h1>
     <a href="#contact" class="cta-button">Get a Free Estimate</a>
   </header>
 
-  <section id="about">
+  <section>
     <h2>About Us</h2>
-    <p>Spero Restoration Corp is your trusted partner for professional restoration and remodeling services in Central Florida. We proudly serve Orlando, Clermont, Windermere, Winter Garden, Lake Nona, and Davenport.</p>
+    <p>Spero Restoration Corp is your trusted partner for professional restoration and remodeling services in Central Florida. We proudly serve <strong>Orlando, Clermont, Windermere, Winter Garden, Lake Nona, and Davenport</strong> — helping families recover from water, fire, and mold damage quickly and professionally.</p>
   </section>
 
-  <section id="services">
+  <section>
     <h2>Our Services</h2>
     <ul>
       <li>Water Damage Restoration</li>
@@ -32,26 +31,27 @@
     </ul>
   </section>
 
-  <section id="testimonials">
+  <section>
     <h2>Customer Testimonials</h2>
-    <blockquote>"Spero Restoration transformed our home after water damage — quick, clean, and professional!"</blockquote>
-    <p>- Sarah L., Windermere FL</p>
+    <blockquote>“Spero Restoration fixed our water damage fast — clean, kind, and professional!”<br>— Sarah L., Windermere FL</blockquote>
+    <blockquote>“After a mold problem, they made our home feel brand new again.”<br>— James R., Orlando FL</blockquote>
   </section>
 
   <section id="contact">
     <h2>Contact Us</h2>
-    <form action="/send" method="POST" autocomplete="off">
+    <form action="/send_email" method="POST" autocomplete="off">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="Your Message" required></textarea>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
       <button type="submit">Send Message</button>
     </form>
-    <p><b>Phone:</b> <a href="tel:4077246310">407-724-6310</a></p>
-    <p><b>Email:</b> contact@spero-restoration.com</p>
+
+    <p><strong>Phone:</strong> <a href="tel:4077246310">407-724-6310</a></p>
+    <p><strong>Email:</strong> <a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a></p>
   </section>
 
   <footer>
-    <p>© 2025 Spero Restoration Corp | Orlando · Clermont · Windermere · Winter Garden · Lake Nona · Davenport</p>
+    <p>© 2025 Spero Restoration Corp | Orlando • Clermont • Windermere • Winter Garden • Lake Nona • Davenport</p>
   </footer>
 
   <a href="https://wa.me/14077246310" class="whatsapp-float" target="_blank">💬</a>
