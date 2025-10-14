@@ -18,7 +18,7 @@ def send_email():
 
         sg = SendGridAPIClient(api_key=os.getenv('SENDGRID_API_KEY'))
 
-        # Email principal para você
+        # Email para Spero Restoration
         msg = Mail(
             from_email='contact@spero-restoration.com',
             to_emails='contact@spero-restoration.com',
@@ -27,26 +27,24 @@ def send_email():
         )
         sg.send(msg)
 
-        # Auto resposta ao cliente
+        # Auto resposta
         auto = Mail(
             from_email='contact@spero-restoration.com',
             to_emails=email,
-            subject='We received your message!',
-            plain_text_content=f'Hi {name},\n\nThanks for contacting Spero Restoration. Our team will get back to you soon.\n\n— Spero Restoration Team'
+            subject='Thank you for contacting Spero Restoration',
+            plain_text_content=f'Hi {name},\n\nThank you for reaching out to Spero Restoration.\nOur team will contact you shortly.\n\n— Spero Restoration Team'
         )
         sg.send(auto)
 
         return redirect('/thankyou')
 
     except Exception as e:
-        print(f"❌ Email sending failed: {e}")
-        return "Email sending failed.", 500
-
+        print(f"❌ Error: {e}")
+        return "Email sending failed", 500
 
 @app.route('/thankyou')
 def thankyou():
     return render_template('thankyou.html')
-
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 10000))
