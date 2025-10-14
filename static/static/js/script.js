@@ -1,14 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
-    console.log("Spero Restoration site loaded successfully.");
-
-    // Smooth scroll to contact form
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute("href"));
-            if (target) {
-                target.scrollIntoView({ behavior: "smooth" });
-            }
-        });
-    });
+document.querySelector('.cta-button').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
 });
