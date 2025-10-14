@@ -1,205 +1,214 @@
-/* ==============================
-   Spero Restoration - Main Stylesheet
-   ============================== */
-
-/* RESET & BASE */
+/* ====== GLOBAL STYLES ====== */
 body {
   margin: 0;
-  padding: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f7f9fc;
   color: #222;
-  background-color: #f5f7fa;
   line-height: 1.6;
 }
 
-h1, h2, h3 {
-  color: #1a1a1a;
-  margin-bottom: 15px;
+h1, h2 {
+  color: #0a2b4e;
+  text-align: center;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+p, li {
+  font-size: 1rem;
 }
 
 a {
-  color: #0077cc;
+  color: #0a2b4e;
   text-decoration: none;
 }
-
 a:hover {
   text-decoration: underline;
 }
 
-/* ==============================
-   HEADER / HERO SECTION
-   ============================== */
+/* ====== HEADER / HERO ====== */
 .hero {
-  background: linear-gradient(135deg, #004aad, #0077cc);
+  background: linear-gradient(rgba(0, 30, 80, 0.7), rgba(0, 30, 80, 0.7)),
+              url("hero-bg.jpg") center/cover no-repeat;
   color: white;
   text-align: center;
-  padding: 80px 20px;
+  padding: 100px 20px;
 }
 
 .logo {
-  width: 140px;
+  width: 180px;
   margin-bottom: 20px;
 }
 
 .hero h1 {
   font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .hero h2 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 400;
   margin-bottom: 25px;
 }
 
 .cta-button {
   display: inline-block;
-  background-color: #ff9800;
+  background-color: #004aad;
   color: white;
-  padding: 14px 28px;
-  border-radius: 6px;
+  padding: 14px 32px;
+  font-size: 1rem;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  border-radius: 4px;
+  text-transform: uppercase;
+  transition: background 0.3s;
 }
 
 .cta-button:hover {
-  background-color: #e68900;
+  background-color: #002f6c;
 }
 
-/* ==============================
-   SECTIONS
-   ============================== */
-main {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 0 20px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+/* ====== SERVICES ====== */
+.services {
+  background-color: white;
+  padding: 60px 20px;
+  text-align: center;
 }
 
-section {
-  margin-bottom: 50px;
-}
-
-.services h2,
-.testimonials h2,
-.contact h2 {
-  color: #004aad;
-  border-bottom: 2px solid #004aad;
-  display: inline-block;
-  margin-bottom: 20px;
-}
-
-.services ul li {
-  background: #f0f4f8;
-  border-left: 4px solid #0077cc;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-}
-
-.services ul li:hover {
-  background: #e0f0ff;
-}
-
-/* ==============================
-   TESTIMONIALS
-   ============================== */
-.testimonial {
-  background: #f9f9f9;
-  border-left: 4px solid #ff9800;
-  padding: 15px 20px;
-  margin-bottom: 15px;
-  border-radius: 4px;
-  font-style: italic;
-}
-
-.testimonial span {
-  display: block;
-  margin-top: 8px;
-  color: #555;
-  font-weight: 500;
-}
-
-/* ==============================
-   CONTACT FORM
-   ============================== */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.services ul {
+  list-style: none;
+  padding: 0;
+  margin: 30px auto;
   max-width: 500px;
 }
 
-input, textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+.services li {
+  background-color: #f0f6ff;
+  color: #0a2b4e;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.services li:hover {
+  background-color: #dbe9ff;
+}
+
+/* ====== ABOUT ====== */
+.about {
+  padding: 60px 25px;
+  background-color: #eef3f8;
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
+}
+
+.about p {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* ====== CONTACT FORM ====== */
+.contact {
+  background-color: #ffffff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.contact form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact label {
+  font-weight: bold;
+  color: #0a2b4e;
+  text-align: left;
+}
+
+.contact input,
+.contact textarea {
+  padding: 12px;
+  border: 1px solid #ccd6e0;
+  border-radius: 5px;
   font-size: 1rem;
 }
 
-textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
-button {
+.contact button {
   background-color: #004aad;
   color: white;
-  padding: 12px 25px;
+  padding: 12px;
   border: none;
-  border-radius: 6px;
-  font-size: 1rem;
+  border-radius: 4px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s;
 }
 
-button:hover {
-  background-color: #00337f;
+.contact button:hover {
+  background-color: #002f6c;
 }
 
-/* ==============================
-   FOOTER
-   ============================== */
+/* ====== FOOTER ====== */
 footer {
-  text-align: center;
-  background-color: #1a1a1a;
+  background-color: #0a2b4e;
   color: white;
-  padding: 25px 15px;
-  margin-top: 50px;
+  text-align: center;
+  padding: 25px 10px;
   font-size: 0.9rem;
 }
 
 footer a {
-  color: #ffcc80;
+  color: #c7ddff;
 }
 
-/* ==============================
-   RESPONSIVE
-   ============================== */
+footer a:hover {
+  color: white;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+/* ====== WHATSAPP FLOAT ====== */
+.whatsapp-float {
+  position: fixed;
+  width: 55px;
+  height: 55px;
+  bottom: 25px;
+  right: 25px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 30px;
+  line-height: 55px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+/* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
   .hero {
-    padding: 60px 10px;
+    padding: 80px 10px;
   }
 
   .hero h1 {
     font-size: 2rem;
   }
 
-  .cta-button {
-    padding: 12px 20px;
+  .hero h2 {
+    font-size: 1rem;
   }
 
-  main {
-    margin: 20px 10px;
-    padding: 15px;
+  .cta-button {
+    font-size: 0.9rem;
+    padding: 12px 26px;
   }
 }
