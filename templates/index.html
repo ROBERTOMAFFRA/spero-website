@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spero Restoration Corp | Water, Fire & Mold Damage Experts</title>
-  <meta name="description" content="Spero Restoration Corp provides expert restoration and remodeling services in Orlando, Clermont, and surrounding areas. Specialists in water, fire, and mold damage repair.">
+  <title>Spero Restoration Corp | Water, Fire & Mold Experts Near You</title>
+  <meta name="description" content="Spero Restoration Corp provides professional restoration, remodeling, and emergency repair services across Orlando, Clermont, Windermere, and Lake Nona.">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
 </head>
+
 <body>
-  <header class="hero">
+  <header class="header">
     <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo" class="logo">
-    <h1>Restoration · Water Damage · Fire · Mold</h1>
-    <h2>Expert Restoration Near You</h2>
+    <h1>Spero Restoration Corp</h1>
+    <p class="tagline">Restoration • Water Damage • Fire • Mold</p>
     <a href="#contact" class="cta-button">Get a Free Estimate</a>
   </header>
 
@@ -28,25 +29,39 @@
     </ul>
   </section>
 
-  <section id="contact" class="contact-form">
+  <section class="about">
+    <h2>Why Choose Spero Restoration?</h2>
+    <p>
+      We are experts in property restoration and remodeling throughout Central Florida.
+      Our professional team provides fast, high-quality service with honesty and care.
+      We proudly serve Orlando, Clermont, Windermere, Lake Nona, and surrounding areas.
+    </p>
+  </section>
+
+  <section id="contact" class="contact">
     <h2>Contact Us</h2>
-    <form action="/contact" method="POST" autocomplete="off">
+    <form action="/send" method="POST" autocomplete="off">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="How can we help you?" required></textarea>
-      <button type="submit">Send Message</button>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="cta-button">Send Message</button>
     </form>
   </section>
 
+  <section class="info">
+    <h2>Contact Information</h2>
+    <p><strong>Phone:</strong> <a href="tel:4077246310">(407) 724-6310</a></p>
+    <p><strong>Email:</strong> <a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a></p>
+    <p><strong>Service Areas:</strong> Orlando, Clermont, Windermere, Lake Nona, Winter Garden</p>
+  </section>
+
   <footer>
-    <div class="footer-links">
-      <a href="/about">About Us</a> |
-      <a href="/privacy">Privacy Policy</a> |
-      <a href="/terms">Terms of Use</a>
-    </div>
-    <p>📞 (407) 724-6310 | ✉️ contact@spero-restoration.com</p>
-    <p>Serving Orlando · Clermont · Windermere · Lake Nona · Winter Garden</p>
+    <a href="/about">About Us</a> |
+    <a href="/privacy">Privacy Policy</a> |
+    <a href="/terms">Terms of Use</a>
     <p>© 2025 Spero Restoration Corp</p>
   </footer>
+
+  <a href="https://wa.me/14077246310" class="whatsapp-float" target="_blank">💬</a>
 </body>
 </html>
