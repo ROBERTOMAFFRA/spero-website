@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
-import os
+import os, csv
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 from dotenv import load_dotenv
+from datetime import datetime
 
 app = Flask(__name__)
 load_dotenv()
@@ -29,6 +30,12 @@ def contact():
     email = request.form['email']
     message = request.form['message']
 
+    # Gravar lead em CSV
+    with open('leads.csv', mode='a', newline='', encoding='utf-8') as file:
+        writer = csv.writer(file)
+        writer.writerow([datetime.now().strftime("%Y-%m-%d %H:%M:%S"), name, email, message])
+
+    # Enviar email via SendGrid
     sendgrid_api = os.getenv('SENDGRID_API_KEY')
     if not sendgrid_api:
         return "SendGrid API Key not configured", 500
@@ -38,7 +45,7 @@ def contact():
     {message}
     """
 
-    message = Mail(
+    email_msg = Mail(
         from_email='contact@spero-restoration.com',
         to_emails=['contact@spero-restoration.com', 'roberto.maffra@gmail.com'],
         subject='New Contact Form Submission - Spero Restoration',
@@ -47,7 +54,7 @@ def contact():
 
     try:
         sg = SendGridAPIClient(sendgrid_api)
-        sg.send(message)
+        sg.send(email_msg)
         return redirect(url_for('thankyou'))
     except Exception as e:
         print(e)
