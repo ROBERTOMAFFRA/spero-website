@@ -1,32 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spero Restoration</title>
+  <title>Spero Restoration - Contact</title>
   <link rel="stylesheet" href="/static/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #004aad;
+      color: white;
+      padding: 1.2rem;
+      text-align: center;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #333;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #004aad;
+      outline: none;
+    }
+
+    button {
+      background-color: #004aad;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #00357a;
+    }
+
+    footer {
+      text-align: center;
+      color: #555;
+      font-size: 0.9rem;
+      margin-top: 20px;
+    }
+  </style>
 </head>
+
 <body>
   <header>
-    <img src="/static/logo.png" alt="Spero Restoration Logo" class="logo">
-    <h1>Spero Restoration Corp</h1>
-    <p>Water, Fire & Mold Damage Experts</p>
+    Spero Restoration - Contact Us
   </header>
 
-  <main>
-    <section class="contact-section">
-      <h2>Contact Us</h2>
-      <form method="POST" action="/send_email" autocomplete="off">
-        <input type="text" name="name" placeholder="Full Name" required autocomplete="off">
-        <input type="email" name="email" placeholder="Your Email" required autocomplete="off">
-        <textarea name="message" placeholder="Your Message" rows="6" required autocomplete="off"></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </section>
-  </main>
+  <div class="container">
+    <form action="/send_email" method="POST" autocomplete="off">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="5" placeholder="Write your message" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
 
   <footer>
-    <p>© 2025 Spero Restoration Corp | contact@spero-restoration.com | (407) XXX-XXXX</p>
+    &copy; 2025 Spero Restoration Corp. All rights reserved.
   </footer>
 </body>
 </html>
