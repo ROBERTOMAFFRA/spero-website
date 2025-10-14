@@ -1,124 +1,125 @@
-/* === SPERO RESTORATION CORP — PROFESSIONAL STYLE === */
-
-/* Base layout */
 body {
-  font-family: "Segoe UI", Roboto, sans-serif;
   margin: 0;
   padding: 0;
-  color: #1b1b1b;
-  background-color: #f9f9fb;
-  line-height: 1.6;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #222;
+  background-color: #f8f9fa;
 }
 
 /* Header */
 header {
-  background-color: #002b5b;
-  color: #ffffff;
   text-align: center;
-  padding: 60px 20px;
-}
-header h1 {
-  font-size: 2.4rem;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-header p {
-  font-size: 1.1rem;
-  color: #dce6f2;
+  padding: 60px 20px 40px 20px;
+  background: linear-gradient(135deg, #003366, #0056b3);
+  color: white;
 }
 
-/* Navigation */
-nav {
-  background-color: #014f86;
-  text-align: center;
-  padding: 12px;
+.logo {
+  width: 110px;
+  margin-bottom: 15px;
 }
-nav a {
-  color: #ffffff;
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: #ff6600;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 5px;
   text-decoration: none;
-  margin: 0 15px;
-  font-weight: 500;
-}
-nav a:hover {
-  text-decoration: underline;
+  font-weight: 600;
+  transition: background 0.3s;
 }
 
-/* Section containers */
+.cta-button:hover {
+  background-color: #e65c00;
+}
+
+/* Sections */
 section {
-  max-width: 1000px;
-  margin: 50px auto;
-  padding: 0 20px;
+  width: 90%;
+  max-width: 900px;
+  margin: 30px auto;
+  background: white;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
-/* Titles */
 h2 {
-  color: #002b5b;
-  border-left: 5px solid #ff4500;
-  padding-left: 10px;
+  color: #003366;
+  border-bottom: 3px solid #ff6600;
+  display: inline-block;
+  padding-bottom: 5px;
   margin-bottom: 20px;
 }
 
-/* Services */
 ul {
-  list-style: none;
+  list-style-type: none;
   padding: 0;
 }
-ul li {
-  padding: 8px 0;
-  border-bottom: 1px solid #ddd;
+
+ul li::before {
+  content: "✔️ ";
+  color: #ff6600;
 }
 
-/* Contact form */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-width: 500px;
-}
-input, textarea {
+/* Contact Form */
+form input, form textarea {
+  width: 100%;
+  margin: 5px 0 10px 0;
   padding: 10px;
+  border-radius: 5px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
+  font-size: 1em;
 }
-button {
-  background-color: #ff4500;
-  color: #fff;
+
+form button {
+  background: #0056b3;
+  color: white;
   border: none;
-  padding: 12px;
-  border-radius: 4px;
+  padding: 10px 25px;
+  border-radius: 5px;
   cursor: pointer;
-  font-weight: bold;
+  font-size: 1em;
+  transition: background 0.3s;
 }
-button:hover {
-  background-color: #e03e00;
+
+form button:hover {
+  background: #003d80;
 }
 
 /* Footer */
 footer {
-  background-color: #002b5b;
-  color: #dce6f2;
   text-align: center;
-  padding: 25px;
-  margin-top: 60px;
-  font-size: 0.9rem;
+  padding: 20px;
+  background: #002244;
+  color: white;
+  font-size: 0.9em;
+  margin-top: 30px;
 }
 
-/* WhatsApp button */
+/* WhatsApp Button */
 .whatsapp-float {
   position: fixed;
-  width: 60px;
-  height: 60px;
-  bottom: 25px;
-  right: 25px;
+  bottom: 20px;
+  right: 20px;
   background-color: #25d366;
   color: white;
   border-radius: 50%;
+  width: 60px;
+  height: 60px;
   text-align: center;
   font-size: 28px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  line-height: 60px;
 }
-.whatsapp-float i {
-  margin-top: 16px;
+
+.whatsapp-float:hover {
+  background-color: #1ebc57;
 }
