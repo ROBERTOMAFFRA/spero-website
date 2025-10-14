@@ -30,34 +30,29 @@ def contact():
     email = request.form['email']
     message = request.form['message']
 
-    # Gravar lead em CSV
-    with open('leads.csv', mode='a', newline='', encoding='utf-8') as file:
-        writer = csv.writer(file)
+    # Registrar lead no CSV
+    with open('leads.csv', 'a', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
         writer.writerow([datetime.now().strftime("%Y-%m-%d %H:%M:%S"), name, email, message])
 
     # Enviar email via SendGrid
     sendgrid_api = os.getenv('SENDGRID_API_KEY')
     if not sendgrid_api:
-        return "SendGrid API Key not configured", 500
+        return "SendGrid API Key missing", 500
 
-    content = f"""
-    New message from {name} ({email}):
-    {message}
-    """
-
-    email_msg = Mail(
+    msg = Mail(
         from_email='contact@spero-restoration.com',
         to_emails=['contact@spero-restoration.com', 'roberto.maffra@gmail.com'],
         subject='New Contact Form Submission - Spero Restoration',
-        plain_text_content=content
+        plain_text_content=f"Name: {name}\nEmail: {email}\nMessage:\n{message}"
     )
 
     try:
         sg = SendGridAPIClient(sendgrid_api)
-        sg.send(email_msg)
+        sg.send(msg)
         return redirect(url_for('thankyou'))
     except Exception as e:
-        print(e)
+        print(str(e))
         return "Error sending email", 500
 
 @app.route('/thankyou')
