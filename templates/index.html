@@ -3,104 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spero Restoration - Contact</title>
+  <title>Spero Restoration</title>
   <link rel="stylesheet" href="/static/style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f7fa;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #004aad;
-      color: white;
-      padding: 1.2rem;
-      text-align: center;
-      font-size: 1.5rem;
-      letter-spacing: 1px;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: 40px auto;
-      background: white;
-      border-radius: 10px;
-      padding: 30px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    label {
-      font-weight: bold;
-      color: #333;
-    }
-
-    input, textarea {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-      width: 100%;
-    }
-
-    input:focus, textarea:focus {
-      border-color: #004aad;
-      outline: none;
-    }
-
-    button {
-      background-color: #004aad;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 6px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    button:hover {
-      background-color: #00357a;
-    }
-
-    footer {
-      text-align: center;
-      color: #555;
-      font-size: 0.9rem;
-      margin-top: 20px;
-    }
-  </style>
 </head>
-
 <body>
   <header>
-    Spero Restoration - Contact Us
+    <img src="/static/logo.png" alt="Spero Restoration Logo" class="logo">
+    <h1>Spero Restoration</h1>
+    <p class="slogan">Restoration • Water Damage • Mold • Fire</p>
   </header>
 
   <div class="container">
+    <h2>Contact Us</h2>
+    <p class="intro">Get a free estimate today — our team will reach out as soon as possible.</p>
+
     <form action="/send_email" method="POST" autocomplete="off">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email address" required>
 
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" rows="5" placeholder="Write your message" required></textarea>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="Describe your needs..." required></textarea>
 
-      <button type="submit">Send Message</button>
+      <button type="submit">Get a Free Estimate</button>
     </form>
   </div>
 
   <footer>
-    &copy; 2025 Spero Restoration Corp. All rights reserved.
+    &copy; 2025 Spero Restoration Corp | Orlando, FL | contact@spero-restoration.com | (407) 724-6310
   </footer>
 </body>
 </html>
