@@ -1,13 +1,205 @@
-.hero.small {
-  padding: 60px 20px;
-  background: linear-gradient(135deg, #004aad, #012b5c);
-  color: white;
+/* ==============================
+   Spero Restoration - Main Stylesheet
+   ============================== */
+
+/* RESET & BASE */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #222;
+  background-color: #f5f7fa;
+  line-height: 1.6;
 }
 
-.content {
-  padding: 40px;
-  max-width: 800px;
-  margin: auto;
-  line-height: 1.6;
-  text-align: left;
+h1, h2, h3 {
+  color: #1a1a1a;
+  margin-bottom: 15px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+a {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ==============================
+   HEADER / HERO SECTION
+   ============================== */
+.hero {
+  background: linear-gradient(135deg, #004aad, #0077cc);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.logo {
+  width: 140px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hero h2 {
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: #ff9800;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #e68900;
+}
+
+/* ==============================
+   SECTIONS
+   ============================== */
+main {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+section {
+  margin-bottom: 50px;
+}
+
+.services h2,
+.testimonials h2,
+.contact h2 {
+  color: #004aad;
+  border-bottom: 2px solid #004aad;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.services ul li {
+  background: #f0f4f8;
+  border-left: 4px solid #0077cc;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.services ul li:hover {
+  background: #e0f0ff;
+}
+
+/* ==============================
+   TESTIMONIALS
+   ============================== */
+.testimonial {
+  background: #f9f9f9;
+  border-left: 4px solid #ff9800;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  font-style: italic;
+}
+
+.testimonial span {
+  display: block;
+  margin-top: 8px;
+  color: #555;
+  font-weight: 500;
+}
+
+/* ==============================
+   CONTACT FORM
+   ============================== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 500px;
+}
+
+input, textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+button {
+  background-color: #004aad;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #00337f;
+}
+
+/* ==============================
+   FOOTER
+   ============================== */
+footer {
+  text-align: center;
+  background-color: #1a1a1a;
+  color: white;
+  padding: 25px 15px;
+  margin-top: 50px;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: #ffcc80;
+}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 10px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .cta-button {
+    padding: 12px 20px;
+  }
+
+  main {
+    margin: 20px 10px;
+    padding: 15px;
+  }
 }
