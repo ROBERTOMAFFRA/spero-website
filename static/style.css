@@ -1,71 +1,110 @@
-body {
-  font-family: Arial, sans-serif;
+/* ---------- GLOBAL ---------- */
+* {
   margin: 0;
   padding: 0;
-  color: #222;
-  background-color: #f7f9fc;
-  text-align: center;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f4f7fa;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- HEADER ---------- */
 header {
-  background: #003366;
+  background: linear-gradient(135deg, #004aad, #007bff);
   color: white;
-  padding: 30px 15px;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
-.logo {
-  width: 120px;
-  margin-bottom: 10px;
-}
-
-.contact-section {
-  background: white;
-  padding: 40px 20px;
-  margin: 30px auto;
-  width: 90%;
+/* ---------- CONTAINER ---------- */
+.container {
+  flex: 1;
   max-width: 600px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  margin: 40px auto;
+  background: #fff;
   border-radius: 12px;
+  padding: 30px 25px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
-form input, form textarea {
+/* ---------- FORM ---------- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: 600;
+  color: #222;
+}
+
+input,
+textarea {
   width: 100%;
-  margin: 10px 0;
   padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease-in-out;
 }
 
+input:focus,
+textarea:focus {
+  border-color: #004aad;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 74, 173, 0.3);
+}
+
+/* ---------- BUTTON ---------- */
 button {
-  background-color: #0066cc;
+  background-color: #004aad;
   color: white;
   border: none;
-  padding: 14px 20px;
+  padding: 14px;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
+  transition: background 0.3s, transform 0.1s;
 }
 
 button:hover {
-  background-color: #004c99;
+  background-color: #003780;
+  transform: scale(1.03);
 }
 
+/* ---------- FOOTER ---------- */
 footer {
-  margin-top: 30px;
-  padding: 20px;
-  font-size: 14px;
-  background-color: #003366;
-  color: white;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  padding: 15px 0;
+  background-color: #f1f1f1;
+  margin-top: auto;
 }
 
-.thankyou {
-  margin-top: 100px;
-}
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
+  header {
+    font-size: 1.4rem;
+  }
 
-.thankyou a {
-  display: inline-block;
-  margin-top: 20px;
-  text-decoration: none;
-  color: #0066cc;
+  .container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  button {
+    font-size: 0.95rem;
+  }
 }
