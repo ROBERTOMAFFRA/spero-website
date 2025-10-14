@@ -18,16 +18,13 @@ def send_message():
     sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
     content = f"New message from {name} ({email}):\n\n{message}"
 
-    to_email = os.environ.get('TO_EMAIL')
-    cc_email = os.environ.get('CC_EMAIL')
-    from_email = os.environ.get('FROM_EMAIL')
-
     mail = Mail(
-        from_email=from_email,
-        to_emails=[to_email, cc_email],
+        from_email=os.environ.get('FROM_EMAIL'),
+        to_emails=[os.environ.get('TO_EMAIL')],
         subject="New Contact Form Message - Spero Restoration",
         plain_text_content=content
     )
+    mail.cc = os.environ.get('CC_EMAIL')
 
     try:
         sg.send(mail)
