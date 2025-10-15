@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
-Sitemap: https://spero-restoration.com/sitemap.xml
+Disallow: /static/
+Disallow: /templates/
+Disallow: /__pycache__/
+
+Sitemap: https://spero-website.onrender.com/sitemap.xml
