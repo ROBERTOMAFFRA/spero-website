@@ -1,156 +1,176 @@
-/* ====== GLOBAL ====== */
+/* ==============================
+   SPERO RESTORATION MAIN STYLE
+   ============================== */
+
+/* Base */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Segoe UI", Arial, sans-serif;
-    color: #222;
-    background-color: #f9f9f9;
-    line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #222;
+  background-color: #f9f9f9;
 }
 
-/* ====== HEADER / HERO ====== */
-header.hero {
-    text-align: center;
-    background: linear-gradient(180deg, #173e72 0%, #2a568f 100%);
-    padding: 90px 20px 70px;
-    color: white;
-    border-bottom: 5px solid #ff7b00;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+/* Header */
+header {
+  background: linear-gradient(135deg, #003366 0%, #0059b3 100%);
+  color: #fff;
+  text-align: center;
+  padding: 80px 20px 60px 20px;
+  border-bottom: 4px solid #0073e6;
 }
 
-.hero img {
-    width: 190px;
-    height: auto;
-    margin-bottom: 25px;
+header img {
+  width: 180px;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto 15px;
 }
 
-.hero h1 {
-    font-size: 2.8em;
-    font-weight: 700;
-    margin-bottom: 10px;
-    letter-spacing: 0.6px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 10px 0;
+  letter-spacing: 0.5px;
 }
 
-.hero h2 {
-    font-size: 1.3em;
-    font-weight: 400;
-    margin-bottom: 25px;
+header h2 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #f0f0f0;
 }
 
+/* Call-to-Action Button */
 .cta-button {
-    display: inline-block;
-    background-color: #ff7b00;
-    color: white;
-    padding: 14px 30px;
-    border-radius: 6px;
-    font-weight: 600;
-    text-decoration: none;
-    font-size: 1em;
-    transition: 0.3s;
+  display: inline-block;
+  background-color: #0073e6;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
 }
 
 .cta-button:hover {
-    background-color: #ffa73f;
+  background-color: #005bb5;
 }
 
-/* ====== NAVBAR ====== */
+/* Navigation */
 nav {
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    text-align: center;
-    padding: 12px 0;
+  display: flex;
+  justify-content: center;
+  background-color: #f8f8f8;
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
 }
+
 nav a {
-    color: #173e72;
-    margin: 0 12px;
-    text-decoration: none;
-    font-weight: 600;
+  text-decoration: none;
+  color: #003366;
+  font-weight: 600;
+  margin: 0 20px;
+  transition: 0.3s ease;
 }
+
 nav a:hover {
-    color: #ff7b00;
+  color: #0073e6;
 }
 
-/* ====== SECTIONS ====== */
+/* Sections */
 section {
-    padding: 60px 20px;
-    max-width: 900px;
-    margin: auto;
+  padding: 40px 20px;
+  text-align: center;
 }
 
-/* ====== SERVICES ====== */
-.services ul {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
+h2 {
+  color: #003366;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
 }
 
-.services li {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: 600;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+ul {
+  list-style-type: none;
+  padding: 0;
 }
 
-.services li:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+ul li {
+  background-color: #eaf3ff;
+  margin: 10px auto;
+  padding: 12px;
+  border-radius: 5px;
+  max-width: 350px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* ====== TESTIMONIALS ====== */
+/* Testimonials */
 .testimonials {
-    background: #f1f5fb;
-    padding: 70px 20px;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 40px 0;
 }
 
 .testimonial {
-    margin-bottom: 25px;
-    font-style: italic;
+  max-width: 600px;
+  margin: 20px auto;
+  font-style: italic;
 }
 
-/* ====== CONTACT ====== */
+/* Contact Form */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: left;
+}
+
 form input, form textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 6px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 1em;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: inherit;
 }
 
 form button {
-    background-color: #173e72;
-    color: #fff;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
+  background-color: #0073e6;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
 }
 
 form button:hover {
-    background-color: #ff7b00;
+  background-color: #005bb5;
 }
 
-/* ====== FOOTER ====== */
+/* Footer */
 footer {
-    background: #173e72;
-    color: #fff;
-    text-align: center;
-    padding: 25px 10px;
-    font-size: 0.9em;
+  background-color: #003366;
+  color: white;
+  text-align: center;
+  padding: 15px 10px;
+  font-size: 0.9rem;
 }
 
 footer a {
-    color: #ff7b00;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: underline;
 }
 
 footer a:hover {
-    text-decoration: underline;
+  color: #a8d0ff;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  header img {
+    width: 140px;
+  }
 }
