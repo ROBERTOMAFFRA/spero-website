@@ -10,9 +10,10 @@ app = Flask(__name__)
 app.config['MAIL_SERVER'] = 'smtp.sendgrid.net'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
 app.config['MAIL_USERNAME'] = 'apikey'  # padrão SendGrid
-app.config['MAIL_PASSWORD'] = os.getenv('SENDGRID_API_KEY')  # variável no Render
-app.config['MAIL_DEFAULT_SENDER'] = 'contact@spero-restoration.com'
+app.config['MAIL_PASSWORD'] = os.getenv('SENDGRID_API_KEY')
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('DEFAULT_SENDER_EMAIL', 'contact@spero-restoration.com')
 
 mail = Mail(app)
 
@@ -26,26 +27,29 @@ def home():
 @app.route('/send_email', methods=['POST'])
 def send_email():
     try:
-        name = request.form['name']
-        email = request.form['email']
-        message = request.form['message']
+        name = request.form.get('name')
+        email = request.form.get('email')
+        message = request.form.get('message')
 
         msg = Message(
             subject=f"New Contact Form Submission from {name}",
-            sender='contact@spero-restoration.com',
+            sender=app.config['MAIL_DEFAULT_SENDER'],
             recipients=[
-                'contact@spero-restoration.com',
+                app.config['MAIL_DEFAULT_SENDER'],
                 'roberto.maffra@gmail.com'
             ],
             body=f"Name: {name}\nEmail: {email}\nMessage:\n{message}"
         )
 
+        msg.reply_to = email
         mail.send(msg)
+        print("✅ Email sent successfully.")
         return redirect(url_for('thank_you'))
 
     except Exception as e:
         print(f"❌ Email sending failed: {e}")
         return "Internal Server Error", 500
+
 
 @app.route('/thank-you')
 def thank_you():
