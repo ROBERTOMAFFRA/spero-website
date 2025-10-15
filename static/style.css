@@ -1,214 +1,189 @@
-/* ====== GLOBAL STYLES ====== */
 body {
   margin: 0;
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background-color: #f7f9fc;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #ffffff;
   color: #222;
   line-height: 1.6;
 }
 
-h1, h2 {
-  color: #0a2b4e;
-  text-align: center;
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #ffffff;
+  border-bottom: 3px solid #0056b3;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-p, li {
-  font-size: 1rem;
+.logo img {
+  height: 50px;
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
-a {
-  color: #0a2b4e;
+.logo h1 {
+  display: inline-block;
+  color: #0056b3;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+nav a {
+  margin: 0 1rem;
   text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
+  color: #0056b3;
+  font-weight: 500;
 }
 
-/* ====== HEADER / HERO ====== */
+nav a:hover {
+  color: #000;
+}
+
+/* HERO */
 .hero {
-  background: linear-gradient(rgba(0, 30, 80, 0.7), rgba(0, 30, 80, 0.7)),
-              url("hero-bg.jpg") center/cover no-repeat;
-  color: white;
   text-align: center;
-  padding: 100px 20px;
-}
-
-.logo {
-  width: 180px;
-  margin-bottom: 20px;
-}
-
-.hero h1 {
-  font-size: 2.5rem;
-  margin: 10px 0;
+  padding: 4rem 2rem;
+  background: #f5f7fa;
 }
 
 .hero h2 {
-  font-size: 1.2rem;
-  font-weight: 400;
-  margin-bottom: 25px;
+  font-size: 2rem;
+  color: #003d80;
+  margin-bottom: 1rem;
 }
 
-.cta-button {
-  display: inline-block;
-  background-color: #004aad;
-  color: white;
-  padding: 14px 32px;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 4px;
-  text-transform: uppercase;
-  transition: background 0.3s;
-}
-
-.cta-button:hover {
-  background-color: #002f6c;
-}
-
-/* ====== SERVICES ====== */
-.services {
-  background-color: white;
-  padding: 60px 20px;
-  text-align: center;
-}
-
-.services ul {
-  list-style: none;
-  padding: 0;
-  margin: 30px auto;
-  max-width: 500px;
-}
-
-.services li {
-  background-color: #f0f6ff;
-  color: #0a2b4e;
-  padding: 12px;
-  margin: 8px 0;
-  border-radius: 5px;
-  font-weight: 500;
-  transition: background 0.3s;
-}
-
-.services li:hover {
-  background-color: #dbe9ff;
-}
-
-/* ====== ABOUT ====== */
-.about {
-  padding: 60px 25px;
-  background-color: #eef3f8;
-  text-align: center;
-  max-width: 800px;
-  margin: auto;
-}
-
-.about p {
+.hero p {
   font-size: 1.1rem;
-  color: #333;
+  color: #555;
 }
 
-/* ====== CONTACT FORM ====== */
+.btn-primary {
+  display: inline-block;
+  background: #0056b3;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background: #004494;
+}
+
+/* SERVICES */
+.services {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.services h2 {
+  color: #003d80;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: #e8f1ff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* TESTIMONIALS */
+.testimonials {
+  background: #f5f5f5;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.testimonial {
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+/* CONTACT */
 .contact {
-  background-color: #ffffff;
-  padding: 60px 20px;
+  background: #eaf3ff;
+  padding: 3rem 2rem;
   text-align: center;
 }
 
 .contact form {
-  max-width: 500px;
+  max-width: 400px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.contact label {
-  font-weight: bold;
-  color: #0a2b4e;
-  text-align: left;
 }
 
 .contact input,
 .contact textarea {
-  padding: 12px;
-  border: 1px solid #ccd6e0;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 1rem;
 }
 
-.contact button {
-  background-color: #004aad;
-  color: white;
-  padding: 12px;
-  border: none;
-  border-radius: 4px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s;
+.contact-info {
+  margin-top: 1rem;
+  color: #333;
+  font-weight: 500;
 }
 
-.contact button:hover {
-  background-color: #002f6c;
-}
-
-/* ====== FOOTER ====== */
+/* FOOTER */
 footer {
-  background-color: #0a2b4e;
-  color: white;
+  background: #0056b3;
+  color: #fff;
   text-align: center;
-  padding: 25px 10px;
-  font-size: 0.9rem;
+  padding: 1.5rem;
 }
 
 footer a {
-  color: #c7ddff;
+  color: #fff;
+  text-decoration: none;
+  margin: 0 5px;
 }
 
 footer a:hover {
-  color: white;
+  text-decoration: underline;
 }
 
-.footer-links {
-  margin-bottom: 10px;
-}
-
-/* ====== WHATSAPP FLOAT ====== */
-.whatsapp-float {
+/* WHATSAPP FLOAT BUTTON */
+.whatsapp {
   position: fixed;
-  width: 55px;
-  height: 55px;
-  bottom: 25px;
-  right: 25px;
-  background-color: #25D366;
-  color: white;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 12px 16px;
   border-radius: 50%;
   text-align: center;
-  font-size: 30px;
-  line-height: 55px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-  transition: transform 0.3s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  z-index: 100;
 }
 
-.whatsapp-float:hover {
-  transform: scale(1.1);
+.whatsapp:hover {
+  background: #1da851;
 }
 
-/* ====== RESPONSIVE ====== */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  .hero {
-    padding: 80px 10px;
+  header {
+    flex-direction: column;
   }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .hero h2 {
-    font-size: 1rem;
-  }
-
-  .cta-button {
-    font-size: 0.9rem;
-    padding: 12px 26px;
+  nav a {
+    display: block;
+    margin: 0.5rem 0;
   }
 }
