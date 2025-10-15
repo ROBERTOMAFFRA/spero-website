@@ -1,69 +1,84 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 import os
 import requests
 
 app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY", "spero_secret")
 
-# Página inicial
-@app.route('/')
+# ========= HOME PAGE =========
+@app.route("/")
 def home():
-    return render_template('index.html')
+    return render_template("index.html")
 
-# Página sobre
-@app.route('/about')
+# ========= ABOUT =========
+@app.route("/about")
 def about():
-    return render_template('about.html')
+    return render_template("about.html")
 
-# Política de privacidade
-@app.route('/privacy')
+# ========= PRIVACY =========
+@app.route("/privacy")
 def privacy():
-    return render_template('privacy.html')
+    return render_template("privacy.html")
 
-# Termos de uso
-@app.route('/terms')
+# ========= TERMS =========
+@app.route("/terms")
 def terms():
-    return render_template('terms.html')
+    return render_template("terms.html")
 
-# Página de agradecimento
-@app.route('/thankyou')
-def thankyou():
-    return render_template('thankyou.html')
-
-# Envio do formulário via SendGrid
-@app.route('/send_email', methods=['POST'])
+# ========= CONTACT / LEADS =========
+@app.route("/send_email", methods=["POST"])
 def send_email():
-    name = request.form['name']
-    email = request.form['email']
-    message = request.form['message']
+    name = request.form.get("name")
+    email = request.form.get("email")
+    message = request.form.get("message")
+
+    if not name or not email or not message:
+        flash("All fields are required.", "error")
+        return redirect(url_for("home"))
+
+    subject = f"New Lead from {name}"
+    content = f"""
+    Name: {name}
+    Email: {email}
+    Message: {message}
+    """
 
     sendgrid_api_key = os.getenv("SENDGRID_API_KEY")
-    if not sendgrid_api_key:
-        return "SendGrid API key not found.", 500
+    sender_email = os.getenv("SENDER_EMAIL", "contact@spero-restoration.com")
+    recipient_email = os.getenv("RECIPIENT_EMAIL", "contact@spero-restoration.com")
 
-    data = {
-        "personalizations": [{
-            "to": [{"email": "contact@spero-restoration.com"}],
-            "cc": [{"email": "roberto.maffra@gmail.com"}],
-            "subject": f"New contact from {name}"
-        }],
-        "from": {"email": "contact@spero-restoration.com"},
-        "content": [{
-            "type": "text/plain",
-            "value": f"Name: {name}\nEmail: {email}\nMessage: {message}"
-        }]
-    }
+    if sendgrid_api_key:
+        try:
+            response = requests.post(
+                "https://api.sendgrid.com/v3/mail/send",
+                headers={
+                    "Authorization": f"Bearer {sendgrid_api_key}",
+                    "Content-Type": "application/json"
+                },
+                json={
+                    "personalizations": [{"to": [{"email": recipient_email}]}],
+                    "from": {"email": sender_email},
+                    "subject": subject,
+                    "content": [{"type": "text/plain", "value": content}]
+                }
+            )
 
-    response = requests.post(
-        "https://api.sendgrid.com/v3/mail/send",
-        headers={"Authorization": f"Bearer {sendgrid_api_key}", "Content-Type": "application/json"},
-        json=data
-    )
+            if response.status_code == 202:
+                flash("Message sent successfully!", "success")
+            else:
+                flash(f"Error sending email: {response.text}", "error")
 
-    if response.status_code == 202:
-        return redirect(url_for('thankyou'))
+        except Exception as e:
+            flash(f"Exception: {e}", "error")
     else:
-        return f"Email sending failed: {response.text}", 500
+        flash("Email service not configured. Please set SENDGRID_API_KEY.", "error")
 
+    return redirect(url_for("thankyou"))
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+# ========= THANK YOU PAGE =========
+@app.route("/thankyou")
+def thankyou():
+    return render_template("thankyou.html")
+
+if __name__ == "__main__":
+    app.run(debug=True)
