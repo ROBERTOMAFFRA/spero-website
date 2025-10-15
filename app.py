@@ -5,54 +5,57 @@ from sendgrid.helpers.mail import Mail
 
 app = Flask(__name__)
 
-# Rota principal
-@app.route('/')
+@app.route("/")
 def home():
-    return render_template('index.html')
+    return render_template("index.html")
 
-# Rota de envio do formulário
-@app.route('/send', methods=['POST'])
+@app.route("/send_email", methods=["POST"])
 def send_email():
-    name = request.form.get('name')
-    email = request.form.get('email')
-    phone = request.form.get('phone')
-    message = request.form.get('message')
+    name = request.form.get("name")
+    email = request.form.get("email")
+    message = request.form.get("message")
 
-    sendgrid_api_key = os.getenv('SENDGRID_API_KEY')
-    to_email_1 = os.getenv('TO_EMAIL_1', 'contact@spero-restoration.com')
-    to_email_2 = os.getenv('TO_EMAIL_2', 'roberto.maffra@gmail.com')
+    if not all([name, email, message]):
+        return "All fields are required.", 400
 
-    if not sendgrid_api_key:
-        return "Error: SendGrid API Key not found."
+    subject = f"New Lead from {name}"
+    body = f"""
+    You received a new message from Spero Restoration website:
 
-    # Monta o conteúdo do e-mail
-    email_content = f"""
-    New message from Spero Restoration website:
-    
     Name: {name}
     Email: {email}
-    Phone: {phone}
-    Message: {message}
+    Message:
+    {message}
     """
 
-    message_obj = Mail(
-        from_email='contact@spero-restoration.com',
-        to_emails=[to_email_1, to_email_2],
-        subject='New Contact Form Submission - Spero Restoration',
-        plain_text_content=email_content
-    )
+    recipients = ["contact@spero-restoration.com", "roberto.maffra@gmail.com"]
 
     try:
-        sg = SendGridAPIClient(sendgrid_api_key)
-        sg.send(message_obj)
-        return redirect(url_for('thank_you'))
+        sg = SendGridAPIClient(os.environ.get("SENDGRID_API_KEY"))
+        for to_email in recipients:
+            mail = Mail(
+                from_email="contact@spero-restoration.com",
+                to_emails=to_email,
+                subject=subject,
+                plain_text_content=body
+            )
+            sg.send(mail)
+        return redirect(url_for("thank_you"))
     except Exception as e:
-        print(f"Error sending email: {e}")
-        return "There was an issue sending your message."
+        print(str(e))
+        return f"Error sending email: {str(e)}", 500
 
-@app.route('/thank-you')
+@app.route("/thank-you")
 def thank_you():
-    return render_template('thankyou.html')
+    return render_template("thankyou.html")
 
-if __name__ == '__main__':
+@app.route("/privacy")
+def privacy():
+    return render_template("privacy.html")
+
+@app.route("/terms")
+def terms():
+    return render_template("terms.html")
+
+if __name__ == "__main__":
     app.run(debug=True)
