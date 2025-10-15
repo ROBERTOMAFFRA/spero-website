@@ -3,60 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spero Restoration Corp | Water, Fire & Mold Experts</title>
-  <meta name="description" content="Spero Restoration Corp — expert restoration and remodeling services in Clermont and Orlando. Water, fire, and mold damage professionals near you.">
-  <meta name="keywords" content="restoration, water damage, mold removal, fire restoration, remodeling, Clermont, Orlando, Windermere, Winter Garden, Lake Nona">
+  <meta name="description" content="Spero Restoration Corp — Experts in Water, Fire, and Mold Damage Restoration serving Orlando, Clermont, Windermere, and Central Florida.">
+  <meta name="keywords" content="Restoration, Water Damage, Fire Damage, Mold Remediation, Remodeling, Orlando, Clermont, Windermere, Lake Nona, Winter Garden, Lake County, Florida">
+  <title>Spero Restoration Corp | Expert Restoration in Central Florida</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
 </head>
+
 <body>
-  <header>
-    <div class="header-container">
-      <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo" class="logo">
-      <h1>Spero Restoration Corp</h1>
-      <p class="tagline">Restoration • Water Damage • Fire • Mold • Remodeling</p>
-      <a href="#contact" class="btn-primary">Get a Free Estimate</a>
-    </div>
+  <header class="hero">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo" class="logo">
+    <h1>Spero Restoration Corp</h1>
+    <p class="tagline">Restoration • Water Damage • Fire • Mold • Remodeling</p>
+    <a href="#contact" class="btn-primary">Get a Free Estimate</a>
   </header>
 
-  <main>
-    <section id="about">
-      <h2>Who We Are</h2>
-      <p>At Spero Restoration Corp, we specialize in restoring homes and businesses throughout Central Florida. From water and fire damage to full remodeling projects, our licensed professionals deliver excellence, reliability, and trust.</p>
-    </section>
+  <section class="services">
+    <h2>Our Services</h2>
+    <ul>
+      <li>Home Remodeling</li>
+      <li>Water Damage</li>
+      <li>Fire Damage</li>
+      <li>Mold Remediation</li>
+      <li>Storm Damage</li>
+      <li>Flood Damage</li>
+    </ul>
+  </section>
 
-    <section id="services">
-      <h2>Our Services</h2>
-      <ul class="services-list">
-        <li>🏠 Home Remodeling</li>
-        <li>💧 Water Damage Restoration</li>
-        <li>🔥 Fire Damage Repair</li>
-        <li>🌿 Mold Remediation</li>
-        <li>🌪️ Storm Damage</li>
-        <li>🚿 Flood Damage</li>
-      </ul>
-    </section>
-
-    <section id="contact">
-      <h2>Get a Free Estimate</h2>
-      <form action="/send" method="POST" class="contact-form" autocomplete="off">
-        <input type="text" name="name" placeholder="Full Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="text" name="phone" placeholder="Phone" required>
-        <textarea name="message" rows="5" placeholder="Describe your project" required></textarea>
-        <button type="submit" class="btn-primary">Send Request</button>
-      </form>
-    </section>
-  </main>
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form action="/send_email" method="POST" autocomplete="off">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="How can we help you?" required></textarea>
+      <button type="submit" class="btn-primary">Send Message</button>
+    </form>
+  </section>
 
   <footer>
-    <p>© 2025 Spero Restoration Corp. All rights reserved.</p>
+    <p>&copy; 2025 Spero Restoration Corp | <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Use</a></p>
+    <p>Serving Orlando • Clermont • Windermere • Lake Nona • Winter Garden • Lake County</p>
   </footer>
 
   <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/14077246310?text=Hello,%20I'd%20like%20a%20free%20estimate%20with%20Spero%20Restoration." class="whatsapp-float" target="_blank">
-    💬
+  <a href="https://wa.me/14077246310" class="whatsapp-float" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
   </a>
-
 </body>
 </html>
