@@ -1,84 +1,186 @@
+/* ============================= */
+/* GENERAL STYLES */
+/* ============================= */
+
 body {
   margin: 0;
-  font-family: "Arial", sans-serif;
-  color: #1a1a1a;
-  background-color: #f9fafc;
+  font-family: 'Arial', sans-serif;
+  color: #141414;
+  background-color: #f9f9fc;
   line-height: 1.6;
 }
 
-.hero {
-  background: linear-gradient(to right, #0a2540, #0e4a80);
+/* ============================= */
+/* HEADER / HERO */
+/* ============================= */
+
+header.hero {
+  background-color: #004aad;
   color: white;
   text-align: center;
-  padding: 100px 20px;
+  padding: 60px 20px;
 }
 
-.hero .logo {
-  width: 180px;
-  margin-bottom: 10px;
+header.hero .logo {
+  width: 120px;
+  margin-bottom: 15px;
 }
 
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
+header.hero h1 {
+  font-size: 36px;
+  margin: 10px 0;
 }
 
-.hero .tagline {
-  font-size: 1.3rem;
-  margin-bottom: 20px;
+header.hero .tagline {
+  font-size: 18px;
+  margin-bottom: 25px;
 }
 
 .btn-primary {
-  background-color: #ffb400;
-  color: #000;
-  padding: 14px 30px;
-  border-radius: 6px;
+  background-color: #ffcc00;
+  color: #002f6c;
+  padding: 14px 28px;
   text-decoration: none;
+  border-radius: 6px;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
+.btn-primary:hover {
+  background-color: #ffd633;
+}
+
+/* ============================= */
+/* SERVICES SECTION */
+/* ============================= */
+
 .services {
-  padding: 50px 20px;
+  background-color: #ffffff;
   text-align: center;
+  padding: 60px 20px;
 }
 
 .services h2 {
-  color: #0e4a80;
+  color: #002f6c;
+  margin-bottom: 20px;
 }
 
 .services ul {
   list-style: none;
   padding: 0;
+  margin: 0 auto;
+  max-width: 400px;
 }
 
 .services li {
-  margin: 10px 0;
-  font-weight: bold;
+  background-color: #f2f4f8;
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 6px;
 }
 
+/* ============================= */
+/* CONTACT SECTION */
+/* ============================= */
+
 .contact {
-  background-color: #eef2f6;
-  padding: 60px 20px;
+  background-color: #f8f9fa;
+  padding: 80px 0;
   text-align: center;
+}
+
+.contact .container {
+  max-width: 650px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.contact h2 {
+  color: #002f6c;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.contact p {
+  color: #555;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
 .contact input,
 .contact textarea {
-  width: 90%;
-  max-width: 500px;
-  margin: 10px 0;
-  padding: 12px;
+  width: 100%;
+  padding: 14px 16px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
 }
 
+.contact input:focus,
+.contact textarea:focus {
+  border-color: #004aad;
+  box-shadow: 0 0 6px rgba(0, 74, 173, 0.25);
+  outline: none;
+}
+
+.contact button {
+  background-color: #004aad;
+  color: #fff;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact button:hover {
+  background-color: #002f6c;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .contact .container {
+    padding: 25px;
+  }
+}
+
+/* ============================= */
+/* FOOTER */
+/* ============================= */
+
 footer {
-  background-color: #0a2540;
+  background-color: #002f6c;
   color: white;
   text-align: center;
-  padding: 20px;
-  font-size: 0.9rem;
+  padding: 25px 10px;
+  font-size: 14px;
 }
+
+footer a {
+  color: #ffcc00;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ============================= */
+/* WHATSAPP FLOATING BUTTON */
+/* ============================= */
 
 .whatsapp-float {
   position: fixed;
@@ -86,9 +188,21 @@ footer {
   right: 25px;
   width: 55px;
   height: 55px;
+  background-color: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: transform 0.3s ease;
 }
 
 .whatsapp-float img {
-  width: 100%;
-  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
 }
