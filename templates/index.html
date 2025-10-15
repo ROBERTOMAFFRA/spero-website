@@ -3,18 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Spero Restoration Corp — Experts in Water, Fire, and Mold Damage Restoration serving Orlando, Clermont, Windermere, and Central Florida.">
-  <meta name="keywords" content="Restoration, Water Damage, Fire Damage, Mold Remediation, Remodeling, Orlando, Clermont, Windermere, Lake Nona, Winter Garden, Lake County, Florida">
-  <title>Spero Restoration Corp | Expert Restoration in Central Florida</title>
+  <title>Spero Restoration Corp | Restoration, Remodeling, Painting & Flooring Experts in Central Florida</title>
+
+  <meta name="description" content="Spero Restoration Corp provides expert water, fire, and mold damage restoration, remodeling, flooring, and painting services across Orlando, Clermont, Windermere, Lake Nona, and Central Florida. Get your free estimate today!">
+
+  <meta name="keywords" content="Spero Restoration, restoration, water damage, fire damage, mold remediation, remodeling, flooring, painting, storm damage, flood restoration, Orlando, Clermont, Windermere, Lake Nona, Winter Garden, Lake County, Florida, home restoration, drywall repair, construction">
+
+  <meta name="author" content="Spero Restoration Corp">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.spero-restoration.com/">
+  <meta property="og:title" content="Spero Restoration Corp | Experts in Restoration, Flooring, and Painting">
+  <meta property="og:description" content="Professional restoration, remodeling, flooring, and painting services in Orlando, Clermont, and Central Florida. Contact us for a free estimate.">
+  <meta property="og:image" content="https://www.spero-restoration.com/static/hero.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Spero Restoration Corp | Expert Restoration in Central Florida">
+  <meta property="twitter:description" content="Restoration • Flooring • Painting • Remodeling — Get a Free Estimate Today!">
+  <meta property="twitter:image" content="https://www.spero-restoration.com/static/hero.jpg">
+
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- JSON-LD Structured Data (LocalBusiness Schema) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Spero Restoration Corp",
+    "image": "https://www.spero-restoration.com/static/logo.png",
+    "@id": "https://www.spero-restoration.com",
+    "url": "https://www.spero-restoration.com",
+    "telephone": "+1-407-724-6310",
+    "email": "contact@spero-restoration.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Orlando, FL",
+      "addressLocality": "Orlando",
+      "addressRegion": "FL",
+      "postalCode": "32801",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "28.5383",
+      "longitude": "-81.3792"
+    },
+    "openingHours": "Mo-Fr 08:00-18:00",
+    "priceRange": "$$",
+    "servesCuisine": "Restoration Services",
+    "sameAs": [
+      "https://www.facebook.com/sperorestoration",
+      "https://www.instagram.com/sperorestoration",
+      "https://www.google.com/maps/place/Spero+Restoration+Corp"
+    ]
+  }
+  </script>
 </head>
 
 <body>
   <header class="hero">
     <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo" class="logo">
     <h1>Spero Restoration Corp</h1>
-    <p class="tagline">Restoration • Water Damage • Fire • Mold • Remodeling</p>
+    <p class="tagline">Restoration • Remodeling • Flooring • Painting • Water & Fire Damage</p>
     <a href="#contact" class="btn-primary">Get a Free Estimate</a>
   </header>
 
@@ -22,11 +75,12 @@
     <h2>Our Services</h2>
     <ul>
       <li>Home Remodeling</li>
-      <li>Water Damage</li>
-      <li>Fire Damage</li>
+      <li>Water Damage Restoration</li>
+      <li>Fire Damage Restoration</li>
       <li>Mold Remediation</li>
-      <li>Storm Damage</li>
-      <li>Flood Damage</li>
+      <li>Flooring Installation</li>
+      <li>Interior & Exterior Painting</li>
+      <li>Storm & Flood Damage</li>
     </ul>
   </section>
 
