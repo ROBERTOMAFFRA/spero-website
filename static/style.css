@@ -1,116 +1,94 @@
 body {
-  font-family: 'Arial', sans-serif;
   margin: 0;
-  background: #f7f8fa;
-  color: #1d1d1f;
+  font-family: "Arial", sans-serif;
+  color: #1a1a1a;
+  background-color: #f9fafc;
+  line-height: 1.6;
 }
 
-header {
-  background: linear-gradient(135deg, #002e5d, #0077b6);
+.hero {
+  background: linear-gradient(to right, #0a2540, #0e4a80);
   color: white;
   text-align: center;
-  padding: 60px 20px;
+  padding: 100px 20px;
 }
 
-.logo {
+.hero .logo {
   width: 180px;
-  height: auto;
-  margin-bottom: 20px;
-}
-
-h1 {
-  font-size: 2.8em;
   margin-bottom: 10px;
 }
 
-.tagline {
-  font-size: 1.2em;
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero .tagline {
+  font-size: 1.3rem;
   margin-bottom: 20px;
 }
 
 .btn-primary {
-  background: #00aaff;
-  color: white;
-  padding: 12px 25px;
-  border: none;
+  background-color: #ffb400;
+  color: #000;
+  padding: 14px 30px;
   border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
-  transition: 0.3s;
 }
 
-.btn-primary:hover {
-  background: #0088cc;
-}
-
-section {
+.services {
   padding: 50px 20px;
   text-align: center;
-  max-width: 900px;
-  margin: auto;
 }
 
-.services-list {
+.services h2 {
+  color: #0e4a80;
+}
+
+.services ul {
   list-style: none;
   padding: 0;
 }
 
-.services-list li {
-  font-size: 1.2em;
+.services li {
   margin: 10px 0;
+  font-weight: bold;
 }
 
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.contact {
+  background-color: #eef2f6;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.contact input,
+.contact textarea {
+  width: 90%;
   max-width: 500px;
-  margin: 0 auto;
-}
-
-.contact-form input, .contact-form textarea {
+  margin: 10px 0;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 1em;
-}
-
-.contact-form button {
-  background-color: #0077b6;
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.contact-form button:hover {
-  background-color: #005f8c;
 }
 
 footer {
-  background-color: #002e5d;
+  background-color: #0a2540;
   color: white;
   text-align: center;
-  padding: 20px 0;
-  font-size: 0.9em;
+  padding: 20px;
+  font-size: 0.9rem;
 }
 
-/* WhatsApp floating button */
 .whatsapp-float {
   position: fixed;
   bottom: 25px;
   right: 25px;
-  background-color: #25d366;
-  color: white;
-  font-size: 28px;
-  padding: 10px 15px;
-  border-radius: 50%;
-  text-decoration: none;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-  transition: background 0.3s;
+  width: 55px;
+  height: 55px;
 }
 
-.whatsapp-float:hover {
-  background-color: #1ebc59;
+.whatsapp-float img {
+  width: 100%;
+  border-radius: 50%;
 }
