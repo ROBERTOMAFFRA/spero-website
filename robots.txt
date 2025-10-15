@@ -1,7 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://spero-restoration.com/sitemap.xml
-
-# Bloquear páginas sensíveis
-Disallow: /admin
-Disallow: /config
+Sitemap: https://www.spero-restoration.com/sitemap.xml
