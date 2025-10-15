@@ -172,4 +172,92 @@ header.hero .tagline {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(0,
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.contact button:hover {
+  background-color: #002f6c;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================= */
+/* FOOTER */
+/* ============================= */
+
+footer {
+  background-color: #002f6c;
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.1);
+}
+
+footer a {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ============================= */
+/* WHATSAPP FLOATING BUTTON - FIXED POSITION */
+/* ============================= */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.whatsapp-float img {
+  width: 34px;
+  height: 34px;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* ============================= */
+/* RESPONSIVE DESIGN */
+/* ============================= */
+
+@media (max-width: 600px) {
+  header.hero {
+    padding: 50px 15px;
+  }
+
+  .contact .container {
+    padding: 30px 25px;
+  }
+
+  .whatsapp-float {
+    width: 55px;
+    height: 55px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .whatsapp-float img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
