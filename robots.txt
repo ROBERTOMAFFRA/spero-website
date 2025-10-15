@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
-Sitemap: https://spero-website.onrender.com/sitemap.xml
+Sitemap: https://spero-restoration.com/sitemap.xml
 
-# Disallow admin or config paths (nenhum aqui, mas mantemos a estrutura)
-Disallow: /admin/
-Disallow: /config/
+# Bloquear páginas sensíveis
+Disallow: /admin
+Disallow: /config
