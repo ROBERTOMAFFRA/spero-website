@@ -20,7 +20,7 @@
     <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo" class="logo">
     <h1>Spero Restoration Corp</h1>
     <p class="tagline">Restoration • Remodeling • Flooring • Painting • Water & Fire Damage</p>
-    <!-- ✅ Corrigido: agora leva ao formulário de contato interno -->
+    <!-- ✅ Corrigido: leva ao formulário interno -->
     <a href="#contact" class="btn-primary">Get a Free Estimate</a>
   </header>
 
@@ -38,13 +38,16 @@
   </section>
 
   <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <form action="/send_email" method="POST" autocomplete="off">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="How can we help you?" required></textarea>
-      <button type="submit" class="btn-primary">Send Message</button>
-    </form>
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Get in touch for a free estimate. We’re here to help restore your home or business.</p>
+      <form action="/send_email" method="POST" autocomplete="off">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="How can we help you?" required></textarea>
+        <button type="submit" class="btn-primary">Send Message</button>
+      </form>
+    </div>
   </section>
 
   <footer>
@@ -58,3 +61,4 @@
   </a>
 </body>
 </html>
+
