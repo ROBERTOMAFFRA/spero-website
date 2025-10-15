@@ -1,66 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spero Restoration Corp | Restoration, Remodeling, Painting & Flooring Experts in Central Florida</title>
-
-  <meta name="description" content="Spero Restoration Corp provides expert water, fire, and mold damage restoration, remodeling, flooring, and painting services across Orlando, Clermont, Windermere, Lake Nona, and Central Florida. Get your free estimate today!">
-
-  <meta name="keywords" content="Spero Restoration, restoration, water damage, fire damage, mold remediation, remodeling, flooring, painting, storm damage, flood restoration, Orlando, Clermont, Windermere, Lake Nona, Winter Garden, Lake County, Florida, home restoration, drywall repair, construction">
-
-  <meta name="author" content="Spero Restoration Corp">
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.spero-restoration.com/">
-  <meta property="og:title" content="Spero Restoration Corp | Experts in Restoration, Flooring, and Painting">
-  <meta property="og:description" content="Professional restoration, remodeling, flooring, and painting services in Orlando, Clermont, and Central Florida. Contact us for a free estimate.">
-  <meta property="og:image" content="https://www.spero-restoration.com/static/hero.jpg">
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:title" content="Spero Restoration Corp | Expert Restoration in Central Florida">
-  <meta property="twitter:description" content="Restoration • Flooring • Painting • Remodeling — Get a Free Estimate Today!">
-  <meta property="twitter:image" content="https://www.spero-restoration.com/static/hero.jpg">
-
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spero Restoration Corp | Water, Fire, Mold & Remodeling Experts</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
-  <!-- JSON-LD Structured Data (LocalBusiness Schema) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Spero Restoration Corp",
-    "image": "https://www.spero-restoration.com/static/logo.png",
-    "@id": "https://www.spero-restoration.com",
-    "url": "https://www.spero-restoration.com",
-    "telephone": "+1-407-724-6310",
-    "email": "contact@spero-restoration.com",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Orlando, FL",
-      "addressLocality": "Orlando",
-      "addressRegion": "FL",
-      "postalCode": "32801",
-      "addressCountry": "US"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "28.5383",
-      "longitude": "-81.3792"
-    },
-    "openingHours": "Mo-Fr 08:00-18:00",
-    "priceRange": "$$",
-    "servesCuisine": "Restoration Services",
-    "sameAs": [
-      "https://www.facebook.com/sperorestoration",
-      "https://www.instagram.com/sperorestoration",
-      "https://www.google.com/maps/place/Spero+Restoration+Corp"
-    ]
-  }
-  </script>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 
 <body>
@@ -84,24 +29,36 @@
     </ul>
   </section>
 
+  <!-- CONTACT SECTION -->
   <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <form action="/send_email" method="POST" autocomplete="off">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" placeholder="How can we help you?" required></textarea>
-      <button type="submit" class="btn-primary">Send Message</button>
-    </form>
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>We’re here to help! Fill out the form below and our team will get back to you shortly.</p>
+
+      <form id="contact-form" action="/send_email" method="POST" autocomplete="off">
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+          <textarea name="message" rows="5" placeholder="How can we help you?" required></textarea>
+        </div>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 Spero Restoration Corp | <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Use</a></p>
-    <p>Serving Orlando • Clermont • Windermere • Lake Nona • Winter Garden • Lake County</p>
+    <p>© 2025 Spero Restoration Corp | Serving Orlando, Clermont, Windermere & Lake Nona | 
+      <a href="/terms">Terms of Use</a> | <a href="/privacy">Privacy Policy</a>
+    </p>
   </footer>
 
   <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/14077246310" class="whatsapp-float" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+  <a href="https://wa.me/14077264310" class="whatsapp-float" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
   </a>
 </body>
 </html>
