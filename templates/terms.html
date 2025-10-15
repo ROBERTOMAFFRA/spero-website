@@ -4,36 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Terms of Use | Spero Restoration Corp</title>
-  <meta name="description" content="Terms and Conditions for using Spero Restoration Corp website and services.">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-<nav>
-  <a href="{{ url_for('home') }}">Home</a>
-  <a href="{{ url_for('about') }}">About</a>
-  <a href="{{ url_for('privacy') }}">Privacy Policy</a>
-  <a href="{{ url_for('terms') }}">Terms</a>
-  <a href="{{ url_for('home') }}#contact">Contact</a>
-</nav>
+  <header>
+    <h1>Terms of Use</h1>
+  </header>
 
-<header class="hero">
-  <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo">
-  <h1>Terms of Use</h1>
-</header>
+  <section>
+    <p>
+      By accessing and using our website, you agree to comply with and be bound by the following terms and conditions.
+      These terms govern your use of our online materials, forms, and communications.
+    </p>
+    <p>
+      Spero Restoration Corp reserves the right to update or modify these terms at any time without prior notice.
+      Continued use of this website constitutes acceptance of the updated terms.
+    </p>
+    <p>
+      All content, including images, text, and design elements, are property of Spero Restoration Corp and may not be copied or distributed without permission.
+    </p>
+  </section>
 
-<section>
-  <p>By accessing and using this website, you agree to the terms and conditions stated below. These terms apply to all users and visitors of Spero Restoration Corp's website.</p>
-
-  <p>All content, including text, images, and design, is property of Spero Restoration Corp. Unauthorized use or reproduction is prohibited.</p>
-
-  <p>We reserve the right to update these terms without prior notice. Continued use of our site indicates acceptance of any modifications.</p>
-</section>
-
-<footer>
-  <p>© 2025 Spero Restoration Corp | (407) 724-6310 | contact@spero-restoration.com</p>
-</footer>
-
+  <footer>
+    © 2025 Spero Restoration Corp | All Rights Reserved
+  </footer>
 </body>
 </html>
-
