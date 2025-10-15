@@ -1,81 +1,58 @@
-from flask import Flask, render_template, request, jsonify
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+from flask import Flask, render_template, request, redirect, url_for
 import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 app = Flask(__name__)
 
-# 🔧 Configuração básica de envio de email (usando SMTP)
-EMAIL_USER = os.getenv("EMAIL_USER", "contact@spero-restoration.com")
-EMAIL_PASS = os.getenv("EMAIL_PASS", "your-email-password")
-EMAIL_TO = os.getenv("EMAIL_TO", "contact@spero-restoration.com")
-
+# Rota principal
 @app.route('/')
-def index():
+def home():
     return render_template('index.html')
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
+# Rota de envio do formulário
+@app.route('/send', methods=['POST'])
+def send_email():
+    name = request.form.get('name')
+    email = request.form.get('email')
+    phone = request.form.get('phone')
+    message = request.form.get('message')
 
-@app.route('/privacy')
-def privacy():
-    return render_template('privacy.html')
+    sendgrid_api_key = os.getenv('SENDGRID_API_KEY')
+    to_email_1 = os.getenv('TO_EMAIL_1', 'contact@spero-restoration.com')
+    to_email_2 = os.getenv('TO_EMAIL_2', 'roberto.maffra@gmail.com')
 
-@app.route('/terms')
-def terms():
-    return render_template('terms.html')
+    if not sendgrid_api_key:
+        return "Error: SendGrid API Key not found."
 
-@app.route('/thankyou')
-def thankyou():
+    # Monta o conteúdo do e-mail
+    email_content = f"""
+    New message from Spero Restoration website:
+    
+    Name: {name}
+    Email: {email}
+    Phone: {phone}
+    Message: {message}
+    """
+
+    message_obj = Mail(
+        from_email='contact@spero-restoration.com',
+        to_emails=[to_email_1, to_email_2],
+        subject='New Contact Form Submission - Spero Restoration',
+        plain_text_content=email_content
+    )
+
+    try:
+        sg = SendGridAPIClient(sendgrid_api_key)
+        sg.send(message_obj)
+        return redirect(url_for('thank_you'))
+    except Exception as e:
+        print(f"Error sending email: {e}")
+        return "There was an issue sending your message."
+
+@app.route('/thank-you')
+def thank_you():
     return render_template('thankyou.html')
 
-# 📬 Endpoint para captura de leads
-@app.route('/send', methods=['POST'])
-def send_message():
-    try:
-        data = request.get_json()
-        name = data.get('name')
-        email = data.get('email')
-        message = data.get('message')
-
-        msg = MIMEMultipart()
-        msg['From'] = EMAIL_USER
-        msg['To'] = EMAIL_TO
-        msg['Subject'] = f"New Lead from Spero Website: {name}"
-
-        body = f"""
-        Name: {name}
-        Email: {email}
-        Message:
-        {message}
-        """
-        msg.attach(MIMEText(body, 'plain'))
-
-        # Envio via servidor SMTP (Zoho / Outlook)
-        with smtplib.SMTP('smtp.zoho.com', 587) as server:
-            server.starttls()
-            server.login(EMAIL_USER, EMAIL_PASS)
-            server.send_message(msg)
-
-        return jsonify({"success": True}), 200
-    except Exception as e:
-        print("❌ Error sending email:", e)
-        return jsonify({"success": False, "error": str(e)}), 500
-
-
-# 🔍 SEO + Sitemap + Robots
-@app.route('/robots.txt')
-def robots():
-    return app.send_static_file('robots.txt')
-
-@app.route('/sitemap.xml')
-def sitemap():
-    return app.send_static_file('sitemap.xml')
-
-
-# 🔥 Render Ready
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=False)
+    app.run(debug=True)
