@@ -1,13 +1,15 @@
-# robots.txt for Spero Restoration Corp
-# Allow all search engines to crawl and index the site
+# =======================================
+# robots.txt — Spero Restoration Corp
+# =======================================
 
+# Permite que todos os mecanismos de busca rastreiem e indexem o site
 User-agent: *
 Allow: /
 
-# Optional: block access to internal or irrelevant folders
+# Bloqueia acesso a pastas internas ou irrelevantes
 Disallow: /admin
 Disallow: /__pycache__/
 Disallow: /static/__pycache__/
 
-# Point to the sitemap location
+# Localização do sitemap XML
 Sitemap: https://spero-restoration.com/sitemap.xml
