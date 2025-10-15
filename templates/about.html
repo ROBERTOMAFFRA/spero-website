@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Spero Restoration Corp</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Spero Restoration Corp</title>
+  <meta name="description" content="Learn about Spero Restoration Corp — Central Florida's trusted experts in water, fire, and mold restoration.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-<header>
-    <div class="logo">
-        <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo">
-        <h1>Spero Restoration Corp</h1>
-    </div>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/privacy">Privacy</a>
-        <a href="/terms">Terms</a>
-    </nav>
+
+<nav>
+  <a href="{{ url_for('home') }}">Home</a>
+  <a href="{{ url_for('about') }}">About</a>
+  <a href="{{ url_for('privacy') }}">Privacy Policy</a>
+  <a href="{{ url_for('terms') }}">Terms</a>
+  <a href="{{ url_for('home') }}#contact">Contact</a>
+</nav>
+
+<header class="hero">
+  <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo">
+  <h1>About Spero Restoration Corp</h1>
+  <h2>Your Local Restoration Experts</h2>
 </header>
 
-<section class="content">
-    <h2>Who We Are</h2>
-    <p>Spero Restoration Corp is a locally trusted company based in the Orlando and Clermont area. 
-       We specialize in water, fire, and mold damage restoration, as well as home remodeling projects. 
-       Our mission is to restore not just your property, but your peace of mind — with quality, 
-       reliability, and care in every project.</p>
+<section>
+  <p>Spero Restoration Corp is a Central Florida-based company specializing in professional <strong>water damage repair</strong>, <strong>fire restoration</strong>, <strong>mold remediation</strong>, and <strong>home remodeling</strong>. Our goal is to help families and businesses recover quickly and safely after property damage.</p>
 
-    <p>We proudly serve residential and commercial clients in Orlando, Clermont, Windermere, Lake Nona, 
-       and nearby communities. Our experienced team is ready 24/7 to respond to your emergencies.</p>
+  <p>We proudly serve <strong>Orlando, Clermont, Windermere, Winter Garden, Lake Nona, Davenport</strong> and nearby areas. Our experienced team provides 24/7 emergency service, using the latest technology for fast, reliable results.</p>
 
-    <a href="/" class="btn-primary">Back to Home</a>
+  <p>We believe in integrity, professionalism, and putting our customers first — every time.</p>
 </section>
 
 <footer>
-    <p>&copy; 2025 Spero Restoration Corp</p>
+  <p>© 2025 Spero Restoration Corp | contact@spero-restoration.com | (407) 724-6310</p>
 </footer>
+
 </body>
 </html>
