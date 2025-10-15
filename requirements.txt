@@ -3,6 +3,7 @@ Flask==3.0.3
 
 # Email support
 Flask-Mail==0.9.1
+sendgrid==6.11.0
 
 # Web server for production
 gunicorn==22.0.0
