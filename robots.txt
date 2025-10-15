@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
-Disallow: /static/
-Disallow: /templates/
-Disallow: /__pycache__/
-
 Sitemap: https://spero-website.onrender.com/sitemap.xml
+
+# Disallow admin or config paths (nenhum aqui, mas mantemos a estrutura)
+Disallow: /admin/
+Disallow: /config/
