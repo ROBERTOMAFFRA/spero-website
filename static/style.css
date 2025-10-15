@@ -1,5 +1,5 @@
 /* ============================= */
-/* GENERAL STYLES */
+/* GENERAL STYLES - SPERO RESTORATION 2025 */
 /* ============================= */
 
 body {
@@ -43,11 +43,12 @@ header.hero .tagline {
   text-decoration: none;
   border-radius: 6px;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-primary:hover {
   background-color: #ffd633;
+  transform: translateY(-2px);
 }
 
 /* ============================= */
@@ -77,26 +78,34 @@ header.hero .tagline {
   margin: 8px 0;
   padding: 12px;
   border-radius: 6px;
+  border: 1px solid #e5e9f0;
+  transition: all 0.3s ease;
+}
+
+.services li:hover {
+  background-color: #eaf1ff;
+  transform: translateY(-2px);
 }
 
 /* ============================= */
-/* CONTACT SECTION */
+/* CONTACT SECTION - REFINED 2025 */
 /* ============================= */
 
 .contact {
-  background-color: #f8f9fa;
-  padding: 80px 0;
+  background-color: #eef2f6;
+  padding: 80px 20px;
   text-align: center;
+  border-top: 2px solid #dde3ea;
 }
 
 .contact .container {
   max-width: 650px;
   margin: 0 auto;
   background: #ffffff;
-  padding: 40px;
+  padding: 45px 40px;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .contact h2 {
@@ -107,7 +116,7 @@ header.hero .tagline {
 
 .contact p {
   color: #555;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   font-size: 16px;
 }
 
@@ -195,7 +204,7 @@ footer a:hover {
   justify-content: center;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .whatsapp-float img {
@@ -205,4 +214,11 @@ footer a:hover {
 
 .whatsapp-float:hover {
   transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
+
+/* ============================= */
+/* SPERO BRAND HIGHLIGHT */
+/* ============================= */
+
+h2, h1
