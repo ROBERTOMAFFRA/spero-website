@@ -1,17 +1,26 @@
+# =============================
 # Core Flask framework
+# =============================
 Flask==3.0.3
 
-# Email support
+# =============================
+# Email support (SendGrid + compatibilidade Flask-Mail)
+# =============================
 Flask-Mail==0.9.1
 sendgrid==6.11.0
 
+# =============================
 # Web server for production
+# =============================
 gunicorn==22.0.0
 
+# =============================
 # Optional packages (compatibility & stability)
+# =============================
 itsdangerous==2.2.0
 Jinja2==3.1.4
 MarkupSafe==2.1.5
 Werkzeug==3.0.3
 blinker==1.8.2
 click==8.1.7
+python-dotenv==1.0.1   # ✅ Recomendado: garante leitura de variáveis de ambiente locais
