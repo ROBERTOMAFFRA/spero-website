@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for, send_from_
 import os
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
+import time   # ✅ Adicionado
+import pytz   # ✅ Adicionado (biblioteca de timezone)
 
 app = Flask(__name__)
 
@@ -33,6 +35,8 @@ Email: {email}
 
 Message:
 {message}
+
+Time received (Eastern Time): {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())}
 """
 
     recipients = [
@@ -63,4 +67,19 @@ Message:
 def thank_you():
     return render_template('thank-you.html')
 
-# =================
+# =============================
+# SEO FILES
+# =============================
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory('.', 'robots.txt')
+
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('.', 'sitemap.xml')
+
+# =============================
+# RUN LOCAL
+# =============================
+if __name__ == '__main__':
+    app.run(debug=True)
