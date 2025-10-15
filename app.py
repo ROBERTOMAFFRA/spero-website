@@ -1,84 +1,81 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, jsonify
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 import os
-import requests
 
 app = Flask(__name__)
-app.secret_key = os.getenv("SECRET_KEY", "spero_secret")
 
-# ========= HOME PAGE =========
-@app.route("/")
-def home():
-    return render_template("index.html")
+# 🔧 Configuração básica de envio de email (usando SMTP)
+EMAIL_USER = os.getenv("EMAIL_USER", "contact@spero-restoration.com")
+EMAIL_PASS = os.getenv("EMAIL_PASS", "your-email-password")
+EMAIL_TO = os.getenv("EMAIL_TO", "contact@spero-restoration.com")
 
-# ========= ABOUT =========
-@app.route("/about")
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/about')
 def about():
-    return render_template("about.html")
+    return render_template('about.html')
 
-# ========= PRIVACY =========
-@app.route("/privacy")
+@app.route('/privacy')
 def privacy():
-    return render_template("privacy.html")
+    return render_template('privacy.html')
 
-# ========= TERMS =========
-@app.route("/terms")
+@app.route('/terms')
 def terms():
-    return render_template("terms.html")
+    return render_template('terms.html')
 
-# ========= CONTACT / LEADS =========
-@app.route("/send_email", methods=["POST"])
-def send_email():
-    name = request.form.get("name")
-    email = request.form.get("email")
-    message = request.form.get("message")
-
-    if not name or not email or not message:
-        flash("All fields are required.", "error")
-        return redirect(url_for("home"))
-
-    subject = f"New Lead from {name}"
-    content = f"""
-    Name: {name}
-    Email: {email}
-    Message: {message}
-    """
-
-    sendgrid_api_key = os.getenv("SENDGRID_API_KEY")
-    sender_email = os.getenv("SENDER_EMAIL", "contact@spero-restoration.com")
-    recipient_email = os.getenv("RECIPIENT_EMAIL", "contact@spero-restoration.com")
-
-    if sendgrid_api_key:
-        try:
-            response = requests.post(
-                "https://api.sendgrid.com/v3/mail/send",
-                headers={
-                    "Authorization": f"Bearer {sendgrid_api_key}",
-                    "Content-Type": "application/json"
-                },
-                json={
-                    "personalizations": [{"to": [{"email": recipient_email}]}],
-                    "from": {"email": sender_email},
-                    "subject": subject,
-                    "content": [{"type": "text/plain", "value": content}]
-                }
-            )
-
-            if response.status_code == 202:
-                flash("Message sent successfully!", "success")
-            else:
-                flash(f"Error sending email: {response.text}", "error")
-
-        except Exception as e:
-            flash(f"Exception: {e}", "error")
-    else:
-        flash("Email service not configured. Please set SENDGRID_API_KEY.", "error")
-
-    return redirect(url_for("thankyou"))
-
-# ========= THANK YOU PAGE =========
-@app.route("/thankyou")
+@app.route('/thankyou')
 def thankyou():
-    return render_template("thankyou.html")
+    return render_template('thankyou.html')
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# 📬 Endpoint para captura de leads
+@app.route('/send', methods=['POST'])
+def send_message():
+    try:
+        data = request.get_json()
+        name = data.get('name')
+        email = data.get('email')
+        message = data.get('message')
+
+        msg = MIMEMultipart()
+        msg['From'] = EMAIL_USER
+        msg['To'] = EMAIL_TO
+        msg['Subject'] = f"New Lead from Spero Website: {name}"
+
+        body = f"""
+        Name: {name}
+        Email: {email}
+        Message:
+        {message}
+        """
+        msg.attach(MIMEText(body, 'plain'))
+
+        # Envio via servidor SMTP (Zoho / Outlook)
+        with smtplib.SMTP('smtp.zoho.com', 587) as server:
+            server.starttls()
+            server.login(EMAIL_USER, EMAIL_PASS)
+            server.send_message(msg)
+
+        return jsonify({"success": True}), 200
+    except Exception as e:
+        print("❌ Error sending email:", e)
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+# 🔍 SEO + Sitemap + Robots
+@app.route('/robots.txt')
+def robots():
+    return app.send_static_file('robots.txt')
+
+@app.route('/sitemap.xml')
+def sitemap():
+    return app.send_static_file('sitemap.xml')
+
+
+# 🔥 Render Ready
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
