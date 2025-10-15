@@ -1,9 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 import os
+import time   # ✅ Adicionado
+import pytz   # ✅ Adicionado
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
-import time   # ✅ Adicionado
-import pytz   # ✅ Adicionado (biblioteca de timezone)
+
+# =============================
+# TIMEZONE CONFIG (Orlando / Eastern Time)
+# =============================
+os.environ['TZ'] = 'America/New_York'  # ✅ Fixa o fuso horário no servidor
+time.tzset()  # ✅ Aplica o fuso no ambiente
 
 app = Flask(__name__)
 
@@ -26,6 +32,10 @@ def send_email():
     if not all([name, email, message]):
         return "All fields are required.", 400
 
+    # Captura o horário atual no fuso de Orlando
+    tz = pytz.timezone("America/New_York")
+    local_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+
     subject = f"New Lead from {name}"
     body = f"""
 You received a new message from the Spero Restoration website:
@@ -36,7 +46,7 @@ Email: {email}
 Message:
 {message}
 
-Time received (Eastern Time): {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())}
+Time received (Eastern Time): {local_time}
 """
 
     recipients = [
