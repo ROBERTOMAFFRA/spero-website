@@ -4,20 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thank You | Spero Restoration Corp</title>
+  <meta name="description" content="Thank you for contacting Spero Restoration Corp. Our team will get back to you shortly with your free estimate.">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
   <header>
-    <h1>Thank You!</h1>
+    <div class="header-container">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo" class="logo">
+      <h1>Thank You!</h1>
+      <p>Your message has been successfully sent. Our team will contact you soon.</p>
+      <a href="/" class="btn-primary">Back to Home</a>
+    </div>
   </header>
 
-  <section>
-    <p>✅ Your message has been received. Our restoration specialists will contact you shortly.</p>
-    <a href="/" class="cta-button">Back to Home</a>
-  </section>
-
   <footer>
-    © 2025 Spero Restoration Corp | contact@spero-restoration.com
+    <p>© 2025 Spero Restoration Corp. All rights reserved.</p>
   </footer>
 </body>
 </html>
