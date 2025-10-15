@@ -12,6 +12,7 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+
 # =============================
 # EMAIL ROUTE (SendGrid)
 # =============================
@@ -26,13 +27,14 @@ def send_email():
 
     subject = f"New Lead from {name}"
     body = f"""
-    You received a new message from the Spero Restoration website:
+You received a new message from the Spero Restoration website:
 
-    Name: {name}
-    Email: {email}
-    Message:
-    {message}
-    """
+Name: {name}
+Email: {email}
+
+Message:
+{message}
+"""
 
     recipients = [
         "contact@spero-restoration.com",
@@ -53,28 +55,9 @@ def send_email():
         return redirect(url_for('thank_you'))
     except Exception as e:
         print(f"❌ Error sending email: {e}")
-        return f"Error sending email: {str(e)}", 500
+        # Render a simple error message if sending fails
+        return render_template('email_error.html', error=str(e)), 500
+
 
 # =============================
-# THANK YOU PAGE
-# =============================
-@app.route('/thank-you')
-def thank_you():
-    return render_template('thank-you.html')
-
-# =============================
-# SEO FILES
-# =============================
-@app.route('/robots.txt')
-def robots():
-    return send_from_directory('.', 'robots.txt')
-
-@app.route('/sitemap.xml')
-def sitemap():
-    return send_from_directory('.', 'sitemap.xml')
-
-# =============================
-# RUN LOCAL
-# =============================
-if __name__ == '__main__':
-    app.run(debug=True)
+#
