@@ -1,29 +1,34 @@
-// script.js — interações simples para o site Spero Restoration Corp
-
-// Rolagem suave para seções internas
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
     e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
   });
 });
 
-// Exibe confirmação ao enviar o formulário de contato
-const contactForm = document.querySelector('form');
-if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
-    const name = document.querySelector('input[name="name"]').value;
-    if (name.trim() !== "") {
-      alert(`Thank you, ${name}! Your message has been sent successfully.`);
-    }
-  });
-}
-
-// Botão “Back to top” dinâmico
+// Back to top button
 const backToTop = document.createElement('button');
 backToTop.textContent = "↑";
 backToTop.id = "backToTop";
+backToTop.style.cssText = `
+  position: fixed;
+  bottom: 30px;
+  left: 20px;
+  padding: 10px;
+  border: none;
+  background: #0056b3;
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  display: none;
+  cursor: pointer;
+`;
+document.body.appendChild(backToTop);
 
+window.addEventListener('scroll', () => {
+  backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+});
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
