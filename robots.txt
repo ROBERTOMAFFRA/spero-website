@@ -1,5 +1,25 @@
+# =====================================
+# Spero Restoration Corp - robots.txt
+# =====================================
+
 User-agent: *
-Disallow:
+Allow: /
 
-Sitemap: https://www.spero-restoration.com/sitemap.xml
+# Evitar indexação de diretórios internos sensíveis
+Disallow: /static/
+Disallow: /templates/
+Disallow: /__pycache__/
+Disallow: /send_email
 
+# Priorizar rastreamento de conteúdo principal
+Allow: /$
+Allow: /#services
+Allow: /#contact
+Allow: /privacy
+Allow: /terms
+
+# Sitemap principal para motores de busca
+Sitemap: https://spero-restoration.com/sitemap.xml
+
+# Tempo padrão entre requisições (evita sobrecarga)
+Crawl-delay: 5
