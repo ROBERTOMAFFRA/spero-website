@@ -4,35 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy | Spero Restoration Corp</title>
-  <meta name="description" content="Privacy Policy for Spero Restoration Corp — protecting your personal information and respecting your privacy.">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-<nav>
-  <a href="{{ url_for('home') }}">Home</a>
-  <a href="{{ url_for('about') }}">About</a>
-  <a href="{{ url_for('privacy') }}">Privacy Policy</a>
-  <a href="{{ url_for('terms') }}">Terms</a>
-  <a href="{{ url_for('home') }}#contact">Contact</a>
-</nav>
+  <header>
+    <h1>Privacy Policy</h1>
+  </header>
 
-<header class="hero">
-  <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo">
-  <h1>Privacy Policy</h1>
-</header>
+  <section>
+    <p>
+      At Spero Restoration Corp, your privacy is important to us. We only collect personal information necessary to provide our services,
+      such as your name, email, phone number, and project details.
+    </p>
+    <p>
+      We do not share, sell, or rent your personal information to third parties. Any information collected through our website
+      is used solely for communication and service purposes.
+    </p>
+    <p>
+      If you have any questions regarding your data or our privacy policy, please contact us at
+      <a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a>.
+    </p>
+  </section>
 
-<section>
-  <p>At Spero Restoration Corp, we take your privacy seriously. We collect only the necessary information to respond to inquiries, provide services, and improve your experience on our website.</p>
-
-  <p>We do not sell or share your information with third parties. All submitted data, including name, email, and message, is used solely for communication purposes and securely handled.</p>
-
-  <p>If you have questions about this policy, please contact us at <strong>contact@spero-restoration.com</strong>.</p>
-</section>
-
-<footer>
-  <p>© 2025 Spero Restoration Corp | Orlando · Clermont · Windermere · Lake Nona · Davenport</p>
-</footer>
-
+  <footer>
+    © 2025 Spero Restoration Corp | All Rights Reserved
+  </footer>
 </body>
 </html>
