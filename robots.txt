@@ -7,9 +7,14 @@ User-agent: *
 Allow: /
 
 # Bloqueia acesso a pastas internas ou irrelevantes
-Disallow: /admin
+Disallow: /admin/
 Disallow: /__pycache__/
 Disallow: /static/__pycache__/
+Disallow: /tmp/
+Disallow: /test/
 
-# Localização do sitemap XML
+# Localização do sitemap XML (ajuda os bots a rastrear mais rápido)
 Sitemap: https://spero-restoration.com/sitemap.xml
+
+# Extra: garante compatibilidade com render.com (força HTTPS)
+Host: https://spero-restoration.com
