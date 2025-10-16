@@ -1,15 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 import os
-import time   # ✅ Adicionado
-import pytz   # ✅ Adicionado
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
-
-# =============================
-# TIMEZONE CONFIG (Orlando / Eastern Time)
-# =============================
-os.environ['TZ'] = 'America/New_York'  # ✅ Fixa o fuso horário no servidor
-time.tzset()  # ✅ Aplica o fuso no ambiente
 
 app = Flask(__name__)
 
@@ -32,10 +24,6 @@ def send_email():
     if not all([name, email, message]):
         return "All fields are required.", 400
 
-    # Captura o horário atual no fuso de Orlando
-    tz = pytz.timezone("America/New_York")
-    local_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
-
     subject = f"New Lead from {name}"
     body = f"""
 You received a new message from the Spero Restoration website:
@@ -45,8 +33,6 @@ Email: {email}
 
 Message:
 {message}
-
-Time received (Eastern Time): {local_time}
 """
 
     recipients = [
@@ -78,7 +64,7 @@ def thank_you():
     return render_template('thank-you.html')
 
 # =============================
-# SEO FILES
+# SEO FILES (robots.txt & sitemap.xml)
 # =============================
 @app.route('/robots.txt')
 def robots():
@@ -87,6 +73,13 @@ def robots():
 @app.route('/sitemap.xml')
 def sitemap():
     return send_from_directory('.', 'sitemap.xml')
+
+# =============================
+# GOOGLE SEARCH CONSOLE VERIFICATION
+# =============================
+@app.route('/google4cf02f874eac24e0.html')
+def google_verification():
+    return send_from_directory('.', 'google4cf02f874eac24e0.html')
 
 # =============================
 # RUN LOCAL
