@@ -64,7 +64,14 @@ def thank_you():
     return render_template('thank-you.html')
 
 # =============================
-# SEO FILES (robots.txt & sitemap.xml)
+# GOOGLE SITE VERIFICATION
+# =============================
+@app.route('/google4cf02f874eac24e0.html')
+def google_verification():
+    return send_from_directory('.', 'google4cf02f874eac24e0.html')
+
+# =============================
+# SEO FILES
 # =============================
 @app.route('/robots.txt')
 def robots():
@@ -73,13 +80,6 @@ def robots():
 @app.route('/sitemap.xml')
 def sitemap():
     return send_from_directory('.', 'sitemap.xml')
-
-# =============================
-# GOOGLE SEARCH CONSOLE VERIFICATION
-# =============================
-@app.route('/google4cf02f874eac24e0.html')
-def google_verification():
-    return send_from_directory('.', 'google4cf02f874eac24e0.html')
 
 # =============================
 # RUN LOCAL
