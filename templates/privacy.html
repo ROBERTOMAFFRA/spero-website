@@ -4,21 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy | Spero Restoration Corp</title>
+  <meta name="description" content="Read the privacy policy of Spero Restoration Corp. Learn how we protect your personal information when using our restoration and remodeling services across Central Florida.">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="Privacy Policy | Spero Restoration Corp">
+  <meta property="og:description" content="Spero Restoration Corp protects your privacy. Read our policy about how we handle information and ensure secure communication.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spero-restoration.com/privacy">
+  <meta property="og:image" content="https://spero-restoration.com/static/logo.png">
+
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
-  <header class="hero small-hero">
+  <header class="hero">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo" class="logo">
     <h1>Privacy Policy</h1>
+    <p class="tagline">Your privacy matters to us at Spero Restoration Corp</p>
   </header>
-  <main>
-    <section>
-      <p>At <strong>Spero Restoration Corp</strong>, we respect your privacy and are committed to protecting your personal information.</p>
-      <p>We collect only data necessary to provide our restoration services and improve your experience. Your information will never be sold or shared with third parties.</p>
-      <p>If you have questions, contact us at <a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a>.</p>
-    </section>
-  </main>
+
+  <section class="services">
+    <div class="container" style="max-width: 800px; margin: 0 auto; text-align: left;">
+      <h2>1. Introduction</h2>
+      <p>Spero Restoration Corp (“we”, “our”, or “us”) respects your privacy and is committed to protecting the personal information you share with us when you visit our website or use our services.</p>
+
+      <h2>2. Information We Collect</h2>
+      <p>We may collect personal information such as your name, email address, and phone number when you submit a contact form or request an estimate.</p>
+
+      <h2>3. How We Use Your Information</h2>
+      <p>Your information is used solely to respond to inquiries, provide services, and improve user experience. We do not sell or share your data with third parties.</p>
+
+      <h2>4. Data Security</h2>
+      <p>We implement appropriate security measures to protect your personal data from unauthorized access, alteration, disclosure, or destruction.</p>
+
+      <h2>5. Your Rights</h2>
+      <p>You may contact us at <strong>contact@spero-restoration.com</strong> to request access, correction, or deletion of your personal data.</p>
+
+      <h2>6. Updates to This Policy</h2>
+      <p>This privacy policy may be updated periodically. The most recent version will always be available on this page.</p>
+
+      <h2>7. Contact Us</h2>
+      <p>If you have any questions about this policy, please email us at <strong>contact@spero-restoration.com</strong>.</p>
+    </div>
+  </section>
+
   <footer>
-    <p>&copy; 2025 Spero Restoration Corp. All Rights Reserved.</p>
+    <p>&copy; 2025 Spero Restoration Corp | <a href="/terms">Terms of Use</a></p>
   </footer>
+
+  <a href="https://wa.me/14077246310" class="whatsapp-float" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+  </a>
 </body>
 </html>
