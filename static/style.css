@@ -1,13 +1,90 @@
-.btn-primary {
-    background-color: #004AAD; /* Azul Spero */
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: 0.3s ease;
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #333;
+  text-align: center;
 }
-.btn-primary:hover {
-    background-color: #003580;
+
+header {
+  padding: 40px 20px 10px;
+}
+
+header img {
+  max-width: 220px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+h1 {
+  color: #1d3b72;
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: #1d3b72;
+  margin-top: 40px;
+}
+
+button, .btn-primary {
+  background-color: #1d3b72;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #16325c;
+}
+
+section {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+input, textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+#formResponse {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 22px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  header img {
+    max-width: 180px;
+  }
 }
