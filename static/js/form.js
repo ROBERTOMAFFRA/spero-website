@@ -1,20 +1,46 @@
-document.getElementById('inspectionForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
+// =======================================================
+// SPERO RESTORATION CORP - FORM HANDLER (SendGrid Ready)
+// =======================================================
 
-  const form = e.target;
-  const responseMsg = document.getElementById('formResponse');
-  responseMsg.textContent = 'Sending...';
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("inspectionForm");
+  const responseText = document.getElementById("formResponse");
 
-  const data = new FormData(form);
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    responseText.textContent = "Sending your request...";
+    responseText.style.color = "#1c5dff";
 
-  const res = await fetch('/send', {
-    method: 'POST',
-    body: data
+    const formData = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      phone: form.phone.value.trim(),
+      message: form.message.value.trim(),
+    };
+
+    try {
+      const res = await fetch("/send_email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        responseText.textContent = "✅ Your inspection request has been sent successfully!";
+        responseText.style.color = "#0a8a00";
+        form.reset();
+      } else {
+        throw new Error(data.error || "Error sending email");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      responseText.textContent =
+        "❌ Something went wrong. Please try again or contact us directly at contact@spero-restoration.com.";
+      responseText.style.color = "#ff3333";
+    }
   });
-
-  const result = await res.json();
-  responseMsg.textContent = result.message;
-  responseMsg.style.color = result.success ? 'green' : 'red';
-
-  if (result.success) form.reset();
 });
