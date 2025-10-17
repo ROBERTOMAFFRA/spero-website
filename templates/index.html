@@ -1,72 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spero Restoration | Water, Fire & Mold Experts in Orlando, FL</title>
-    <meta name="description" content="Spero Restoration provides professional water, mold, and fire damage restoration services in Orlando, FL. Schedule your inspection today.">
-    <meta name="keywords" content="water damage, mold remediation, fire restoration, remodeling, Orlando, Spero Restoration, emergency repair, inspection">
-    <meta name="author" content="Spero Restoration Corp">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Spero Restoration Corp — Expert restoration and remodeling services in Orlando, Clermont, and Central Florida. Water, fire, and mold restoration specialists.">
+  <meta name="keywords" content="Restoration, Water Damage, Fire Damage, Mold Removal, Remodeling, Orlando, Clermont, Windermere, Florida">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Spero Restoration Corp">
+  <link rel="canonical" href="https://spero-restoration.com/">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Spero Restoration Corp | Expert Restoration in Orlando, FL</title>
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Spero Restoration | Water, Fire & Mold Experts in Orlando, FL">
-    <meta property="og:description" content="Professional water, mold, and fire restoration services. Schedule your inspection today!">
-    <meta property="og:image" content="{{ url_for('static', filename='images/banner.png') }}">
-    <meta property="og:url" content="https://spero-restoration.com">
-    <meta name="twitter:card" content="summary_large_image">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Spero Restoration Corp | Orlando Restoration Experts">
+  <meta property="og:description" content="Water, Fire, and Mold Restoration Specialists serving Orlando, Clermont, and Central Florida.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://spero-restoration.com/">
+  <meta property="og:image" content="{{ url_for('static', filename='images/banner-placeholder.png') }}">
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
+  <!-- JSON-LD LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Spero Restoration Corp",
+    "image": "https://spero-restoration.com/static/images/banner-placeholder.png",
+    "@id": "",
+    "url": "https://spero-restoration.com",
+    "telephone": "+14077246310",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Orlando, FL",
+      "addressLocality": "Orlando",
+      "addressRegion": "FL",
+      "addressCountry": "US"
+    },
+    "openingHours": "Mo-Fr 08:00-18:00",
+    "priceRange": "$$"
+  }
+  </script>
 </head>
 
 <body>
-    <header class="header">
-        <div class="container">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo" class="logo">
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#inspection" class="cta">Schedule Inspection</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <!-- ============================= -->
+  <!-- HERO / BANNER SECTION -->
+  <!-- ============================= -->
+  <header class="hero">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo" class="logo">
+    <div class="hero-content">
+      <h1>Spero Restoration Corp</h1>
+      <p class="tagline">Restoration • Remodeling • Water • Fire • Mold</p>
+      <a href="#contact" class="btn-primary">Schedule an Inspection</a>
+    </div>
+  </header>
 
-    <section class="hero">
-        <img src="{{ url_for('static', filename='images/banner.png') }}" alt="Spero Restoration Team at Work" class="banner-image">
-        <div class="hero-content">
-            <h1>Restoring Homes, Rebuilding Trust.</h1>
-            <p>Water • Fire • Mold • Remodeling Experts in Orlando, FL</p>
-            <a href="#inspection" class="hero-btn">Schedule an Inspection</a>
-        </div>
-    </section>
+  <!-- ============================= -->
+  <!-- SERVICES SECTION -->
+  <!-- ============================= -->
+  <section id="services" class="services">
+    <h2>Our Services</h2>
+    <ul>
+      <li>Water Damage Restoration</li>
+      <li>Fire Damage Restoration</li>
+      <li>Mold Remediation</li>
+      <li>Home Remodeling</li>
+      <li>Flooring & Painting</li>
+      <li>Storm Damage Repair</li>
+    </ul>
+  </section>
 
-    <section id="services" class="services">
-        <h2>Our Core Services</h2>
-        <div class="service-grid">
-            <div class="service-card"><h3>Water Damage</h3><p>Rapid response for leaks, floods, and water restoration.</p></div>
-            <div class="service-card"><h3>Mold Remediation</h3><p>Certified mold removal with advanced air quality testing.</p></div>
-            <div class="service-card"><h3>Fire Restoration</h3><p>Full cleanup, odor removal, and property reconstruction.</p></div>
-            <div class="service-card"><h3>Remodeling</h3><p>Modern and durable finishes to restore your home’s beauty.</p></div>
-        </div>
-    </section>
+  <!-- ============================= -->
+  <!-- CONTACT SECTION -->
+  <!-- ============================= -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Schedule an Inspection</h2>
+      <p>Get a free, same-day estimate — proudly serving Orlando and Central Florida.</p>
+      <form action="/send_email" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="tel" name="phone" placeholder="Your Phone (optional)">
+        <textarea name="message" placeholder="How can we help you?" required></textarea>
+        <button type="submit" class="btn-primary">Send Request</button>
+      </form>
+    </div>
+  </section>
 
-    <section id="inspection" class="contact-section">
-        <h2>Schedule an Inspection</h2>
-        <form action="{{ url_for('send_email') }}" method="POST" class="contact-form">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <input type="tel" name="phone" placeholder="Your Phone" required>
-            <textarea name="message" placeholder="Describe your issue (optional)" rows="4"></textarea>
-            <button type="submit">Submit Request</button>
-        </form>
-    </section>
+  <!-- ============================= -->
+  <!-- FOOTER -->
+  <!-- ============================= -->
+  <footer>
+    <p>&copy; 2025 Spero Restoration Corp | Orlando, FL</p>
+    <p><a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Use</a></p>
+  </footer>
 
-    <footer>
-        <p>© 2025 Spero Restoration Corp | Orlando, FL</p>
-        <p>Email: contact@spero-restoration.com | Phone: (407) 724-6310</p>
-    </footer>
+  <!-- WHATSAPP BUTTON -->
+  <a href="https://wa.me/14077246310" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp icon">
+  </a>
 </body>
 </html>
