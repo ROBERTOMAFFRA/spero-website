@@ -1,3 +1,8 @@
-Flask==3.0.2
-sendgrid==6.11.0
+# =============================
+# SPERO RESTORATION DEPENDENCIES
+# =============================
+
+Flask==3.0.3
+python-dotenv==1.0.1
+requests==2.32.3
 gunicorn==22.0.0
