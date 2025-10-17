@@ -1,9 +1,9 @@
 # Core Flask framework
 Flask==3.0.3
 
-# Email support
-Flask-Mail==0.9.1
+# Email support (SendGrid API)
 sendgrid==6.11.0
+python-dotenv==1.0.1
 
 # Web server for production
 gunicorn==22.0.0
