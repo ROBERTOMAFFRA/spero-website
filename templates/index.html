@@ -3,13 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spero Restoration | Water, Mold & Fire Damage Experts</title>
+    <title>Spero Restoration | Water, Fire & Mold Experts in Orlando, FL</title>
+    <meta name="description" content="Spero Restoration provides professional water, mold, and fire damage restoration services in Orlando, FL. Schedule your inspection today.">
+    <meta name="keywords" content="water damage, mold remediation, fire restoration, remodeling, Orlando, Spero Restoration, emergency repair, inspection">
+    <meta name="author" content="Spero Restoration Corp">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Spero Restoration | Water, Fire & Mold Experts in Orlando, FL">
+    <meta property="og:description" content="Professional water, mold, and fire restoration services. Schedule your inspection today!">
+    <meta property="og:image" content="{{ url_for('static', filename='images/banner.png') }}">
+    <meta property="og:url" content="https://spero-restoration.com">
+    <meta name="twitter:card" content="summary_large_image">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='images/logo.png') }}">
 </head>
 
 <body>
-    <!-- Header -->
     <header class="header">
         <div class="container">
             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo" class="logo">
@@ -24,9 +34,8 @@
         </div>
     </header>
 
-    <!-- Hero Banner -->
     <section class="hero">
-        <img src="{{ url_for('static', filename='images/banner.png') }}" alt="Restoration Banner" class="banner-image">
+        <img src="{{ url_for('static', filename='images/banner.png') }}" alt="Spero Restoration Team at Work" class="banner-image">
         <div class="hero-content">
             <h1>Restoring Homes, Rebuilding Trust.</h1>
             <p>Water • Fire • Mold • Remodeling Experts in Orlando, FL</p>
@@ -34,30 +43,16 @@
         </div>
     </section>
 
-    <!-- Services -->
     <section id="services" class="services">
         <h2>Our Core Services</h2>
         <div class="service-grid">
-            <div class="service-card">
-                <h3>Water Damage</h3>
-                <p>Rapid response and full restoration after leaks or floods.</p>
-            </div>
-            <div class="service-card">
-                <h3>Mold Remediation</h3>
-                <p>Certified professionals eliminating mold safely and permanently.</p>
-            </div>
-            <div class="service-card">
-                <h3>Fire Restoration</h3>
-                <p>Restoring your home’s safety, structure, and comfort.</p>
-            </div>
-            <div class="service-card">
-                <h3>Remodeling</h3>
-                <p>Beautiful, durable finishes that make your property shine again.</p>
-            </div>
+            <div class="service-card"><h3>Water Damage</h3><p>Rapid response for leaks, floods, and water restoration.</p></div>
+            <div class="service-card"><h3>Mold Remediation</h3><p>Certified mold removal with advanced air quality testing.</p></div>
+            <div class="service-card"><h3>Fire Restoration</h3><p>Full cleanup, odor removal, and property reconstruction.</p></div>
+            <div class="service-card"><h3>Remodeling</h3><p>Modern and durable finishes to restore your home’s beauty.</p></div>
         </div>
     </section>
 
-    <!-- Inspection Form -->
     <section id="inspection" class="contact-section">
         <h2>Schedule an Inspection</h2>
         <form action="{{ url_for('send_email') }}" method="POST" class="contact-form">
@@ -69,7 +64,6 @@
         </form>
     </section>
 
-    <!-- Footer -->
     <footer>
         <p>© 2025 Spero Restoration Corp | Orlando, FL</p>
         <p>Email: contact@spero-restoration.com | Phone: (407) 724-6310</p>
