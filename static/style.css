@@ -1,263 +1,89 @@
-/* ============================= */
-/* GENERAL STYLES - SPERO RESTORATION 2025 */
-/* ============================= */
-
 body {
+  font-family: Arial, sans-serif;
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  color: #141414;
-  background-color: #f9f9fc;
-  line-height: 1.6;
-  scroll-behavior: smooth;
-}
-
-/* ============================= */
-/* HEADER / HERO */
-/* ============================= */
-
-header.hero {
-  background: linear-gradient(135deg, #004aad 0%, #003780 100%);
-  color: white;
-  text-align: center;
-  padding: 70px 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-}
-
-header.hero .logo {
-  width: 120px;
-  margin-bottom: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-header.hero h1 {
-  font-size: 36px;
-  margin: 10px 0;
-  letter-spacing: 0.5px;
-}
-
-header.hero .tagline {
-  font-size: 18px;
-  margin-bottom: 25px;
-  font-weight: 400;
-  opacity: 0.95;
-}
-
-.btn-primary {
-  background-color: #ffcc00;
-  color: #002f6c;
-  padding: 14px 28px;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-}
-
-.btn-primary:hover {
-  background-color: #ffd633;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
-}
-
-/* ============================= */
-/* SERVICES SECTION */
-/* ============================= */
-
-.services {
-  background-color: #ffffff;
-  text-align: center;
-  padding: 70px 20px;
-}
-
-.services h2 {
-  color: #002f6c;
-  margin-bottom: 30px;
-  font-size: 28px;
-}
-
-.services ul {
-  list-style: none;
   padding: 0;
-  margin: 0 auto;
-  max-width: 400px;
+  background: #f5f8fa;
+  color: #333;
 }
 
-.services li {
-  background-color: #f2f4f8;
-  margin: 10px 0;
-  padding: 14px;
-  border-radius: 10px;
-  border: 1px solid #e1e6ee;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.services li:hover {
-  background-color: #eaf1ff;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-}
-
-/* ============================= */
-/* CONTACT SECTION - REFINED 2025 */
-/* ============================= */
-
-.contact {
-  background-color: #eef2f6;
-  padding: 90px 20px;
-  text-align: center;
-  border-top: 2px solid #dde3ea;
-}
-
-.contact .container {
-  max-width: 650px;
-  margin: 0 auto;
-  background: #ffffff;
-  padding: 50px 45px;
-  border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease;
-}
-
-.contact .container:hover {
-  transform: translateY(-2px);
-}
-
-.contact h2 {
-  color: #002f6c;
-  font-size: 28px;
-  margin-bottom: 15px;
-}
-
-.contact p {
-  color: #555;
-  margin-bottom: 30px;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-.contact form {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.contact input,
-.contact textarea {
-  width: 100%;
-  padding: 14px 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.contact input:focus,
-.contact textarea:focus {
-  border-color: #004aad;
-  box-shadow: 0 0 8px rgba(0, 74, 173, 0.25);
-  outline: none;
-}
-
-.contact button {
-  background-color: #004aad;
-  color: #fff;
-  border: none;
-  padding: 14px 22px;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-}
-
-.contact button:hover {
-  background-color: #002f6c;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* ============================= */
-/* FOOTER */
-/* ============================= */
-
-footer {
-  background-color: #002f6c;
+/* Header */
+header {
+  background: #0b3d91;
   color: white;
-  text-align: center;
-  padding: 30px 15px;
-  font-size: 14px;
-  letter-spacing: 0.3px;
-  box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-
-footer a {
-  color: #ffcc00;
+header .logo {
+  display: flex;
+  align-items: center;
+}
+header .logo img {
+  height: 50px;
+  margin-right: 10px;
+}
+nav a {
+  color: white;
   text-decoration: none;
-  font-weight: 600;
+  margin: 0 10px;
+  font-weight: bold;
 }
-
-footer a:hover {
+nav a:hover {
   text-decoration: underline;
 }
 
-/* ============================= */
-/* WHATSAPP FLOATING BUTTON - FIXED POSITION */
-/* ============================= */
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+  background: white;
+}
 
-.whatsapp-float {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  width: 60px;
-  height: 60px;
-  background-color: #25d366;
-  border-radius: 50%;
+/* Form */
+.form-section {
   display: flex;
-  align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  z-index: 9999;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 40px 0;
+}
+form {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 90%;
+  max-width: 500px;
+}
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+button.blue-btn {
+  background: #0b3d91;
+  color: white;
+  padding: 12px;
+  border: none;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+button.blue-btn:hover {
+  background: #092f6a;
+}
+.response-message {
+  margin-top: 15px;
+  font-weight: bold;
+  text-align: center;
 }
 
-.whatsapp-float img {
-  width: 34px;
-  height: 34px;
+/* Footer */
+footer {
+  background: #0b3d91;
+  color: white;
+  text-align: center;
+  padding: 20px;
 }
-
-.whatsapp-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-}
-
-/* ============================= */
-/* RESPONSIVE DESIGN */
-/* ============================= */
-
-@media (max-width: 600px) {
-  header.hero {
-    padding: 50px 15px;
-  }
-
-  .contact .container {
-    padding: 30px 25px;
-  }
-
-  .whatsapp-float {
-    width: 55px;
-    height: 55px;
-    bottom: 20px;
-    right: 20px;
-  }
-
-  .whatsapp-float img {
-    width: 30px;
-    height: 30px;
-  }
-}
-
