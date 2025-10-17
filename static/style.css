@@ -1,148 +1,188 @@
-/* ============================= */
-/* SPERO RESTORATION - MAIN STYLE */
-/* ============================= */
+/* ============================================
+   SPERO RESTORATION CORP - STYLE SHEET
+   Version: 1.0 | Updated: Oct 2025
+   Author: Roberto Maffra
+   ============================================ */
 
-body {
+/* General Reset */
+* {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', Arial, sans-serif;
-  color: #333;
-  background-color: #f9f9f9;
+  box-sizing: border-box;
+  font-family: 'Poppins', Arial, sans-serif;
 }
 
-/* ---------- HERO / HEADER ---------- */
+body {
+  background-color: #f9f9f9;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* ===============================
+   HERO SECTION
+   =============================== */
 .hero {
-  background: url('{{ url_for("static", filename="images/banner-placeholder.png") }}') center/cover no-repeat;
-  height: 90vh;
+  background: url('{{ url_for("static", filename="images/banner.jpg") }}') center/cover no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   position: relative;
+  color: #fff;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.55);
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  color: white;
-  padding: 0 20px;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.55);
-  z-index: 1;
+.hero-logo {
+  width: 240px;
+  height: auto;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.7));
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-.logo {
-  width: 180px;
-  position: absolute;
-  top: 25px;
-  left: 40px;
-}
-
-/* ---------- TYPOGRAPHY ---------- */
-h1, h2, h3 {
-  font-family: 'Poppins', sans-serif;
-  margin-bottom: 10px;
-}
-
-h1 {
-  font-size: 2.6rem;
+.hero h1 {
+  font-size: 2.8rem;
   font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
 }
 
-h2 {
-  color: #004aad;
-  font-size: 2rem;
-  margin-bottom: 15px;
-  text-align: center;
+.hero p {
+  font-size: 1.2rem;
+  color: #dbe7ff;
+  max-width: 700px;
+  margin: 20px auto;
 }
 
-/* ---------- BUTTONS ---------- */
+/* ===============================
+   BUTTONS
+   =============================== */
 .btn-primary {
-  background-color: #004aad;
-  color: white;
-  padding: 12px 28px;
-  border: none;
+  display: inline-block;
+  background-color: #1c5dff;
+  color: #fff;
+  padding: 14px 28px;
   border-radius: 6px;
   text-decoration: none;
-  font-size: 1.1rem;
   font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-  background-color: #0070ff;
+  background-color: #174ed4;
+  transform: translateY(-2px);
 }
 
-/* ---------- SERVICES ---------- */
-.services {
-  padding: 60px 20px;
-  background-color: #fff;
-}
-
-.services ul {
-  list-style: none;
-  padding: 0;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.services li {
-  background-color: #f1f5ff;
-  border-left: 4px solid #004aad;
-  margin: 10px 0;
-  padding: 15px;
-  border-radius: 5px;
-  font-size: 1.1rem;
-}
-
-/* ---------- CONTACT FORM ---------- */
-.contact {
-  padding: 70px 20px;
-  background-color: #eef2f7;
+/* ===============================
+   SECTIONS
+   =============================== */
+.section {
+  padding: 80px 20px;
   text-align: center;
 }
 
-.contact form {
+.section h2 {
+  font-size: 2rem;
+  color: #002b80;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ===============================
+   SERVICES GRID
+   =============================== */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.service-item {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.service-item h3 {
+  color: #0056ff;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+/* ===============================
+   FORM SECTION
+   =============================== */
+.form-section {
+  background-color: #f1f6ff;
+  border-top: 2px solid #0056ff;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  max-width: 550px;
-  margin: 0 auto;
   gap: 15px;
 }
 
-.contact input,
-.contact textarea {
-  padding: 12px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+form input,
+form textarea {
   width: 100%;
+  padding: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  resize: none;
 }
 
-.contact button {
+form textarea {
+  height: 120px;
+}
+
+form button {
   align-self: center;
+  cursor: pointer;
 }
 
-/* ---------- FOOTER ---------- */
-footer {
-  background-color: #222;
-  color: white;
-  text-align: center;
-  padding: 20px 10px;
+#formResponse {
   font-size: 0.95rem;
+  color: #1c5dff;
+  margin-top: 8px;
+}
+
+/* ===============================
+   FOOTER
+   =============================== */
+footer {
+  background-color: #002b80;
+  color: #fff;
+  text-align: center;
+  padding: 25px 15px;
+  margin-top: 60px;
 }
 
 footer a {
-  color: #9ec9ff;
+  color: #66aaff;
   text-decoration: none;
 }
 
@@ -150,38 +190,24 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* ---------- WHATSAPP FLOAT ---------- */
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 100;
-}
-
-.whatsapp-float img {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
-}
-
-.whatsapp-float img:hover {
-  transform: scale(1.1);
-}
-
-/* ---------- RESPONSIVE ---------- */
+/* ===============================
+   RESPONSIVE DESIGN
+   =============================== */
 @media (max-width: 768px) {
-  .hero {
-    height: 70vh;
-  }
-
-  .hero-content h1 {
+  .hero h1 {
     font-size: 2rem;
   }
 
-  .logo {
-    width: 130px;
-    left: 20px;
+  .hero p {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+
+  .hero-logo {
+    width: 180px;
+  }
+
+  .section {
+    padding: 60px 15px;
   }
 }
