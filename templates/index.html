@@ -1,78 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spero Restoration | Restoration Experts in Orlando, FL</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}">
-    <script defer src="{{ url_for('static', filename='js/form.js') }}"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spero Restoration | Orlando, FL</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <meta name="description" content="Restoration Experts in Orlando, FL - Water, Fire, Mold & Remodeling Services. Call (407) 724-6310 for inspection.">
 </head>
-
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo">
-            </div>
-            <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="phone">
-                <a href="tel:4077246310">(407) 724-6310</a>
-            </div>
-        </nav>
-    </header>
+  <header>
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo">
+    <h1>Restoration Experts in Orlando, FL</h1>
+    <p>Water, Fire, Mold, and Remodeling Services for Homes and Businesses</p>
+    <a href="#inspection"><button>Schedule an Inspection</button></a>
+  </header>
 
-    <main>
-        <section class="hero">
-            <h1>Restoration Experts in Orlando, FL</h1>
-            <p>Water, Fire, Mold, and Remodeling Services for Homes and Businesses</p>
-            <button onclick="document.getElementById('inspectionForm').scrollIntoView({behavior: 'smooth'})" class="btn-primary">
-                Schedule an Inspection
-            </button>
-        </section>
+  <section id="inspection">
+    <h2>Request an Inspection</h2>
+    <form id="inspectionForm">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="tel" name="phone" placeholder="Your Phone" required>
+      <input type="text" name="address" placeholder="Your Address">
+      <textarea name="message" placeholder="Describe your issue" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+    <p id="formResponse"></p>
+  </section>
 
-        <section id="services" class="services">
-            <h2>Our Services</h2>
-            <div class="service-grid">
-                <div class="service-item">
-                    <h3>Water Damage Restoration</h3>
-                    <p>We remove water, dry affected areas, and restore your property quickly and efficiently.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Mold Remediation</h3>
-                    <p>Safe mold removal and prevention to protect your health and property value.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Fire & Smoke Cleanup</h3>
-                    <p>Complete fire restoration, soot cleanup, and deodorization to make your home livable again.</p>
-                </div>
-                <div class="service-item">
-                    <h3>Remodeling & Repairs</h3>
-                    <p>We handle drywall, flooring, and full remodeling to restore your home beautifully.</p>
-                </div>
-            </div>
-        </section>
+  <section>
+    <h2>Our Services</h2>
+    <p><strong>Water Damage Restoration</strong> — We remove water, dry affected areas, and restore your property efficiently.</p>
+    <p><strong>Mold Remediation</strong> — We safely remove mold and prevent it from returning.</p>
+    <p><strong>Fire & Smoke Cleanup</strong> — Complete cleaning and odor removal after fire damage.</p>
+    <p><strong>Remodeling & Repairs</strong> — Full restoration and remodeling for homes and businesses.</p>
+  </section>
 
-        <section id="inspection" class="inspection">
-            <h2>Schedule an Inspection</h2>
-            <form id="inspectionForm">
-                <input type="text" name="name" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Email Address" required>
-                <input type="text" name="phone" placeholder="Phone Number">
-                <textarea name="message" rows="5" placeholder="Briefly describe your issue" required></textarea>
-                <button type="submit" class="btn-primary">Submit Request</button>
-                <p id="formResponse" class="response"></p>
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <p>© {{ 2025 }} Spero Restoration Corp. All rights reserved.</p>
-    </footer>
+  <script src="{{ url_for('static', filename='js/form.js') }}"></script>
 </body>
 </html>
-
