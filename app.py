@@ -1,88 +1,50 @@
-from flask import Flask, render_template, request, redirect, url_for, send_from_directory
+from flask import Flask, render_template, request, jsonify
 import os
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
-# =============================
-# HOME ROUTE
-# =============================
 @app.route('/')
 def home():
     return render_template('index.html')
 
-# =============================
-# EMAIL ROUTE (SendGrid)
-# =============================
-@app.route('/send_email', methods=['POST'])
+@app.route('/send', methods=['POST'])
 def send_email():
-    name = request.form.get('name')
-    email = request.form.get('email')
-    message = request.form.get('message')
-
-    if not all([name, email, message]):
-        return "All fields are required.", 400
-
-    subject = f"New Lead from {name}"
-    body = f"""
-You received a new message from the Spero Restoration website:
-
-Name: {name}
-Email: {email}
-
-Message:
-{message}
-"""
-
-    recipients = [
-        "contact@spero-restoration.com",
-        "roberto.maffra@gmail.com"
-    ]
-
     try:
-        sg = SendGridAPIClient(os.environ.get("SENDGRID_API_KEY"))
-        for to_email in recipients:
-            mail = Mail(
-                from_email="contact@spero-restoration.com",
-                to_emails=to_email,
-                subject=subject,
-                plain_text_content=body
-            )
-            sg.send(mail)
-        print("✅ Email sent successfully to both recipients.")
-        return redirect(url_for('thank_you'))
+        name = request.form.get('name')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+        message = request.form.get('message')
+
+        content = f"""
+        New inspection request from Spero Restoration website:
+
+        Name: {name}
+        Email: {email}
+        Phone: {phone}
+        Message:
+        {message}
+        """
+
+        msg = Mail(
+            from_email='contact@spero-restoration.com',
+            to_emails=['contact@spero-restoration.com', 'roberto.maffra@gmail.com'],
+            subject='New Inspection Request – Spero Restoration',
+            plain_text_content=content
+        )
+
+        sg = SendGridAPIClient(os.getenv('SENDGRID_API_KEY'))
+        sg.send(msg)
+
+        return jsonify({'success': True, 'message': 'Your request has been sent successfully.'})
     except Exception as e:
-        print(f"❌ Error sending email: {e}")
-        return f"Error sending email: {str(e)}", 500
+        print(e)
+        return jsonify({'success': False, 'message': 'Something went wrong. Please try again later.'})
 
-# =============================
-# THANK YOU PAGE
-# =============================
-@app.route('/thank-you')
-def thank_you():
-    return render_template('thank-you.html')
-
-# =============================
-# GOOGLE SITE VERIFICATION
-# =============================
-@app.route('/google4cf02f874eac24e0.html')
-def google_verification():
-    return send_from_directory('.', 'google4cf02f874eac24e0.html')
-
-# =============================
-# SEO FILES
-# =============================
-@app.route('/robots.txt')
-def robots():
-    return send_from_directory('.', 'robots.txt')
-
-@app.route('/sitemap.xml')
-def sitemap():
-    return send_from_directory('.', 'sitemap.xml')
-
-# =============================
-# RUN LOCAL
-# =============================
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
+
