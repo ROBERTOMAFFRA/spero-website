@@ -4,46 +4,66 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "spero_secret_key")
+app.secret_key = os.getenv("FLASK_SECRET_KEY", "spero_secret_key")
 
-# Página principal
-@app.route("/")
+# Home route
+@app.route('/')
 def home():
-    return render_template("index.html")
+    return render_template('index.html')
 
-# Formulário de agendamento
-@app.route("/send_email", methods=["POST"])
+# Email send route
+@app.route('/send_email', methods=['POST'])
 def send_email():
-    name = request.form.get("name")
-    email = request.form.get("email")
-    phone = request.form.get("phone")
-    message = request.form.get("message", "No additional message provided")
-
-    subject = f"New Inspection Request from {name}"
-    content = f"""
-    <strong>Inspection Request Details:</strong><br>
-    <b>Name:</b> {name}<br>
-    <b>Email:</b> {email}<br>
-    <b>Phone:</b> {phone}<br>
-    <b>Message:</b><br>{message}<br><br>
-    ⚡ Sent from Spero Restoration website.
-    """
-
     try:
-        sg = SendGridAPIClient(os.environ.get("SENDGRID_API_KEY"))
-        email_msg = Mail(
-            from_email="contact@spero-restoration.com",
-            to_emails=["contact@spero-restoration.com", "roberto.maffra@gmail.com"],
-            subject=subject,
-            html_content=content
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form.get('phone', 'Not provided')
+        message = request.form['message']
+
+        content = f"""
+        🧾 New Inspection Request from Spero Website
+        ---------------------------------------
+        Name: {name}
+        Email: {email}
+        Phone: {phone}
+
+        Message:
+        {message}
+        """
+
+        # SendGrid setup
+        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        from_email = os.getenv('FROM_EMAIL', 'contact@spero-restoration.com')
+        to_emails = [
+            'contact@spero-restoration.com',
+            'roberto.maffra@gmail.com'
+        ]
+
+        mail = Mail(
+            from_email=from_email,
+            to_emails=to_emails,
+            subject='🛠️ New Inspection Request - Spero Restoration',
+            plain_text_content=content
         )
-        sg.send(email_msg)
-        flash("✅ Your request was successfully sent. We'll contact you soon.", "success")
+
+        sg.send(mail)
+        flash('✅ Your request has been sent successfully! We’ll contact you soon.', 'success')
+
     except Exception as e:
-        flash("❌ There was an issue sending your request. Please try again later.", "danger")
-        print(f"SendGrid Error: {e}")
+        print(f"Error sending email: {e}")
+        flash('⚠️ Something went wrong. Please try again later.', 'error')
 
-    return redirect(url_for("home"))
+    return redirect(url_for('home'))
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# Privacy and Terms (optional)
+@app.route('/privacy')
+def privacy():
+    return "<h2>Privacy Policy</h2><p>Your information is kept confidential and only used for communication related to our services.</p>"
+
+@app.route('/terms')
+def terms():
+    return "<h2>Terms of Use</h2><p>By using this site, you agree to our service terms and conditions.</p>"
+
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
