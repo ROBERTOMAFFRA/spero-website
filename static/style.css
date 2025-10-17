@@ -1,124 +1,187 @@
+/* ============================= */
+/* SPERO RESTORATION - MAIN STYLE */
+/* ============================= */
+
 body {
-    font-family: "Poppins", sans-serif;
-    margin: 0;
-    background-color: #f9f9f9;
-    color: #222;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  color: #333;
+  background-color: #f9f9f9;
 }
 
-.header {
-    background-color: #0a2740;
-    padding: 10px 0;
-    color: white;
-}
-.header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    margin: auto;
-}
-.logo {
-    width: 180px;
-    filter: drop-shadow(0px 0px 4px rgba(255,255,255,0.7));
-}
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-}
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-}
-.nav-links .cta {
-    background: #007bff;
-    padding: 8px 16px;
-    border-radius: 4px;
-}
-
-/* Hero Banner */
+/* ---------- HERO / HEADER ---------- */
 .hero {
-    position: relative;
-    text-align: center;
-    color: white;
+  background: url('{{ url_for("static", filename="images/banner-placeholder.png") }}') center/cover no-repeat;
+  height: 90vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
 }
-.banner-image {
-    width: 100%;
-    height: 80vh;
-    object-fit: cover;
-    filter: brightness(0.5);
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  z-index: 1;
 }
+
 .hero-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.hero h1 {
-    font-size: 2.8rem;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-}
-.hero-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 12px 24px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: 600;
+  position: relative;
+  z-index: 2;
 }
 
-/* Services */
+.logo {
+  width: 180px;
+  position: absolute;
+  top: 25px;
+  left: 40px;
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+h2 {
+  color: #004aad;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn-primary {
+  background-color: #004aad;
+  color: white;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0070ff;
+}
+
+/* ---------- SERVICES ---------- */
 .services {
-    padding: 60px 10%;
-    text-align: center;
-}
-.service-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
-    margin-top: 20px;
-}
-.service-card {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 60px 20px;
+  background-color: #fff;
 }
 
-/* Contact */
-.contact-section {
-    background-color: #eef4f8;
-    padding: 60px 10%;
-    text-align: center;
-}
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 500px;
-    margin: auto;
-}
-.contact-form input, .contact-form textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-.contact-form button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 5px;
-    font-weight: 600;
-    cursor: pointer;
+.services ul {
+  list-style: none;
+  padding: 0;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-/* Footer */
+.services li {
+  background-color: #f1f5ff;
+  border-left: 4px solid #004aad;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+}
+
+/* ---------- CONTACT FORM ---------- */
+.contact {
+  padding: 70px 20px;
+  background-color: #eef2f7;
+  text-align: center;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  max-width: 550px;
+  margin: 0 auto;
+  gap: 15px;
+}
+
+.contact input,
+.contact textarea {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.contact button {
+  align-self: center;
+}
+
+/* ---------- FOOTER ---------- */
 footer {
-    background: #0a2740;
-    color: white;
-    text-align: center;
-    padding: 15px;
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 0.95rem;
+}
+
+footer a {
+  color: #9ec9ff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- WHATSAPP FLOAT ---------- */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.whatsapp-float img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float img:hover {
+  transform: scale(1.1);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .logo {
+    width: 130px;
+    left: 20px;
+  }
 }
