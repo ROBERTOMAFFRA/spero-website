@@ -1,144 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ==========================
-       SEO & META CONFIGURATION
-  =========================== -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spero Restoration Corp | Orlando Restoration & Remodeling Experts</title>
-  <meta name="description" content="Spero Restoration Corp provides professional restoration, remodeling, and mitigation services in Orlando, FL. Water damage, mold remediation, flooring, and more." />
-  <meta name="keywords" content="Spero Restoration, water damage Orlando, restoration company Florida, remodeling, mitigation, mold removal, Clermont, Windermere, Lake Nona" />
-  <meta name="author" content="Spero Restoration Corp" />
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}" />
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spero Restoration Corp | Water, Mold & Remodeling Experts</title>
 
-  <!-- ==========================
-       OPEN GRAPH (SOCIAL SHARING)
-  =========================== -->
-  <meta property="og:title" content="Spero Restoration Corp | Restoration & Remodeling Experts" />
-  <meta property="og:description" content="Professional restoration and remodeling services serving Orlando, FL and surrounding areas." />
-  <meta property="og:image" content="{{ url_for('static', filename='images/banner.png') }}" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://spero-restoration.com" />
+    <!-- SEO Meta -->
+    <meta name="description" content="Spero Restoration Corp offers professional water damage restoration, mold remediation, and remodeling services in Orlando, FL. Licensed & Insured.">
+    <meta name="keywords" content="Water Damage, Mold Remediation, Restoration, Remodeling, Orlando, Spero Restoration">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
-  <!-- ==========================
-       JSON-LD LOCAL BUSINESS SCHEMA
-  =========================== -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "RestorationService",
-    "name": "Spero Restoration Corp",
-    "image": "https://spero-restoration.com/static/images/banner.png",
-    "url": "https://spero-restoration.com",
-    "telephone": "+1-407-724-6310",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Orlando",
-      "addressLocality": "Orlando",
-      "addressRegion": "FL",
-      "addressCountry": "US"
-    },
-    "areaServed": ["Orlando", "Clermont", "Windermere", "Winter Garden", "Lake Nona"],
-    "description": "Restoration, remodeling, and mitigation services for residential and commercial clients."
-  }
-  </script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
-  <!-- ==========================
-       HEADER / NAVBAR
-  =========================== -->
-  <header class="main-header">
-    <div class="container">
-      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo" class="logo" />
-      <nav class="navbar">
-        <ul>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <!-- ==========================
-       HERO BANNER
-  =========================== -->
-  <section class="hero-banner" style="background-image: url('{{ url_for('static', filename='images/banner.png') }}');">
-    <div class="overlay">
-      <h1>Restoration & Remodeling Experts in Orlando, FL</h1>
-      <p>We bring your property back to life — fast, professional, and reliable service.</p>
-      <a href="#contact" class="cta-btn">Schedule an Inspection</a>
-    </div>
-  </section>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo" class="logo">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <!-- ==========================
-       SERVICES SECTION
-  =========================== -->
-  <section id="services" class="services">
-    <h2>Our Core Services</h2>
-    <div class="service-grid">
-      <div class="service-card">
-        <h3>Water Damage Restoration</h3>
-        <p>Rapid response to water emergencies with advanced drying and dehumidification equipment.</p>
-      </div>
-      <div class="service-card">
-        <h3>Mold Remediation</h3>
-        <p>Certified removal and prevention to restore clean, safe air quality in your property.</p>
-      </div>
-      <div class="service-card">
-        <h3>Remodeling & Repairs</h3>
-        <p>Full remodeling solutions for kitchens, bathrooms, and interiors — residential or commercial.</p>
-      </div>
-      <div class="service-card">
-        <h3>Fire & Smoke Cleanup</h3>
-        <p>Complete fire damage restoration and odor elimination for full recovery and peace of mind.</p>
-      </div>
-    </div>
-  </section>
+    <!-- Hero / Banner Section -->
+    <section class="hero-section">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>Restoring Homes, Rebuilding Trust</h1>
+                <p>Expert Water, Fire, and Mold Restoration in Orlando and Central Florida.</p>
+                <a href="/contact" class="btn-primary">Schedule Inspection</a>
+            </div>
+        </div>
+    </section>
 
-  <!-- ==========================
-       ABOUT US
-  =========================== -->
-  <section id="about" class="about">
-    <div class="about-content">
-      <h2>Who We Are</h2>
-      <p><strong>Spero Restoration Corp</strong> is a trusted name in restoration and remodeling across Central Florida. We specialize in fast, reliable restoration after water, fire, or mold damage, ensuring your home or business returns better than before.</p>
-      <p>With a focus on integrity, precision, and customer satisfaction, our experienced team uses top-tier equipment and proven techniques to deliver results that last.</p>
-    </div>
-  </section>
+    <!-- Services -->
+    <section class="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Water Damage</h3>
+                <p>Professional water extraction, drying, and structural restoration to prevent further damage.</p>
+            </div>
+            <div class="service-card">
+                <h3>Mold Remediation</h3>
+                <p>Certified mold testing, containment, and removal ensuring a healthy indoor environment.</p>
+            </div>
+            <div class="service-card">
+                <h3>Fire & Smoke Cleanup</h3>
+                <p>Comprehensive fire damage restoration including smoke removal and odor control.</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- ==========================
-       CONTACT FORM
-  =========================== -->
-  <section id="contact" class="contact">
-    <h2>Schedule an Inspection</h2>
-    <p>Fill out the form below and our team will contact you shortly.</p>
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Spero Restoration Corp — Licensed & Insured.</p>
+        <p><a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a></p>
+        <p>Orlando, FL | <a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a></p>
+    </footer>
 
-    <form action="/send_email" method="POST" class="contact-form">
-      <input type="text" name="name" placeholder="Full Name" required />
-      <input type="email" name="email" placeholder="Email Address" required />
-      <input type="text" name="phone" placeholder="Phone Number" required />
-      <input type="text" name="location" placeholder="City / Area" required />
-      <textarea name="message" placeholder="Describe your restoration needs..." required></textarea>
-      <button type="submit" class="cta-btn">Send Request</button>
-    </form>
-  </section>
-
-  <!-- ==========================
-       FOOTER
-  =========================== -->
-  <footer>
-    <div class="footer-content">
-      <p>&copy; 2025 Spero Restoration Corp | Orlando, FL</p>
-      <p>
-        <a href="{{ url_for('privacy_policy') }}">Privacy Policy</a> |
-        <a href="{{ url_for('terms_of_service') }}">Terms of Service</a>
-      </p>
-      <p>Call us: <a href="tel:+14077246310">407-724-6310</a> | Email: <a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a></p>
-    </div>
-  </footer>
 </body>
 </html>
