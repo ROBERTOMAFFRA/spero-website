@@ -3,101 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Spero Restoration Corp - Orlando FL | Experts in water, mold, and fire damage restoration. Licensed and insured professionals serving Central Florida.">
-  <meta name="keywords" content="restoration, water damage, mold remediation, remodeling, Orlando FL, Windermere, Clermont, Lake Nona, Spero Restoration">
-  <meta name="author" content="Spero Restoration Corp">
-  <meta property="og:title" content="Spero Restoration Corp | Orlando FL">
-  <meta property="og:description" content="Restoring Homes. Rebuilding Trust. Experts in water damage, mold remediation, and remodeling across Central Florida.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://spero-restoration.com/">
-  <meta property="og:image" content="{{ url_for('static', filename='banner.jpg') }}">
-  <title>Spero Restoration Corp | Orlando FL</title>
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+  <title>Spero Restoration Corp | Water, Fire, Mold, Remodeling Experts in Orlando</title>
+  <meta name="description" content="Spero Restoration provides professional water damage, fire restoration, mold remediation, and remodeling services in Orlando, FL. Licensed and insured experts ready 24/7.">
+  <meta name="keywords" content="water damage, fire restoration, mold remediation, remodeling, Orlando, Spero Restoration">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}">
 </head>
-<body>
 
-  <!-- HEADER -->
-  <header>
-    <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo" class="logo">
-    <nav class="navbar">
-      <ul>
-        <li><a href="/" class="active">Home</a></li>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <h1>Restoring Homes. Rebuilding Trust.</h1>
+<body>
+  <header class="hero">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo" class="logo">
+    <h1>Restoration Experts in Orlando, FL</h1>
+    <p>Water, Fire, Mold, and Remodeling Services for Homes and Businesses</p>
+    <a href="#contact" class="cta-button">Schedule an Inspection</a>
   </header>
 
-  <!-- HERO / BANNER -->
-  <section class="hero">
-    <h1>Spero Restoration Corp</h1>
-    <p>Water, Mold & Fire Damage Experts — Serving Orlando, Clermont, Windermere & Surroundings</p>
-    <a href="#contact" class="cta-button">📅 Schedule an Inspection</a>
+  <section class="services">
+    <h2>Our Services</h2>
+    <ul>
+      <li><b>Water Damage Restoration</b> — Dry and repair areas affected by leaks or flooding.</li>
+      <li><b>Fire & Smoke Restoration</b> — Remove soot, odor, and rebuild damaged structures.</li>
+      <li><b>Mold Remediation</b> — Identify and eliminate mold safely and effectively.</li>
+      <li><b>Remodeling</b> — Transform your property with professional craftsmanship.</li>
+    </ul>
   </section>
 
-  <!-- SERVICES -->
-  <section id="services" class="about">
-    <div class="container">
-      <h2>Our Services</h2>
-      <p>
-        At <strong>Spero Restoration Corp</strong>, we specialize in comprehensive restoration and remodeling solutions. 
-        Whether your home suffered water damage, mold growth, or structural deterioration — our experts restore it safely and efficiently.
-      </p>
-
-      <h3>Our Main Services</h3>
-      <ul>
-        <li>💧 Water Damage Mitigation & Drying</li>
-        <li>🌿 Mold Remediation & Prevention</li>
-        <li>🔥 Fire & Smoke Restoration</li>
-        <li>🧱 Drywall, Painting & Remodeling</li>
-        <li>🏠 Property Inspections & Repairs</li>
-      </ul>
-
-      <p>We proudly serve <strong>Orlando, Clermont, Windermere, Winter Garden, Lake Nona</strong> and the surrounding areas.</p>
-    </div>
+  <section id="contact" class="contact">
+    <h2>Schedule an Inspection</h2>
+    <form action="/send" method="post">
+      <label>Full Name*</label>
+      <input type="text" name="name" required>
+      <label>Email*</label>
+      <input type="email" name="email" required>
+      <label>Phone*</label>
+      <input type="tel" name="phone" required>
+      <label>Description</label>
+      <textarea name="description"></textarea>
+      <button type="submit">Send Request</button>
+    </form>
   </section>
 
-  <!-- CONTACT FORM -->
-  <section id="contact" class="about">
-    <div class="container">
-      <h2>Schedule an Inspection</h2>
-      <p>Complete the form below and our specialists will contact you shortly.</p>
-
-      <form action="/send" method="POST">
-        <label for="name">Full Name *</label>
-        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-
-        <label for="email">Email *</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email" required>
-
-        <label for="phone">Phone *</label>
-        <input type="tel" id="phone" name="phone" placeholder="(407) 724-6310" required>
-
-        <label for="message">Describe Your Project *</label>
-        <textarea id="message" name="message" rows="4" placeholder="Briefly describe your issue or service needed" required></textarea>
-
-        <button type="submit">Send Request</button>
-      </form>
-
-      <p>📧 Email: <a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a><br>
-         📞 Phone: (407) 724-6310<br>
-         📍 Location: Orlando, FL
-      </p>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 Spero Restoration Corp — Licensed & Insured.</p>
     <p>
-      <a href="/about">About Us</a> | 
-      <a href="/privacy">Privacy Policy</a> | 
-      <a href="/terms">Terms of Service</a>
+      © 2025 Spero Restoration Corp — Licensed & Insured.<br>
+      <a href="/about-us">About Us</a> |
+      <a href="/privacy-policy">Privacy Policy</a> |
+      <a href="/terms-of-service">Terms of Service</a>
     </p>
   </footer>
-
 </body>
 </html>
