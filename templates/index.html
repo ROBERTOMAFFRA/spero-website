@@ -9,7 +9,7 @@
   <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" sizes="32x32" type="image/x-icon">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-  <!-- Open Graph for SEO -->
+  <!-- SEO -->
   <meta property="og:title" content="Spero Restoration Corp — Orlando">
   <meta property="og:description" content="Restoration & Remodeling Experts in Central Florida — Water, Fire & Mold Specialists.">
   <meta property="og:image" content="{{ url_for('static', filename='images/banner.png') }}">
@@ -40,23 +40,17 @@
   </nav>
 </header>
 
-<!-- HERO SECTION -->
-<section class="hero"
-  style="
-    position:relative;
-    background-image:url('{{ url_for('static', filename='images/banner.png') }}');
-    background-size:cover;
-    background-position:center center;
-    background-repeat:no-repeat;
-  ">
-  <div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
     <h1>Restoration & Remodeling Experts</h1>
     <p>We restore homes and businesses across Central Florida — water, fire, and mold specialists.</p>
     <a href="#contact" class="btn btn-primary">Schedule Inspection</a>
   </div>
 </section>
 
-<!-- SERVICES SECTION -->
+<!-- SERVICES -->
 <section class="section services">
   <div class="container">
     <h2>Our Services</h2>
@@ -81,8 +75,8 @@
   </div>
 </section>
 
-<!-- CONTACT FORM -->
-<section id="contact" class="section">
+<!-- CONTACT -->
+<section id="contact" class="section contact">
   <div class="container">
     <h2 class="center">Request an Inspection</h2>
     <form class="form" method="post" action="{{ url_for('send_email') }}">
