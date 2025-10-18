@@ -1,0 +1,43 @@
+{
+  "meta_title": "Spero Restoration Corp | Expert Restoration in Central Florida",
+  "meta_description": "Professional restoration and remodeling company serving Orlando, Clermont, and Windermere. Water, fire, and mold restoration with guaranteed results.",
+
+  "nav_home": "Home",
+  "nav_about": "About Us",
+  "nav_services": "Services",
+  "nav_contact": "Contact",
+  "privacy": "Privacy Policy",
+  "terms": "Terms of Use",
+
+  "hero_title": "Restoration & Remodeling Experts",
+  "hero_subtitle": "We restore homes and businesses across Central Florida — water, fire, and mold specialists.",
+  "cta_schedule": "Schedule Inspection",
+
+  "services_title": "Our Services",
+  "services_intro": "We offer complete restoration, remodeling, and renovation services for homes and businesses.",
+  "service1": "Water Damage Restoration",
+  "service2": "Fire & Smoke Damage",
+  "service3": "Mold Remediation",
+  "service4": "Home Remodeling",
+  "service5": "Flooring Installation",
+  "service6": "Interior & Exterior Painting",
+
+  "about_title": "About Spero Restoration",
+  "about_heading": "Who We Are",
+  "about_description": "Spero Restoration Corp is a locally owned company specializing in restoration and remodeling in Central Florida. Our experienced team provides fast, reliable, and high-quality solutions to restore your property after damage.",
+
+  "contact_heading": "Schedule Your Inspection",
+  "contact_name": "Name",
+  "contact_email": "Email",
+  "contact_phone": "Phone",
+  "contact_service": "Select Service",
+  "contact_message": "Describe your project or issue",
+  "cta_send": "Send Message",
+
+  "thank_you": "Thank You!",
+  "thank_message": "Your message has been sent. Our team will contact you soon.",
+  "back_home": "Return to Home",
+
+  "privacy_text": "We collect your data only to contact you regarding your service request. Your information will never be shared with third parties.",
+  "terms_text": "By using our website, you agree to our terms of service regarding contact forms, service estimates, and general communications."
+}
