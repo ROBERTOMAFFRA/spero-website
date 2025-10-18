@@ -4,28 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Spero Restoration Corp — Orlando</title>
-
-  <meta name="description" content="Spero Restoration Corp — Orlando-based experts in Water Damage, Mold Remediation, Fire Repair, and Home Remodeling. Serving Clermont, Windermere, Lake Nona, and all Central Florida.">
-  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" sizes="32x32" type="image/x-icon">
+  <meta name="description" content="Spero Restoration Corp — Orlando-based experts in Water Damage, Mold Remediation, Fire Repair, and Home Remodeling.">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}">
-
-  <!-- SEO -->
-  <meta property="og:title" content="Spero Restoration Corp — Orlando">
-  <meta property="og:description" content="Restoration & Remodeling Experts in Central Florida — Water, Fire & Mold Specialists.">
-  <meta property="og:image" content="{{ url_for('static', filename='images/banner.png') }}">
-  <meta property="og:type" content="website">
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <nav class="nav">
     <div class="left">
       <a href="{{ url_for('index') }}">
-        <img class="logo"
-             src="{{ url_for('static', filename='images/logo.png') }}"
-             alt="Spero Restoration Logo"
-             width="160" height="40">
+        <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo" width="160" height="40">
       </a>
       <ul>
         <li><a href="{{ url_for('index') }}">Home</a></li>
@@ -40,7 +29,6 @@
   </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -50,54 +38,30 @@
   </div>
 </section>
 
-<!-- SERVICES -->
 <section class="section services">
   <div class="container">
     <h2>Our Services</h2>
     <div class="grid mt-2">
-      <article class="card">
-        <h3>Water Damage Restoration</h3>
-        <p>Mitigation, drying, dehumidification, and structural repairs.</p>
-      </article>
-      <article class="card">
-        <h3>Mold Remediation</h3>
-        <p>Inspection, containment, removal, and prevention.</p>
-      </article>
-      <article class="card">
-        <h3>Fire & Smoke Repair</h3>
-        <p>Cleanup, odor removal, and reconstruction.</p>
-      </article>
-      <article class="card">
-        <h3>Home Remodeling</h3>
-        <p>Kitchens, bathrooms, flooring, and full renovations.</p>
-      </article>
+      <article class="card"><h3>Water Damage Restoration</h3><p>Mitigation, drying, and repairs.</p></article>
+      <article class="card"><h3>Mold Remediation</h3><p>Inspection, containment, and prevention.</p></article>
+      <article class="card"><h3>Fire & Smoke Repair</h3><p>Cleanup, odor removal, and reconstruction.</p></article>
+      <article class="card"><h3>Home Remodeling</h3><p>Kitchens, bathrooms, and flooring.</p></article>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="section contact">
   <div class="container">
     <h2 class="center">Request an Inspection</h2>
     <form class="form" method="post" action="{{ url_for('send_email') }}">
       <div class="row">
-        <div>
-          <label for="name">Name</label>
-          <input id="name" name="name" required>
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required>
-        </div>
+        <div><label>Name</label><input name="name" required></div>
+        <div><label>Email</label><input type="email" name="email" required></div>
       </div>
       <div class="row">
-        <div>
-          <label for="phone">Phone</label>
-          <input id="phone" name="phone">
-        </div>
-        <div>
-          <label for="service">Service</label>
-          <select id="service" name="service">
+        <div><label>Phone</label><input name="phone"></div>
+        <div><label>Service</label>
+          <select name="service">
             <option>Water Damage</option>
             <option>Mold Remediation</option>
             <option>Fire & Smoke</option>
@@ -106,29 +70,23 @@
         </div>
       </div>
       <div class="mt-2">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="Tell us briefly what happened..."></textarea>
+        <label>Message</label>
+        <textarea name="message" placeholder="Tell us briefly what happened..."></textarea>
       </div>
       <div class="actions">
-        <button class="btn btn-primary" type="submit">Send</button>
-        <small>We usually reply within a few minutes.</small>
+        <button class="btn btn-primary">Send</button>
       </div>
     </form>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="wrap">
-    <div>
-      <strong>Spero Restoration Corp</strong><br>
-      Orlando, FL • (407) XXX-XXXX • contact@spero-restoration.com
-    </div>
-    <small>
-      © 2025 Spero Restoration Corp — Orlando, FL |
-      <a href="{{ url_for('privacy') }}">Privacy Policy</a> |
-      <a href="{{ url_for('terms') }}">Terms of Use</a>
-    </small>
+    <strong>Spero Restoration Corp</strong><br>
+    Orlando, FL • (407) XXX-XXXX • contact@spero-restoration.com<br>
+    © 2025 Spero Restoration Corp — Orlando, FL |
+    <a href="{{ url_for('privacy') }}">Privacy Policy</a> |
+    <a href="{{ url_for('terms') }}">Terms of Use</a>
   </div>
 </footer>
 
