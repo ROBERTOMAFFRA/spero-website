@@ -4,54 +4,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>About Us — Spero Restoration Corp</title>
-  <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" sizes="32x32" type="image/png">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta name="description" content="Learn about Spero Restoration Corp — a trusted restoration and remodeling company serving Orlando and Central Florida.">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}">
 </head>
 <body>
-
-<!-- HEADER -->
 <header class="header">
   <nav class="nav">
-    <div class="left">
-      <a href="{{ url_for('index') }}">
-        <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo" width="160" height="40">
-      </a>
-      <ul>
-        <li><a href="{{ url_for('index') }}">Home</a></li>
-        <li><a href="{{ url_for('about') }}">About Us</a></li>
-        <li><a href="{{ url_for('services') }}">Services</a></li>
-        <li><a href="{{ url_for('index') }}#contact">Contact</a></li>
-      </ul>
-    </div>
-    <div class="lang">
-      <a href="?lang=en">EN</a> | <a href="?lang=es">ES</a> | <a href="?lang=pt">PT</a>
-    </div>
+    <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" width="150"></a>
   </nav>
 </header>
 
-<main class="section">
+<section class="section">
   <div class="container">
-    <h1 class="mt-0">About Spero Restoration</h1>
-    <p>We are restoration and remodeling specialists serving Central Florida: Orlando, Clermont, Windermere, Lake Nona, and Winter Garden.</p>
-    <p>Our team is certified and equipped for water, fire, and mold mitigation, combining rapid response with high-quality reconstruction.</p>
-
-    <h2>Why Choose Us</h2>
-    <ul>
-      <li>24/7 emergency response</li>
-      <li>Licensed & insured technicians</li>
-      <li>Moisture mapping, drying, dehumidification</li>
-      <li>Direct assistance with insurance claims</li>
-    </ul>
+    <h1>About Spero Restoration Corp</h1>
+    <p>We are a Florida-based company specializing in property restoration and remodeling after water, fire, and mold damage. Our mission is to restore your home or business quickly, safely, and beautifully.</p>
+    <p>With years of experience, modern equipment, and a dedicated team, Spero Restoration Corp ensures quality craftsmanship and honest service in every project.</p>
   </div>
-</main>
+</section>
 
-<!-- FOOTER -->
 <footer class="footer">
-  <div class="wrap">
-    <div><strong>Spero Restoration Corp</strong><br>Orlando, FL • (407) XXX-XXXX • contact@spero-restoration.com</div>
-    <small>© 2025 Spero Restoration Corp — Orlando, FL | <a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Use</a></small>
-  </div>
+  <p>© 2025 Spero Restoration Corp</p>
 </footer>
-
 </body>
 </html>
