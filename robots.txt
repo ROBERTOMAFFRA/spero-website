@@ -1,10 +1,8 @@
-# =========================================
-# Spero Restoration - Robots.txt
-# =========================================
-
 User-agent: *
 Allow: /
+
+Disallow: /admin/
+Disallow: /login/
 Disallow: /static/
-Disallow: /templates/
 
 Sitemap: https://spero-restoration.com/sitemap.xml
