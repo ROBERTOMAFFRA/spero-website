@@ -1,173 +1,246 @@
-/* General reset */
+/* === General Reset === */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    color: #333;
-    background-color: #fff;
-    line-height: 1.6;
+  font-family: 'Inter', Arial, sans-serif;
+  color: #0a2540;
+  background-color: #ffffff;
+  line-height: 1.6;
 }
 
-/* Header */
+/* === Header === */
 header {
-    background: rgba(255, 255, 255, 0.95);
-    width: 100%;
-    padding: 10px 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa;
+  padding: 15px 0;
+  border-bottom: 2px solid #e0e0e0;
 }
 
 .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
 }
 
 .logo {
-    height: 55px;
+  height: 60px;
 }
 
-/* Navigation */
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 25px;
+/* === Navigation === */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
 }
 
-.nav-links a {
-    text-decoration: none;
-    color: #0e2a3a;
-    font-weight: bold;
-    transition: color 0.3s ease;
+nav ul li a {
+  text-decoration: none;
+  color: #0a2540;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
-    color: #0077cc;
+nav ul li a:hover {
+  color: #0056b3;
 }
 
-/* Hero Section */
-.hero-section {
-    height: 100vh;
-    background: url('../banner.png') no-repeat center center/cover;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* === Language Selector === */
+.language-selector {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.language-selector a {
+  color: #0a2540;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+.language-selector a:hover {
+  text-decoration: underline;
+}
+
+/* === Hero / Banner === */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 65vh;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .hero-overlay {
-    background: rgba(0, 0, 0, 0.45);
-    position: absolute;
-    width: 100%;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
 }
 
-.hero-content {
-    position: relative;
-    color: #fff;
-    text-align: center;
-    z-index: 1;
+.hero-overlay h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-weight: 700;
 }
 
-.hero-content h1 {
-    font-size: 2.8rem;
-    margin-bottom: 15px;
+.hero-overlay p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
 }
 
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 25px;
+.cta-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
-.btn-primary {
-    background-color: #0077cc;
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s ease;
+.cta-btn:hover {
+  background-color: #0056b3;
 }
 
-.btn-primary:hover {
-    background-color: #005fa3;
+/* === Services Section === */
+.services-intro, .services-section {
+  width: 90%;
+  max-width: 1200px;
+  margin: 60px auto;
+  text-align: center;
 }
 
-/* Services Section */
-.services {
-    padding: 80px 20px;
-    text-align: center;
-    background-color: #f9f9f9;
-}
-
-.services h2 {
-    font-size: 2rem;
-    margin-bottom: 40px;
-}
-
-.services-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 25px;
 }
 
 .service-card {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 25px;
-    width: 300px;
-    transition: transform 0.3s ease;
+  border: 1px solid #e0e0e0;
+  padding: 25px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  transition: transform 0.3s ease;
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 
-/* Footer */
+/* === Contact Form === */
+.contact-section {
+  width: 90%;
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.contact-form label {
+  font-weight: bold;
+  color: #0a2540;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.contact-form button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* === Thank You Page === */
+.thankyou-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+  background-color: #f8f9fa;
+}
+
+.thank-logo {
+  height: 90px;
+  margin-bottom: 20px;
+}
+
+/* === Footer === */
 footer {
-    background-color: #0e2a3a;
-    color: #fff;
-    text-align: center;
-    padding: 30px 10px;
+  background-color: #0a2540;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  margin-top: 50px;
 }
 
 footer a {
-    color: #66c2ff;
-    text-decoration: none;
+  color: #9fc3ff;
+  text-decoration: none;
 }
 
 footer a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-/* Responsive */
+/* === Responsive === */
 @media (max-width: 768px) {
-    .nav-links {
-        flex-direction: column;
-        gap: 10px;
-    }
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
 
-    .hero-content h1 {
-        font-size: 2rem;
-    }
+  .language-selector {
+    position: static;
+    margin-top: 10px;
+  }
 
-    .hero-content p {
-        font-size: 1rem;
-    }
+  .hero-overlay h1 {
+    font-size: 1.8rem;
+  }
 
-    .service-card {
-        width: 90%;
-    }
+  .hero-overlay p {
+    font-size: 1rem;
+  }
 }
