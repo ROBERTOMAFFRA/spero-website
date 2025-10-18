@@ -4,33 +4,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us | Spero Restoration Corp</title>
-  <meta name="description" content="Learn more about Spero Restoration Corp — your trusted restoration experts serving Orlando, Clermont, and surrounding areas.">
+  <meta name="description" content="Learn more about Spero Restoration Corp — trusted restoration and remodeling professionals serving Orlando and Central Florida.">
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <header class="header">
-    <h1>About Spero Restoration Corp</h1>
+
+  <!-- HEADER -->
+  <header>
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo" class="logo">
+    <nav class="navbar">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about" class="active">About Us</a></li>
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <section class="about-content">
-    <p>
-      Spero Restoration Corp is a locally owned restoration and remodeling company proudly serving
-      <strong>Orlando, Clermont, Windermere, Lake Nona, and surrounding areas</strong>.
-    </p>
+  <!-- ABOUT SECTION -->
+  <section class="about">
+    <div class="container">
+      <h1>About Spero Restoration Corp</h1>
+      <p>
+        <strong>Spero Restoration Corp</strong> is a locally owned and operated restoration and remodeling company based in <strong>Orlando, Florida</strong>.  
+        Our mission is simple: to help families and property owners recover from water, mold, and fire damage with honesty, efficiency, and care.
+      </p>
 
-    <p>
-      Our mission is to restore homes and businesses after water, mold, or storm damage — with professionalism,
-      honesty, and quality workmanship. We combine years of experience with modern technology to ensure every project is completed safely and efficiently.
-    </p>
+      <p>
+        We take pride in delivering restoration services that not only repair but **restore confidence and comfort** in your home.  
+        Every project is handled with precision, transparency, and the highest industry standards.
+      </p>
 
-    <p>
-      Whether you need emergency mitigation or complete remodeling, Spero Restoration Corp is here to bring your property back to life.
-    </p>
+      <h2>Why Choose Us</h2>
+      <ul>
+        <li>✅ Licensed & insured professionals</li>
+        <li>✅ Fast emergency response — 24/7 availability</li>
+        <li>✅ Certified in water and mold remediation</li>
+        <li>✅ Serving Orlando, Clermont, Windermere, Lake Nona & surroundings</li>
+        <li>✅ Family-owned with a customer-first philosophy</li>
+      </ul>
 
-    <p>
-      <a href="/">⬅️ Return to Home</a>
-    </p>
+      <h2>Our Values</h2>
+      <p>
+        Integrity, transparency, and quality craftsmanship define every service we deliver.  
+        We understand how stressful property damage can be — and that’s why our team focuses on **clear communication, fair pricing, and lasting solutions**.
+      </p>
+
+      <h2>Our Mission</h2>
+      <p>
+        To restore homes and commercial spaces with unmatched professionalism, helping clients return to safe, beautiful, and functional environments.
+      </p>
+
+      <a href="/#contact" class="cta-button">📅 Schedule Your Inspection</a>
+    </div>
   </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Spero Restoration Corp — Orlando, FL.</p>
+    <p>
+      <a href="/">Home</a> | 
+      <a href="/privacy">Privacy Policy</a> | 
+      <a href="/terms">Terms of Service</a>
+    </p>
+  </footer>
+
 </body>
 </html>
