@@ -1,24 +1,55 @@
-<!DOCTYPE html>
-<html lang="{{ lang }}">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>{{ t.privacy }}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Privacy Policy — Spero Restoration Corp</title>
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" sizes="32x32" type="image/png">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <header>
-    <div class="header-container">
-      <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+
+<header class="header">
+  <nav class="nav">
+    <div class="left">
+      <a href="{{ url_for('index') }}">
+        <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo" width="160" height="40">
+      </a>
+      <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About Us</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('index') }}#contact">Contact</a></li>
+      </ul>
     </div>
-  </header>
+    <div class="lang">
+      <a href="?lang=en">EN</a> | <a href="?lang=es">ES</a> | <a href="?lang=pt">PT</a>
+    </div>
+  </nav>
+</header>
 
-  <section class="services-intro">
-    <h2>{{ t.privacy }}</h2>
-    <p>{{ t.privacy_text }}</p>
-  </section>
+<main class="section">
+  <div class="container">
+    <h1 class="mt-0">Privacy Policy</h1>
+    <p><small>Last updated: {{ privacy_updated or 'October 2025' }}</small></p>
 
-  <footer>
-    <p>&copy; 2025 Spero Restoration Corp</p>
-  </footer>
+    <h2>Information We Collect</h2>
+    <p>We collect contact details you submit via our forms (name, email, phone) and service details to provide estimates and support.</p>
+
+    <h2>Use of Information</h2>
+    <p>We use your information to respond to inquiries, provide services, and improve our website. We do not sell personal information.</p>
+
+    <h2>Contact</h2>
+    <p>For privacy questions or data requests, email us at contact@spero-restoration.com.</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div><strong>Spero Restoration Corp</strong><br>Orlando, FL • (407) XXX-XXXX • contact@spero-restoration.com</div>
+    <small>© 2025 Spero Restoration Corp — Orlando, FL | <a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Use</a></small>
+  </div>
+</footer>
+
 </body>
 </html>
