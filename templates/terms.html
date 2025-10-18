@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ t.terms }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+    </div>
+  </header>
+
+  <section class="services-intro">
+    <h2>{{ t.terms }}</h2>
+    <p>{{ t.terms_text }}</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Spero Restoration Corp</p>
+  </footer>
+</body>
+</html>
