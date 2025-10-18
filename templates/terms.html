@@ -4,49 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Terms of Use — Spero Restoration Corp</title>
-  <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" sizes="32x32" type="image/png">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta name="description" content="Read the terms and conditions for using Spero Restoration Corp’s website and services.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}">
 </head>
 <body>
+<header class="header"><nav class="nav"><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" width="150"></a></nav></header>
 
-<header class="header">
-  <nav class="nav">
-    <div class="left">
-      <a href="{{ url_for('index') }}">
-        <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo" width="160" height="40">
-      </a>
-      <ul>
-        <li><a href="{{ url_for('index') }}">Home</a></li>
-        <li><a href="{{ url_for('about') }}">About Us</a></li>
-        <li><a href="{{ url_for('services') }}">Services</a></li>
-        <li><a href="{{ url_for('index') }}#contact">Contact</a></li>
-      </ul>
-    </div>
-    <div class="lang">
-      <a href="?lang=en">EN</a> | <a href="?lang=es">ES</a> | <a href="?lang=pt">PT</a>
-    </div>
-  </nav>
-</header>
-
-<main class="section">
+<section class="section">
   <div class="container">
-    <h1 class="mt-0">Terms of Use</h1>
-    <p>By using this website, you agree to our terms. Services are provided subject to availability, local regulations, and individual project scopes.</p>
-
-    <h2>Liability</h2>
-    <p>We aim for accurate information but do not warrant completeness. Work orders and estimates define scope, materials, and timelines.</p>
-
-    <h2>Contact</h2>
-    <p>Questions? Email contact@spero-restoration.com.</p>
+    <h1>Terms of Use</h1>
+    <p>By accessing this website, you agree to comply with Spero Restoration Corp’s terms and conditions. All content is the property of Spero Restoration Corp and may not be reproduced without permission.</p>
   </div>
-</main>
+</section>
 
-<footer class="footer">
-  <div class="wrap">
-    <div><strong>Spero Restoration Corp</strong><br>Orlando, FL • (407) XXX-XXXX • contact@spero-restoration.com</div>
-    <small>© 2025 Spero Restoration Corp — Orlando, FL | <a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Use</a></small>
-  </div>
-</footer>
-
+<footer class="footer"><p>© 2025 Spero Restoration Corp</p></footer>
 </body>
 </html>
