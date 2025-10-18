@@ -1,31 +1,57 @@
-<!DOCTYPE html>
-<html lang="{{ lang }}">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>{{ t.about_title }}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>About Us — Spero Restoration Corp</title>
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" sizes="32x32" type="image/png">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <header>
-    <div class="header-container">
-      <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
-      <nav>
-        <ul>
-          <li><a href="{{ url_for('home', lang=lang) }}">{{ t.nav_home }}</a></li>
-          <li><a href="{{ url_for('services', lang=lang) }}">{{ t.nav_services }}</a></li>
-          <li><a href="{{ url_for('contact', lang=lang) }}">{{ t.nav_contact }}</a></li>
-        </ul>
-      </nav>
+
+<!-- HEADER -->
+<header class="header">
+  <nav class="nav">
+    <div class="left">
+      <a href="{{ url_for('index') }}">
+        <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo" width="160" height="40">
+      </a>
+      <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About Us</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('index') }}#contact">Contact</a></li>
+      </ul>
     </div>
-  </header>
+    <div class="lang">
+      <a href="?lang=en">EN</a> | <a href="?lang=es">ES</a> | <a href="?lang=pt">PT</a>
+    </div>
+  </nav>
+</header>
 
-  <section class="services-intro">
-    <h2>{{ t.about_heading }}</h2>
-    <p>{{ t.about_description }}</p>
-  </section>
+<main class="section">
+  <div class="container">
+    <h1 class="mt-0">About Spero Restoration</h1>
+    <p>We are restoration and remodeling specialists serving Central Florida: Orlando, Clermont, Windermere, Lake Nona, and Winter Garden.</p>
+    <p>Our team is certified and equipped for water, fire, and mold mitigation, combining rapid response with high-quality reconstruction.</p>
 
-  <footer>
-    <p>&copy; 2025 Spero Restoration Corp — Orlando, FL</p>
-  </footer>
+    <h2>Why Choose Us</h2>
+    <ul>
+      <li>24/7 emergency response</li>
+      <li>Licensed & insured technicians</li>
+      <li>Moisture mapping, drying, dehumidification</li>
+      <li>Direct assistance with insurance claims</li>
+    </ul>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div><strong>Spero Restoration Corp</strong><br>Orlando, FL • (407) XXX-XXXX • contact@spero-restoration.com</div>
+    <small>© 2025 Spero Restoration Corp — Orlando, FL | <a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Use</a></small>
+  </div>
+</footer>
+
 </body>
 </html>
