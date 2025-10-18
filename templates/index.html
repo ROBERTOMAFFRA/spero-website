@@ -1,71 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ lang }}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spero Restoration Corp | Water, Mold & Remodeling Experts</title>
-
-    <!-- SEO Meta -->
-    <meta name="description" content="Spero Restoration Corp offers professional water damage restoration, mold remediation, and remodeling services in Orlando, FL. Licensed & Insured.">
-    <meta name="keywords" content="Water Damage, Mold Remediation, Restoration, Remodeling, Orlando, Spero Restoration">
-    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ t.meta_description }}">
+  <meta name="keywords" content="Restoration, Water Damage, Fire Damage, Mold Remediation, Remodeling, Flooring, Painting, Orlando, Clermont, Windermere, Lake Nona, Winter Garden, Florida">
+  <meta name="robots" content="index, follow">
+  <title>{{ t.meta_title }}</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
+  <header>
+    <div class="header-container">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo" class="logo">
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('home', lang=lang) }}">{{ t.nav_home }}</a></li>
+          <li><a href="{{ url_for('about', lang=lang) }}">{{ t.nav_about }}</a></li>
+          <li><a href="{{ url_for('services', lang=lang) }}">{{ t.nav_services }}</a></li>
+          <li><a href="{{ url_for('contact', lang=lang) }}">{{ t.nav_contact }}</a></li>
+        </ul>
+      </nav>
+      <div class="language-selector">
+        <a href="?lang=en">EN</a> | 
+        <a href="?lang=es">ES</a> | 
+        <a href="?lang=pt">PT</a>
+      </div>
+    </div>
+  </header>
 
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo" class="logo">
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/services">Services</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <section class="hero">
+    <img src="{{ url_for('static', filename='images/banner.png') }}" alt="Restoration Project" class="hero-image">
+    <div class="hero-overlay">
+      <h1>{{ t.hero_title }}</h1>
+      <p>{{ t.hero_subtitle }}</p>
+      <a href="{{ url_for('contact', lang=lang) }}" class="cta-btn">{{ t.cta_schedule }}</a>
+    </div>
+  </section>
 
-    <!-- Hero / Banner Section -->
-    <section class="hero-section">
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <h1>Restoring Homes, Rebuilding Trust</h1>
-                <p>Expert Water, Fire, and Mold Restoration in Orlando and Central Florida.</p>
-                <a href="/contact" class="btn-primary">Schedule Inspection</a>
-            </div>
-        </div>
-    </section>
+  <section class="services-intro">
+    <h2>{{ t.services_title }}</h2>
+    <p>{{ t.services_intro }}</p>
+  </section>
 
-    <!-- Services -->
-    <section class="services">
-        <h2>Our Services</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Water Damage</h3>
-                <p>Professional water extraction, drying, and structural restoration to prevent further damage.</p>
-            </div>
-            <div class="service-card">
-                <h3>Mold Remediation</h3>
-                <p>Certified mold testing, containment, and removal ensuring a healthy indoor environment.</p>
-            </div>
-            <div class="service-card">
-                <h3>Fire & Smoke Cleanup</h3>
-                <p>Comprehensive fire damage restoration including smoke removal and odor control.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2025 Spero Restoration Corp — Licensed & Insured.</p>
-        <p><a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a></p>
-        <p>Orlando, FL | <a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a></p>
-    </footer>
-
+  <footer>
+    <p>&copy; 2025 Spero Restoration Corp — Orlando, FL |
+      <a href="{{ url_for('privacy', lang=lang) }}">{{ t.privacy }}</a> |
+      <a href="{{ url_for('terms', lang=lang) }}">{{ t.terms }}</a>
+    </p>
+  </footer>
 </body>
 </html>
