@@ -1,55 +1,128 @@
-<!DOCTYPE html>
-<html lang="{{ lang }}">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{ t.meta_description }}">
-  <meta name="keywords" content="Restoration, Water Damage, Fire Damage, Mold Remediation, Remodeling, Flooring, Painting, Orlando, Clermont, Windermere, Lake Nona, Winter Garden, Florida">
-  <meta name="robots" content="index, follow">
-  <title>{{ t.meta_title }}</title>
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Spero Restoration Corp — Orlando</title>
+
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" sizes="32x32" type="image/png">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
-  <header>
-    <div class="header-container">
-      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo" class="logo">
-      <nav>
-        <ul>
-          <li><a href="{{ url_for('home', lang=lang) }}">{{ t.nav_home }}</a></li>
-          <li><a href="{{ url_for('about', lang=lang) }}">{{ t.nav_about }}</a></li>
-          <li><a href="{{ url_for('services', lang=lang) }}">{{ t.nav_services }}</a></li>
-          <li><a href="{{ url_for('contact', lang=lang) }}">{{ t.nav_contact }}</a></li>
-        </ul>
-      </nav>
-      <div class="language-selector">
-        <a href="?lang=en">EN</a> | 
-        <a href="?lang=es">ES</a> | 
-        <a href="?lang=pt">PT</a>
+
+<!-- HEADER -->
+<header class="header">
+  <nav class="nav">
+    <div class="left">
+      <a href="{{ url_for('index') }}">
+        <img class="logo"
+             src="{{ url_for('static', filename='images/logo.png') }}"
+             alt="Spero Restoration Logo"
+             width="160" height="40">
+      </a>
+      <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About Us</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="lang">
+      <a href="?lang=en">EN</a> | <a href="?lang=es">ES</a> | <a href="?lang=pt">PT</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" style="background:url('{{ url_for('static', filename='images/banner.png') }}') center/cover no-repeat;">
+  <div>
+    <h1>Restoration & Remodeling Experts</h1>
+    <p>We restore homes and businesses across Central Florida — water, fire, and mold specialists.</p>
+    <a href="#contact" class="btn btn-primary">Schedule Inspection</a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services">
+  <div class="container">
+    <h2>Our Services</h2>
+    <div class="grid mt-2">
+      <article class="card">
+        <h3>Water Damage Restoration</h3>
+        <p>Mitigation, drying, dehumidification, and structural repairs.</p>
+      </article>
+      <article class="card">
+        <h3>Mold Remediation</h3>
+        <p>Inspection, containment, removal, and prevention.</p>
+      </article>
+      <article class="card">
+        <h3>Fire & Smoke Repair</h3>
+        <p>Cleanup, odor removal, and reconstruction.</p>
+      </article>
+      <article class="card">
+        <h3>Home Remodeling</h3>
+        <p>Kitchens, bathrooms, flooring, and full renovations.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container">
+    <h2 class="center">Request an Inspection</h2>
+    <form class="form" method="post" action="{{ url_for('send_email') }}">
+      <div class="row">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" name="name" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required>
+        </div>
       </div>
+      <div class="row">
+        <div>
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone">
+        </div>
+        <div>
+          <label for="service">Service</label>
+          <select id="service" name="service">
+            <option>Water Damage</option>
+            <option>Mold Remediation</option>
+            <option>Fire & Smoke</option>
+            <option>Remodeling</option>
+          </select>
+        </div>
+      </div>
+      <div class="mt-2">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Tell us briefly what happened..."></textarea>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" type="submit">Send</button>
+        <small>We usually reply within a few minutes.</small>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div>
+      <strong>Spero Restoration Corp</strong><br>
+      Orlando, FL • (407) XXX-XXXX • contact@spero-restoration.com
     </div>
-  </header>
+    <small>
+      © 2025 Spero Restoration Corp — Orlando, FL |
+      <a href="{{ url_for('privacy') }}">Privacy Policy</a> |
+      <a href="{{ url_for('terms') }}">Terms of Use</a>
+    </small>
+  </div>
+</footer>
 
-  <section class="hero">
-    <img src="{{ url_for('static', filename='images/banner.png') }}" alt="Restoration Project" class="hero-image">
-    <div class="hero-overlay">
-      <h1>{{ t.hero_title }}</h1>
-      <p>{{ t.hero_subtitle }}</p>
-      <a href="{{ url_for('contact', lang=lang) }}" class="cta-btn">{{ t.cta_schedule }}</a>
-    </div>
-  </section>
-
-  <section class="services-intro">
-    <h2>{{ t.services_title }}</h2>
-    <p>{{ t.services_intro }}</p>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Spero Restoration Corp — Orlando, FL |
-      <a href="{{ url_for('privacy', lang=lang) }}">{{ t.privacy }}</a> |
-      <a href="{{ url_for('terms', lang=lang) }}">{{ t.terms }}</a>
-    </p>
-  </footer>
 </body>
 </html>
