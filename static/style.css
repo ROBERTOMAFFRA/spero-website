@@ -1,76 +1,226 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
+/* ================================
+   Spero Restoration - Main Styles
+   ================================ */
+
+/* Global Reset */
+* {
   margin: 0;
-  color: #1b1b1b;
-  background-color: #fff;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #222;
   line-height: 1.6;
 }
 
+/* ================================
+   HERO / BANNER SECTION
+   ================================ */
+
 .hero {
-  background: url('{{ url_for("static", filename="images/hero-bg.jpg") }}') center/cover no-repeat;
+  position: relative;
+  height: 90vh;
+  background: url("{{ url_for('static', filename='images/banner.png') }}") no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 100px 20px;
   color: white;
-  background-color: #0a2540;
 }
 
-.logo {
-  max-width: 160px;
-  margin-bottom: 15px;
+.hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.hero-logo {
+  width: 180px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
 .cta-button {
-  background: #1b4b8c;
-  color: #fff;
-  padding: 14px 28px;
+  background-color: #007bff;
+  color: white;
   text-decoration: none;
+  padding: 12px 28px;
   border-radius: 6px;
-  display: inline-block;
-  margin-top: 20px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: background 0.3s ease;
 }
 
-.services, .contact {
-  padding: 60px 20px;
+.cta-button:hover {
+  background-color: #0056b3;
+}
+
+/* ================================
+   ABOUT SECTION
+   ================================ */
+
+.about {
+  padding: 80px 10%;
+  background-color: #ffffff;
   text-align: center;
-  max-width: 800px;
-  margin: auto;
 }
 
-.services h2, .contact h2 {
-  color: #1b4b8c;
+.about h2 {
+  font-size: 2rem;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.about p {
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+/* ================================
+   SERVICES SECTION
+   ================================ */
+
+.services {
+  background-color: #f4f4f4;
+  padding: 80px 10%;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.service-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.service-item {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  padding: 25px;
+  text-align: left;
+}
+
+.service-item h3 {
+  color: #007bff;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.service-item p {
+  color: #333;
+}
+
+/* ================================
+   FORM SECTION
+   ================================ */
+
+.form-section {
+  padding: 80px 10%;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.form-section h2 {
+  font-size: 2rem;
+  color: #1a1a1a;
+  margin-bottom: 30px;
 }
 
 form {
+  max-width: 600px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 15px;
 }
 
 input, textarea {
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 15px;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
 }
 
-button {
-  background: #1b4b8c;
+button.submit-button {
+  background-color: #007bff;
   color: white;
   border: none;
-  padding: 12px;
-  cursor: pointer;
+  padding: 12px 0;
   border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-button:hover {
-  background: #133a6b;
+button.submit-button:hover {
+  background-color: #0056b3;
 }
+
+/* ================================
+   FOOTER
+   ================================ */
 
 footer {
-  background: #0a2540;
+  background-color: #1a1a1a;
   color: white;
   text-align: center;
-  padding: 20px;
-  font-size: 14px;
+  padding: 20px 10px;
+  font-size: 0.95rem;
+}
+
+footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ================================
+   RESPONSIVE DESIGN
+   ================================ */
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .service-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-item {
+    width: 90%;
+  }
 }
