@@ -41,6 +41,9 @@ def send():
         print(f"Error sending email: {e}")
         return redirect(url_for("index", success="false"))
 
+
+# ---------- PAGES ----------
+
 @app.route("/about-us")
 def about_us():
     return render_template("about-us.html")
@@ -61,15 +64,21 @@ def robots():
 def sitemap():
     return app.send_static_file("sitemap.xml")
 
+
+# ---------- ERROR HANDLER ----------
+
 @app.errorhandler(404)
 def not_found(e):
     return render_template("404.html"), 404
 
+
+# ---------- REDIRECT WWW ----------
 @app.before_request
 def redirect_www():
     host = request.host
     if host.startswith("www."):
         return redirect(request.url.replace("www.", "", 1), code=301)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
