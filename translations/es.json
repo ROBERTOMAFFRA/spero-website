@@ -1,0 +1,43 @@
+{
+  "meta_title": "Spero Restoration Corp | Expertos en Restauración en Florida Central",
+  "meta_description": "Compañía profesional de restauración y remodelación que presta servicios en Orlando, Clermont y Windermere. Restauración de agua, fuego y moho.",
+
+  "nav_home": "Inicio",
+  "nav_about": "Sobre Nosotros",
+  "nav_services": "Servicios",
+  "nav_contact": "Contacto",
+  "privacy": "Política de Privacidad",
+  "terms": "Términos de Uso",
+
+  "hero_title": "Expertos en Restauración y Remodelación",
+  "hero_subtitle": "Restauramos hogares y negocios en toda Florida Central — especialistas en agua, fuego y moho.",
+  "cta_schedule": "Agendar Inspección",
+
+  "services_title": "Nuestros Servicios",
+  "services_intro": "Ofrecemos servicios completos de restauración, remodelación y renovación para hogares y negocios.",
+  "service1": "Restauración por Daños de Agua",
+  "service2": "Daños por Fuego y Humo",
+  "service3": "Remoción de Moho",
+  "service4": "Remodelación de Hogares",
+  "service5": "Instalación de Pisos",
+  "service6": "Pintura Interior y Exterior",
+
+  "about_title": "Sobre Spero Restoration",
+  "about_heading": "Quiénes Somos",
+  "about_description": "Spero Restoration Corp es una empresa local especializada en restauración y remodelación en Florida Central. Nuestro equipo experimentado ofrece soluciones rápidas y de alta calidad para restaurar su propiedad.",
+
+  "contact_heading": "Agende su Inspección",
+  "contact_name": "Nombre",
+  "contact_email": "Correo Electrónico",
+  "contact_phone": "Teléfono",
+  "contact_service": "Seleccionar Servicio",
+  "contact_message": "Describa su proyecto o problema",
+  "cta_send": "Enviar Mensaje",
+
+  "thank_you": "¡Gracias!",
+  "thank_message": "Su mensaje ha sido enviado. Nuestro equipo se pondrá en contacto pronto.",
+  "back_home": "Volver al Inicio",
+
+  "privacy_text": "Recopilamos sus datos solo para contactarlo respecto a su solicitud de servicio. No compartimos su información con terceros.",
+  "terms_text": "Al usar nuestro sitio web, acepta nuestros términos de servicio en relación con formularios de contacto, estimaciones y comunicaciones generales."
+}
