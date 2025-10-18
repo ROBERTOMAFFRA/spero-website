@@ -10,10 +10,14 @@
   </url>
   <url>
     <loc>https://spero-restoration.com/privacy-policy</loc>
-    <priority>0.5</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://spero-restoration.com/terms-of-service</loc>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://spero-restoration.com/thank-you</loc>
+    <priority>0.6</priority>
   </url>
 </urlset>
