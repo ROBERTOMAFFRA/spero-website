@@ -1,38 +1,69 @@
-<!DOCTYPE html>
-<html lang="{{ lang }}">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>{{ t.services_title }}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Services — Spero Restoration Corp</title>
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" sizes="32x32" type="image/png">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <header>
-    <div class="header-container">
-      <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
-      <nav>
-        <ul>
-          <li><a href="{{ url_for('home', lang=lang) }}">{{ t.nav_home }}</a></li>
-          <li><a href="{{ url_for('about', lang=lang) }}">{{ t.nav_about }}</a></li>
-          <li><a href="{{ url_for('contact', lang=lang) }}">{{ t.nav_contact }}</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <section class="services-section">
-    <h2>{{ t.services_title }}</h2>
-    <div class="service-grid">
-      <div class="service-card">{{ t.service1 }}</div>
-      <div class="service-card">{{ t.service2 }}</div>
-      <div class="service-card">{{ t.service3 }}</div>
-      <div class="service-card">{{ t.service4 }}</div>
-      <div class="service-card">{{ t.service5 }}</div>
-      <div class="service-card">{{ t.service6 }}</div>
+<!-- HEADER -->
+<header class="header">
+  <nav class="nav">
+    <div class="left">
+      <a href="{{ url_for('index') }}">
+        <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo" width="160" height="40">
+      </a>
+      <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About Us</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('index') }}#contact">Contact</a></li>
+      </ul>
     </div>
-  </section>
+    <div class="lang">
+      <a href="?lang=en">EN</a> | <a href="?lang=es">ES</a> | <a href="?lang=pt">PT</a>
+    </div>
+  </nav>
+</header>
 
-  <footer>
-    <p>&copy; 2025 Spero Restoration Corp — Orlando, FL</p>
-  </footer>
+<main class="section">
+  <div class="container">
+    <h1 class="mt-0">Our Services</h1>
+
+    <div class="grid mt-2">
+      <article class="card">
+        <h3>Water Damage Restoration</h3>
+        <p>Emergency mitigation, water extraction, drying, dehumidification, and structural repairs.</p>
+      </article>
+      <article class="card">
+        <h3>Mold Remediation</h3>
+        <p>Assessment, containment, HEPA filtration, safe removal, and prevention.</p>
+      </article>
+      <article class="card">
+        <h3>Fire & Smoke Repair</h3>
+        <p>Soot cleanup, odor removal, content cleaning, and reconstruction.</p>
+      </article>
+      <article class="card">
+        <h3>Home Remodeling</h3>
+        <p>Kitchens, bathrooms, flooring, drywall, and full renovations.</p>
+      </article>
+    </div>
+
+    <h2 class="mt-4">Areas We Serve</h2>
+    <p>Orlando, Clermont, Windermere, Lake Nona, Winter Garden, and surrounding communities in Central Florida.</p>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap">
+    <div><strong>Spero Restoration Corp</strong><br>Orlando, FL • (407) XXX-XXXX • contact@spero-restoration.com</div>
+    <small>© 2025 Spero Restoration Corp — Orlando, FL | <a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Use</a></small>
+  </div>
+</footer>
+
 </body>
 </html>
