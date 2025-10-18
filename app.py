@@ -1,84 +1,88 @@
+# ==========================================
+# Spero Restoration - Web Application
+# ==========================================
+
 from flask import Flask, render_template, request, redirect, url_for
+import os
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
-import os
 
 app = Flask(__name__)
 
-# ---------- ROUTES ----------
+# ================================
+# ROUTES
+# ================================
 
-@app.route("/")
-def index():
-    return render_template("index.html")
+@app.route('/')
+def home():
+    return render_template('index.html')
 
-@app.route("/send", methods=["POST"])
-def send():
-    """Handles form submissions and sends email via SendGrid."""
+
+@app.route('/thank-you')
+def thank_you():
+    return render_template('thank-you.html')
+
+
+@app.route('/terms-of-service')
+def terms_of_service():
+    return render_template('terms-of-service.html')
+
+
+@app.route('/privacy-policy')
+def privacy_policy():
+    return render_template('privacy-policy.html')
+
+
+# ================================
+# EMAIL FUNCTION (SendGrid)
+# ================================
+
+@app.route('/send_email', methods=['POST'])
+def send_email():
+    name = request.form.get('name')
+    email = request.form.get('email')
+    phone = request.form.get('phone')
+    location = request.form.get('location')
+    message = request.form.get('message')
+
+    # ✅ Email content
+    subject = f"New Inspection Request from {name}"
+    content = f"""
+    🏠 New Inspection Request Submitted
+    
+    Name: {name}
+    Email: {email}
+    Phone: {phone}
+    Location: {location}
+
+    Message:
+    {message}
+
+    ---
+    Sent from Spero Restoration website
+    """
+
+    # ✅ SendGrid integration
     try:
-        name = request.form.get("name")
-        email = request.form.get("email")
-        phone = request.form.get("phone")
-        description = request.form.get("description")
-
-        message = Mail(
-            from_email=os.getenv("MAIL_DEFAULT_SENDER", "contact@spero-restoration.com"),
-            to_emails="contact@spero-restoration.com",
-            subject=f"New Inspection Request from {name}",
-            html_content=f"""
-            <h2>New Inspection Request</h2>
-            <p><b>Name:</b> {name}</p>
-            <p><b>Email:</b> {email}</p>
-            <p><b>Phone:</b> {phone}</p>
-            <p><b>Description:</b> {description}</p>
-            """
+        sendgrid_client = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        email_message = Mail(
+            from_email='contact@spero-restoration.com',
+            to_emails=['contact@spero-restoration.com', 'roberto.maffra@gmail.com'],
+            subject=subject,
+            plain_text_content=content
         )
-
-        sg = SendGridAPIClient(os.getenv("SENDGRID_API_KEY"))
-        sg.send(message)
-        return redirect(url_for("index", success="true"))
+        sendgrid_client.send(email_message)
+        print("✅ Email sent successfully.")
+        return redirect(url_for('thank_you'))
 
     except Exception as e:
-        print(f"Error sending email: {e}")
-        return redirect(url_for("index", success="false"))
+        print(f"❌ Error sending email: {e}")
+        return "Error sending message. Please try again later."
 
 
-# ---------- PAGES ----------
-
-@app.route("/about-us")
-def about_us():
-    return render_template("about-us.html")
-
-@app.route("/privacy-policy")
-def privacy_policy():
-    return render_template("privacy-policy.html")
-
-@app.route("/terms-of-service")
-def terms_of_service():
-    return render_template("terms-of-service.html")
-
-@app.route("/robots.txt")
-def robots():
-    return app.send_static_file("robots.txt")
-
-@app.route("/sitemap.xml")
-def sitemap():
-    return app.send_static_file("sitemap.xml")
-
-
-# ---------- ERROR HANDLER ----------
-
-@app.errorhandler(404)
-def not_found(e):
-    return render_template("404.html"), 404
-
-
-# ---------- REDIRECT WWW ----------
-@app.before_request
-def redirect_www():
-    host = request.host
-    if host.startswith("www."):
-        return redirect(request.url.replace("www.", "", 1), code=301)
-
-
+# ================================
+# RUN APP
+# ================================
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
