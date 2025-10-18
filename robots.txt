@@ -1,7 +1,3 @@
 User-agent: *
 Allow: /
-
-Disallow: /__pycache__/
-Disallow: /admin/
-
 Sitemap: https://spero-restoration.com/sitemap.xml
