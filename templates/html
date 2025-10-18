@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Spero Restoration Corp</title>
+  <meta name="description" content="The page you are looking for was not found. Return to the Spero Restoration Corp homepage.">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      text-align: center;
+      padding: 100px 20px;
+      background-color: #f9fafc;
+      color: #002b55;
+    }
+
+    .error-container {
+      background-color: #fff;
+      display: inline-block;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 5em;
+      color: #0056a3;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #444;
+      font-size: 1.1em;
+      margin-bottom: 25px;
+    }
+
+    a {
+      background-color: #0056a3;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      background-color: #003d78;
+    }
+
+    img.logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Spero Restoration Logo" class="logo">
+    <h1>404</h1>
+    <h2>Page Not Found</h2>
+    <p>Sorry, the page you’re looking for doesn’t exist or has been moved.</p>
+    <a href="/">⬅️ Return to Home</a>
+  </div>
+</body>
+</html>
