@@ -1,35 +1,8 @@
-# ======================================
-# Spero Restoration - Git Ignore Config
-# ======================================
-
-# Environment files
-.env
-.env.local
-*.env
-
-# Python cache & build artifacts
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-*.db
-*.sqlite3
-
-# Virtual environment folders
+instance/
+.env
+.env.example
 venv/
-env/
-.venv/
-
-# System files
+static/__pycache__/
 .DS_Store
-Thumbs.db
-
-# IDE / Editor settings
-.vscode/
-.idea/
-
-# Logs
-*.log
-
-# Render build artifacts
-staticfiles/
