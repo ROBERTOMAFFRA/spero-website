@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Spero Restoration Corp — Orlando</title>
-
-  <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" sizes="32x32" type="image/png">
+  <meta name="description" content="Spero Restoration Corp — Orlando-based experts in Water Damage, Mold Remediation, Fire Repair, and Home Remodeling. Serving Clermont, Windermere, Lake Nona, and all Central Florida.">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" sizes="32x32" type="image/x-icon">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -22,7 +22,7 @@
       </a>
       <ul>
         <li><a href="{{ url_for('index') }}">Home</a></li>
-        <li><a href="{{ url_for('about') }}">About Us</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
         <li><a href="{{ url_for('services') }}">Services</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -33,8 +33,9 @@
   </nav>
 </header>
 
-<!-- HERO -->
-<section class="hero" style="background:url('{{ url_for('static', filename='images/banner.png') }}') center/cover no-repeat;">
+<!-- HERO SECTION -->
+<section class="hero"
+         style="background:url('{{ url_for('static', filename='images/banner.png') }}') center/cover no-repeat;">
   <div>
     <h1>Restoration & Remodeling Experts</h1>
     <p>We restore homes and businesses across Central Florida — water, fire, and mold specialists.</p>
@@ -42,7 +43,7 @@
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- SERVICES SECTION -->
 <section class="section services">
   <div class="container">
     <h2>Our Services</h2>
@@ -67,7 +68,7 @@
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT FORM -->
 <section id="contact" class="section">
   <div class="container">
     <h2 class="center">Request an Inspection</h2>
