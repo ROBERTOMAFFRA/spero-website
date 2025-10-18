@@ -1,18 +1,66 @@
-{% include 'partials/head.html' %}
-<body>
-  {% include 'partials/header.html' %}
+from flask import Flask, render_template, request, redirect, url_for
+import os
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
-  <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1>Restoration & Remodeling Experts</h1>
-      <p>We restore homes and businesses across Central Florida — water, fire, and mold specialists.</p>
-      <a href="#contact" class="btn btn-primary">Schedule Inspection</a>
-    </div>
-  </section>
+app = Flask(__name__)
 
-  {% include 'partials/services.html' %}
-  {% include 'partials/contact.html' %}
-  {% include 'partials/footer.html' %}
-</body>
-</html>
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/services')
+def services():
+    return render_template('services.html')
+
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html')
+
+@app.route('/terms')
+def terms():
+    return render_template('terms.html')
+
+@app.route('/thank-you')
+def thank_you():
+    return render_template('thank-you.html')
+
+@app.route('/send_email', methods=['POST'])
+def send_email():
+    name = request.form['name']
+    email = request.form['email']
+    phone = request.form.get('phone', '')
+    service = request.form.get('service', '')
+    message = request.form['message']
+
+    content = f"""
+    New message from Spero Restoration website:
+
+    Name: {name}
+    Email: {email}
+    Phone: {phone}
+    Service: {service}
+    Message:
+    {message}
+    """
+
+    try:
+        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        mail = Mail(
+            from_email='contact@spero-restoration.com',
+            to_emails='contact@spero-restoration.com',
+            subject=f'New Lead from {name}',
+            plain_text_content=content
+        )
+        sg.send(mail)
+    except Exception as e:
+        print(e)
+
+    return redirect(url_for('thank_you'))
+
+if __name__ == '__main__':
+    app.run(debug=True)
