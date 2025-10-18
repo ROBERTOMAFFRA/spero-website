@@ -1,6 +1,10 @@
 __pycache__/
-*.pyc
-instance/
 .env
-.env.*
+*.pyc
+*.pyo
+*.pyd
+instance/
+.pytest_cache/
+venv/
+.env.example
 .DS_Store
