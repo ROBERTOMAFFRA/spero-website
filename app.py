@@ -5,12 +5,15 @@ import os
 
 app = Flask(__name__)
 
+# ---------- ROUTES ----------
+
 @app.route("/")
 def index():
     return render_template("index.html")
 
 @app.route("/send", methods=["POST"])
 def send():
+    """Handles form submissions and sends email via SendGrid."""
     try:
         name = request.form.get("name")
         email = request.form.get("email")
@@ -18,7 +21,7 @@ def send():
         description = request.form.get("description")
 
         message = Mail(
-            from_email=os.getenv("MAIL_DEFAULT_SENDER"),
+            from_email=os.getenv("MAIL_DEFAULT_SENDER", "contact@spero-restoration.com"),
             to_emails="contact@spero-restoration.com",
             subject=f"New Inspection Request from {name}",
             html_content=f"""
@@ -29,25 +32,26 @@ def send():
             <p><b>Description:</b> {description}</p>
             """
         )
+
         sg = SendGridAPIClient(os.getenv("SENDGRID_API_KEY"))
         sg.send(message)
-
         return redirect(url_for("index", success="true"))
+
     except Exception as e:
         print(f"Error sending email: {e}")
         return redirect(url_for("index", success="false"))
 
+@app.route("/about-us")
+def about_us():
+    return render_template("about-us.html")
+
 @app.route("/privacy-policy")
-def privacy():
+def privacy_policy():
     return render_template("privacy-policy.html")
 
 @app.route("/terms-of-service")
-def terms():
+def terms_of_service():
     return render_template("terms-of-service.html")
-
-@app.route("/about-us")
-def about():
-    return render_template("about-us.html")
 
 @app.route("/robots.txt")
 def robots():
@@ -56,6 +60,10 @@ def robots():
 @app.route("/sitemap.xml")
 def sitemap():
     return app.send_static_file("sitemap.xml")
+
+@app.errorhandler(404)
+def not_found(e):
+    return render_template("404.html"), 404
 
 @app.before_request
 def redirect_www():
