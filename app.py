@@ -1,79 +1,88 @@
 from flask import Flask, render_template, request, redirect, url_for
-import os, sendgrid
+import os
+import sendgrid
 from sendgrid.helpers.mail import Mail
 
 app = Flask(__name__)
 
-# --- Load Translations ---
-import json
-def load_translation(lang):
-    try:
-        with open(f"translations/{lang}.json", "r", encoding="utf-8") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        with open("translations/en.json", "r", encoding="utf-8") as f:
-            return json.load(f)
+# ===========================
+# ROUTES
+# ===========================
 
-# --- Routes ---
 @app.route("/")
-def home():
-    lang = request.args.get("lang", "en")
-    t = load_translation(lang)
-    return render_template("index.html", lang=lang, t=t)
+def index():
+    return render_template("index.html")
 
 @app.route("/about")
 def about():
-    lang = request.args.get("lang", "en")
-    t = load_translation(lang)
-    return render_template("about.html", lang=lang, t=t)
+    return render_template("about.html")
 
 @app.route("/services")
 def services():
-    lang = request.args.get("lang", "en")
-    t = load_translation(lang)
-    return render_template("services.html", lang=lang, t=t)
-
-@app.route("/contact", methods=["GET", "POST"])
-def contact():
-    lang = request.args.get("lang", "en")
-    t = load_translation(lang)
-    if request.method == "POST":
-        name = request.form["name"]
-        email = request.form["email"]
-        phone = request.form["phone"]
-        service = request.form["service"]
-        message = request.form["message"]
-
-        sg = sendgrid.SendGridAPIClient(api_key=os.getenv("SENDGRID_API_KEY"))
-        content = f"Name: {name}\nEmail: {email}\nPhone: {phone}\nService: {service}\nMessage: {message}"
-
-        email_to_send = Mail(
-            from_email="contact@spero-restoration.com",
-            to_emails=["contact@spero-restoration.com", "roberto.maffra@gmail.com"],
-            subject=f"New Contact Request from {name}",
-            plain_text_content=content
-        )
-        sg.send(email_to_send)
-        return redirect(url_for("thank_you", lang=lang))
-    return render_template("contact.html", lang=lang, t=t)
-
-@app.route("/thank-you")
-def thank_you():
-    lang = request.args.get("lang", "en")
-    t = load_translation(lang)
-    return render_template("thank-you.html", lang=lang, t=t)
+    return render_template("services.html")
 
 @app.route("/privacy")
 def privacy():
-    lang = request.args.get("lang", "en")
-    t = load_translation(lang)
-    return render_template("privacy.html", lang=lang, t=t)
+    return render_template("privacy.html")
 
 @app.route("/terms")
 def terms():
-    lang = request.args.get("lang", "en")
-    t = load_translation(lang)
-    return render_template("terms.html", lang=lang, t=t)
+    return render_template("terms.html")
 
+@app.route("/thank-you")
+def thank_you():
+    return render_template("thank-you.html")
+
+# ===========================
+# CONTACT FORM (SendGrid)
+# ===========================
+@app.route("/send_email", methods=["POST"])
+def send_email():
+    name = request.form.get("name")
+    email = request.form.get("email")
+    phone = request.form.get("phone")
+    service = request.form.get("service")
+    message = request.form.get("message")
+
+    sg_api_key = os.getenv("SENDGRID_API_KEY")
+
+    if not sg_api_key:
+        print("⚠️ Missing SENDGRID_API_KEY — skipping email send.")
+        return redirect(url_for("thank_you"))
+
+    sg = sendgrid.SendGridAPIClient(api_key=sg_api_key)
+    content = f"""
+    Name: {name}
+    Email: {email}
+    Phone: {phone}
+    Service: {service}
+    Message: {message}
+    """
+
+    mail = Mail(
+        from_email="contact@spero-restoration.com",
+        to_emails="contact@spero-restoration.com",
+        subject=f"New Lead from {name}",
+        plain_text_content=content,
+    )
+
+    try:
+        sg.send(mail)
+        print("✅ Email sent successfully.")
+    except Exception as e:
+        print(f"❌ SendGrid error: {e}")
+
+    return redirect(url_for("thank_you"))
+
+# ===========================
+# 404 PAGE
+# ===========================
+@app.errorhandler(404)
+def not_found(e):
+    return render_template("404.html"), 404
+
+# ===========================
+# LOCAL EXECUTION
+# ===========================
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(debug=True)
