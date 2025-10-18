@@ -1,226 +1,173 @@
-/* ================================
-   Spero Restoration - Main Styles
-   ================================ */
-
-/* Global Reset */
+/* General reset */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background-color: #f9f9f9;
-  color: #222;
-  line-height: 1.6;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background-color: #fff;
+    line-height: 1.6;
 }
 
-/* ================================
-   HERO / BANNER SECTION
-   ================================ */
-
-.hero {
-  position: relative;
-  height: 90vh;
-  background: url("{{ url_for('static', filename='images/banner.png') }}") no-repeat center center/cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
+/* Header */
+header {
+    background: rgba(255, 255, 255, 0.95);
+    width: 100%;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.hero .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.55);
-  z-index: 1;
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.logo {
+    height: 55px;
+}
+
+/* Navigation */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #0e2a3a;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #0077cc;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    background: url('../banner.png') no-repeat center center/cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.45);
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-  padding: 20px;
+    position: relative;
+    color: #fff;
+    text-align: center;
+    z-index: 1;
 }
 
-.hero-logo {
-  width: 180px;
-  margin-bottom: 20px;
+.hero-content h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
 }
 
-.hero h1 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 20px;
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
 }
 
-.cta-button {
-  background-color: #007bff;
-  color: white;
-  text-decoration: none;
-  padding: 12px 28px;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  font-weight: 500;
-  transition: background 0.3s ease;
+.btn-primary {
+    background-color: #0077cc;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
 }
 
-.cta-button:hover {
-  background-color: #0056b3;
+.btn-primary:hover {
+    background-color: #005fa3;
 }
 
-/* ================================
-   ABOUT SECTION
-   ================================ */
-
-.about {
-  padding: 80px 10%;
-  background-color: #ffffff;
-  text-align: center;
-}
-
-.about h2 {
-  font-size: 2rem;
-  color: #1a1a1a;
-  margin-bottom: 20px;
-}
-
-.about p {
-  max-width: 900px;
-  margin: 0 auto;
-  font-size: 1.1rem;
-  color: #444;
-}
-
-/* ================================
-   SERVICES SECTION
-   ================================ */
-
+/* Services Section */
 .services {
-  background-color: #f4f4f4;
-  padding: 80px 10%;
-  text-align: center;
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #f9f9f9;
 }
 
 .services h2 {
-  font-size: 2rem;
-  margin-bottom: 40px;
+    font-size: 2rem;
+    margin-bottom: 40px;
 }
 
-.service-list {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 30px;
+.services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
 }
 
-.service-item {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  padding: 25px;
-  text-align: left;
+.service-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    width: 300px;
+    transition: transform 0.3s ease;
 }
 
-.service-item h3 {
-  color: #007bff;
-  font-size: 1.3rem;
-  margin-bottom: 10px;
+.service-card:hover {
+    transform: translateY(-5px);
 }
 
-.service-item p {
-  color: #333;
-}
-
-/* ================================
-   FORM SECTION
-   ================================ */
-
-.form-section {
-  padding: 80px 10%;
-  background-color: #ffffff;
-  text-align: center;
-}
-
-.form-section h2 {
-  font-size: 2rem;
-  color: #1a1a1a;
-  margin-bottom: 30px;
-}
-
-form {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-input, textarea {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  width: 100%;
-}
-
-button.submit-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 12px 0;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-button.submit-button:hover {
-  background-color: #0056b3;
-}
-
-/* ================================
-   FOOTER
-   ================================ */
-
+/* Footer */
 footer {
-  background-color: #1a1a1a;
-  color: white;
-  text-align: center;
-  padding: 20px 10px;
-  font-size: 0.95rem;
+    background-color: #0e2a3a;
+    color: #fff;
+    text-align: center;
+    padding: 30px 10px;
 }
 
 footer a {
-  color: #007bff;
-  text-decoration: none;
+    color: #66c2ff;
+    text-decoration: none;
 }
 
 footer a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
-/* ================================
-   RESPONSIVE DESIGN
-   ================================ */
-
+/* Responsive */
 @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2rem;
-  }
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
 
-  .service-list {
-    flex-direction: column;
-    align-items: center;
-  }
+    .hero-content h1 {
+        font-size: 2rem;
+    }
 
-  .service-item {
-    width: 90%;
-  }
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .service-card {
+        width: 90%;
+    }
 }
