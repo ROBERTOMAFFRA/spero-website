@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 Sitemap: https://spero-restoration.com/sitemap.xml
 
-# Block admin paths
+# Block sensitive admin routes
 Disallow: /admin
-Disallow: /login
-Disallow: /logout
+Disallow: /static/lang/
+Disallow: /uploads/
