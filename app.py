@@ -185,15 +185,6 @@ def admin_login():
 # ---------------------------
 # ADMIN DASHBOARD
 # ---------------------------
-@app.route("/admin-dashboard")
-def admin_dashboard():
-    auth = request.cookies.get("admin_auth")
-    if auth != "true":
-        return redirect(url_for("admin_login"))
-
-    uploads = os.listdir(app.config["UPLOAD_FOLDER"])
-    uploads = [f for f in uploads if allowed_file(f)]
-    return render_template("admin.html", uploads=uploads)
 
 # ---------------------------
 # UPLOAD IMAGE
