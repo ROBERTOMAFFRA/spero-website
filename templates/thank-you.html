@@ -1,23 +1,39 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Thank You — Spero Restoration Corp</title>
-  <meta name="description" content="Thank you for contacting Spero Restoration Corp. We will get back to you shortly.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You | Spero Restoration Corp – Orlando</title>
+  <meta name="description" content="Thank you for contacting Spero Restoration Corp. We will get back to you as soon as possible.">
   <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}">
 </head>
 <body>
-<header class="header"><nav class="nav"><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" width="150"></a></nav></header>
+  <header class="header">
+    <nav class="nav">
+      <ul class="nav-links">
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<section class="section">
-  <div class="container center">
-    <h1>Thank You!</h1>
-    <p>Your message has been sent successfully. A member of our team will contact you soon.</p>
-    <a href="{{ url_for('index') }}" class="btn btn-primary">Back to Home</a>
-  </div>
-</section>
+  <section class="content-section">
+    <div class="content-container">
+      <h1>Thank You!</h1>
+      <p>Your message has been received. A member of our team will reach out to you shortly.</p>
+      <a href="{{ url_for('index') }}" class="cta-btn">Back to Home</a>
+    </div>
+  </section>
 
-<footer class="footer"><p>© 2025 Spero Restoration Corp</p></footer>
+  <footer class="footer">
+    <p>
+      © 2025 Spero Restoration Corp — Orlando, FL<br>
+      (407) 502-9006 • contact@spero-restoration.com<br>
+      <a href="{{ url_for('privacy') }}">Privacy Policy</a> | 
+      <a href="{{ url_for('terms') }}">Terms of Use</a>
+    </p>
+  </footer>
 </body>
 </html>
