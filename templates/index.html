@@ -1,31 +1,27 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Spero Restoration Corp – Orlando</title>
-
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Spero Restoration Corp – Experts in Water Damage, Mold Remediation, Fire Repair, and Home Remodeling across Central Florida. 24/7 response.">
-  <meta name="keywords" content="Water Damage, Mold Remediation, Fire Repair, Remodeling, Restoration, Orlando, Windermere, Clermont, Lake Nona, Florida">
-  <meta name="author" content="Spero Restoration Corp">
-
-  <!-- Styles -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spero Restoration Corp | Orlando Experts in Water, Fire, and Mold Damage</title>
+  <meta name="description" content="Spero Restoration Corp — Orlando-based restoration and remodeling experts in water damage, fire repair, and mold remediation. Serving Clermont, Windermere, Winter Garden, and all Central Florida.">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}">
-  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
 </head>
 <body>
   <!-- HEADER -->
   <header class="header">
     <nav class="nav">
       <ul class="nav-links">
-        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
         <li><a href="{{ url_for('about') }}">About</a></li>
         <li><a href="{{ url_for('services') }}">Services</a></li>
         <li><a href="{{ url_for('contact') }}">Contact</a></li>
       </ul>
       <div class="lang">
-        <a href="?lang=en">EN</a> | <a href="?lang=es">ES</a> | <a href="?lang=pt">PT</a>
+        <a href="?lang=en">EN</a> | 
+        <a href="?lang=es">ES</a> | 
+        <a href="?lang=pt">PT</a>
       </div>
     </nav>
   </header>
