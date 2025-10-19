@@ -1,22 +1,52 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Terms of Use — Spero Restoration Corp</title>
-  <meta name="description" content="Read the terms and conditions for using Spero Restoration Corp’s website and services.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Use | Spero Restoration Corp – Orlando</title>
+  <meta name="description" content="Spero Restoration Corp Terms of Use — understand the conditions of using our website and services.">
   <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}">
 </head>
 <body>
-<header class="header"><nav class="nav"><a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" width="150"></a></nav></header>
+  <header class="header">
+    <nav class="nav">
+      <ul class="nav-links">
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<section class="section">
-  <div class="container">
-    <h1>Terms of Use</h1>
-    <p>By accessing this website, you agree to comply with Spero Restoration Corp’s terms and conditions. All content is the property of Spero Restoration Corp and may not be reproduced without permission.</p>
-  </div>
-</section>
+  <section class="content-section">
+    <div class="content-container">
+      <h1>Terms of Use</h1>
+      <p>Last updated: October 2025</p>
 
-<footer class="footer"><p>© 2025 Spero Restoration Corp</p></footer>
+      <p>By using this website, you agree to comply with these Terms of Use. If you disagree with any part of these terms, please do not use our site.</p>
+
+      <h2>Use of Content</h2>
+      <p>All materials on this website, including text, images, and logos, are property of Spero Restoration Corp. Reproduction or redistribution is prohibited without permission.</p>
+
+      <h2>Limitation of Liability</h2>
+      <p>Spero Restoration Corp is not liable for any damages resulting from the use or inability to use the information on this website.</p>
+
+      <h2>Changes to These Terms</h2>
+      <p>We may update these Terms of Use periodically. Changes will be reflected on this page.</p>
+
+      <h2>Contact</h2>
+      <p>For questions about these terms, contact us at <strong>contact@spero-restoration.com</strong>.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>
+      © 2025 Spero Restoration Corp — Orlando, FL<br>
+      (407) 502-9006 • contact@spero-restoration.com<br>
+      <a href="{{ url_for('privacy') }}">Privacy Policy</a> | 
+      <a href="{{ url_for('terms') }}">Terms of Use</a>
+    </p>
+  </footer>
 </body>
 </html>
