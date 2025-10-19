@@ -1,80 +1,78 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Request an Inspection | Spero Restoration Corp</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Spero Restoration Corp</title>
+    <meta name="description" content="Contact Spero Restoration Corp for expert water, mold, fire damage restoration and remodeling services across Orlando and surrounding areas.">
     <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}">
 </head>
+
 <body>
-    <header class="header">
-        <nav class="nav">
-            <div class="left">
-                <a href="{{ url_for('index') }}">
-                    <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" width="140" alt="Spero Restoration">
-                </a>
-                <ul>
-                    <li><a href="{{ url_for('index') }}">Home</a></li>
-                    <li><a href="{{ url_for('about') }}">About</a></li>
-                    <li><a href="{{ url_for('services') }}">Services</a></li>
-                    <li><a href="{{ url_for('contact') }}" class="active">Contact</a></li>
-                </ul>
-            </div>
-            <div class="lang">
-                <a href="?lang=en">EN</a> | <a href="?lang=es">ES</a> | <a href="?lang=pt">PT</a>
-            </div>
+    <!-- Header -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('services') }}">Services</a></li>
+                <li><a href="{{ url_for('contact') }}" class="active">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
-    <main class="form-page">
-        <form class="contact-form" action="{{ url_for('contact') }}" method="POST" enctype="multipart/form-data">
-            <h2>Request an Inspection</h2>
+    <!-- Contact Section -->
+    <section class="about-section" style="background:#fff;">
+        <h1>Contact Us</h1>
+        <p>Get in touch with our team today. Fill out the form below or call us at <a href="tel:+14077246310" style="color:#0078d7;">(407) 724-6310</a> for immediate assistance.</p>
 
-            <label>Name</label>
-            <input type="text" name="name" placeholder="Your name" required>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div style="margin:20px auto; padding:15px 25px; background:#d4edda; color:#155724; border-radius:8px; max-width:600px;">
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
 
-            <label>Email</label>
-            <input type="email" name="email" placeholder="Your email" required>
+        <form action="{{ url_for('contact') }}" method="POST" style="max-width:600px; margin:40px auto; text-align:left; display:flex; flex-direction:column; gap:18px;">
+            <label for="name"><b>Name</b></label>
+            <input type="text" name="name" id="name" required style="padding:12px; border:1px solid #ccc; border-radius:6px;">
 
-            <label>Phone</label>
-            <input type="tel" name="phone" placeholder="Your phone" required>
+            <label for="email"><b>Email</b></label>
+            <input type="email" name="email" id="email" required style="padding:12px; border:1px solid #ccc; border-radius:6px;">
 
-            <label>Address</label>
-            <input type="text" name="address" placeholder="Project location" required>
+            <label for="phone"><b>Phone</b></label>
+            <input type="tel" name="phone" id="phone" required style="padding:12px; border:1px solid #ccc; border-radius:6px;">
 
-            <label>Select a Service</label>
-            <select name="service" required>
-                <option value="">Select a Service</option>
-                <option>Water Damage Restoration</option>
-                <option>Mold Remediation</option>
-                <option>Fire & Smoke Repair</option>
-                <option>Home Remodeling</option>
+            <label for="service"><b>Service Interested In</b></label>
+            <select name="service" id="service" required style="padding:12px; border:1px solid #ccc; border-radius:6px;">
+                <option value="">-- Select a Service --</option>
+                <option value="Water Damage Restoration">Water Damage Restoration</option>
+                <option value="Mold Remediation">Mold Remediation</option>
+                <option value="Fire Damage Repair">Fire Damage Repair</option>
+                <option value="Home Remodeling">Home Remodeling</option>
+                <option value="Other">Other</option>
             </select>
 
-            <label>Briefly describe what happened</label>
-            <textarea name="message" rows="4" placeholder="Describe your issue..." required></textarea>
+            <label for="message"><b>Message</b></label>
+            <textarea name="message" id="message" rows="5" required style="padding:12px; border:1px solid #ccc; border-radius:6px;"></textarea>
 
-            <label>Upload Photos (Before)</label>
-            <input type="file" name="photo_before" accept="image/*">
-
-            <label>Upload Photos (After)</label>
-            <input type="file" name="photo_after" accept="image/*">
-
-            <button type="submit" class="cta-btn">Send</button>
-
-            {% if success %}
-                <p class="success">✅ Thank you! Your request was sent successfully. We’ll contact you soon.</p>
-            {% elif error %}
-                <p class="error">⚠️ Sorry, there was a problem sending your request. Please try again later.</p>
-            {% endif %}
+            <button type="submit" class="cta-btn" style="align-self:center;">Send Message</button>
         </form>
-    </main>
+    </section>
 
+    <!-- Footer -->
     <footer>
-        <p>© 2025 Spero Restoration Corp — Orlando, FL<br>
-        (407) 724-6310 • contact@spero-restoration.com</p>
-        <p><a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Use</a></p>
+        <p>&copy; 2025 Spero Restoration Corp. All rights reserved.</p>
+        <p><a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Service</a></p>
     </footer>
 </body>
 </html>
