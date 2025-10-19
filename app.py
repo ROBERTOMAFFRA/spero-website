@@ -196,30 +196,71 @@ def test_email():
     except Exception as e:
         print(f"Email error: {e}")
         return f"❌ Error sending email: {e}"
+# ======================================================
+# CONFIGURAÇÃO DE E-MAIL E SENDGRID
+# ======================================================
+from flask_mail import Mail, Message
 
-# =======================================================
+# Configuração do servidor de e-mail
+app.config["MAIL_SERVER"] = os.getenv("MAIL_SERVER", "smtp.sendgrid.net")
+app.config["MAIL_PORT"] = int(os.getenv("MAIL_PORT", 587))
+app.config["MAIL_USE_TLS"] = os.getenv("MAIL_USE_TLS", "True").lower() == "true"
+app.config["MAIL_USERNAME"] = os.getenv("MAIL_USERNAME", "apikey")
+app.config["MAIL_PASSWORD"] = os.getenv("SENDGRID_API_KEY", "")
+app.config["MAIL_DEFAULT_SENDER"] = os.getenv(
+    "MAIL_DEFAULT_SENDER", "contact@spero-restoration.com"
+)
+
+mail = Mail(app)
+compress = Compress(app)
+
+# ======================================================
+# ROTA DE TESTE DE E-MAIL
+# ======================================================
+@app.route("/test-email")
+def test_email():
+    try:
+        msg = Message(
+            "Test Email from Spero Restoration",
+            recipients=["contact@spero-restoration.com"],
+            body="This is a test email from your deployed Render app."
+        )
+        mail.send(msg)
+        return "✅ Test email sent successfully!"
+    except Exception as e:
+        print(f"Email error: {e}")
+        return f"❌ Error sending email: {e}"
+
+
+# ======================================================
 # ADMIN DASHBOARD (GALERIA + UPLOADS)
-# =======================================================
-@app.route('/admin')
+# ======================================================
+@app.route("/admin")
 def admin_dashboard():
     try:
-        upload_folder = os.path.join(app.static_folder, 'uploads')
+        upload_folder = os.path.join(app.static_folder, "uploads")
         if not os.path.exists(upload_folder):
             os.makedirs(upload_folder)
 
         uploads = os.listdir(upload_folder)
-        uploads = [f for f in uploads if not f.startswith('.')]
-        return render_template("admin.html", uploads=uploads, ADMIN_USER=os.getenv("ADMIN_USER"))
+        uploads = [f for f in uploads if not f.startswith(".")]
+
+        return render_template(
+            "admin.html",
+            uploads=uploads,
+            ADMIN_USER=os.getenv("ADMIN_USER")
+        )
+
     except Exception as e:
         print(f"⚠️ Error in admin_dashboard: {e}")
         flash("Error loading dashboard.", "error")
-        return redirect(url_for('index'))
+        return redirect(url_for("index"))
 
 
-# =======================================================
+# ======================================================
 # UPLOAD DE IMAGENS (PAINEL ADMIN)
-# =======================================================
-@app.route('/upload', methods=["POST"])
+# ======================================================
+@app.route("/upload", methods=["POST"])
 def upload_file():
     auth = request.cookies.get("admin_auth")
     if auth != "true":
@@ -243,9 +284,9 @@ def upload_file():
     return redirect(url_for("admin_dashboard"))
 
 
-# =======================================================
+# ======================================================
 # ADMIN LOGIN SYSTEM
-# =======================================================
+# ======================================================
 from flask import make_response
 
 @app.route("/admin-login", methods=["GET", "POST"])
@@ -270,9 +311,9 @@ def admin_login():
     return render_template("admin_login.html", error=error)
 
 
-# =======================================================
+# ======================================================
 # ADMIN LOGOUT
-# =======================================================
+# ======================================================
 @app.route("/admin-logout")
 def admin_logout():
     resp = make_response(redirect(url_for("admin_login")))
@@ -281,9 +322,10 @@ def admin_logout():
     return resp
 
 
-# =======================================================
+# ======================================================
 # APP EXECUTION
-# =======================================================
+# ======================================================
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
