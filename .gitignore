@@ -1,10 +1,17 @@
+# Python / Flask
 __pycache__/
-.env
 *.pyc
-*.pyo
-*.pyd
 instance/
-.pytest_cache/
+.env
+.env.local
+
+# Virtual environment
+.venv/
 venv/
-.env.example
+
+# Render and cache
+*.log
+*.sqlite3
+*.db
 .DS_Store
+.cache/
