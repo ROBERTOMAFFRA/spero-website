@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us | Spero Restoration Corp</title>
-  <meta name="description" content="Get in touch with Spero Restoration Corp for expert water, fire, and mold restoration or home remodeling services in Orlando, FL.">
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  <meta name="description" content="Contact Spero Restoration Corp for expert water, fire, and mold damage restoration in Orlando, Windermere, and surrounding areas.">
+  <meta name="keywords" content="contact Spero Restoration, restoration Orlando, emergency repair, mold removal, water damage, fire repair, remodeling experts Florida">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Contact Spero Restoration Corp">
+  <meta property="og:description" content="Reach out for 24/7 emergency restoration services across Central Florida.">
+  <meta property="og:image" content="https://spero-restoration.com/static/images/banner.png">
+  <meta property="og:url" content="https://spero-restoration.com/contact">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact Spero Restoration Corp">
+  <meta name="twitter:description" content="Contact our restoration specialists for fast, reliable service in Orlando and beyond.">
+
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
@@ -25,51 +36,59 @@
     </nav>
   </header>
 
-  <!-- MINI HERO -->
-  <section class="sub-hero">
-    <h1>Contact Us</h1>
-  </section>
-
-  <!-- CONTACT FORM -->
-  <section class="contact-section">
-    <div class="contact-container">
-      <h2>Request a Free Inspection</h2>
-      <p>Fill out the form below and our team will get back to you shortly.</p>
-
-      {% if success %}
-        <div class="alert success">
-          ✅ Message sent successfully! Our team will contact you soon.
-        </div>
-      {% elif error %}
-        <div class="alert error">
-          ⚠️ There was an issue sending your message. Please try again later.
-        </div>
-      {% endif %}
-
-      <form method="POST" action="{{ url_for('contact') }}">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" placeholder="Your name" required>
-
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="Your email" required>
-
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="Your phone number">
-
-        <label for="message">Your Message</label>
-        <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
-
-        <button type="submit" class="btn-primary">Send Message</button>
-      </form>
+  <!-- HERO SECTION -->
+  <section class="sub-banner" style="background-image: url('{{ url_for('static', filename='images/banner.png') }}');">
+    <div class="overlay"></div>
+    <div class="content">
+      <h1>Contact Spero Restoration Corp</h1>
+      <p>Available 24/7 for Emergency Restoration & Repairs</p>
     </div>
   </section>
 
-  <!-- CONTACT INFO -->
-  <section class="contact-info">
-    <h2>Contact Information</h2>
-    <p><strong>Phone:</strong> (407) 724-6310</p>
-    <p><strong>Email:</strong> contact@spero-restoration.com</p>
-    <p><strong>Service Areas:</strong> Orlando, Windermere, Lake Nona, Winter Garden, Clermont</p>
+  <!-- CONTACT FORM SECTION -->
+  <section id="contact-page">
+    <h2>Get in Touch</h2>
+    <p>Fill out the form below and our team will contact you shortly.</p>
+
+    {% if success %}
+      <div class="success-message">
+        ✅ Thank you! Your message has been sent successfully.<br>
+        Our team will contact you as soon as possible.
+      </div>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('contact') }}" class="contact-form">
+      <label for="name">Full Name *</label>
+      <input type="text" id="name" name="name" required placeholder="Your name">
+
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required placeholder="you@email.com">
+
+      <label for="phone">Phone *</label>
+      <input type="tel" id="phone" name="phone" required placeholder="(407) 724-6310">
+
+      <label for="message">Message *</label>
+      <textarea id="message" name="message" rows="5" required placeholder="Tell us about your issue..."></textarea>
+
+      <button type="submit" class="btn-primary">Send Message</button>
+    </form>
+  </section>
+
+  <!-- DIRECT CONTACT INFO -->
+  <section id="direct-contact">
+    <h2>Contact Details</h2>
+    <ul class="contact-info">
+      <li>📞 <strong>Phone:</strong> <a href="tel:4077246310">(407) 724-6310</a></li>
+      <li>✉️ <strong>Email:</strong> <a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a></li>
+      <li>📍 <strong>Location:</strong> Orlando, FL — Serving Windermere, Lake Nona, and Surrounding Areas</li>
+    </ul>
+  </section>
+
+  <!-- CTA -->
+  <section class="contact-cta">
+    <h2>Need Immediate Help?</h2>
+    <p>We’re ready to respond 24/7 to your water, fire, or mold emergency.</p>
+    <a href="tel:4077246310" class="btn-primary">Call Now</a>
   </section>
 
   <!-- FOOTER -->
@@ -77,5 +96,11 @@
     <p>&copy; 2025 Spero Restoration Corp | Orlando, FL | (407) 724-6310</p>
     <p><a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Service</a></p>
   </footer>
+
+  <!-- WHATSAPP & CALL BUTTONS -->
+  <a href="https://wa.me/14077246310" class="whatsapp-float" target="_blank">
+    <img src="{{ url_for('static', filename='images/whatsapp-icon.png') }}" alt="Chat on WhatsApp">
+  </a>
+  <a href="tel:4077246310" class="call-float">📞 Call Now</a>
 </body>
 </html>
