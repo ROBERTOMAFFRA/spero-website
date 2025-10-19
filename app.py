@@ -1,397 +1,183 @@
 import os
-import io
-import base64
-import sqlite3
-from datetime import datetime
-from flask import (
-    Flask, render_template, request, redirect, url_for,
-    send_from_directory, session, abort, jsonify, send_file
-)
-import requests
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from werkzeug.utils import secure_filename
+import sendgrid
+from sendgrid.helpers.mail import Mail
+from dotenv import load_dotenv
 
-# =========================
-#  CONFIGURAÇÃO BÁSICA
-# =========================
+load_dotenv()  # Carrega variáveis do .env
+
 app = Flask(__name__)
+app.secret_key = "spero_secret_2025"
 
-# Chaves e credenciais via ambiente
-app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "change-me-in-prod")
-SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY", "")
-FROM_EMAIL = "contact@spero-restoration.com"
+# Diretórios e permissões
+UPLOAD_FOLDER = 'static/images/uploads'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'webp'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# Credenciais Admin
+ADMIN_USERNAME = "RobertoMaffra"
+ADMIN_PASSWORD = "spero2025admin"
+
+# Configuração SendGrid
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 TO_EMAILS = ["contact@spero-restoration.com", "roberto.maffra@gmail.com"]
 
-ADMIN_USERNAME = os.getenv("ADMIN_USERNAME", "RobertoMaffra")
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "spero2025!")
+# --- Funções auxiliares ---
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-# Pastas de dados
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-DATA_DIR = os.path.join(BASE_DIR, "data")
-UPLOAD_DIR = os.path.join(DATA_DIR, "uploads")
-DB_PATH = os.path.join(DATA_DIR, "requests.db")
-
-os.makedirs(DATA_DIR, exist_ok=True)
-os.makedirs(UPLOAD_DIR, exist_ok=True)
-
-# =========================
-#  BANCO DE DADOS
-# =========================
-def get_db():
-    conn = sqlite3.connect(DB_PATH)
-    conn.row_factory = sqlite3.Row
-    return conn
-
-def init_db():
-    conn = get_db()
-    conn.execute(
-        """
-        CREATE TABLE IF NOT EXISTS requests (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            email TEXT NOT NULL,
-            phone TEXT NOT NULL,
-            address TEXT,
-            service TEXT,
-            message TEXT,
-            photo_before TEXT,
-            photo_after TEXT,
-            status TEXT DEFAULT 'Pending',
-            created_at TEXT NOT NULL
-        )
-        """
-    )
-    conn.commit()
-    conn.close()
-
-init_db()
-
-# =========================
-#  HELPERS
-# =========================
-def sendgrid_send(to_email: str, subject: str, content_text: str, attachments=None):
-    """
-    Envia e-mail com SendGrid API.
-    attachments: lista de dicionários no formato SendGrid:
-        {"content": base64_str, "filename": "file.xlsx", "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "disposition": "attachment"}
-    """
-    payload = {
-        "personalizations": [{"to": [{"email": to_email}]}],
-        "from": {"email": FROM_EMAIL, "name": "Spero Restoration"},
-        "subject": subject,
-        "content": [{"type": "text/plain", "value": content_text}],
-    }
-    if attachments:
-        payload["attachments"] = attachments
-
-    r = requests.post(
-        "https://api.sendgrid.com/v3/mail/send",
-        headers={
-            "Authorization": f"Bearer {SENDGRID_API_KEY}",
-            "Content-Type": "application/json",
-        },
-        json=payload,
-        timeout=20,
-    )
-    if r.status_code >= 400:
-        raise RuntimeError(f"SendGrid error {r.status_code}: {r.text}")
-
-def make_request_excel_row(record: dict) -> bytes:
-    """
-    Gera um arquivo Excel (.xlsx) em memória com UMA linha (o pedido recém-enviado).
-    Retorna os bytes do arquivo.
-    """
-    # Geração leve sem depender de engine pesado:
+def send_email(subject, html_content, recipient):
+    """Envio de e-mail com SendGrid"""
+    if not SENDGRID_API_KEY:
+        print("⚠️ SENDGRID_API_KEY não configurado.")
+        return
     try:
-        from openpyxl import Workbook
-    except ImportError:
-        # Segurança: caso openpyxl não esteja instalado
-        raise RuntimeError("openpyxl não instalado. Adicione ao requirements.txt")
-
-    wb = Workbook()
-    ws = wb.active
-    ws.title = "Inspection Request"
-
-    headers = [
-        "ID", "Name", "Email", "Phone", "Address",
-        "Service", "Message", "Status", "Created At",
-        "Photo Before", "Photo After"
-    ]
-    ws.append(headers)
-
-    ws.append([
-        record.get("id"),
-        record.get("name"),
-        record.get("email"),
-        record.get("phone"),
-        record.get("address"),
-        record.get("service"),
-        record.get("message"),
-        record.get("status"),
-        record.get("created_at"),
-        record.get("photo_before"),
-        record.get("photo_after"),
-    ])
-
-    stream = io.BytesIO()
-    wb.save(stream)
-    stream.seek(0)
-    return stream.read()
-
-def save_upload(file_storage):
-    """
-    Salva upload na pasta data/uploads e retorna caminho relativo (filename).
-    """
-    if not file_storage or not file_storage.filename:
-        return ""
-    filename = secure_filename(file_storage.filename)
-    base, ext = os.path.splitext(filename)
-    unique_name = f"{base}_{int(datetime.utcnow().timestamp())}{ext or '.jpg'}"
-    full_path = os.path.join(UPLOAD_DIR, unique_name)
-    file_storage.save(full_path)
-    return unique_name  # armazenamos só o nome do arquivo
-
-def require_admin():
-    if not session.get("admin_logged"):
-        abort(403)
-
-# =========================
-#  ROTAS PÚBLICAS
-# =========================
-@app.route("/")
-def index():
-    return render_template("index.html")
-
-@app.route("/about")
-def about():
-    return render_template("about.html")
-
-@app.route("/services")
-def services():
-    return render_template("services.html")
-
-@app.route("/privacy")
-def privacy():
-    return render_template("privacy.html")
-
-@app.route("/terms")
-def terms():
-    return render_template("terms.html")
-
-@app.route("/thank-you")
-def thank_you():
-    return render_template("thank-you.html")
-
-# Uploads públicos (para admin visualizar imagens gravadas)
-@app.route("/uploads/<path:filename>")
-def uploads(filename):
-    return send_from_directory(UPLOAD_DIR, filename)
-
-# Formulário de contato / inspeção
-@app.route("/contact", methods=["GET", "POST"])
-def contact():
-    if request.method == "POST":
-        name = request.form.get("name", "").strip()
-        email = request.form.get("email", "").strip()
-        phone = request.form.get("phone", "").strip()
-        address = request.form.get("address", "").strip()
-        service = request.form.get("service", "").strip()
-        message = request.form.get("message", "").strip()
-
-        photo_before = request.files.get("photo_before")
-        photo_after = request.files.get("photo_after")
-
-        # Salva uploads (se houver)
-        before_filename = save_upload(photo_before)
-        after_filename  = save_upload(photo_after)
-
-        created_at = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
-
-        # Grava no banco
-        conn = get_db()
-        cur = conn.cursor()
-        cur.execute(
-            """
-            INSERT INTO requests
-            (name, email, phone, address, service, message, photo_before, photo_after, status, created_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'Pending', ?)
-            """,
-            (name, email, phone, address, service, message, before_filename, after_filename, created_at),
+        sg = sendgrid.SendGridAPIClient(api_key=SENDGRID_API_KEY)
+        message = Mail(
+            from_email="no-reply@spero-restoration.com",
+            to_emails=recipient,
+            subject=subject,
+            html_content=html_content
         )
-        conn.commit()
-        new_id = cur.lastrowid
-        conn.close()
+        sg.send(message)
+        print(f"✅ E-mail enviado para {recipient}")
+    except Exception as e:
+        print(f"❌ Erro ao enviar e-mail: {e}")
 
-        # Cria conteúdo do e-mail
-        admin_text = f"""
-New Inspection Request
---------------------------
-Name: {name}
-Email: {email}
-Phone: {phone}
-Address: {address}
-Service: {service}
+# --- Multi-idioma ---
+texts = {
+    "en": {
+        "home_title": "Restoration & Remodeling Experts",
+        "home_subtitle": "Water Damage • Mold • Fire • Remodeling — Serving Orlando & Surrounding Areas",
+        "cta": "Schedule Inspection",
+        "gallery": "Before & After Projects",
+        "reviews": "What Our Clients Say",
+        "contact": "Contact Us",
+        "form_success": "Thank you! We’ll contact you shortly.",
+    },
+    "pt": {
+        "home_title": "Especialistas em Restauração e Reforma",
+        "home_subtitle": "Danos por Água • Mofo • Fogo • Reforma — Atendendo Orlando e Região",
+        "cta": "Agendar Inspeção",
+        "gallery": "Projetos Antes e Depois",
+        "reviews": "O Que Nossos Clientes Dizem",
+        "contact": "Fale Conosco",
+        "form_success": "Obrigado! Entraremos em contato em breve.",
+    }
+}
 
-Message:
-{message}
+# --- Rota Principal ---
+@app.route('/')
+def index():
+    lang = request.args.get("lang", "en")
+    content = texts.get(lang, texts["en"])
 
-Files:
-Before: {before_filename or 'n/a'}
-After : {after_filename or 'n/a'}
+    image_files = sorted(os.listdir(UPLOAD_FOLDER)) if os.path.exists(UPLOAD_FOLDER) else []
+    before_images = [img for img in image_files if "before" in img.lower()]
+    after_images = [img for img in image_files if "after" in img.lower()]
 
-Submitted at (UTC): {created_at}
-        """.strip()
+    testimonials = []
+    if os.path.exists("testimonials.txt"):
+        with open("testimonials.txt", "r", encoding="utf-8") as f:
+            for line in f:
+                parts = line.strip().split("|")
+                if len(parts) == 3:
+                    testimonials.append({"name": parts[0], "review": parts[1], "stars": int(parts[2])})
 
-        try:
-            # Envia para cada destinatário (contact e roberto) com Excel do pedido
-            # Gera Excel do registro (1 linha)
-            # Busca o registro recém inserido:
-            conn = get_db()
-            row = conn.execute("SELECT * FROM requests WHERE id = ?", (new_id,)).fetchone()
-            conn.close()
-            record = dict(row) if row else {}
+    return render_template("index.html", lang=lang, content=content,
+                           before_images=before_images, after_images=after_images,
+                           testimonials=testimonials)
 
-            xlsx_bytes = make_request_excel_row(record)
-            xlsx_b64 = base64.b64encode(xlsx_bytes).decode("utf-8")
-            attachments = [{
-                "content": xlsx_b64,
-                "filename": f"request_{new_id}.xlsx",
-                "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                "disposition": "attachment"
-            }]
+# --- Página de Contato ---
+@app.route('/contact', methods=["GET", "POST"])
+def contact():
+    lang = request.args.get("lang", "en")
+    content = texts.get(lang, texts["en"])
 
-            for rcpt in TO_EMAILS:
-                sendgrid_send(
-                    to_email=rcpt,
-                    subject=f"[Spero] New Inspection Request — {name}",
-                    content_text=admin_text,
-                    attachments=attachments
-                )
-
-            # Confirmação para o cliente (sem anexo)
-            confirm_text = f"""
-Hi {name},
-
-Thank you for contacting Spero Restoration Corp.
-We received your request regarding: {service}.
-Our team will get in touch with you shortly at {phone}.
-
-Best regards,
-Spero Restoration Corp
-(407) 724-6310
-contact@spero-restoration.com
-            """.strip()
-
-            if email:
-                sendgrid_send(
-                    to_email=email,
-                    subject="We received your request — Spero Restoration Corp",
-                    content_text=confirm_text,
-                    attachments=None
-                )
-
-            return render_template("contact.html", success=True)
-
-        except Exception as e:
-            print("Error sending email:", e)
-            return render_template("contact.html", error=True)
-
-    return render_template("contact.html")
-
-# =========================
-#  ÁREA ADMIN
-# =========================
-@app.route("/admin", methods=["GET", "POST"])
-def admin_login():
     if request.method == "POST":
-        user = request.form.get("username", "")
-        pwd = request.form.get("password", "")
-        if user == ADMIN_USERNAME and pwd == ADMIN_PASSWORD:
-            session["admin_logged"] = True
-            return redirect(url_for("admin_dashboard"))
-        return render_template("admin_login.html", error=True)
-    return render_template("admin_login.html")
+        name = request.form["name"]
+        email = request.form["email"]
+        phone = request.form["phone"]
+        service = request.form["service"]
+        message = request.form["message"]
 
-@app.route("/admin/logout")
-def admin_logout():
-    session.pop("admin_logged", None)
-    return redirect(url_for("admin_login"))
+        subject = f"New Contact Request from {name}"
+        html_content = f"""
+        <h3>New Message from Website</h3>
+        <p><b>Name:</b> {name}</p>
+        <p><b>Email:</b> {email}</p>
+        <p><b>Phone:</b> {phone}</p>
+        <p><b>Service:</b> {service}</p>
+        <p><b>Message:</b> {message}</p>
+        """
 
-@app.route("/admin/dashboard")
-def admin_dashboard():
-    require_admin()
-    conn = get_db()
-    rows = conn.execute(
-        "SELECT * FROM requests ORDER BY datetime(created_at) DESC"
-    ).fetchall()
-    conn.close()
-    return render_template("admin_dashboard.html", items=rows)
+        # Enviar para Spero
+        for admin_email in TO_EMAILS:
+            send_email(subject, html_content, admin_email)
 
-@app.route("/admin/status/<int:rid>", methods=["POST"])
-def admin_update_status(rid):
-    require_admin()
-    new_status = request.form.get("status", "Pending")
-    conn = get_db()
-    conn.execute("UPDATE requests SET status = ? WHERE id = ?", (new_status, rid))
-    conn.commit()
-    conn.close()
-    return redirect(url_for("admin_dashboard"))
+        # E-mail de confirmação para o cliente
+        confirmation_html = f"""
+        <h2>Thank you for contacting Spero Restoration!</h2>
+        <p>We have received your request and will contact you soon.</p>
+        <p><b>Your Message:</b><br>{message}</p>
+        <p>— Spero Restoration Corp</p>
+        """
+        send_email("Confirmation – Spero Restoration", confirmation_html, email)
 
-@app.route("/admin/export")
-def admin_export_excel():
-    require_admin()
-    # Gera excel com TODOS os registros
-    from openpyxl import Workbook
-    wb = Workbook()
-    ws = wb.active
-    ws.title = "Requests"
+        flash(content["form_success"], "success")
+        return redirect(url_for("contact", lang=lang))
 
-    headers = [
-        "ID","Name","Email","Phone","Address",
-        "Service","Message","Status","Created At",
-        "Photo Before","Photo After"
-    ]
-    ws.append(headers)
+    return render_template("contact.html", content=content, lang=lang)
 
-    conn = get_db()
-    rows = conn.execute("SELECT * FROM requests ORDER BY datetime(created_at) DESC").fetchall()
-    conn.close()
+# --- Login Admin ---
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        if request.form['username'] == ADMIN_USERNAME and request.form['password'] == ADMIN_PASSWORD:
+            session['logged_in'] = True
+            return redirect(url_for('admin'))
+        else:
+            flash("Invalid credentials", "danger")
+    return render_template("login.html")
 
-    for r in rows:
-        ws.append([
-            r["id"], r["name"], r["email"], r["phone"], r["address"],
-            r["service"], r["message"], r["status"], r["created_at"],
-            r["photo_before"], r["photo_after"]
-        ])
+# --- Logout ---
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    return redirect(url_for('index'))
 
-    bio = io.BytesIO()
-    wb.save(bio)
-    bio.seek(0)
-    filename = "Spero Restoration Corp — Inspection Requests.xlsx"
-    return send_file(
-        bio,
-        as_attachment=True,
-        download_name=filename,
-        mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    )
+# --- Painel Admin ---
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
 
-# =========================
-#  SAÚDE / ERROS
-# =========================
-@app.route("/health")
-def health():
-    return jsonify({"status": "ok"})
+    if request.method == 'POST':
+        if 'file' in request.files:
+            file = request.files['file']
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                flash("Image uploaded successfully!", "success")
 
-@app.errorhandler(403)
-def e403(_):
-    return "Forbidden", 403
+        if 'review' in request.form:
+            name = request.form['name']
+            review = request.form['review']
+            stars = request.form['stars']
+            with open("testimonials.txt", "a", encoding="utf-8") as f:
+                f.write(f"{name}|{review}|{stars}\n")
+            flash("Review added successfully!", "success")
 
-@app.errorhandler(404)
-def e404(_):
-    return "Not Found", 404
+            # Notificar por e-mail
+            send_email(
+                "New Review Added",
+                f"<p><b>{name}</b> added a review: “{review}” ({stars}⭐)</p>",
+                TO_EMAILS
+            )
 
-# =========================
-#  MAIN
-# =========================
-if __name__ == "__main__":
-    # Para ambiente local
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    return render_template("admin.html")
+
+# --- Configuração de execução ---
+if __name__ == '__main__':
+    app.run(debug=True)
