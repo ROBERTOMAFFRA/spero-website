@@ -183,19 +183,7 @@ compress = Compress(app)
 # ======================================================
 # ROTA DE TESTE DE E-MAIL
 # ======================================================
-@app.route("/test-email")
-def test_email():
-    try:
-        msg = Message(
-            "Test Email from Spero Restoration",
-            recipients=["contact@spero-restoration.com"],
-            body="This is a test email from your deployed Render app."
-        )
-        mail.send(msg)
-        return "✅ Test email sent successfully!"
-    except Exception as e:
-        print(f"Email error: {e}")
-        return f"❌ Error sending email: {e}"
+
 # ======================================================
 # CONFIGURAÇÃO DE E-MAIL E SENDGRID
 # ======================================================
