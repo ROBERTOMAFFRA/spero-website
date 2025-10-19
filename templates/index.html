@@ -1,48 +1,60 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spero Restoration Corp | Orlando Experts in Water, Fire, and Mold Damage</title>
-  <meta name="description" content="Spero Restoration Corp — Orlando-based restoration and remodeling experts in water damage, fire repair, and mold remediation. Serving Clermont, Windermere, Winter Garden, and all Central Florida.">
-  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Spero Restoration Corp | Orlando Experts in Water, Fire & Mold</title>
+  <meta name="description" content="Spero Restoration Corp — experts in water damage, fire repair, mold remediation, and remodeling across Central Florida. 24/7 response."/>
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Spero Restoration Corp | Orlando Restoration Experts"/>
+  <meta property="og:description" content="Professional restoration and remodeling services — water, fire, mold, and construction experts serving Central Florida."/>
+  <meta property="og:image" content="https://spero-restoration.com/static/images/banner.png"/>
+  <meta property="og:url" content="https://spero-restoration.com/"/>
+
+  <!-- JSON-LD LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"Spero Restoration Corp",
+    "image":"https://spero-restoration.com/static/images/logo.png",
+    "url":"https://spero-restoration.com/",
+    "telephone":"+1-407-724-6310",
+    "address":{"@type":"PostalAddress","addressLocality":"Orlando","addressRegion":"FL","addressCountry":"US"},
+    "description":"Water damage restoration, mold remediation, fire repair, and home remodeling across Central Florida."
+  }
+  </script>
 </head>
 <body>
-  <!-- HEADER -->
   <header class="header">
     <nav class="nav">
       <ul class="nav-links">
-        <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
+        <li><a class="active" href="{{ url_for('index') }}">Home</a></li>
         <li><a href="{{ url_for('about') }}">About</a></li>
         <li><a href="{{ url_for('services') }}">Services</a></li>
         <li><a href="{{ url_for('contact') }}">Contact</a></li>
       </ul>
-      <div class="lang">
-        <a href="?lang=en">EN</a> | 
-        <a href="?lang=es">ES</a> | 
-        <a href="?lang=pt">PT</a>
-      </div>
+      <div class="lang"><a href="?lang=en">EN</a> | <a href="?lang=es">ES</a> | <a href="?lang=pt">PT</a></div>
     </nav>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="hero" style="background-image: url('{{ url_for('static', filename='images/banner.png') }}');">
+  <section class="hero" style="background-image:url('{{ url_for('static', filename='images/banner.png') }}');">
     <div class="overlay"></div>
     <div class="hero-content">
-      <h1>Restoration & Remodeling<br>Experts</h1>
+      <h1>Restoration & Remodeling<br/>Experts</h1>
       <p>We restore homes and businesses across Central Florida — water, fire, and mold specialists.</p>
       <a href="{{ url_for('contact') }}" class="cta-btn">Schedule Inspection</a>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <p>
-      © 2025 Spero Restoration Corp — Orlando, FL<br>
-      (407) 502-9006 • contact@spero-restoration.com<br>
-      <a href="{{ url_for('privacy') }}">Privacy Policy</a> | 
-      <a href="{{ url_for('terms') }}">Terms of Use</a>
+      © 2025 Spero Restoration Corp — Orlando, FL<br/>
+      (407) 724-6310 • contact@spero-restoration.com<br/>
+      <a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Use</a>
     </p>
   </footer>
 </body>
