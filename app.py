@@ -277,6 +277,40 @@ def uploaded_file(filename):
     """Serve uploaded images in admin gallery"""
     return send_from_directory(os.path.join(app.static_folder, 'uploads'), filename)
 
+# ======================================================
+# ADMIN LOGIN SYSTEM
+# ======================================================
+from flask import make_response
+
+@app.route("/admin-login", methods=["GET", "POST"])
+def admin_login():
+    error = None
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        # Variáveis de ambiente configuradas no Render
+        admin_user = os.getenv("ADMIN_USER", "RobertoMaffra")
+        admin_pass = os.getenv("ADMIN_PASSWORD", "SperoSecure!2025")
+
+        if username == admin_user and password == admin_pass:
+            resp = make_response(redirect(url_for("admin_dashboard")))
+            resp.set_cookie("admin_auth", "true", max_age=3600, httponly=True, samesite="Lax")
+            flash("✅ Login successful! Welcome to admin dashboard.", "success")
+            return resp
+        else:
+            flash("❌ Invalid username or password.", "danger")
+
+    return render_template("admin_login.html", error=error)
+
+
+@app.route("/admin-logout")
+def admin_logout():
+    resp = make_response(redirect(url_for("admin_login")))
+    resp.set_cookie("admin_auth", "", expires=0)
+    flash("You have been logged out successfully.", "info")
+    return resp
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
