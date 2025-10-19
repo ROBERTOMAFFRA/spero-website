@@ -253,9 +253,9 @@ def test_email():
         print(f"Email error: {e}")
         return f"❌ Error sending email: {e}"
 
-# ======================================================
+# =======================================================
 # ADMIN DASHBOARD (GALERIA + UPLOADS)
-# ======================================================
+# =======================================================
 @app.route('/admin')
 def admin_dashboard():
     try:
@@ -267,19 +267,42 @@ def admin_dashboard():
         uploads = [f for f in uploads if not f.startswith('.')]
         return render_template("admin.html", uploads=uploads, ADMIN_USER=os.getenv("ADMIN_USER"))
     except Exception as e:
-        print(f"Error in admin_dashboard: {e}")
+        print(f"⚠️ Error in admin_dashboard: {e}")
         flash("Error loading dashboard.", "error")
         return redirect(url_for('index'))
 
 
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    """Serve uploaded images in admin gallery"""
-    return send_from_directory(os.path.join(app.static_folder, 'uploads'), filename)
+# =======================================================
+# UPLOAD DE IMAGENS (PAINEL ADMIN)
+# =======================================================
+@app.route('/upload', methods=["POST"])
+def upload_file():
+    auth = request.cookies.get("admin_auth")
+    if auth != "true":
+        return redirect(url_for("admin_login"))
 
-# ======================================================
+    if "file" not in request.files:
+        flash("No file part", "warning")
+        return redirect(url_for("admin_dashboard"))
+
+    file = request.files["file"]
+    if file.filename == "":
+        flash("No selected file", "warning")
+        return redirect(url_for("admin_dashboard"))
+
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        filepath = os.path.join(app.static_folder, "uploads", filename)
+        file.save(filepath)
+        flash("✅ File uploaded successfully", "success")
+
+    return redirect(url_for("admin_dashboard"))
+
+
+# =======================================================
 # ADMIN LOGIN SYSTEM
-# ======================================================
+# =======================================================
+from flask import make_response
 
 @app.route("/admin-login", methods=["GET", "POST"])
 def admin_login():
@@ -303,6 +326,9 @@ def admin_login():
     return render_template("admin_login.html", error=error)
 
 
+# =======================================================
+# ADMIN LOGOUT
+# =======================================================
 @app.route("/admin-logout")
 def admin_logout():
     resp = make_response(redirect(url_for("admin_login")))
@@ -310,6 +336,10 @@ def admin_logout():
     flash("You have been logged out successfully.", "info")
     return resp
 
+
+# =======================================================
+# APP EXECUTION
+# =======================================================
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
