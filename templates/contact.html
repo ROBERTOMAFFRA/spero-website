@@ -1,52 +1,54 @@
-<!DOCTYPE html>
-<html lang="{{ lang }}">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>{{ t.nav_contact }}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | Spero Restoration Corp – Orlando</title>
+  <meta name="description" content="Contact Spero Restoration Corp for 24/7 emergency restoration or remodeling services in Orlando and Central Florida.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}">
 </head>
 <body>
-  <header>
-    <div class="header-container">
-      <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
-      <nav>
-        <ul>
-          <li><a href="{{ url_for('home', lang=lang) }}">{{ t.nav_home }}</a></li>
-          <li><a href="{{ url_for('services', lang=lang) }}">{{ t.nav_services }}</a></li>
-        </ul>
-      </nav>
-    </div>
+  <header class="header">
+    <nav class="nav">
+      <ul class="nav-links">
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a class="active" href="{{ url_for('contact') }}">Contact</a></li>
+      </ul>
+      <div class="lang">
+        <a href="?lang=en">EN</a> | <a href="?lang=es">ES</a> | <a href="?lang=pt">PT</a>
+      </div>
+    </nav>
   </header>
 
-  <section class="contact-section">
-    <h2>{{ t.contact_heading }}</h2>
-    <form class="contact-form" method="POST" action="{{ url_for('contact', lang=lang) }}">
-      <label>{{ t.contact_name }}</label>
-      <input type="text" name="name" required>
-
-      <label>{{ t.contact_email }}</label>
-      <input type="email" name="email" required>
-
-      <label>{{ t.contact_phone }}</label>
-      <input type="text" name="phone" required>
-
-      <label>{{ t.contact_service }}</label>
-      <select name="service" required>
-        <option value="Water Damage">{{ t.service1 }}</option>
-        <option value="Fire Damage">{{ t.service2 }}</option>
-        <option value="Mold Removal">{{ t.service3 }}</option>
-        <option value="Remodeling">{{ t.service4 }}</option>
-      </select>
-
-      <label>{{ t.contact_message }}</label>
-      <textarea name="message" required></textarea>
-
-      <button type="submit" class="cta-btn">{{ t.cta_send }}</button>
-    </form>
+  <section class="content-section">
+    <div class="content-container">
+      <h1>Request an Inspection</h1>
+      <form method="POST" action="{{ url_for('send') }}" class="contact-form">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="phone" placeholder="Phone" required>
+        <select name="service" required>
+          <option value="">Select a Service</option>
+          <option>Water Damage</option>
+          <option>Mold Remediation</option>
+          <option>Fire & Smoke</option>
+          <option>Remodeling</option>
+        </select>
+        <textarea name="message" placeholder="Message" rows="4"></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Spero Restoration Corp — Orlando, FL</p>
+  <footer class="footer">
+    <p>
+      © 2025 Spero Restoration Corp — Orlando, FL<br>
+      (407) 502-9006 • contact@spero-restoration.com<br>
+      <a href="{{ url_for('privacy') }}">Privacy Policy</a> | 
+      <a href="{{ url_for('terms') }}">Terms of Use</a>
+    </p>
   </footer>
 </body>
 </html>
