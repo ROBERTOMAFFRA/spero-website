@@ -16,7 +16,7 @@ body {
 .header {
   background-color: #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  padding: 10px 0;
+  padding: 8px 0;
 }
 
 .nav {
@@ -62,7 +62,7 @@ body {
 /* === HERO SECTION === */
 .hero {
   position: relative;
-  height: 90vh;
+  height: 92vh;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -78,7 +78,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0,0,0,0.55); /* mais escuro para contraste */
 }
 
 .hero-content {
@@ -86,119 +86,43 @@ body {
   z-index: 2;
   max-width: 700px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-80px); /* Move tudo um pouco para cima */
 }
 
 .hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 15px;
-  color: #fff;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  font-size: 3rem;
+  margin-bottom: 25px;
+  color: #ffffff;
+  text-shadow: 0 3px 6px rgba(0,0,0,0.6);
+  letter-spacing: 0.5px;
 }
 
 .hero p {
-  font-size: 1.1rem;
-  margin-bottom: 25px;
+  font-size: 1.2rem;
+  margin-bottom: 40px;
   color: #f1f1f1;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  line-height: 1.5;
+  transform: translateY(10px); /* levemente mais para baixo */
 }
 
 .cta-btn {
   display: inline-block;
   background: #007BFF;
   color: #fff;
-  padding: 12px 25px;
+  padding: 14px 28px;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-weight: bold;
   transition: background 0.3s;
+  transform: translateY(25px); /* botão mais embaixo */
 }
 
 .cta-btn:hover {
-  background: #0056b3;
-}
-
-/* === CONTENT SECTIONS === */
-.content-section {
-  padding: 80px 20px;
-  background: #fff;
-}
-
-.content-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.content-container h1 {
-  font-size: 2.2rem;
-  color: #003366;
-  margin-bottom: 20px;
-}
-
-.content-container p {
-  color: #555;
-  margin-bottom: 20px;
-  font-size: 1rem;
-}
-
-/* === SERVICES GRID === */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  margin-top: 40px;
-}
-
-.service-card {
-  background: #f8f9fa;
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  transition: transform 0.3s;
-}
-
-.service-card:hover {
-  transform: translateY(-5px);
-}
-
-.service-card h3 {
-  color: #007BFF;
-  margin-bottom: 10px;
-}
-
-/* === CONTACT FORM === */
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-top: 30px;
-}
-
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-.contact-form textarea {
-  resize: vertical;
-}
-
-.contact-form button {
-  background: #007BFF;
-  color: #fff;
-  padding: 12px;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.contact-form button:hover {
   background: #0056b3;
 }
 
@@ -239,5 +163,13 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
+  }
+
+  .hero-content {
+    transform: translateY(-40px); /* Menor deslocamento no mobile */
+  }
+
+  .cta-btn {
+    transform: translateY(15px);
   }
 }
