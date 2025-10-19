@@ -164,32 +164,6 @@ ADMIN_PASS = os.getenv("ADMIN_PASS", "Spero123!")
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
-# ---------------------------
-# ADMIN LOGIN
-# ---------------------------
-@app.route("/admin-login", methods=["GET", "POST"])
-def admin_login():
-    if request.method == "POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
-
-        if username == ADMIN_USER and password == ADMIN_PASS:
-            # Create simple session flag
-            response = redirect(url_for("admin_dashboard"))
-            response.set_cookie("admin_auth", "true", max_age=3600)
-            return response
-        else:
-            flash("Invalid credentials", "error")
-    return render_template("admin-login.html")
-
-# ---------------------------
-# ADMIN DASHBOARD
-# ---------------------------
-
-# ---------------------------
-# UPLOAD IMAGE
-# ---------------------------
-
 # ======================================================
 # CONFIGURAÇÃO DE E-MAIL E SENDGRID
 # ======================================================
