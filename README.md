@@ -1,33 +1,26 @@
-# 🌊 Spero Restoration Corp — Orlando, FL
+# 🌊 Spero Restoration Corp Website
 
-Welcome to the official website of **Spero Restoration Corp**, your trusted local experts in **Water Damage**, **Fire Restoration**, **Mold Remediation**, and **Home Remodeling** across **Orlando, Clermont, Windermere, Lake Nona, and Central Florida**.
-
----
-
-## 🌟 About
-
-Spero Restoration Corp provides professional **restoration and remodeling services** with a commitment to quality, integrity, and customer satisfaction.  
-We specialize in:
-- 🏠 **Home Remodeling**
-- 💧 **Water Damage Restoration**
-- 🔥 **Fire & Smoke Damage Cleanup**
-- 🌿 **Mold Inspection & Remediation**
-- 🌪️ **Storm & Flood Damage Repair**
+Official website of **Spero Restoration Corp**, a restoration and remodeling company serving Orlando, Windermere, Lake Nona, and surrounding areas.
 
 ---
 
-## 🌎 Website
-
-**Live Site:** [https://spero-website.onrender.com](https://spero-website.onrender.com)
+## 🚀 Stack
+- **Framework:** Flask 3.0.3  
+- **Deploy:** Render.com  
+- **Email:** SendGrid  
+- **Languages:** English, Spanish, Portuguese  
+- **SEO:** Optimized with robots.txt, sitemap.xml, meta tags, and JSON-LD  
+- **Admin Panel:** Secure login for uploading before/after photos and adding reviews  
 
 ---
 
-## ⚙️ Project Setup
-
-To run locally:
+## ⚙️ Environment Variables
+Copy `.env.example` → `.env` and configure:
 
 ```bash
-git clone https://github.com/robertomaffra/spero-website.git
-cd spero-website
-pip install -r requirements.txt
-python app.py
+FLASK_ENV=production
+SECRET_KEY=your-secret-key-here
+SENDGRID_API_KEY=your-sendgrid-api-key-here
+SENDER_EMAIL=contact@spero-restoration.com
+ADMIN_USERNAME=RobertoMaffra
+ADMIN_PASSWORD=spero2025admin
