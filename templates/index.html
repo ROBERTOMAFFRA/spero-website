@@ -1,132 +1,84 @@
 <!DOCTYPE html>
-<html lang="{{ lang }}">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Spero Restoration Corp | Orlando</title>
-  <meta name="description" content="Water Damage Restoration, Mold Remediation, Fire Repair, and Home Remodeling in Orlando, Windermere, Lake Nona, Winter Garden and Clermont. 24/7 response.">
-  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}">
-  <!-- JSON-LD LocalBusiness -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Spero Restoration Corp",
-    "telephone": "{{ phone_tel }}",
-    "email": "{{ company_email }}",
-    "url": "https://spero-restoration.com/",
-    "areaServed": {{ service_areas|tojson }},
-    "image": ["{{ url_for('static', filename='images/banner.png', _external=True) }}"]
-  }
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spero Restoration Corp | Restoration & Remodeling Experts</title>
+  <meta name="description" content="Spero Restoration Corp provides water, fire, and mold restoration, as well as home remodeling services across Orlando, Windermere, Lake Nona, and Winter Garden.">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="logo">
-      <a href="{{ url_for('index') }}">
-        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
-      </a>
-    </div>
+<body>
+  <!-- HEADER -->
+  <header>
+    <a href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
+    </a>
     <nav>
       <ul>
-        <li><a class="active" href="{{ url_for('index') }}">{{ t('nav_home','Home') }}</a></li>
-        <li><a href="{{ url_for('about') }}">{{ t('nav_about','About') }}</a></li>
-        <li><a href="{{ url_for('services') }}">{{ t('nav_services','Services') }}</a></li>
-        <li><a href="{{ url_for('contact') }}">{{ t('nav_contact','Contact') }}</a></li>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
       </ul>
     </nav>
-    <div class="lang">
-      <a href="{{ url_for('index', lang='en') }}">EN</a> |
-      <a href="{{ url_for('index', lang='es') }}">ES</a> |
-      <a href="{{ url_for('index', lang='pt') }}">PT</a>
-    </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero" style="background-image:url('{{ url_for('static', filename='images/banner.png') }}')">
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <h1>{{ t('home_title','Restoration & Remodeling Experts') }}</h1>
-      <p class="subtitle">{{ t('home_subtitle','Water Damage • Mold • Fire • Remodeling — Serving Orlando & Surrounding Areas') }}</p>
-      <a class="cta-btn" href="{{ url_for('contact') }}">{{ t('schedule_btn','Schedule Inspection') }}</a>
-    </div>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1>Restoration & Remodeling Experts</h1>
+    <p>Serving Orlando, Windermere, Lake Nona, and Winter Garden</p>
+    <a href="{{ url_for('contact') }}" class="btn-primary">Schedule Inspection</a>
   </section>
 
-  <!-- SERVICES SNAPSHOTS -->
-  <section class="content-section">
-    <div class="content-container">
-      <h2>{{ t('services_title','Our Services') }}</h2>
-      <p style="max-width:820px;margin:10px auto 30px;">
-        Water Damage Restoration • Mold Remediation • Fire Damage Repair • Home Remodeling.
-      </p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;">
-        <div class="card-lite">Water Damage Restoration</div>
-        <div class="card-lite">Mold Remediation</div>
-        <div class="card-lite">Fire & Smoke Repair</div>
-        <div class="card-lite">Home Remodeling</div>
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p class="about-content">
+      Spero Restoration Corp is a trusted leader in restoration and remodeling services throughout Central Florida.
+      We specialize in restoring properties affected by water, mold, or fire damage — bringing your home back to life with quality and care.
+    </p>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="service-card">
+        <img src="{{ url_for('static', filename='images/water.png') }}" alt="Water Damage">
+        <h3>Water Damage Restoration</h3>
+        <p>Fast and professional water removal, drying, and repair services to restore your property efficiently.</p>
+      </div>
+      <div class="service-card">
+        <img src="{{ url_for('static', filename='images/mold.png') }}" alt="Mold Remediation">
+        <h3>Mold Remediation</h3>
+        <p>Comprehensive inspection, treatment, and prevention for safe and healthy indoor air quality.</p>
+      </div>
+      <div class="service-card">
+        <img src="{{ url_for('static', filename='images/fire.png') }}" alt="Fire Repair">
+        <h3>Fire & Smoke Damage Repair</h3>
+        <p>Full recovery solutions for fire-damaged structures, including cleanup and odor removal.</p>
+      </div>
+      <div class="service-card">
+        <img src="{{ url_for('static', filename='images/remodel.png') }}" alt="Home Remodeling">
+        <h3>Home Remodeling</h3>
+        <p>Upgrade your space with modern design, quality materials, and professional craftsmanship.</p>
       </div>
     </div>
   </section>
 
-  <!-- BEFORE / AFTER GALLERY -->
-  {% if pairs and pairs|length > 0 %}
-  <section class="content-section" style="background:#f7f9fc;">
-    <div class="content-container">
-      <h2>Before &amp; After</h2>
-      <div class="gallery-grid">
-        {% for p in pairs %}
-          <figure class="ba-item">
-            <img src="{{ url_for('static', filename='images/uploads/' + p.before) }}" alt="Before">
-            <figcaption>Before</figcaption>
-          </figure>
-          <figure class="ba-item">
-            <img src="{{ url_for('static', filename='images/uploads/' + p.after) }}" alt="After">
-            <figcaption>After</figcaption>
-          </figure>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
-  {% endif %}
-
-  <!-- TESTIMONIALS -->
-  {% if testimonials and testimonials|length > 0 %}
-  <section class="content-section">
-    <div class="content-container">
-      <h2>Customer Reviews</h2>
-      <div class="reviews">
-        {% for r in testimonials %}
-        <div class="review">
-          <div class="review-stars">
-            {% for i in range(r.stars) %}★{% endfor %}
-            {% for i in range(5 - r.stars) %}☆{% endfor %}
-          </div>
-          <p class="review-text">“{{ r.message }}”</p>
-          <p class="review-author">— {{ r.name }}</p>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
-  {% endif %}
-
-  <!-- CTA -->
-  <section class="content-section" style="background:#eef5ff;">
-    <div class="content-container">
-      <h2>Need Immediate Help?</h2>
-      <p>Call us 24/7 at <a href="tel:{{ phone_tel }}">{{ phone }}</a> or request an inspection now.</p>
-      <a class="cta-btn" href="{{ url_for('contact') }}">Request Inspection</a>
-    </div>
+  <!-- CONTACT CTA -->
+  <section class="contact-cta">
+    <h2>Need Immediate Assistance?</h2>
+    <p>Contact us today for 24/7 emergency restoration and expert remodeling support.</p>
+    <a href="{{ url_for('contact') }}" class="btn-primary">Request Inspection</a>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>&copy; {{ datetime.utcnow().year if datetime else 2025 }} {{ company_name }} — {{ t('footer_rights','All Rights Reserved') }}</p>
+    <p>&copy; 2025 Spero Restoration Corp | Orlando, FL | (407) 724-6310</p>
     <p><a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Service</a></p>
   </footer>
-
 </body>
 </html>
