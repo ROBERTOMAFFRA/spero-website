@@ -137,6 +137,79 @@ def add_header(response):
 # ---------------------------
 # RUN
 # ---------------------------
+
+from werkzeug.utils import secure_filename
+
+# ---------------------------
+# ADMIN PANEL CONFIG
+# ---------------------------
+UPLOAD_FOLDER = os.path.join("static", "uploads")
+ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "webp"}
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+
+ADMIN_USER = os.getenv("ADMIN_USER", "RobertoMaffra")
+ADMIN_PASS = os.getenv("ADMIN_PASS", "Spero123!")
+
+def allowed_file(filename):
+    return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+
+# ---------------------------
+# ADMIN LOGIN
+# ---------------------------
+@app.route("/admin-login", methods=["GET", "POST"])
+def admin_login():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        if username == ADMIN_USER and password == ADMIN_PASS:
+            # Create simple session flag
+            response = redirect(url_for("admin_dashboard"))
+            response.set_cookie("admin_auth", "true", max_age=3600)
+            return response
+        else:
+            flash("Invalid credentials", "error")
+    return render_template("admin-login.html")
+
+# ---------------------------
+# ADMIN DASHBOARD
+# ---------------------------
+@app.route("/admin-dashboard")
+def admin_dashboard():
+    auth = request.cookies.get("admin_auth")
+    if auth != "true":
+        return redirect(url_for("admin_login"))
+
+    uploads = os.listdir(app.config["UPLOAD_FOLDER"])
+    uploads = [f for f in uploads if allowed_file(f)]
+    return render_template("admin.html", uploads=uploads)
+
+# ---------------------------
+# UPLOAD IMAGE
+# ---------------------------
+@app.route("/upload", methods=["POST"])
+def upload_file():
+    auth = request.cookies.get("admin_auth")
+    if auth != "true":
+        return redirect(url_for("admin_login"))
+
+    if "file" not in request.files:
+        flash("No file part")
+        return redirect(url_for("admin_dashboard"))
+
+    file = request.files["file"]
+    if file.filename == "":
+        flash("No selected file")
+        return redirect(url_for("admin_dashboard"))
+
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+        file.save(filepath)
+        flash("File uploaded successfully")
+    return redirect(url_for("admin_dashboard"))
+    
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
