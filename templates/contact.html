@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Contact | Spero Restoration Corp – Orlando</title>
-  <meta name="description" content="Contact Spero Restoration Corp for 24/7 emergency restoration or remodeling services in Orlando and Central Florida.">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}">
+  <meta name="description" content="Request an inspection — water, fire, and mold specialists across Central Florida."/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}"/>
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
 </head>
 <body>
   <header class="header">
@@ -16,38 +16,42 @@
         <li><a href="{{ url_for('services') }}">Services</a></li>
         <li><a class="active" href="{{ url_for('contact') }}">Contact</a></li>
       </ul>
-      <div class="lang">
-        <a href="?lang=en">EN</a> | <a href="?lang=es">ES</a> | <a href="?lang=pt">PT</a>
-      </div>
+      <div class="lang"><a href="?lang=en">EN</a> | <a href="?lang=es">ES</a> | <a href="?lang=pt">PT</a></div>
     </nav>
   </header>
 
-  <section class="content-section">
-    <div class="content-container">
-      <h1>Request an Inspection</h1>
-      <form method="POST" action="{{ url_for('send') }}" class="contact-form">
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="tel" name="phone" placeholder="Phone" required>
-        <select name="service" required>
-          <option value="">Select a Service</option>
-          <option>Water Damage</option>
-          <option>Mold Remediation</option>
-          <option>Fire & Smoke</option>
-          <option>Remodeling</option>
-        </select>
-        <textarea name="message" placeholder="Message" rows="4"></textarea>
-        <button type="submit">Send</button>
-      </form>
-    </div>
+  <section class="contact-container">
+    {% with msgs = get_flashed_messages(with_categories=true) %}
+      {% if msgs %}
+        {% for category, msg in msgs %}
+          <div style="background:#e7f7ed;border:1px solid #86d39b;color:#246b3f;padding:12px 14px;border-radius:6px;margin-bottom:15px;text-align:center;">
+            {{ msg }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <h2>Request an Inspection</h2>
+    <form method="POST" action="{{ url_for('contact') }}">
+      <input type="text" name="name" placeholder="Name" required/>
+      <input type="email" name="email" placeholder="Email" required/>
+      <input type="tel" name="phone" placeholder="Phone" required/>
+      <select name="service" required>
+        <option value="" disabled selected>Select a Service</option>
+        <option>Water Damage</option>
+        <option>Mold Remediation</option>
+        <option>Fire & Smoke Repair</option>
+        <option>Home Remodeling</option>
+      </select>
+      <textarea name="message" rows="4" placeholder="Briefly describe what happened..." required></textarea>
+      <button type="submit">Send</button>
+    </form>
   </section>
 
   <footer class="footer">
     <p>
-      © 2025 Spero Restoration Corp — Orlando, FL<br>
-      (407) 502-9006 • contact@spero-restoration.com<br>
-      <a href="{{ url_for('privacy') }}">Privacy Policy</a> | 
-      <a href="{{ url_for('terms') }}">Terms of Use</a>
+      © 2025 Spero Restoration Corp — Orlando, FL<br/>(407) 724-6310 • contact@spero-restoration.com<br/>
+      <a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Use</a>
     </p>
   </footer>
 </body>
