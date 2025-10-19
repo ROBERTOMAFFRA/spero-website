@@ -1,10 +1,20 @@
-import os
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+# ======================================================
+# Spero Restoration Corp — Flask App
+# Revisão completa de imports (SEO, Email, Multi-idioma, Uploads)
+# ======================================================
+
+from flask import (
+    Flask, render_template, request, redirect, url_for,
+    flash, send_from_directory, jsonify
+)
+from flask_mail import Mail, Message
 from flask_compress import Compress
-from dotenv import load_dotenv
 from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail
+from sendgrid.helpers.mail import Mail as SendGridMail
+from dotenv import load_dotenv
+import os
 import json
+import datetime
 
 load_dotenv()
 
