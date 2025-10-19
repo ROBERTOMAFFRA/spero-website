@@ -189,27 +189,6 @@ def admin_login():
 # ---------------------------
 # UPLOAD IMAGE
 # ---------------------------
-@app.route("/upload", methods=["POST"])
-def upload_file():
-    auth = request.cookies.get("admin_auth")
-    if auth != "true":
-        return redirect(url_for("admin_login"))
-
-    if "file" not in request.files:
-        flash("No file part")
-        return redirect(url_for("admin_dashboard"))
-
-    file = request.files["file"]
-    if file.filename == "":
-        flash("No selected file")
-        return redirect(url_for("admin_dashboard"))
-
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
-        file.save(filepath)
-        flash("File uploaded successfully")
-    return redirect(url_for("admin_dashboard"))
 
 # ======================================================
 # CONFIGURAÇÃO DE E-MAIL E SENDGRID
