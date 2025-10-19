@@ -1,85 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel | Spero Restoration Corp</title>
-    <meta name="description" content="Admin dashboard for managing gallery images and customer reviews on Spero Restoration Corp.">
-    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Spero Restoration Corp</title>
+  <meta name="description" content="Read Spero Restoration Corp’s Privacy Policy to learn how we handle your information and protect your data.">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="navbar">
-        <div class="logo">
-            <a href="{{ url_for('index') }}">
-                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
-            </a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><a href="{{ url_for('logout') }}">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- HEADER -->
+  <header>
+    <a href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
+    </a>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Admin Dashboard -->
-    <section class="about-section" style="background:#fff;">
-        <h1>Admin Dashboard</h1>
-        <p>Welcome, <b>Roberto</b>. From here, you can upload gallery images and manage customer reviews.</p>
+  <!-- MINI HERO -->
+  <section class="sub-hero">
+    <h1>Privacy Policy</h1>
+  </section>
 
-        {% with messages = get_flashed_messages(with_categories=true) %}
-          {% if messages %}
-            {% for category, message in messages %}
-              <div style="margin:20px auto; padding:15px 25px; background:#d4edda; color:#155724; border-radius:8px; max-width:600px;">
-                {{ message }}
-              </div>
-            {% endfor %}
-          {% endif %}
-        {% endwith %}
+  <!-- PRIVACY CONTENT -->
+  <section class="policy">
+    <div class="policy-content">
+      <h2>Information We Collect</h2>
+      <p>
+        Spero Restoration Corp collects personal information such as your name, email address, phone number, and message details
+        through our contact form to provide restoration and remodeling services.
+      </p>
 
-        <!-- Upload Section -->
-        <div style="max-width:600px; margin:50px auto;">
-            <h2>📸 Upload Before & After Images</h2>
-            <p>Files with names containing “before” or “after” will appear automatically on the homepage gallery.</p>
-            <form method="POST" enctype="multipart/form-data">
-                <input type="file" name="file" required style="margin:15px 0;">
-                <button type="submit" class="cta-btn">Upload Image</button>
-            </form>
-        </div>
+      <h2>How We Use Your Information</h2>
+      <p>
+        We use your information to respond to inquiries, schedule inspections, and improve our services. Your information is not shared
+        or sold to third parties unless required by law.
+      </p>
 
-        <hr style="margin:60px auto; max-width:700px; border:0; border-top:1px solid #ccc;">
+      <h2>Data Protection</h2>
+      <p>
+        We implement secure data storage and transmission practices to protect your personal information from unauthorized access.
+      </p>
 
-        <!-- Reviews Section -->
-        <div style="max-width:600px; margin:50px auto;">
-            <h2>💬 Add Customer Review</h2>
-            <form method="POST">
-                <label for="name"><b>Name</b></label>
-                <input type="text" name="name" id="name" required style="padding:12px; width:100%; margin:10px 0; border:1px solid #ccc; border-radius:6px;">
+      <h2>Cookies</h2>
+      <p>
+        Our website may use cookies to improve user experience, track analytics, and support language preferences.
+      </p>
 
-                <label for="review"><b>Review</b></label>
-                <textarea name="review" id="review" rows="4" required style="padding:12px; width:100%; margin:10px 0; border:1px solid #ccc; border-radius:6px;"></textarea>
+      <h2>Contact Us</h2>
+      <p>
+        If you have any questions about this Privacy Policy or how we handle your data, please contact us at:
+        <br><strong>Email:</strong> contact@spero-restoration.com
+        <br><strong>Phone:</strong> (407) 724-6310
+      </p>
+    </div>
+  </section>
 
-                <label for="stars"><b>Stars (1–5)</b></label>
-                <select name="stars" id="stars" required style="padding:12px; width:100%; margin:10px 0; border:1px solid #ccc; border-radius:6px;">
-                    <option value="5">⭐⭐⭐⭐⭐</option>
-                    <option value="4">⭐⭐⭐⭐</option>
-                    <option value="3">⭐⭐⭐</option>
-                    <option value="2">⭐⭐</option>
-                    <option value="1">⭐</option>
-                </select>
-
-                <button type="submit" name="review" class="cta-btn">Add Review</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Spero Restoration Corp. All rights reserved.</p>
-        <p><a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Service</a></p>
-    </footer>
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Spero Restoration Corp | Orlando, FL | (407) 724-6310</p>
+    <p><a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Service</a></p>
+  </footer>
 </body>
 </html>
