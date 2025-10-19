@@ -1,72 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services | Spero Restoration Corp</title>
-    <meta name="description" content="Explore Spero Restoration Corp's professional services — water damage restoration, mold remediation, fire repair, and home remodeling in Orlando, Windermere, Lake Nona, and nearby areas.">
-    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Spero Restoration Corp</title>
+  <meta name="description" content="Learn about Spero Restoration Corp — Orlando’s trusted experts in water, fire, and mold restoration, and home remodeling services.">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="navbar">
-        <div class="logo">
-            <a href="{{ url_for('index') }}">
-                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
-            </a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><a href="{{ url_for('about') }}">About</a></li>
-                <li><a href="{{ url_for('services') }}" class="active">Services</a></li>
-                <li><a href="{{ url_for('contact') }}">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- HEADER -->
+  <header>
+    <a href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
+    </a>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}" class="active">About</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Services Section -->
-    <section class="about-section" style="background:#fff;">
-        <h1>Our Services</h1>
-        <p>At Spero Restoration Corp, we provide high-quality restoration and remodeling services to bring your property back to life. Our certified team uses advanced equipment and proven techniques to deliver exceptional results across Central Florida.</p>
+  <!-- MINI HERO -->
+  <section class="sub-hero">
+    <h1>About Us</h1>
+  </section>
 
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; margin-top:50px; max-width:1000px; margin-left:auto; margin-right:auto;">
-            
-            <div style="background:#f9f9f9; padding:30px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-                <img src="{{ url_for('static', filename='images/water-icon.png') }}" alt="Water Damage Restoration" style="height:60px; margin-bottom:15px;">
-                <h3>Water Damage Restoration</h3>
-                <p>We quickly remove standing water, dry affected areas, and restore your property to prevent mold and structural damage.</p>
-            </div>
+  <!-- ABOUT CONTENT -->
+  <section>
+    <div class="about-content">
+      <p>
+        <strong>Spero Restoration Corp</strong> is a licensed and insured restoration and remodeling company based in Orlando, Florida.
+        We proudly serve residential and commercial clients across Windermere, Lake Nona, Winter Garden, Clermont, and surrounding areas.
+      </p>
+      <br>
+      <p>
+        Our mission is to restore comfort, safety, and value to every property we touch — whether it’s water damage mitigation,
+        fire and smoke recovery, or full remodeling projects. We combine advanced technology, expert craftsmanship, and responsive service
+        to deliver outstanding results every time.
+      </p>
+      <br>
+      <p>
+        At Spero Restoration Corp, we understand that property damage can be stressful.
+        That’s why we focus on fast response, transparent communication, and superior quality — helping you return home faster with peace of mind.
+      </p>
+    </div>
+  </section>
 
-            <div style="background:#f9f9f9; padding:30px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-                <img src="{{ url_for('static', filename='images/mold-icon.png') }}" alt="Mold Remediation" style="height:60px; margin-bottom:15px;">
-                <h3>Mold Remediation</h3>
-                <p>Certified mold specialists ensure safe and thorough removal, restoring clean and healthy indoor air quality.</p>
-            </div>
+  <!-- CALL TO ACTION -->
+  <section class="contact-cta">
+    <h2>Ready to Restore Your Home?</h2>
+    <p>Get in touch with our team today for professional inspection and restoration services.</p>
+    <a href="{{ url_for('contact') }}" class="btn-primary">Schedule Consultation</a>
+  </section>
 
-            <div style="background:#f9f9f9; padding:30px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-                <img src="{{ url_for('static', filename='images/fire-icon.png') }}" alt="Fire Damage Repair" style="height:60px; margin-bottom:15px;">
-                <h3>Fire Damage Repair</h3>
-                <p>From smoke removal to structural reconstruction, our fire restoration experts handle every detail efficiently and safely.</p>
-            </div>
-
-            <div style="background:#f9f9f9; padding:30px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-                <img src="{{ url_for('static', filename='images/remodel-icon.png') }}" alt="Home Remodeling" style="height:60px; margin-bottom:15px;">
-                <h3>Home Remodeling</h3>
-                <p>Upgrade your home with modern and functional designs — kitchens, bathrooms, flooring, drywall, and more.</p>
-            </div>
-
-        </div>
-
-        <a href="{{ url_for('contact') }}" class="cta-btn" style="margin-top:50px;">Request a Free Inspection</a>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Spero Restoration Corp. All rights reserved.</p>
-        <p><a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Service</a></p>
-    </footer>
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Spero Restoration Corp | Orlando, FL | (407) 724-6310</p>
+    <p><a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Service</a></p>
+  </footer>
 </body>
 </html>
