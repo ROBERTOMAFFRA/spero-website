@@ -1,37 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Thank You | Spero Restoration Corp</title>
-  <meta name="description" content="We received your message and will contact you shortly."/>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}"/>
-  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Spero Restoration Corp</title>
+    <meta name="description" content="Thank you for contacting Spero Restoration Corp. Our team will reach out shortly to assist with your restoration needs.">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}">
 </head>
+
 <body>
-  <header class="header">
-    <nav class="nav">
-      <ul class="nav-links">
-        <li><a href="{{ url_for('index') }}">Home</a></li>
-        <li><a href="{{ url_for('about') }}">About</a></li>
-        <li><a href="{{ url_for('services') }}">Services</a></li>
-        <li><a href="{{ url_for('contact') }}">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Header -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('services') }}">Services</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <section class="content-section">
-    <div class="content-container">
-      <h1>Thank You!</h1>
-      <p>Your message has been received. A specialist will reach out to you shortly.</p>
-      <a class="cta-btn" href="{{ url_for('index') }}">Back to Home</a>
-    </div>
-  </section>
+    <!-- Thank You Section -->
+    <section class="about-section" style="background:#fff; text-align:center;">
+        <h1>Thank You!</h1>
+        <p>We appreciate you reaching out to <strong>Spero Restoration Corp</strong>. Our team has received your message and will contact you shortly.</p>
+        <p>If your request is urgent, please call us directly at <a href="tel:+14077246310" style="color:#0078d7;">(407) 724-6310</a>.</p>
 
-  <footer class="footer">
-    <p>
-      © 2025 Spero Restoration Corp — Orlando, FL<br/>(407) 724-6310 • contact@spero-restoration.com<br/>
-      <a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Use</a>
-    </p>
-  </footer>
+        <a href="{{ url_for('index') }}" class="cta-btn" style="margin-top:40px;">Back to Home</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Spero Restoration Corp. All rights reserved.</p>
+        <p><a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Service</a></p>
+    </footer>
 </body>
 </html>
