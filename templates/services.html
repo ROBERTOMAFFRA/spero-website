@@ -1,42 +1,72 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Services | Spero Restoration Corp – Orlando</title>
-  <meta name="description" content="Explore our services — water damage restoration, mold remediation, fire repair, and home remodeling across Orlando and Central Florida."/>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}"/>
-  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Spero Restoration Corp</title>
+    <meta name="description" content="Explore Spero Restoration Corp's professional services — water damage restoration, mold remediation, fire repair, and home remodeling in Orlando, Windermere, Lake Nona, and nearby areas.">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style-v2.css') }}">
 </head>
+
 <body>
-  <header class="header">
-    <nav class="nav">
-      <ul class="nav-links">
-        <li><a href="{{ url_for('index') }}">Home</a></li>
-        <li><a href="{{ url_for('about') }}">About</a></li>
-        <li><a class="active" href="{{ url_for('services') }}">Services</a></li>
-        <li><a href="{{ url_for('contact') }}">Contact</a></li>
-      </ul>
-      <div class="lang"><a href="?lang=en">EN</a> | <a href="?lang=es">ES</a> | <a href="?lang=pt">PT</a></div>
-    </nav>
-  </header>
+    <!-- Header -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('services') }}" class="active">Services</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <section class="content-section">
-    <div class="content-container">
-      <h1>Our Services</h1>
-      <div class="services-grid">
-        <div class="service-card"><h3>Water Damage Restoration</h3><p>Mitigation, drying, cleanup, and reconstruction.</p></div>
-        <div class="service-card"><h3>Mold Remediation</h3><p>Inspection, containment, removal, and prevention.</p></div>
-        <div class="service-card"><h3>Fire & Smoke Repair</h3><p>Cleanup, odor removal, and rebuilding.</p></div>
-        <div class="service-card"><h3>Home Remodeling</h3><p>Kitchen, bathroom, flooring, and full-home renovations.</p></div>
-      </div>
-    </div>
-  </section>
+    <!-- Services Section -->
+    <section class="about-section" style="background:#fff;">
+        <h1>Our Services</h1>
+        <p>At Spero Restoration Corp, we provide high-quality restoration and remodeling services to bring your property back to life. Our certified team uses advanced equipment and proven techniques to deliver exceptional results across Central Florida.</p>
 
-  <footer class="footer">
-    <p>
-      © 2025 Spero Restoration Corp — Orlando, FL<br/>(407) 724-6310 • contact@spero-restoration.com<br/>
-      <a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Use</a>
-    </p>
-  </footer>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; margin-top:50px; max-width:1000px; margin-left:auto; margin-right:auto;">
+            
+            <div style="background:#f9f9f9; padding:30px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+                <img src="{{ url_for('static', filename='images/water-icon.png') }}" alt="Water Damage Restoration" style="height:60px; margin-bottom:15px;">
+                <h3>Water Damage Restoration</h3>
+                <p>We quickly remove standing water, dry affected areas, and restore your property to prevent mold and structural damage.</p>
+            </div>
+
+            <div style="background:#f9f9f9; padding:30px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+                <img src="{{ url_for('static', filename='images/mold-icon.png') }}" alt="Mold Remediation" style="height:60px; margin-bottom:15px;">
+                <h3>Mold Remediation</h3>
+                <p>Certified mold specialists ensure safe and thorough removal, restoring clean and healthy indoor air quality.</p>
+            </div>
+
+            <div style="background:#f9f9f9; padding:30px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+                <img src="{{ url_for('static', filename='images/fire-icon.png') }}" alt="Fire Damage Repair" style="height:60px; margin-bottom:15px;">
+                <h3>Fire Damage Repair</h3>
+                <p>From smoke removal to structural reconstruction, our fire restoration experts handle every detail efficiently and safely.</p>
+            </div>
+
+            <div style="background:#f9f9f9; padding:30px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+                <img src="{{ url_for('static', filename='images/remodel-icon.png') }}" alt="Home Remodeling" style="height:60px; margin-bottom:15px;">
+                <h3>Home Remodeling</h3>
+                <p>Upgrade your home with modern and functional designs — kitchens, bathrooms, flooring, drywall, and more.</p>
+            </div>
+
+        </div>
+
+        <a href="{{ url_for('contact') }}" class="cta-btn" style="margin-top:50px;">Request a Free Inspection</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Spero Restoration Corp. All rights reserved.</p>
+        <p><a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Service</a></p>
+    </footer>
 </body>
 </html>
