@@ -1,314 +1,84 @@
-/* ===== Global Reset ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spero Restoration Corp | Restoration & Remodeling Experts</title>
+  <meta name="description" content="Spero Restoration Corp provides water, fire, and mold restoration, as well as home remodeling services across Orlando, Windermere, Lake Nona, and Winter Garden.">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 
-html, body {
-    font-family: 'Inter', Arial, sans-serif;
-    color: #1a1a1a;
-    background-color: #ffffff;
-    scroll-behavior: smooth;
-}
+<body>
+  <!-- HEADER -->
+  <header>
+    <a href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
+    </a>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('index') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1>Restoration & Remodeling Experts</h1>
+    <p>Serving Orlando, Windermere, Lake Nona, and Winter Garden</p>
+    <a href="{{ url_for('contact') }}" class="btn-primary">Schedule Inspection</a>
+  </section>
 
-/* ===== Navbar ===== */
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 5%;
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    position: sticky;
-    top: 0;
-    z-index: 999;
-}
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p class="about-content">
+      Spero Restoration Corp is a trusted leader in restoration and remodeling services throughout Central Florida.
+      We specialize in restoring properties affected by water, mold, or fire damage — bringing your home back to life with quality and care.
+    </p>
+  </section>
 
-.logo img {
-    height: 60px;
-    width: auto;
-}
+  <!-- SERVICES SECTION -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="service-card">
+        <img src="{{ url_for('static', filename='images/water.png') }}" alt="Water Damage">
+        <h3>Water Damage Restoration</h3>
+        <p>Fast and professional water removal, drying, and repair services to restore your property efficiently.</p>
+      </div>
+      <div class="service-card">
+        <img src="{{ url_for('static', filename='images/mold.png') }}" alt="Mold Remediation">
+        <h3>Mold Remediation</h3>
+        <p>Comprehensive inspection, treatment, and prevention for safe and healthy indoor air quality.</p>
+      </div>
+      <div class="service-card">
+        <img src="{{ url_for('static', filename='images/fire.png') }}" alt="Fire Repair">
+        <h3>Fire & Smoke Damage Repair</h3>
+        <p>Full recovery solutions for fire-damaged structures, including cleanup and odor removal.</p>
+      </div>
+      <div class="service-card">
+        <img src="{{ url_for('static', filename='images/remodel.png') }}" alt="Home Remodeling">
+        <h3>Home Remodeling</h3>
+        <p>Upgrade your space with modern design, quality materials, and professional craftsmanship.</p>
+      </div>
+    </div>
+  </section>
 
-.navbar ul {
-    display: flex;
-    gap: 30px;
-    list-style: none;
-}
+  <!-- CONTACT CTA -->
+  <section class="contact-cta">
+    <h2>Need Immediate Assistance?</h2>
+    <p>Contact us today for 24/7 emergency restoration and expert remodeling support.</p>
+    <a href="{{ url_for('contact') }}" class="btn-primary">Request Inspection</a>
+  </section>
 
-.navbar a {
-    font-weight: 600;
-    color: #1a1a1a;
-    transition: color 0.3s;
-}
-
-.navbar a:hover {
-    color: #0078d7;
-}
-
-/* ===== Hero Section ===== */
-.hero {
-    position: relative;
-    height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-}
-
-.hero-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.55);
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 850px;
-    padding: 20px;
-    color: #fff;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
-}
-
-.hero-content h1 {
-    font-size: 3.2rem;
-    margin-bottom: 15px;
-    line-height: 1.2;
-}
-
-.hero-content p {
-    font-size: 1.25rem;
-    margin-bottom: 30px;
-}
-
-.cta-btn {
-    background-color: #0078d7;
-    color: #fff;
-    padding: 14px 34px;
-    border-radius: 6px;
-    font-weight: 600;
-    transition: background 0.3s;
-}
-
-.cta-btn:hover {
-    background-color: #005ea6;
-}
-
-/* ===== Gallery Section ===== */
-.gallery {
-    text-align: center;
-    padding: 80px 5%;
-    background: #f9f9f9;
-}
-
-.gallery h2 {
-    font-size: 2rem;
-    margin-bottom: 40px;
-    color: #1a1a1a;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 25px;
-}
-
-.gallery-pair {
-    display: flex;
-    flex-direction: column;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    overflow: hidden;
-    transition: transform 0.3s;
-}
-
-.gallery-pair:hover {
-    transform: scale(1.02);
-}
-
-.gallery-pair img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
-
-.gallery-pair span {
-    display: block;
-    font-weight: 600;
-    color: #0078d7;
-    margin: 10px 0;
-}
-
-/* ===== Reviews Section ===== */
-.reviews {
-    padding: 80px 5%;
-    background-color: #ffffff;
-    text-align: center;
-}
-
-.reviews h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
-    color: #1a1a1a;
-}
-
-.reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    justify-items: center;
-}
-
-.review-card {
-    background: #f8f8f8;
-    border-radius: 12px;
-    padding: 25px 20px;
-    max-width: 400px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    transition: transform 0.3s;
-}
-
-.review-card:hover {
-    transform: translateY(-4px);
-}
-
-.review-text {
-    font-style: italic;
-    font-size: 1.05rem;
-    color: #333;
-    margin-bottom: 15px;
-}
-
-.review-stars {
-    color: #ffc107;
-    margin-bottom: 8px;
-}
-
-.review-author {
-    font-weight: 600;
-    color: #0078d7;
-}
-
-/* ===== About Section ===== */
-.about-section {
-    padding: 80px 5%;
-    background: #f9f9f9;
-    text-align: center;
-}
-
-.about-section h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.about-section p {
-    max-width: 800px;
-    margin: 0 auto 30px;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-.secondary-btn {
-    display: inline-block;
-    padding: 12px 30px;
-    border: 2px solid #0078d7;
-    border-radius: 6px;
-    color: #0078d7;
-    font-weight: 600;
-    transition: background 0.3s, color 0.3s;
-}
-
-.secondary-btn:hover {
-    background: #0078d7;
-    color: #fff;
-}
-
-/* ===== Contact CTA Section ===== */
-.contact-cta {
-    padding: 80px 5%;
-    text-align: center;
-    background: #0078d7;
-    color: #fff;
-}
-
-.contact-cta h2 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-}
-
-.contact-cta a {
-    color: #fff;
-    font-weight: 600;
-    text-decoration: underline;
-}
-
-.contact-cta .cta-btn {
-    background-color: #fff;
-    color: #0078d7;
-    margin-top: 20px;
-}
-
-.contact-cta .cta-btn:hover {
-    background-color: #e6e6e6;
-}
-
-/* ===== Footer ===== */
-footer {
-    background: #111;
-    color: #ccc;
-    text-align: center;
-    padding: 30px 10px;
-    font-size: 0.95rem;
-}
-
-footer a {
-    color: #fff;
-    text-decoration: underline;
-    transition: opacity 0.3s;
-}
-
-footer a:hover {
-    opacity: 0.8;
-}
-
-/* ===== Responsive Adjustments ===== */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .navbar ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .hero-content h1 {
-        font-size: 2.2rem;
-    }
-
-    .hero-content p {
-        font-size: 1rem;
-    }
-
-    .gallery-grid, .reviews-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .logo img {
-        height: 50px;
-    }
-}
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Spero Restoration Corp | Orlando, FL | (407) 724-6310</p>
+    <p><a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Service</a></p>
+  </footer>
+</body>
+</html>
