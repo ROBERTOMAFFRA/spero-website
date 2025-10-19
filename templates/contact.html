@@ -40,6 +40,9 @@
             <label>Phone</label>
             <input type="tel" name="phone" placeholder="Your phone" required>
 
+            <label>Address</label>
+            <input type="text" name="address" placeholder="Project location" required>
+
             <label>Select a Service</label>
             <select name="service" required>
                 <option value="">Select a Service</option>
@@ -61,9 +64,9 @@
             <button type="submit" class="cta-btn">Send</button>
 
             {% if success %}
-                <p class="success">Thank you! Your request was sent successfully. We’ll contact you soon.</p>
+                <p class="success">✅ Thank you! Your request was sent successfully. We’ll contact you soon.</p>
             {% elif error %}
-                <p class="error">Sorry, there was a problem sending your request. Please try again later.</p>
+                <p class="error">⚠️ Sorry, there was a problem sending your request. Please try again later.</p>
             {% endif %}
         </form>
     </main>
