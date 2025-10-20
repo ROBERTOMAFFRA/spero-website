@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="blog-header">
+    <div class="container">
+        <h1>{{ _("Spero Restoration Blog") }}</h1>
+        <p>{{ _("Tips and insights on water damage, mold remediation, and fire restoration from our experts in Orlando.") }}</p>
+    </div>
+</section>
+
+<section class="blog-list">
+    <div class="container">
+        {% if articles %}
+            <div class="blog-grid">
+                {% for article in articles %}
+                <div class="blog-card">
+                    <a href="{{ article.url }}">
+                        <h2>{{ article.title }}</h2>
+                        <p>{{ _("Read more...") }}</p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>{{ _("No blog posts available yet. Check back soon!") }}</p>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}
