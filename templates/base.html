@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="{{ lang or 'en' }}">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="{{ meta.description if meta else 'Spero Restoration - Water, Mold & Fire Restoration Experts in Orlando' }}">
+    <meta name="keywords" content="Water Damage, Mold Remediation, Fire Restoration, Orlando, Emergency Service, Spero Restoration">
+    <meta name="author" content="Spero Restoration">
+    <meta name="robots" content="index, follow">
+
+    {% if meta and meta.url %}
+    <link rel="canonical" href="{{ meta.url }}">
+    {% endif %}
+
+    <meta property="og:title" content="{{ meta.title if meta else 'Spero Restoration' }}">
+    <meta property="og:description" content="{{ meta.description if meta else 'Professional Restoration Services in Orlando, FL' }}">
+    <meta property="og:image" content="{{ meta.image if meta else '/static/images/banner.webp' }}">
+    <meta property="og:url" content="{{ meta.url if meta else 'https://spero-restoration.com' }}">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <title>{{ meta.title if meta else 'Spero Restoration | Orlando Water, Mold & Fire Restoration' }}</title>
+
+    <!-- Google Site Verification -->
+    {% if config.GOOGLE_SITE_VERIFICATION %}
+    <meta name="google-site-verification" content="{{ config.GOOGLE_SITE_VERIFICATION }}">
+    {% endif %}
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="/static/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/images/logo.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/responsive.css">
+
+    <!-- GA4 / GTM -->
+    {% if config.GTM_ID %}
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','{{ config.GTM_ID }}');
+    </script>
+    {% endif %}
+
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    {% if config.GTM_ID %}
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ config.GTM_ID }}"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    {% endif %}
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-container">
+            <a href="/" class="logo">
+                <img src="/static/images/logo.png" alt="Spero Restoration Logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="/?lang={{ lang }}">Home</a></li>
+                    <li><a href="/about?lang={{ lang }}">About</a></li>
+                    <li><a href="/services?lang={{ lang }}">Services</a></li>
+                    <li><a href="/blog?lang={{ lang }}">Blog</a></li>
+                    <li><a href="/contact?lang={{ lang }}">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="lang-switch">
+                <a href="/?lang=en">EN</a> |
+                <a href="/?lang=es">ES</a> |
+                <a href="/?lang=pt">PT</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE CONTENT -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-container">
+            <p>&copy; {{ 2025 }} Spero Restoration Corp. All rights reserved.</p>
+            <p>
+                <a href="https://spero-restoration.com" target="_blank">spero-restoration.com</a> |
+                <a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a>
+            </p>
+            <p>
+                <a href="https://www.facebook.com" target="_blank">Facebook</a> •
+                <a href="https://www.instagram.com" target="_blank">Instagram</a> •
+                <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/1407XXXXXXX" class="whatsapp-float" target="_blank">
+        <img src="/static/images/whatsapp-icon.png" alt="WhatsApp Contact">
+    </a>
+
+    <!-- Scripts -->
+    <script src="/static/js/main.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
