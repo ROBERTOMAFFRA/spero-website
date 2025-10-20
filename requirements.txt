@@ -1,3 +1,30 @@
+# ======================================================
+# SPERO RESTORATION - PYTHON REQUIREMENTS
+# ======================================================
+
+# ---- Core Framework ----
 Flask==3.0.3
-gunicorn==23.0.0
+Flask-Babel==4.0.0
+Flask-Mail==0.9.1
 python-dotenv==1.0.1
+
+# ---- Email & CRM ----
+sendgrid==6.11.0
+requests==2.32.3
+
+# ---- AI & Automation ----
+openai==1.42.0
+beautifulsoup4==4.12.3
+
+# ---- Utilities ----
+gunicorn==22.0.0
+pytz==2024.1
+
+# ---- Image Optimization ----
+Pillow==10.4.0
+
+# ---- Backup & File Management ----
+pandas==2.2.2
+
+# ---- Optional Analytics Integrations ----
+google-analytics-data==0.18.0
