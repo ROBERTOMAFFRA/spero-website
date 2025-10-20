@@ -3,21 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page Not Found | Spero Restoration Corp</title>
-  <meta name="description" content="The page you are looking for might have been moved, renamed, or does not exist. Return to Spero Restoration’s home page.">
-  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <title>404 | Page Not Found</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
   <section class="error-page">
-    <h1>404 - Page Not Found</h1>
-    <p>Sorry, the page you’re looking for doesn’t exist or has been moved.</p>
-    <a href="{{ url_for('index_page') }}" class="btn-primary">Return Home</a>
+    <h1>404</h1>
+    <p>Oops! The page you’re looking for doesn’t exist.</p>
+    <a href="{{ url_for('index_page') }}" class="btn-primary">Back to Home</a>
   </section>
-
-  <footer>
-    <p>&copy; 2025 Spero Restoration Corp | Orlando, FL</p>
-  </footer>
 </body>
 </html>
