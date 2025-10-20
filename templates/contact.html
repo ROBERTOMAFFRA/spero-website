@@ -3,17 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us | Spero Restoration Corp</title>
-  <meta name="description" content="Contact Spero Restoration Corp — Orlando’s experts in water, fire, and mold damage restoration. Available 24/7 for emergencies.">
-  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <title>Contact | Spero Restoration Corp</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
   <header>
-    <a href="{{ url_for('index_page') }}">
-      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
-    </a>
+    <a href="{{ url_for('index_page') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo"></a>
     <nav>
       <ul>
         <li><a href="{{ url_for('index_page') }}">Home</a></li>
@@ -24,28 +19,37 @@
     </nav>
   </header>
 
-  <section class="hero contact-hero">
+  <section class="page-hero">
     <h1>Contact Us</h1>
-    <p>We’re available 24/7 to help you recover from water, fire, or mold damage.</p>
   </section>
 
-  <section class="contact-form-section">
+  <section class="form-section">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flashes">
+          {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
     <form method="POST" action="{{ url_for('contact') }}">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
+      <label for="name">Name:</label>
+      <input type="text" name="name" required>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+      <label for="email">Email:</label>
+      <input type="email" name="email" required>
 
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
+      <label for="message">Message:</label>
+      <textarea name="message" required></textarea>
 
       <button type="submit" class="btn-primary">Send Message</button>
     </form>
   </section>
 
   <footer>
-    <p>&copy; 2025 Spero Restoration Corp | Orlando, FL | (407) 724-6310</p>
+    <p>&copy; 2025 Spero Restoration Corp</p>
   </footer>
 </body>
 </html>
