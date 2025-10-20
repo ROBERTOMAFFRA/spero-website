@@ -85,7 +85,7 @@
     <h2>About Us</h2>
     <p>
       Spero Restoration Corp is a licensed and insured company providing complete restoration and remodeling solutions across Central Florida. 
-      We specialize in water, fire, and mold damage restoration — restoring your property and peace of mind.
+     We specialize in water, fire, and mold damage restoration - restoring your property and peace of mind.
     </p>
   </section>
 
