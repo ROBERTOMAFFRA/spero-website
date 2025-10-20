@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spero Restoration Corp | Water, Fire & Mold Restoration Orlando</title>
   <meta name="description" content="Spero Restoration Corp — Orlando’s trusted experts for water, fire, and mold damage restoration, and home remodeling. Serving Windermere, Lake Nona, and Winter Garden.">
-  <meta name="keywords" content="water damage restoration Orlando, mold remediation, fire repair, home remodeling, Windermere, Lake Nona, Winter Garden, Clermont, Florida restoration services">
+  <meta name="keywords" content="water damage restoration Orlando, mold remediation, fire repair, home remodeling, Windermere, Lake Nona, Winter Garden, Clermont, Florida restoration services, disaster recovery, tarp services">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Spero Restoration Corp | Restoration & Remodeling Experts">
@@ -21,7 +21,7 @@
   <meta name="twitter:image" content="https://spero-restoration.com/static/images/banner.png">
 
   <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
   <!-- Structured Data: Local Business -->
   <script type="application/ld+json">
@@ -51,21 +51,21 @@
     "priceRange": "$$",
     "sameAs": [
       "https://www.facebook.com/sperorestoration",
-      "https://www.instagram.com/sperorestoration"
+      "https://www.instagram.com/sperorestoration",
+      "https://www.linkedin.com/company/sperorestoration"
     ]
   }
   </script>
 </head>
 
 <body>
-  <!-- HEADER -->
   <header>
-    <a href="{{ url_for('index') }}">
+    <a href="{{ url_for('index_page') }}">
       <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
     </a>
     <nav>
       <ul>
-        <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
+        <li><a href="{{ url_for('index_page') }}" class="active">Home</a></li>
         <li><a href="{{ url_for('about') }}">About</a></li>
         <li><a href="{{ url_for('services') }}">Services</a></li>
         <li><a href="{{ url_for('contact') }}">Contact</a></li>
@@ -73,23 +73,17 @@
     </nav>
   </header>
 
-  <!-- HERO SECTION -->
   <section class="hero">
     <h1>Restoration & Remodeling Experts</h1>
     <p>Serving Orlando, Windermere, Lake Nona, and Winter Garden</p>
     <a href="{{ url_for('contact') }}" class="btn-primary">Schedule Inspection</a>
   </section>
 
-  <!-- ABOUT SECTION -->
   <section id="about">
     <h2>About Us</h2>
-    <p>
-      Spero Restoration Corp is a licensed and insured company providing complete restoration and remodeling solutions across Central Florida. 
-      We specialize in water, fire, and mold damage restoration — restoring your property and peace of mind.
-    </p>
+    <p>Spero Restoration Corp is a licensed and insured company providing complete restoration and remodeling solutions across Central Florida. We specialize in water, fire, and mold damage restoration — restoring your property and peace of mind.</p>
   </section>
 
-  <!-- SERVICES -->
   <section id="services">
     <h2>Our Services</h2>
     <div class="services">
@@ -116,61 +110,32 @@
     </div>
   </section>
 
-  <!-- REVIEWS SECTION -->
-  <section id="reviews">
-    <h2>What Our Clients Say</h2>
-    <div class="reviews">
-      <div class="review">
-        <p>"Spero Restoration exceeded expectations. Fast, professional, and truly cared about our home!"</p>
-        <div class="stars">★★★★★</div>
-        <h4>- Sarah, Windermere</h4>
-      </div>
-      <div class="review">
-        <p>"Outstanding service! They handled our water damage efficiently and kept us updated throughout."</p>
-        <div class="stars">★★★★★</div>
-        <h4>- John, Lake Nona</h4>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ SECTION -->
   <section id="faq">
     <h2>Frequently Asked Questions</h2>
     <div class="faq-item">
-      <h3>How soon can you respond to an emergency?</h3>
+      <h3>Do you handle insurance claims?</h3>
+      <p>Yes! We work directly with your insurance company to simplify your restoration process.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How quickly can you respond to emergencies?</h3>
       <p>We offer 24/7 emergency restoration response throughout Orlando and Central Florida.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Do you work with insurance companies?</h3>
-      <p>Yes, we work directly with all major insurance carriers to simplify your claim process.</p>
-    </div>
-    <div class="faq-item">
-      <h3>What areas do you serve?</h3>
-      <p>We proudly serve Orlando, Windermere, Lake Nona, Clermont, and Winter Garden areas.</p>
     </div>
   </section>
 
-  <!-- CALL TO ACTION -->
   <section class="contact-cta">
     <h2>Need Immediate Assistance?</h2>
     <p>Contact us today for 24/7 emergency restoration and expert remodeling support.</p>
     <a href="{{ url_for('contact') }}" class="btn-primary">Request Inspection</a>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <p>&copy; 2025 Spero Restoration Corp | Orlando, FL | (407) 724-6310</p>
     <p><a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Service</a></p>
   </footer>
 
-  <!-- WhatsApp & Call Floating Buttons -->
   <a href="https://wa.me/14077246310" class="whatsapp-float" target="_blank">
     <img src="{{ url_for('static', filename='images/whatsapp-icon.png') }}" alt="Chat on WhatsApp">
   </a>
-
-  <a href="tel:4077246310" class="call-float">
-    📞 Call Now
-  </a>
-
+  <a href="tel:4077246310" class="call-float">📞 Call Now</a>
 </body>
 </html>
