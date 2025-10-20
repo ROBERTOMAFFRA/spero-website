@@ -1,112 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- =====================================================
-         SPERO RESTORATION – VERSIÓN ESPAÑOL
-         Página Principal Optimizada para SEO Multilingüe
-    ====================================================== -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spero Restoration | Restauración de Agua, Fuego y Moho en Orlando</title>
-    <meta name="description" content="Empresa profesional de restauración en Orlando especializada en daños por agua, fuego y moho. Servicio de emergencia 24/7 con respuesta rápida.">
-    <meta name="keywords" content="restauración de agua, restauración de fuego, eliminación de moho, Spero Restoration, servicios de emergencia Orlando, reparación de daños por agua">
-    <meta name="author" content="Spero Restoration Corp">
-    <meta name="robots" content="index, follow">
+  <!-- =====================================================
+       SPERO RESTORATION – VERSIÓN ESPAÑOL
+  ====================================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spero Restoration | Restauración de Agua, Fuego y Moho en Orlando</title>
+  <meta name="description" content="Empresa profesional de restauración en Orlando especializada en daños por agua, fuego y moho. Servicio de emergencia 24/7.">
+  <meta name="author" content="Spero Restoration Corp">
 
-    <!-- Canonical & hreflang -->
-    <link rel="canonical" href="https://spero-restoration.com/es/">
-    <link rel="alternate" href="https://spero-restoration.com/" hreflang="en" />
-    <link rel="alternate" href="https://spero-restoration.com/es/" hreflang="es" />
-    <link rel="alternate" href="https://spero-restoration.com/pt/" hreflang="pt" />
-    <link rel="alternate" href="https://spero-restoration.com/" hreflang="x-default" />
+  <link rel="canonical" href="https://spero-restoration.com/es/">
+  <link rel="alternate" href="https://spero-restoration.com/" hreflang="en">
+  <link rel="alternate" href="https://spero-restoration.com/es/" hreflang="es">
+  <link rel="alternate" href="https://spero-restoration.com/pt/" hreflang="pt">
+  <link rel="alternate" href="https://spero-restoration.com/" hreflang="x-default">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
 
-    <!-- Estilos -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Spero Restoration",
+    "url": "https://spero-restoration.com/es/",
+    "inLanguage": ["es", "en", "pt"]
+  }
+  </script>
 </head>
 <body>
-    <!-- HEADER -->
-    <header id="header">
-        <div class="navbar">
-            <div class="logo">
-                <img src="{{ url_for('static', filename='images/logo-dark.png') }}" alt="Spero Restoration Logo" height="60">
-            </div>
-            <ul class="nav-links">
-                <li><a href="#about">Nosotros</a></li>
-                <li><a href="#services">Servicios</a></li>
-                <li><a href="#contact">Contacto</a></li>
-            </ul>
-            <a href="#contact" class="cta-btn">Solicitar Ayuda</a>
-        </div>
-    </header>
-
-    <!-- HERO -->
-    <section id="hero" class="hero-section" style="background-image: url('{{ url_for('static', filename='images/banner.webp') }}');">
-        <div class="hero-content">
-            <h1>Expertos en Restauración de Agua, Fuego y Moho</h1>
-            <p>Orlando y áreas cercanas | Servicio de emergencia 24/7</p>
-            <a href="#contact" class="cta-primary">Reciba Asistencia Rápida</a>
-        </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <h2>Recuperamos lo que más importa</h2>
-            <p>Fundada en 2015, Spero Restoration ofrece servicios de restauración de emergencia para propiedades en Orlando y toda Florida Central. Nuestro compromiso es devolver la tranquilidad con honestidad, precisión y cuidado.</p>
-            <ul>
-                <li>👷‍♂️ Técnicos certificados (IICRC)</li>
-                <li>🕐 Servicio de emergencia 24/7</li>
-                <li>💧 Inspección y documentación directa para seguros</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services" class="services-section">
-        <div class="container">
-            <h2>Servicios Principales</h2>
-            <div class="cards">
-                <div class="card">
-                    <img src="{{ url_for('static', filename='images/water-damage.webp') }}" alt="Restauración de Agua" loading="lazy">
-                    <h3>Restauración de Daños por Agua</h3>
-                    <p>Eliminación, secado y reparación tras filtraciones o inundaciones. Rápido, confiable y aprobado por seguros.</p>
-                </div>
-                <div class="card">
-                    <img src="{{ url_for('static', filename='images/mold-removal.webp') }}" alt="Remoción de Moho" loading="lazy">
-                    <h3>Remoción de Moho</h3>
-                    <p>Contención, limpieza completa y remediación segura para resultados duraderos.</p>
-                </div>
-                <div class="card">
-                    <img src="{{ url_for('static', filename='images/fire-restoration.webp') }}" alt="Restauración de Fuego" loading="lazy">
-                    <h3>Restauración de Fuego y Humo</h3>
-                    <p>Limpieza integral, reparación estructural y eliminación de olores tras incendios.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2>Contáctanos</h2>
-            <form action="/send-email" method="POST">
-                <input type="text" name="name" placeholder="Nombre completo" required>
-                <input type="email" name="email" placeholder="Correo electrónico" required>
-                <input type="text" name="phone" placeholder="Teléfono" required>
-                <textarea name="message" placeholder="Describa su situación..." required></textarea>
-                <button type="submit" class="cta-primary">Enviar Mensaje</button>
-            </form>
-            <p class="address">📍 Orlando, Florida | 📞 +1 (407) 555-1024</p>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2025 Spero Restoration Corp | Restauración de Desastres y Emergencias</p>
-    </footer>
+  <header><h1>Spero Restoration</h1></header>
+  <main>
+    <h2>Expertos en Restauración de Agua, Fuego y Moho</h2>
+    <p>Servicio de emergencia 24 horas en Orlando y alrededores.</p>
+  </main>
+  <footer><p>© 2025 Spero Restoration Corp. Todos los derechos reservados.</p></footer>
 </body>
 </html>
