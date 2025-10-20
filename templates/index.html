@@ -2,25 +2,33 @@
 <html lang="en">
 <head>
   <!-- =====================================================
-       SPERO RESTORATION – SEO MASTER PLAN (EN)
+       SPERO RESTORATION | SEO MASTER PLAN vFinal (EN)
   ====================================================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spero Restoration | Water, Fire & Mold Experts in Orlando</title>
-  <meta name="description" content="Professional restoration company in Orlando offering 24/7 water damage, mold remediation, and fire restoration. Call Spero Restoration today.">
-  <meta name="keywords" content="water damage restoration, fire restoration, mold removal, Spero Restoration, restoration services Florida, 24/7 emergency restoration">
+  <meta name="description" content="Spero Restoration provides 24/7 water damage, fire damage, and mold remediation services in Orlando and Central Florida. Get a free estimate today.">
+  <meta name="keywords" content="water damage, fire damage, mold removal, restoration Orlando, Spero Restoration, emergency restoration, home repair Florida">
   <meta name="author" content="Spero Restoration Corp">
+  <meta name="robots" content="index, follow">
 
-  <!-- Canonical & hreflang -->
+  <!-- Canonical & Multilingual -->
   <link rel="canonical" href="https://spero-restoration.com/">
   <link rel="alternate" href="https://spero-restoration.com/" hreflang="en">
   <link rel="alternate" href="https://spero-restoration.com/es/" hreflang="es">
   <link rel="alternate" href="https://spero-restoration.com/pt/" hreflang="pt">
   <link rel="alternate" href="https://spero-restoration.com/" hreflang="x-default">
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="Spero Restoration | Water, Fire & Mold Experts in Orlando">
+  <meta property="og:description" content="Trusted restoration specialists providing 24/7 emergency service in Orlando, Florida.">
+  <meta property="og:image" content="https://spero-restoration.com/static/images/logo-dark.png">
+  <meta property="og:url" content="https://spero-restoration.com/">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon & Styles -->
   <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
 
   <!-- Organization + Multilingual Schema -->
   <script type="application/ld+json">
@@ -39,7 +47,14 @@
           "https://www.facebook.com/sperorestoration",
           "https://www.instagram.com/sperorestoration",
           "https://www.linkedin.com/company/sperorestoration"
-        ]
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Orlando",
+          "addressRegion": "FL",
+          "postalCode": "32801",
+          "addressCountry": "US"
+        }
       },
       {
         "@type": "WebSite",
@@ -56,16 +71,93 @@
   }
   </script>
 </head>
+
 <body>
+  <!-- =====================================================
+       HEADER / NAVIGATION
+  ====================================================== -->
   <header>
-    <h1>Spero Restoration</h1>
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/logo-dark.png') }}" alt="Spero Restoration Logo" height="48">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="btn-primary" href="#quote">Get a Quote</a></li>
+        <li class="lang">🌐 <a href="/">EN</a> | <a href="/es/">ES</a> | <a href="/pt/">PT</a></li>
+      </ul>
+    </nav>
   </header>
-  <main>
-    <h2>Disaster Recovery & Restoration Specialists</h2>
-    <p>Trusted restoration experts serving Orlando and surrounding areas.</p>
-  </main>
+
+  <!-- =====================================================
+       HERO SECTION
+  ====================================================== -->
+  <section id="home" class="hero">
+    <h2>Restoring Homes, Rebuilding Peace of Mind</h2>
+    <p>Professional water, fire, and mold restoration services across Central Florida — available 24/7.</p>
+    <a href="#quote" class="btn-primary">Request Free Estimate</a>
+  </section>
+
+  <!-- =====================================================
+       SERVICES SECTION
+  ====================================================== -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="service-grid">
+      <div class="service">
+        <h3>Water Damage</h3>
+        <p>Fast and efficient water extraction, drying, and restoration for residential and commercial properties.</p>
+      </div>
+      <div class="service">
+        <h3>Fire Restoration</h3>
+        <p>Complete fire and smoke damage cleanup, odor removal, and structural recovery.</p>
+      </div>
+      <div class="service">
+        <h3>Mold Remediation</h3>
+        <p>Certified mold inspection, removal, and air purification for a safe and healthy environment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       ABOUT SECTION
+  ====================================================== -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>
+      At Spero Restoration, we combine cutting-edge technology and certified expertise
+      to restore properties affected by water, fire, and mold. Our mission is simple:
+      to deliver fast, reliable, and compassionate service to every client.
+    </p>
+  </section>
+
+  <!-- =====================================================
+       CONTACT / QUOTE SECTION
+  ====================================================== -->
+  <section id="quote">
+    <h2>Request a Free Quote</h2>
+    <form action="https://api.sendgrid.com/v3/mail/send" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Describe your issue..." required></textarea>
+      <button type="submit" class="btn-primary">Send Message</button>
+    </form>
+  </section>
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
   <footer>
     <p>© 2025 Spero Restoration Corp. All rights reserved.</p>
+    <p>
+      <a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a> |
+      <a href="https://www.instagram.com/sperorestoration" target="_blank">Instagram</a> |
+      <a href="https://www.facebook.com/sperorestoration" target="_blank">Facebook</a> |
+      <a href="https://www.linkedin.com/company/sperorestoration" target="_blank">LinkedIn</a>
+    </p>
   </footer>
 </body>
 </html>
