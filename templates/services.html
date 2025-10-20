@@ -3,27 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Services | Water, Mold, Fire & Remodeling | Spero Restoration Orlando</title>
-  <meta name="description" content="Explore Spero Restoration services — experts in water damage restoration, mold remediation, fire repair, remodeling, disaster recovery and emergency tarp in Orlando and Central Florida.">
-  <meta name="keywords" content="restoration services orlando, water damage repair, mold remediation, fire cleanup, remodeling, disaster recovery, tarp service, spero restoration orlando, central florida restoration">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Restoration & Remodeling Services | Spero Restoration Orlando">
-  <meta property="og:description" content="Complete restoration & remodeling services in Orlando: water, fire, mold, disaster recovery, and more.">
-  <meta property="og:image" content="{{ url_for('static', filename='images/banner.png') }}">
-  <meta property="og:url" content="https://spero-restoration.com/services">
-  <meta property="og:type" content="website">
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://spero-restoration.com/services">
-
-  <!-- Favicon & Styles -->
+  <title>Services | Spero Restoration Corp</title>
+  <meta name="description" content="Explore Spero Restoration’s full range of services — water, fire, mold, and remodeling in Orlando and Central Florida.">
   <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
-  <!-- HEADER -->
   <header>
     <a href="{{ url_for('index_page') }}">
       <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
@@ -38,69 +24,39 @@
     </nav>
   </header>
 
-  <!-- HERO -->
   <section class="hero services-hero">
-    <h1>Comprehensive Restoration & Remodeling Services</h1>
-    <p>Orlando’s trusted experts for water, fire, and mold restoration — and home transformations.</p>
+    <h1>Our Services</h1>
+    <p>Comprehensive restoration and remodeling for residential and commercial clients.</p>
   </section>
 
-  <!-- SERVICES LIST -->
-  <section class="content-section">
-    <h2>Our Specialized Services</h2>
-    <div class="services">
-      <div class="service-card">
-        <img src="{{ url_for('static', filename='images/water.png') }}" alt="Water Damage Restoration">
-        <h3>Water Damage Restoration</h3>
-        <p>Fast, reliable response for leaks, flooding, and burst pipes. We remove water, dry affected areas, and restore damaged materials.</p>
-      </div>
+  <section class="services-list">
+    <div class="service">
+      <img src="{{ url_for('static', filename='images/water.png') }}" alt="Water Damage Restoration">
+      <h2>Water Damage Restoration</h2>
+      <p>Quick water extraction, drying, and moisture control to prevent secondary damage and mold growth.</p>
+    </div>
 
-      <div class="service-card">
-        <img src="{{ url_for('static', filename='images/mold.png') }}" alt="Mold Remediation">
-        <h3>Mold Remediation</h3>
-        <p>We detect, contain, and remove mold safely using certified IICRC techniques to improve your home’s air quality.</p>
-      </div>
+    <div class="service">
+      <img src="{{ url_for('static', filename='images/mold.png') }}" alt="Mold Remediation">
+      <h2>Mold Remediation</h2>
+      <p>Safe, certified mold testing, removal, and prevention for a healthy living environment.</p>
+    </div>
 
-      <div class="service-card">
-        <img src="{{ url_for('static', filename='images/fire.png') }}" alt="Fire Damage Repair">
-        <h3>Fire & Smoke Repair</h3>
-        <p>Complete cleaning, deodorization, and reconstruction after fire damage to bring your property back to life.</p>
-      </div>
+    <div class="service">
+      <img src="{{ url_for('static', filename='images/fire.png') }}" alt="Fire & Smoke Damage">
+      <h2>Fire & Smoke Damage Repair</h2>
+      <p>Cleaning, restoration, and deodorization of structures and belongings after fire incidents.</p>
+    </div>
 
-      <div class="service-card">
-        <img src="{{ url_for('static', filename='images/remodel.png') }}" alt="Home Remodeling">
-        <h3>Remodeling & Renovation</h3>
-        <p>Transform your home with expert remodeling services — from kitchens to full-property redesigns.</p>
-      </div>
-
-      <div class="service-card">
-        <img src="{{ url_for('static', filename='images/tarp.png') }}" alt="Tarp & Emergency Response">
-        <h3>Emergency Tarp & Disaster Recovery</h3>
-        <p>Protect your home immediately after storm or fire incidents with professional tarp and board-up services.</p>
-      </div>
+    <div class="service">
+      <img src="{{ url_for('static', filename='images/remodel.png') }}" alt="Home Remodeling">
+      <h2>Remodeling & Renovations</h2>
+      <p>From kitchens to bathrooms, we create beautiful, lasting improvements to your property.</p>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="contact-cta">
-    <h2>24/7 Emergency Response</h2>
-    <p>Our Orlando-based restoration team is ready around the clock to restore and rebuild your property.</p>
-    <a href="{{ url_for('contact') }}" class="btn-primary">Request Assistance</a>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 Spero Restoration Corp | Orlando, FL | (407) 724-6310</p>
-    <p><a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Service</a></p>
+    <p>&copy; 2025 Spero Restoration Corp | Orlando, FL</p>
   </footer>
-
-  <!-- WhatsApp & Call -->
-  <a href="https://wa.me/14077246310" class="whatsapp-float" target="_blank">
-    <img src="{{ url_for('static', filename='images/whatsapp-icon.png') }}" alt="Chat on WhatsApp">
-  </a>
-
-  <a href="tel:4077246310" class="call-float">📞 Call Now</a>
-
-  <!-- Scripts -->
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
