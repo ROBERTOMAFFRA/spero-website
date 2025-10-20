@@ -1,1 +1,22 @@
-<html><body><h1>Thank You!</h1></body></html>
+{% extends "base.html" %}
+{% block content %}
+
+<section class="thankyou-section">
+    <div class="container">
+        <h1>{{ _("Thank You!") }}</h1>
+        <p>{{ _("We have received your message. Our team will get back to you shortly.") }}</p>
+
+        <div class="thankyou-actions">
+            <a href="/?lang={{ lang }}" class="btn-primary">{{ _("Back to Home") }}</a>
+            <a href="/blog?lang={{ lang }}" class="btn-secondary">{{ _("Visit Our Blog") }}</a>
+        </div>
+
+        <div class="thankyou-extra">
+            <h3>{{ _("Need immediate help?") }}</h3>
+            <p>{{ _("Call us now for emergency assistance:") }} <strong>(407) XXX-XXXX</strong></p>
+            <a href="https://wa.me/1407XXXXXXX" target="_blank" class="btn-whatsapp">{{ _("Chat on WhatsApp") }}</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
