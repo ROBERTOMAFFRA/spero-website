@@ -1,117 +1,64 @@
-/* ======================================================
-   SPERO RESTORATION - RESPONSIVE STYLES
-   ====================================================== */
+/* =========================================================
+   SPERO RESTORATION vFinal – RESPONSIVE STYLES
+   ========================================================= */
 
-/* TABLETS */
+/* Tablets (até 992px) */
 @media (max-width: 992px) {
+  .navbar {
+    flex-direction: column;
+  }
 
-    header .header-container {
-        flex-direction: column;
-        text-align: center;
-    }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-    header nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
 
-    .hero h1 {
-        font-size: 2rem;
-    }
+  section {
+    padding: 4rem 1.5rem;
+  }
 
-    .hero p {
-        font-size: 1rem;
-    }
-
-    .services-grid,
-    .testimonials-grid,
-    .dashboard-grid {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
+  .service-cards {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
+/* Smartphones (até 600px) */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
 
-    body {
-        font-size: 15px;
-    }
+  .hero-section {
+    height: 80vh;
+  }
 
-    .hero {
-        height: 60vh;
-    }
+  .hero-content h1 {
+    font-size: 1.9rem;
+  }
 
-    .hero-content {
-        padding: 15px;
-    }
+  .hero-content p {
+    font-size: 1rem;
+  }
 
-    .hero h1 {
-        font-size: 1.6rem;
-    }
+  .cta-btn {
+    padding: 0.5rem 1rem;
+  }
 
-    .hero p {
-        font-size: 0.95rem;
-    }
+  .service-cards .card {
+    width: 90%;
+  }
 
-    .btn-primary, .btn-secondary {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
+  .contact-section input,
+  .contact-section textarea {
+    font-size: 0.9rem;
+  }
 
-    .services-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-container p {
-        font-size: 0.8rem;
-    }
-
-    .lang-switch {
-        margin-top: 10px;
-    }
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-info {
-        margin-top: 30px;
-    }
-}
-
-/* SMALL DEVICES */
-@media (max-width: 480px) {
-    header nav ul {
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .hero h1 {
-        font-size: 1.4rem;
-    }
-
-    .hero p {
-        font-size: 0.85rem;
-    }
-
-    .services-section img {
-        max-height: 180px;
-        object-fit: cover;
-    }
-
-    .btn-primary,
-    .btn-secondary {
-        font-size: 0.85rem;
-        padding: 8px 16px;
-    }
-
-    footer {
-        padding: 20px 0;
-    }
+  .footer-content img {
+    height: 35px;
+  }
 }
