@@ -1,10 +1,19 @@
+# Core web framework
 Flask==3.0.3
 gunicorn==23.0.0
 Jinja2==3.1.4
 Werkzeug==3.0.4
 itsdangerous==2.2.0
 MarkupSafe==2.1.5
+
+# Environment management
+python-dotenv==1.0.1
+
+# SEO and AI tools
 requests==2.32.3
 beautifulsoup4==4.12.3
 lxml==5.3.0
 openai==1.52.2
+
+# Optional for static sitemap/blog automation
+tqdm==4.66.5
