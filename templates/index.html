@@ -1,74 +1,184 @@
-{% extends "base.html" %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- =====================================================
+         SPERO RESTORATION vFinal – SEO MASTER PLAN
+         Optimized Index Page – One Page Scroll Layout
+    ====================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spero Restoration | Water, Fire & Mold Experts in Orlando</title>
+    <meta name="description" content="Professional restoration company in Orlando offering 24/7 water damage, mold remediation, and fire restoration. Call Spero Restoration today.">
+    <meta name="keywords" content="water damage Orlando, fire restoration, mold removal, Spero Restoration, restoration services Florida, 24/7 emergency restoration">
+    <meta name="author" content="Spero Restoration Corp">
+    <meta name="robots" content="index, follow">
 
-<!-- HERO SECTION -->
-<section class="hero">
-    <div class="hero-overlay">
-        <div class="hero-content">
-            <h1>{{ _("Professional Water, Mold & Fire Restoration in Orlando") }}</h1>
-            <p>{{ _("We restore homes and businesses with care, speed, and certified expertise — 24/7 emergency response.") }}</p>
-            <a href="/contact?lang={{ lang }}" class="btn-primary">{{ _("Get a Free Estimate") }}</a>
+    <!-- Open Graph for Social -->
+    <meta property="og:title" content="Spero Restoration – Water, Fire & Mold Experts in Orlando">
+    <meta property="og:description" content="Trusted restoration specialists in Orlando. 24/7 service for water, fire, and mold emergencies.">
+    <meta property="og:image" content="{{ url_for('static', filename='images/logo-whitebg.png') }}">
+    <meta property="og:url" content="https://spero-restoration.com">
+    <meta property="og:type" content="website">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://spero-restoration.com/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+
+    <!-- Google Tag Manager -->
+    {% if config.GTM_ID %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.GTM_ID }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '{{ config.GTM_ID }}');
+    </script>
+    {% endif %}
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+
+<body>
+
+<!-- =====================================================
+     HEADER + NAVIGATION (Sticky)
+====================================================== -->
+<header id="header">
+    <nav class="navbar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/logo-dark.png') }}" alt="Spero Restoration Logo" height="60">
         </div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="cta-btn">Request Help</a>
+    </nav>
+</header>
+
+<!-- =====================================================
+     HERO SECTION (Main Banner)
+====================================================== -->
+<section id="hero" class="hero-section" style="background-image: url('{{ url_for('static', filename='images/banner.webp') }}');">
+    <div class="hero-content">
+        <h1>Restoring What Matters Most</h1>
+        <p>Water, Fire & Mold Restoration Experts – Serving Orlando & Surrounding Areas 24/7</p>
+        <a href="#contact" class="btn-primary">Get Free Estimate</a>
     </div>
 </section>
 
-<!-- ABOUT SECTION -->
+<!-- =====================================================
+     ABOUT SECTION
+====================================================== -->
 <section id="about" class="about-section">
     <div class="container">
-        <h2>{{ _("About Spero Restoration") }}</h2>
-        <p>{{ _("With years of experience in water damage, mold remediation, and fire restoration, we are Orlando’s trusted specialists in residential and commercial recovery.") }}</p>
-        <p>{{ _("Our certified team delivers quick response and guaranteed satisfaction.") }}</p>
+        <h2>About Spero Restoration</h2>
+        <p>Founded in 2015, Spero Restoration provides expert disaster recovery and property restoration across Central Florida. Our mission is to restore homes and peace of mind with honesty, precision, and care. Fully licensed, insured, and trusted by hundreds of homeowners.</p>
+        <ul>
+            <li>24/7 Emergency Service</li>
+            <li>Certified Technicians (IICRC)</li>
+            <li>Free On-Site Inspection</li>
+            <li>Direct Insurance Billing</li>
+        </ul>
     </div>
 </section>
 
-<!-- SERVICES SECTION -->
+<!-- =====================================================
+     SERVICES SECTION
+====================================================== -->
 <section id="services" class="services-section">
     <div class="container">
-        <h2>{{ _("Our Services") }}</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <img src="/static/images/water-damage.webp" alt="Water Damage Restoration">
-                <h3>{{ _("Water Damage") }}</h3>
-                <p>{{ _("Emergency water removal, drying, and structural repair to prevent further damage.") }}</p>
+        <h2>Our Core Services</h2>
+        <div class="service-cards">
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/water-damage.webp') }}" alt="Water Damage Restoration" loading="lazy">
+                <h3>Water Damage Restoration</h3>
+                <p>Complete drying, dehumidification, and repair after leaks or floods. Fast, reliable, and insurance-ready.</p>
             </div>
-            <div class="service-card">
-                <img src="/static/images/mold-removal.webp" alt="Mold Remediation">
-                <h3>{{ _("Mold Remediation") }}</h3>
-                <p>{{ _("Certified mold inspection, containment, and air quality restoration for healthy living.") }}</p>
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/mold-removal.webp') }}" alt="Mold Remediation" loading="lazy">
+                <h3>Mold Remediation</h3>
+                <p>Certified mold testing, containment, and full remediation with safe and lasting results.</p>
             </div>
-            <div class="service-card">
-                <img src="/static/images/fire-restoration.webp" alt="Fire & Smoke Restoration">
-                <h3>{{ _("Fire & Smoke Restoration") }}</h3>
-                <p>{{ _("Complete cleaning, deodorization, and structural recovery after fire incidents.") }}</p>
+            <div class="card">
+                <img src="{{ url_for('static', filename='images/fire-restoration.webp') }}" alt="Fire & Smoke Restoration" loading="lazy">
+                <h3>Fire & Smoke Restoration</h3>
+                <p>Comprehensive cleanup and restoration after fire damage. Structural repairs, deodorization, and repainting.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- TESTIMONIALS SECTION -->
+<!-- =====================================================
+     TESTIMONIALS SECTION
+====================================================== -->
 <section id="testimonials" class="testimonials-section">
     <div class="container">
-        <h2>{{ _("What Our Clients Say") }}</h2>
-        <div class="testimonials-grid">
-            <div class="testimonial">
-                <p>"{{ _("Spero Restoration responded immediately after our water leak. Excellent service and professionalism!") }}"</p>
-                <span>- Maria G., Clermont</span>
-            </div>
-            <div class="testimonial">
-                <p>"{{ _("They handled mold removal quickly and safely. Highly recommend!") }}"</p>
-                <span>- John S., Windermere</span>
-            </div>
+        <h2>What Our Clients Say</h2>
+        <blockquote>"Spero Restoration was fast, professional, and caring. They turned a stressful situation into a positive experience!"</blockquote>
+        <p>– Jane T., Orlando</p>
+        <blockquote>"Their team handled everything after our pipe burst — from drying to insurance claims. Highly recommended!"</blockquote>
+        <p>– Michael R., Clermont</p>
+    </div>
+</section>
+
+<!-- =====================================================
+     CONTACT SECTION
+====================================================== -->
+<section id="contact" class="contact-section">
+    <div class="container">
+        <h2>Contact Us 24/7</h2>
+        <form method="POST" action="/send-email">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <textarea name="message" placeholder="Describe your issue..." required></textarea>
+            <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+        <div class="contact-info">
+            <p><strong>📍 Office:</strong> Orlando, FL</p>
+            <p><strong>📞 Phone:</strong> (407) 555-1024</p>
+            <p><strong>✉️ Email:</strong> contact@spero-restoration.com</p>
         </div>
     </div>
 </section>
 
-<!-- CONTACT CTA -->
-<section id="cta" class="cta-section">
-    <div class="container">
-        <h2>{{ _("Need Immediate Help?") }}</h2>
-        <p>{{ _("Contact our 24/7 emergency team and get your property restored fast!") }}</p>
-        <a href="/contact?lang={{ lang }}" class="btn-secondary">{{ _("Contact Us Now") }}</a>
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+<footer id="footer">
+    <div class="footer-content">
+        <img src="{{ url_for('static', filename='images/logo-dark.png') }}" alt="Spero Restoration Logo" height="40">
+        <p>© 2025 Spero Restoration Corp – All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
     </div>
-</section>
+</footer>
 
-{% endblock %}
+<!-- =====================================================
+     JS + SMOOTH SCROLL
+====================================================== -->
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
