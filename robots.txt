@@ -1,8 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://spero-restoration.com/sitemap.xml
 
-# Block sensitive admin routes
-Disallow: /admin
-Disallow: /static/lang/
-Disallow: /uploads/
+Sitemap: https://spero-restoration.com/sitemap.xml
