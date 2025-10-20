@@ -2,13 +2,15 @@
 <html lang="es">
 <head>
   <!-- =====================================================
-       SPERO RESTORATION – VERSIÓN ESPAÑOL
+       SPERO RESTORATION | VERSIÓN ESPAÑOL LATINO (ES)
   ====================================================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spero Restoration | Restauración de Agua, Fuego y Moho en Orlando</title>
-  <meta name="description" content="Empresa profesional de restauración en Orlando especializada en daños por agua, fuego y moho. Servicio de emergencia 24/7.">
+  <title>Spero Restoration | Expertos en Restauración de Agua, Fuego y Moho en Orlando</title>
+  <meta name="description" content="Spero Restoration ofrece servicios profesionales de restauración de daños por agua, fuego y moho en Orlando y toda Florida Central. Disponible 24/7.">
+  <meta name="keywords" content="restauración de agua, restauración de fuego, eliminación de moho, reparación de casas Orlando, Spero Restoration, servicios de emergencia">
   <meta name="author" content="Spero Restoration Corp">
+  <meta name="robots" content="index, follow">
 
   <link rel="canonical" href="https://spero-restoration.com/es/">
   <link rel="alternate" href="https://spero-restoration.com/" hreflang="en">
@@ -16,24 +18,103 @@
   <link rel="alternate" href="https://spero-restoration.com/pt/" hreflang="pt">
   <link rel="alternate" href="https://spero-restoration.com/" hreflang="x-default">
 
+  <meta property="og:title" content="Spero Restoration | Restauración de Agua, Fuego y Moho en Orlando">
+  <meta property="og:description" content="Expertos certificados en restauración de agua, fuego y moho. Servicio de emergencia 24/7 en Florida Central.">
+  <meta property="og:image" content="https://spero-restoration.com/static/images/logo-dark.png">
+  <meta property="og:url" content="https://spero-restoration.com/es/">
+  <meta property="og:type" content="website">
+
   <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Spero Restoration",
-    "url": "https://spero-restoration.com/es/",
-    "inLanguage": ["es", "en", "pt"]
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://spero-restoration.com/#organization",
+        "name": "Spero Restoration Corp",
+        "url": "https://spero-restoration.com/",
+        "logo": "https://spero-restoration.com/static/images/logo-dark.png",
+        "email": "contact@spero-restoration.com",
+        "telephone": "+1-407-555-1024"
+      },
+      {
+        "@type": "WebSite",
+        "name": "Spero Restoration",
+        "url": "https://spero-restoration.com/es/",
+        "inLanguage": ["es", "en", "pt"]
+      }
+    ]
   }
   </script>
 </head>
+
 <body>
-  <header><h1>Spero Restoration</h1></header>
-  <main>
-    <h2>Expertos en Restauración de Agua, Fuego y Moho</h2>
-    <p>Servicio de emergencia 24 horas en Orlando y alrededores.</p>
-  </main>
-  <footer><p>© 2025 Spero Restoration Corp. Todos los derechos reservados.</p></footer>
+  <header>
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/logo-dark.png') }}" alt="Logotipo Spero Restoration" height="48">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Inicio</a></li>
+        <li><a href="#services">Servicios</a></li>
+        <li><a href="#about">Sobre Nosotros</a></li>
+        <li><a href="#contact">Contacto</a></li>
+        <li><a class="btn-primary" href="#quote">Solicitar Cotización</a></li>
+        <li class="lang">🌐 <a href="/">EN</a> | <a href="/es/">ES</a> | <a href="/pt/">PT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <h2>Restauramos Hogares, Recuperamos Tranquilidad</h2>
+    <p>Expertos certificados en restauración de daños por agua, fuego y moho. Servicio de emergencia las 24 horas.</p>
+    <a href="#quote" class="btn-primary">Solicitar Cotización Gratuita</a>
+  </section>
+
+  <section id="services">
+    <h2>Nuestros Servicios</h2>
+    <div class="service-grid">
+      <div class="service">
+        <h3>Daños por Agua</h3>
+        <p>Extracción de agua, secado y restauración completa para hogares y negocios.</p>
+      </div>
+      <div class="service">
+        <h3>Restauración por Fuego</h3>
+        <p>Limpieza total de humo y hollín, eliminación de olores y reparación estructural.</p>
+      </div>
+      <div class="service">
+        <h3>Remediación de Moho</h3>
+        <p>Inspección profesional, eliminación y purificación del aire para un ambiente saludable.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>Sobre Spero Restoration</h2>
+    <p>En Spero Restoration, combinamos tecnología avanzada y experiencia certificada para restaurar propiedades afectadas por agua, fuego o moho. Nuestra misión es ofrecer un servicio rápido, confiable y compasivo.</p>
+  </section>
+
+  <section id="quote">
+    <h2>Solicite su Cotización</h2>
+    <form action="https://api.sendgrid.com/v3/mail/send" method="POST">
+      <input type="text" name="name" placeholder="Su Nombre" required>
+      <input type="email" name="email" placeholder="Su Correo Electrónico" required>
+      <textarea name="message" placeholder="Describa su situación..." required></textarea>
+      <button type="submit" class="btn-primary">Enviar Mensaje</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Spero Restoration Corp. Todos los derechos reservados.</p>
+    <p>
+      <a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a> |
+      <a href="https://www.instagram.com/sperorestoration" target="_blank">Instagram</a> |
+      <a href="https://www.facebook.com/sperorestoration" target="_blank">Facebook</a> |
+      <a href="https://www.linkedin.com/company/sperorestoration" target="_blank">LinkedIn</a>
+    </p>
+  </footer>
 </body>
 </html>
