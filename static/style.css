@@ -1,33 +1,21 @@
-/* 🌊 SPERO RESTORATION CORP - GLOBAL STYLE SHEET (v3) */
-/* ---------------------------------------------------- */
-/* Colors & Brand Palette */
-:root {
-  --primary: #0078d7;
-  --secondary: #f7b731;
-  --dark: #1b1b1b;
-  --light: #f4f4f4;
-  --success: #28a745;
-  --danger: #e74c3c;
-  --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-}
+/* ===============================
+   SPERO RESTORATION MASTER STYLE
+   =============================== */
 
 body {
-  font-family: var(--font-main);
-  color: var(--dark);
-  background-color: #ffffff;
   margin: 0;
-  padding: 0;
-  line-height: 1.6;
-  overflow-x: hidden;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
-/* Header & Navigation */
 header {
+  background: #002B5B;
+  color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--primary);
-  padding: 10px 30px;
+  padding: 15px 8%;
 }
 
 header img {
@@ -40,186 +28,100 @@ nav ul {
   gap: 20px;
 }
 
-nav a {
-  color: white;
+nav ul li a {
+  color: #fff;
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s;
 }
 
-nav a:hover, nav .active {
-  color: var(--secondary);
+nav ul li a:hover,
+nav ul li a.active {
+  text-decoration: underline;
 }
 
-/* Hero Section */
 .hero {
+  background: url("{{ url_for('static', filename='images/banner.png') }}") center/cover no-repeat;
   text-align: center;
-  background: url('../images/banner.png') no-repeat center center/cover;
   color: white;
-  padding: 120px 20px;
+  padding: 100px 20px;
 }
 
-.hero h1 {
-  font-size: 2.8em;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 1.3em;
-  margin-bottom: 20px;
-}
-
-/* Primary Button */
 .btn-primary {
-  background: var(--secondary);
-  color: #000;
+  display: inline-block;
+  background-color: #0078FF;
+  color: #fff;
   padding: 12px 25px;
-  border-radius: 4px;
-  font-weight: bold;
   text-decoration: none;
-  transition: background 0.3s ease;
+  border-radius: 5px;
 }
 
 .btn-primary:hover {
-  background: #ffc107;
+  background-color: #005fcc;
 }
 
-/* Services Grid */
+section {
+  padding: 60px 8%;
+}
+
 .services {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-  padding: 40px 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
 }
 
 .service-card {
-  background: var(--light);
+  background: white;
   border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
   padding: 20px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .service-card img {
-  width: 80px;
+  width: 70px;
   margin-bottom: 10px;
 }
 
-/* Contact Form */
-.contact-form {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-  background: var(--light);
-  border-radius: 8px;
-}
-
-.contact-form label {
-  display: block;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.contact-form input, 
-.contact-form textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.contact-form button {
-  margin-top: 15px;
-  width: 100%;
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  padding: 12px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.contact-form button:hover {
-  background: #005fa3;
-}
-
-/* Login Page */
-.login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 90vh;
-}
-
-.login-form {
-  background: var(--light);
-  padding: 30px;
-  border-radius: 8px;
-  width: 300px;
-}
-
-.login-form input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-}
-
-/* Footer */
 footer {
-  text-align: center;
-  background: var(--dark);
-  color: #fff;
-  padding: 20px 10px;
-  font-size: 0.9em;
-}
-
-/* Floating Buttons */
-.whatsapp-float, .call-float {
-  position: fixed;
-  right: 15px;
-  border-radius: 50px;
-  text-align: center;
+  background: #002B5B;
   color: white;
-  padding: 12px;
-  font-weight: bold;
-  text-decoration: none;
-  z-index: 1000;
+  text-align: center;
+  padding: 20px;
 }
 
 .whatsapp-float {
-  bottom: 70px;
-  background: #25d366;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 55px;
+  z-index: 999;
 }
 
 .call-float {
-  bottom: 20px;
-  background: var(--primary);
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background: #0078FF;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-/* Flash Messages */
-.flash-messages .alert {
-  padding: 10px;
-  border-radius: 4px;
-  margin: 10px 0;
+.flash.success { color: green; }
+.flash.danger { color: red; }
+
+.admin-body {
+  background-color: #f0f4f8;
 }
 
-.alert.success { background-color: var(--success); color: white; }
-.alert.danger { background-color: var(--danger); color: white; }
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-  }
-
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .hero h1 {
-    font-size: 2em;
-  }
+.login-container {
+  max-width: 400px;
+  margin: 80px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
