@@ -1,0 +1,70 @@
+# ======================================================
+# SPERO RESTORATION - AI BLOG GENERATOR
+# ======================================================
+
+import os
+from datetime import datetime
+import openai
+from config import Config
+
+openai.api_key = Config.OPENAI_API_KEY
+
+# Directory for blog markdown posts
+BLOG_DIR = os.path.join(os.path.dirname(__file__), "..", "blog_content")
+
+# ------------------------------------------------------
+# THEMES (can be expanded)
+# ------------------------------------------------------
+BLOG_TOPICS = [
+    "How to handle water damage before professionals arrive",
+    "Top causes of mold in Orlando homes",
+    "Fire restoration steps every homeowner should know",
+    "Difference between mitigation and restoration",
+    "How humidity affects drywall and paint in Florida",
+]
+
+# ------------------------------------------------------
+# FUNCTION TO GENERATE A BLOG POST
+# ------------------------------------------------------
+def generate_blog_post(topic: str):
+    try:
+        print(f"🧠 Generating blog: {topic}")
+        prompt = (
+            f"Write a 600-word SEO-optimized blog post in English about '{topic}' "
+            f"for a restoration company in Orlando called Spero Restoration. "
+            f"Include an intro, subheadings, and conclusion."
+        )
+        response = openai.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=900,
+        )
+        article = response.choices[0].message.content.strip()
+
+        # Create filename based on topic
+        slug = topic.lower().replace(" ", "-").replace(",", "").replace("'", "")
+        file_path = os.path.join(BLOG_DIR, f"{slug}.md")
+
+        # Save file
+        with open(file_path, "w", encoding="utf-8") as f:
+            f.write(f"# {topic}\n\n")
+            f.write(article)
+            f.write(f"\n\n*Published automatically on {datetime.utcnow().date()}*")
+
+        print(f"✅ Blog generated: {file_path}")
+
+    except Exception as e:
+        print(f"Error generating blog for '{topic}': {e}")
+
+
+# ------------------------------------------------------
+# MAIN EXECUTION
+# ------------------------------------------------------
+def generate_all_blogs():
+    if not os.path.exists(BLOG_DIR):
+        os.makedirs(BLOG_DIR)
+    for topic in BLOG_TOPICS:
+        generate_blog_post(topic)
+
+if __name__ == "__main__":
+    generate_all_blogs()
