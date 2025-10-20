@@ -1,4 +1,1 @@
-// Main site script
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Spero Restoration website loaded.");
-});
+console.log('main.js loaded');
