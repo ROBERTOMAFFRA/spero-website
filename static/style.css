@@ -1,302 +1,225 @@
-/* ================================
-   SPERO RESTORATION - STYLE.CSS
-   Responsive unified theme (final)
-   ================================ */
-
-/* ----------- GLOBAL RESET ----------- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* 🌊 SPERO RESTORATION CORP - GLOBAL STYLE SHEET (v3) */
+/* ---------------------------------------------------- */
+/* Colors & Brand Palette */
+:root {
+  --primary: #0078d7;
+  --secondary: #f7b731;
+  --dark: #1b1b1b;
+  --light: #f4f4f4;
+  --success: #28a745;
+  --danger: #e74c3c;
+  --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  color: #333;
-  background-color: #fff;
+  font-family: var(--font-main);
+  color: var(--dark);
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* ----------- HEADER ----------- */
+/* Header & Navigation */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 50px;
-  background: #ffffff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
+  background: var(--primary);
+  padding: 10px 30px;
 }
 
 header img {
-  max-height: 100px;
-  width: auto;
-  transition: all 0.3s ease;
+  height: 60px;
 }
 
 nav ul {
-  display: flex;
   list-style: none;
-  gap: 30px;
+  display: flex;
+  gap: 20px;
 }
 
 nav a {
+  color: white;
   text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  font-weight: bold;
+  transition: color 0.3s;
 }
 
-nav a:hover {
-  color: #0078d7;
+nav a:hover, nav .active {
+  color: var(--secondary);
 }
 
-/* ----------- HERO (HOME) ----------- */
+/* Hero Section */
 .hero {
-  background: url("../images/banner.png") no-repeat center center/cover;
-  color: #fff;
   text-align: center;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0 20px;
-  margin-top: 100px;
-  position: relative;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.35);
-  z-index: 0;
-}
-
-.hero h1, .hero p, .hero a {
-  position: relative;
-  z-index: 1;
+  background: url('../images/banner.png') no-repeat center center/cover;
+  color: white;
+  padding: 120px 20px;
 }
 
 .hero h1 {
-  font-size: 2.8rem;
+  font-size: 2.8em;
   margin-bottom: 10px;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
 }
 
 .hero p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
+  font-size: 1.3em;
+  margin-bottom: 20px;
 }
 
-.hero .btn-primary {
-  background-color: #0078d7;
-  color: #fff;
-  padding: 14px 32px;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
+/* Primary Button */
+.btn-primary {
+  background: var(--secondary);
+  color: #000;
+  padding: 12px 25px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
 }
 
-.hero .btn-primary:hover {
-  background-color: #005fa3;
+.btn-primary:hover {
+  background: #ffc107;
 }
 
-/* ----------- MINI BANNERS (INTERNAL PAGES) ----------- */
-.sub-hero {
-  height: 40vh;
-  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("../images/banner.png") center center/cover;
-  color: #fff;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 100px;
-}
-
-.sub-hero h1 {
-  font-size: 2.2rem;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-}
-
-/* ----------- SECTIONS ----------- */
-section {
-  padding: 80px 60px;
-}
-
-section h2 {
-  text-align: center;
-  margin-bottom: 40px;
-  color: #0078d7;
-}
-
-/* ----------- ABOUT ----------- */
-.about-content {
-  max-width: 1100px;
-  margin: 0 auto;
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #444;
-}
-
-/* ----------- SERVICES ----------- */
+/* Services Grid */
 .services {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  padding: 40px 20px;
 }
 
 .service-card {
-  background: #f8f9fa;
+  background: var(--light);
   border-radius: 8px;
-  padding: 30px;
-  width: 300px;
+  padding: 20px;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-}
-
-.service-card:hover {
-  transform: translateY(-5px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .service-card img {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 20px;
+  width: 80px;
+  margin-bottom: 10px;
 }
 
-/* ----------- CONTACT FORM ----------- */
+/* Contact Form */
 .contact-form {
-  max-width: 700px;
-  margin: 0 auto;
-  background: #f8f9fa;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: var(--light);
+  border-radius: 8px;
 }
 
 .contact-form label {
-  font-weight: 600;
   display: block;
-  margin-bottom: 5px;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
-.contact-form input,
+.contact-form input, 
 .contact-form textarea {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 20px;
+  padding: 10px;
+  margin-top: 5px;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
+  border-radius: 4px;
 }
 
 .contact-form button {
-  background-color: #0078d7;
+  margin-top: 15px;
+  width: 100%;
+  background: var(--primary);
   color: #fff;
   border: none;
-  padding: 14px 28px;
-  border-radius: 6px;
-  font-size: 1rem;
+  padding: 12px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 .contact-form button:hover {
-  background-color: #005fa3;
+  background: #005fa3;
 }
 
-/* ----------- FOOTER ----------- */
+/* Login Page */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+}
+
+.login-form {
+  background: var(--light);
+  padding: 30px;
+  border-radius: 8px;
+  width: 300px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+/* Footer */
 footer {
-  background: #0078d7;
-  color: #fff;
   text-align: center;
-  padding: 30px 20px;
-  margin-top: 50px;
-}
-
-footer p {
-  font-size: 0.95rem;
-}
-
-footer a {
+  background: var(--dark);
   color: #fff;
-  text-decoration: underline;
+  padding: 20px 10px;
+  font-size: 0.9em;
 }
 
-/* ----------- RESPONSIVENESS ----------- */
-@media (max-width: 992px) {
+/* Floating Buttons */
+.whatsapp-float, .call-float {
+  position: fixed;
+  right: 15px;
+  border-radius: 50px;
+  text-align: center;
+  color: white;
+  padding: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  z-index: 1000;
+}
+
+.whatsapp-float {
+  bottom: 70px;
+  background: #25d366;
+}
+
+.call-float {
+  bottom: 20px;
+  background: var(--primary);
+}
+
+/* Flash Messages */
+.flash-messages .alert {
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+.alert.success { background-color: var(--success); color: white; }
+.alert.danger { background-color: var(--danger); color: white; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
   header {
     flex-direction: column;
-    padding: 10px 20px;
   }
 
   nav ul {
     flex-direction: column;
-    gap: 15px;
-  }
-
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .services {
-    flex-direction: column;
     align-items: center;
   }
 
-  .service-card {
-    width: 90%;
-  }
-}
-
-@media (max-width: 600px) {
-  header img {
-    max-height: 80px;
-  }
-
-  .hero {
-    height: 95vh;
-    padding-top: 50px;
-  }
-
   .hero h1 {
-    font-size: 1.9rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .hero .btn-primary {
-    padding: 12px 25px;
-    font-size: 0.9rem;
-  }
-
-  section {
-    padding: 50px 20px;
-  }
-
-  .contact-form {
-    padding: 25px;
-  }
-
-  .sub-hero h1 {
-    font-size: 1.8rem;
+    font-size: 2em;
   }
 }
