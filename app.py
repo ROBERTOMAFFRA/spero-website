@@ -111,6 +111,10 @@ def internal_error(e):
 # ============================================================
 # ENTRY POINT
 # ============================================================
+@app.route('/maintenance')
+def maintenance_mode():
+    """Manual Maintenance Page"""
+    return render_template('503.html'), 503
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 10000))
