@@ -3,17 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | Spero Restoration Corp</title>
-  <meta name="description" content="Learn about Spero Restoration Corp — Orlando’s trusted experts in water, fire, and mold restoration, serving Windermere, Lake Nona, and Winter Garden.">
-  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <title>About | Spero Restoration Corp</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
   <header>
-    <a href="{{ url_for('index_page') }}">
-      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
-    </a>
+    <a href="{{ url_for('index_page') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo"></a>
     <nav>
       <ul>
         <li><a href="{{ url_for('index_page') }}">Home</a></li>
@@ -24,30 +19,18 @@
     </nav>
   </header>
 
-  <section class="hero about-hero">
+  <section class="page-hero">
     <h1>About Spero Restoration Corp</h1>
-    <p>Restoring homes, businesses, and peace of mind since 2015.</p>
   </section>
 
   <section class="content">
-    <h2>Our Mission</h2>
-    <p>At Spero Restoration, our mission is to provide fast, professional, and high-quality restoration services that bring safety and comfort back to your home or business after a disaster.</p>
-
-    <h2>Why Choose Us?</h2>
-    <ul>
-      <li>✅ Licensed & Insured Professionals</li>
-      <li>✅ 24/7 Emergency Response</li>
-      <li>✅ Trusted by Homeowners and Businesses</li>
-      <li>✅ Serving All of Central Florida</li>
-    </ul>
-
-    <h2>Our Promise</h2>
-    <p>We understand how stressful property damage can be. That’s why we focus on transparent communication, fair pricing, and quality workmanship — ensuring every client receives the attention they deserve.</p>
+    <p>Spero Restoration Corp was founded with a mission: restore homes and hope. Based in Orlando, we bring years of expertise in water damage restoration, fire recovery, mold remediation, and remodeling.</p>
+    <p>Our certified professionals deliver fast response, top-quality craftsmanship, and full insurance claim assistance.</p>
+    <p>We serve Orlando, Windermere, Lake Nona, Winter Garden, and all Central Florida.</p>
   </section>
 
   <footer>
-    <p>&copy; 2025 Spero Restoration Corp | Orlando, FL</p>
-    <p><a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Service</a></p>
+    <p>&copy; 2025 Spero Restoration Corp</p>
   </footer>
 </body>
 </html>
