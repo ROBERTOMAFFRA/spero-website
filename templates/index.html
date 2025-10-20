@@ -20,8 +20,137 @@
     <meta property="og:url" content="https://spero-restoration.com">
     <meta property="og:type" content="website">
 
+<!-- =====================================================
+     JSON-LD SCHEMA – Global SEO Structure for SPERO RESTORATION
+     Integrated Schema: Organization + LocalBusiness + Service + WebSite
+====================================================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://spero-restoration.com/#organization",
+      "name": "Spero Restoration",
+      "url": "https://spero-restoration.com",
+      "logo": "https://spero-restoration.com/static/images/logo-whitebg.png",
+      "description": "Professional restoration company in Orlando, Florida, specializing in water damage, fire, and mold remediation.",
+      "foundingDate": "2015",
+      "email": "contact@spero-restoration.com",
+      "telephone": "+1-407-555-1024",
+      "sameAs": [
+        "https://www.facebook.com/sperorestoration",
+        "https://www.instagram.com/sperorestoration",
+        "https://www.linkedin.com/company/sperorestoration"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Orlando, Florida",
+        "addressLocality": "Orlando",
+        "addressRegion": "FL",
+        "postalCode": "32801",
+        "addressCountry": "US"
+      },
+      "areaServed": ["Orlando", "Clermont", "Windermere", "Lake Nona", "Winter Garden"]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://spero-restoration.com/#localbusiness",
+      "name": "Spero Restoration",
+      "image": "https://spero-restoration.com/static/images/logo-whitebg.png",
+      "priceRange": "$$",
+      "telephone": "+1-407-555-1024",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Orlando, Florida",
+        "addressLocality": "Orlando",
+        "addressRegion": "FL",
+        "postalCode": "32801",
+        "addressCountry": "US"
+      },
+      "openingHours": "Mo-Su 00:00-23:59",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 28.5383,
+        "longitude": -81.3792
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Restoration Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Water Damage Restoration",
+              "serviceType": "Water Restoration",
+              "areaServed": "Orlando, FL",
+              "provider": {"@id": "https://spero-restoration.com/#organization"}
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Mold Remediation",
+              "serviceType": "Mold Removal",
+              "areaServed": "Orlando, FL",
+              "provider": {"@id": "https://spero-restoration.com/#organization"}
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Fire & Smoke Restoration",
+              "serviceType": "Fire Restoration",
+              "areaServed": "Orlando, FL",
+              "provider": {"@id": "https://spero-restoration.com/#organization"}
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://spero-restoration.com/#website",
+      "url": "https://spero-restoration.com",
+      "name": "Spero Restoration",
+      "inLanguage": ["en", "es", "pt"],
+      "publisher": {"@id": "https://spero-restoration.com/#organization"},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://spero-restoration.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://spero-restoration.com/#webpage",
+      "url": "https://spero-restoration.com/",
+      "name": "Spero Restoration | Water, Fire & Mold Experts in Orlando",
+      "isPartOf": {"@id": "https://spero-restoration.com/#website"},
+      "primaryImageOfPage": "https://spero-restoration.com/static/images/banner.webp",
+      "about": {"@id": "https://spero-restoration.com/#organization"},
+      "inLanguage": ["en", "es", "pt"],
+      "datePublished": "2025-10-20",
+      "dateModified": "2025-10-20",
+      "description": "Professional restoration and remediation experts serving Orlando and Central Florida. 24/7 emergency response for water, fire, and mold."
+    }
+  ]
+}
+</script>
+
     <!-- Canonical URL -->
     <link rel="canonical" href="https://spero-restoration.com/">
+
+    <!-- =====================================================
+         Multilingual Alternate Links (SEO Internationalization)
+    ====================================================== -->
+    <link rel="alternate" href="https://spero-restoration.com/" hreflang="en" />
+    <link rel="alternate" href="https://spero-restoration.com/es/" hreflang="es" />
+    <link rel="alternate" href="https://spero-restoration.com/pt/" hreflang="pt" />
+    <link rel="alternate" href="https://spero-restoration.com/" hreflang="x-default" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
