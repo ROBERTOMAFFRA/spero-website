@@ -3,27 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | Spero Restoration Corp Orlando</title>
-  <meta name="description" content="Learn more about Spero Restoration Corp — Orlando’s trusted team for water damage, fire repair, mold remediation, remodeling, disaster recovery, and tarp services.">
-  <meta name="keywords" content="about spero restoration, restoration team orlando, remodeling experts, water damage repair, fire cleanup, mold removal, disaster recovery florida">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="About Spero Restoration Corp | Restoration & Remodeling Experts">
-  <meta property="og:description" content="Learn about Spero Restoration — Orlando’s specialists in water, fire, mold, remodeling & disaster recovery.">
-  <meta property="og:image" content="{{ url_for('static', filename='images/banner.png') }}">
-  <meta property="og:url" content="https://spero-restoration.com/about">
-  <meta property="og:type" content="website">
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://spero-restoration.com/about">
-
-  <!-- Favicon & Styles -->
+  <title>About Us | Spero Restoration Corp</title>
+  <meta name="description" content="Learn about Spero Restoration Corp — Orlando’s trusted experts in water, fire, and mold restoration, serving Windermere, Lake Nona, and Winter Garden.">
   <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
-  <!-- HEADER -->
   <header>
     <a href="{{ url_for('index_page') }}">
       <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
@@ -38,59 +24,30 @@
     </nav>
   </header>
 
-  <!-- HERO -->
   <section class="hero about-hero">
     <h1>About Spero Restoration Corp</h1>
-    <p>Restoring homes, rebuilding trust, and transforming spaces across Orlando.</p>
+    <p>Restoring homes, businesses, and peace of mind since 2015.</p>
   </section>
 
-  <!-- ABOUT CONTENT -->
-  <section id="about-details" class="content-section">
-    <h2>Who We Are</h2>
-    <p>
-      Founded in Orlando, <strong>Spero Restoration Corp</strong> is a family-owned and operated business built on integrity, quality, and care. 
-      Our mission is simple — to restore comfort, safety, and beauty to every home we touch.
-    </p>
+  <section class="content">
+    <h2>Our Mission</h2>
+    <p>At Spero Restoration, our mission is to provide fast, professional, and high-quality restoration services that bring safety and comfort back to your home or business after a disaster.</p>
 
-    <h2>Our Vision</h2>
-    <p>
-      We believe every property restoration should be a positive experience. Our expert technicians are certified in water, fire, and mold damage recovery, as well as full-service remodeling.
-    </p>
-
-    <h2>Our Core Values</h2>
-    <ul class="values-list">
-      <li><strong>Integrity:</strong> We deliver on our promises with transparency and respect.</li>
-      <li><strong>Excellence:</strong> Every detail matters — from inspection to final finish.</li>
-      <li><strong>Trust:</strong> Your home is our priority; your satisfaction, our commitment.</li>
+    <h2>Why Choose Us?</h2>
+    <ul>
+      <li>✅ Licensed & Insured Professionals</li>
+      <li>✅ 24/7 Emergency Response</li>
+      <li>✅ Trusted by Homeowners and Businesses</li>
+      <li>✅ Serving All of Central Florida</li>
     </ul>
 
-    <h2>Certified & Licensed Professionals</h2>
-    <p>
-      Our team meets all state requirements for restoration and construction services, including IICRC certification and full insurance compliance.
-    </p>
+    <h2>Our Promise</h2>
+    <p>We understand how stressful property damage can be. That’s why we focus on transparent communication, fair pricing, and quality workmanship — ensuring every client receives the attention they deserve.</p>
   </section>
 
-  <!-- CTA -->
-  <section class="contact-cta">
-    <h2>Ready to Restore Your Home?</h2>
-    <p>Contact our team today and experience professional restoration and remodeling you can trust.</p>
-    <a href="{{ url_for('contact') }}" class="btn-primary">Request Inspection</a>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 Spero Restoration Corp | Orlando, FL | (407) 724-6310</p>
+    <p>&copy; 2025 Spero Restoration Corp | Orlando, FL</p>
     <p><a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Service</a></p>
   </footer>
-
-  <!-- WhatsApp & Call -->
-  <a href="https://wa.me/14077246310" class="whatsapp-float" target="_blank">
-    <img src="{{ url_for('static', filename='images/whatsapp-icon.png') }}" alt="Chat on WhatsApp">
-  </a>
-
-  <a href="tel:4077246310" class="call-float">📞 Call Now</a>
-
-  <!-- Scripts -->
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
