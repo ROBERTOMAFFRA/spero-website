@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://spero-restoration.com/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 2
