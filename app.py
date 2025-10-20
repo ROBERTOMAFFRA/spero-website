@@ -7,33 +7,30 @@ from email.mime.multipart import MIMEMultipart
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", "spero_secure_key")
 
-# Config SendGrid
+# ==== CONFIG SENDGRID ====
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 CONTACT_EMAIL = os.getenv("CONTACT_EMAIL", "contact@spero-restoration.com")
 ADMIN_EMAIL = "roberto.maffra@gmail.com"
 
-# Uploads
+# ==== UPLOADS ====
 UPLOAD_FOLDER = os.path.join(app.root_path, "uploads")
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 
-# ======== ROUTES ========
+# ==== ROUTES ====
 
 @app.route("/")
 def index_page():
     return render_template("index.html")
 
-
 @app.route("/about")
 def about():
     return render_template("about.html")
 
-
 @app.route("/services")
 def services():
     return render_template("services.html")
-
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
@@ -91,11 +88,9 @@ def admin_login():
 def privacy():
     return render_template("privacy.html")
 
-
 @app.route("/terms")
 def terms():
     return render_template("terms.html")
-
 
 @app.errorhandler(404)
 def not_found(e):
