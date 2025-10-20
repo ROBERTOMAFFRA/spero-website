@@ -2,11 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Contact Us | Spero Restoration Corp</title>
-  <meta name="description" content="Contact Spero Restoration Corp for 24/7 emergency restoration services in Orlando. We respond fast to water, fire, and mold damage.">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Spero Restoration Corp Orlando</title>
+  <meta name="description" content="Contact Spero Restoration Corp — Orlando experts in water damage restoration, mold remediation, fire repair, and remodeling. Available 24/7 for emergencies.">
+  <meta name="keywords" content="contact spero restoration, orlando restoration company, 24/7 restoration, water damage help, mold removal, fire cleanup, disaster recovery orlando">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Contact Spero Restoration Corp | 24/7 Emergency Service">
+  <meta property="og:description" content="Need restoration help now? Contact Spero Restoration — Orlando’s trusted water, fire, and mold experts.">
+  <meta property="og:image" content="{{ url_for('static', filename='images/banner.png') }}">
+  <meta property="og:url" content="https://spero-restoration.com/contact">
+  <meta property="og:type" content="website">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://spero-restoration.com/contact">
+
+  <!-- Favicon & Styles -->
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
+  <!-- HEADER -->
   <header>
     <a href="{{ url_for('index_page') }}">
       <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
@@ -16,40 +33,79 @@
         <li><a href="{{ url_for('index_page') }}">Home</a></li>
         <li><a href="{{ url_for('about') }}">About</a></li>
         <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('contact') }}" class="active">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <h1>Contact Us</h1>
-    <p>Need immediate assistance? We’re available 24/7 to help with your restoration needs.</p>
+  <!-- HERO -->
+  <section class="hero contact-hero">
+    <h1>Contact Spero Restoration Corp</h1>
+    <p>We’re available 24/7 to restore your property and peace of mind.</p>
+  </section>
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        <div class="flash-messages">
-          {% for category, message in messages %}
-            <div class="alert {{ category }}">{{ message }}</div>
-          {% endfor %}
-        </div>
-      {% endif %}
-    {% endwith %}
+  <!-- CONTACT FORM -->
+  <section id="contact-form" class="content-section">
+    <h2>Request a Free Inspection</h2>
+    <p>Fill out the form below and our team will get in touch shortly. For immediate assistance, call <strong>(407) 724-6310</strong>.</p>
 
-    <form action="{{ url_for('contact') }}" method="POST" class="contact-form">
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
+    <form action="{{ url_for('send_email') }}" method="POST" class="contact-form">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" placeholder="Your Name" required>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required>
 
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" placeholder="(407) 555-1234" required>
+
+      <label for="service">Service Type:</label>
+      <select id="service" name="service" required>
+        <option value="">Select a Service</option>
+        <option value="Water Damage Restoration">Water Damage Restoration</option>
+        <option value="Mold Remediation">Mold Remediation</option>
+        <option value="Fire & Smoke Repair">Fire & Smoke Repair</option>
+        <option value="Remodeling">Remodeling</option>
+        <option value="Emergency Tarp / Disaster Recovery">Emergency Tarp / Disaster Recovery</option>
+      </select>
+
+      <label for="message">Your Message:</label>
+      <textarea id="message" name="message" rows="5" placeholder="Tell us what happened..." required></textarea>
 
       <button type="submit" class="btn-primary">Send Message</button>
     </form>
-  </main>
+  </section>
 
+  <!-- CONTACT INFO -->
+  <section class="contact-info">
+    <div class="info-item">
+      <h3>📍 Address</h3>
+      <p>Orlando, FL — Serving all Central Florida</p>
+    </div>
+    <div class="info-item">
+      <h3>📞 Call Us</h3>
+      <p><a href="tel:4077246310">(407) 724-6310</a></p>
+    </div>
+    <div class="info-item">
+      <h3>📧 Email</h3>
+      <p><a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a></p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 Spero Restoration Corp</p>
+    <p>&copy; 2025 Spero Restoration Corp | Orlando, FL</p>
+    <p><a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Service</a></p>
   </footer>
+
+  <!-- WhatsApp & Call -->
+  <a href="https://wa.me/14077246310" class="whatsapp-float" target="_blank">
+    <img src="{{ url_for('static', filename='images/whatsapp-icon.png') }}" alt="Chat on WhatsApp">
+  </a>
+
+  <a href="tel:4077246310" class="call-float">📞 Call Now</a>
+
+  <!-- Scripts -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
