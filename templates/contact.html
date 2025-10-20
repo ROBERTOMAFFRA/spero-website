@@ -1,1 +1,70 @@
-<html><body><h1>Contact</h1><form><input name='name'></form></body></html>
+{% extends "base.html" %}
+{% block content %}
+
+<section class="contact-hero">
+    <div class="container">
+        <h1>{{ _("Contact Spero Restoration") }}</h1>
+        <p>{{ _("We’re available 24/7 to assist with any water, mold, or fire damage emergency in Orlando.") }}</p>
+    </div>
+</section>
+
+<section class="contact-section">
+    <div class="container contact-grid">
+
+        <!-- CONTACT FORM -->
+        <div class="contact-form">
+            <h2>{{ _("Send Us a Message") }}</h2>
+            <form action="/send_email" method="POST">
+                <div class="form-group">
+                    <label for="name">{{ _("Name") }}</label>
+                    <input type="text" name="name" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">{{ _("Email") }}</label>
+                    <input type="email" name="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">{{ _("Phone") }}</label>
+                    <input type="text" name="phone" id="phone">
+                </div>
+                <div class="form-group">
+                    <label for="message">{{ _("Message") }}</label>
+                    <textarea name="message" id="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">{{ _("Send Message") }}</button>
+            </form>
+        </div>
+
+        <!-- CONTACT INFO -->
+        <div class="contact-info">
+            <h2>{{ _("Get in Touch") }}</h2>
+            <p><strong>{{ _("Phone:") }}</strong> (407) XXX-XXXX</p>
+            <p><strong>{{ _("Email:") }}</strong> <a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a></p>
+            <p><strong>{{ _("Address:") }}</strong> Orlando, FL</p>
+            <hr>
+            <h3>{{ _("Follow Us") }}</h3>
+            <ul class="social-links">
+                <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+                <li><a href="https://www.instagram.com" target="_blank">Instagram</a></li>
+                <li><a href="https://www.linkedin.com" target="_blank">LinkedIn</a></li>
+            </ul>
+            <hr>
+            <h3>{{ _("WhatsApp") }}</h3>
+            <a href="https://wa.me/1407XXXXXXX" target="_blank" class="btn-secondary">Chat via WhatsApp</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- MAP SECTION -->
+<section class="map-section">
+    <div class="container">
+        <h2>{{ _("Our Service Area") }}</h2>
+        <iframe
+            src="https://www.google.com/maps?q=Orlando,+FL&output=embed"
+            width="100%" height="350" style="border:0;" allowfullscreen>
+        </iframe>
+    </div>
+</section>
+
+{% endblock %}
