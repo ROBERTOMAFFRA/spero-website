@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="article-section">
+    <div class="container">
+        <article class="blog-article">
+            <h1>{{ meta.title if meta else _("Article") }}</h1>
+            <div class="article-body">
+                {{ content|safe }}
+            </div>
+        </article>
+
+        <div class="back-link">
+            <a href="/blog?lang={{ lang }}" class="btn-secondary">{{ _("← Back to Blog") }}</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
