@@ -2,27 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Admin Login | Spero Restoration Corp</title>
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | Spero Restoration</title>
+  <meta name="description" content="Admin area for Spero Restoration Corp. Secure access only.">
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
-  <main class="login-container">
-    <h1>Admin Access</h1>
+  <section class="login-container">
+    <h1>Admin Login</h1>
 
     {% if error %}
-      <div class="alert danger">{{ error }}</div>
+      <p class="error">{{ error }}</p>
     {% endif %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
 
-    <form method="POST" action="{{ url_for('admin_login') }}" class="login-form">
+    <form method="POST" action="{{ url_for('admin_login') }}">
       <label for="username">Username</label>
-      <input type="text" name="username" required>
+      <input type="text" id="username" name="username" required>
 
       <label for="password">Password</label>
-      <input type="password" name="password" required>
+      <input type="password" id="password" name="password" required>
 
       <button type="submit" class="btn-primary">Login</button>
     </form>
-  </main>
+
+    <a href="{{ url_for('index_page') }}">← Back to Home</a>
+  </section>
 </body>
 </html>
