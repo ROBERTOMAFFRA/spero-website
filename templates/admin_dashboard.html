@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="admin-dashboard">
+    <div class="container">
+        <h1>{{ _("Admin Dashboard") }}</h1>
+        <p>{{ _("Internal overview of Spero Restoration website metrics.") }}</p>
+
+        <div class="dashboard-grid">
+            <div class="card">
+                <h3>{{ _("Visits Today") }}</h3>
+                <p class="metric">{{ stats.visits_today }}</p>
+            </div>
+            <div class="card">
+                <h3>{{ _("Form Submissions") }}</h3>
+                <p class="metric">{{ stats.form_submissions }}</p>
+            </div>
+            <div class="card">
+                <h3>{{ _("Blog Posts") }}</h3>
+                <p class="metric">{{ stats.blog_posts }}</p>
+            </div>
+            <div class="card">
+                <h3>{{ _("Last Backup") }}</h3>
+                <p class="metric">{{ stats.last_backup }}</p>
+            </div>
+        </div>
+
+        <div class="admin-actions">
+            <a href="/" class="btn-secondary">{{ _("Back to Website") }}</a>
+            <a href="/api/stats" class="btn-primary" target="_blank">{{ _("View JSON API") }}</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
