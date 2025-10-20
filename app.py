@@ -1,37 +1,48 @@
-# ======================================================
-# Spero Restoration Corp — Flask App
-# Revisão completa de imports (SEO, Email, Multi-idioma, Uploads)
-# ======================================================
+# Spero Restoration Corp | Flask app (consolidado)
+# Mantém: multi-idioma (pt/en/es), envio de e-mail (SendGrid/SMTP),
+# login admin por cookie, dashboard com upload e páginas públicas.
 
-from flask import (
-    Flask, render_template, request, redirect, url_for,
-    flash, send_from_directory, jsonify
-)
-from flask_mail import Mail, Message
-from flask_compress import Compress
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail as SendGridMail
-from dotenv import load_dotenv
 import os
 import json
-import datetime
+from datetime import timedelta
+from werkzeug.utils import secure_filename
+from flask import (
+    Flask, render_template, request, redirect, url_for,
+    make_response, flash, send_from_directory, jsonify
+)
+from flask_compress import Compress
+from dotenv import load_dotenv
+from flask_mail import Mail, Message
 
-load_dotenv()
+# -----------------------------------------------------------------------------
+# BOOT
+# -----------------------------------------------------------------------------
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+load_dotenv()  # carrega .env local (no Render já vem de Environment)
 
-app = Flask(__name__, template_folder="templates", static_folder="static")
+app = Flask(
+    __name__,
+    template_folder=os.path.join(BASE_DIR, "templates"),
+    static_folder=os.path.join(BASE_DIR, "static")
+)
+
+# Secret Key
 app.secret_key = os.getenv("SECRET_KEY", "spero_secret_key")
+app.permanent_session_lifetime = timedelta(hours=4)
+
+# Compressão HTTP
 Compress(app)
 
-# ---------------------------
-# MULTI-LANGUAGE SUPPORT
-# ---------------------------
+# -----------------------------------------------------------------------------
+# MULTI-IDIOMA (pt/en/es) via arquivos JSON em /translations
+# -----------------------------------------------------------------------------
 LANG_FILES = {
-    "en": "static/lang/en.json",
-    "es": "static/lang/es.json",
-    "pt": "static/lang/pt.json"
+    "en": os.path.join(BASE_DIR, "translations", "en.json"),
+    "es": os.path.join(BASE_DIR, "translations", "es.json"),
+    "pt": os.path.join(BASE_DIR, "translations", "pt.json"),
 }
 
-def load_language(lang_code):
+def load_language(lang_code: str) -> dict:
     path = LANG_FILES.get(lang_code, LANG_FILES["en"])
     try:
         with open(path, encoding="utf-8") as f:
@@ -42,216 +53,152 @@ def load_language(lang_code):
 @app.context_processor
 def inject_lang():
     lang = request.args.get("lang", "en")
-    return {"lang": lang, "t": load_language(lang)}
+    t = load_language(lang)
+    # helper simples: {{ t.get('home_title') }}
+    return {"lang": lang, "t": t}
 
-# ---------------------------
-# ROUTES
-# ---------------------------
+# -----------------------------------------------------------------------------
+# E-MAIL (SendGrid/SMTP via Flask-Mail)
+# -----------------------------------------------------------------------------
+# Use as envs já configuradas no Render:
+# MAIL_SERVER, MAIL_PORT, MAIL_USE_TLS, MAIL_USERNAME, MAIL_PASSWORD, MAIL_DEFAULT_SENDER
+app.config["MAIL_SERVER"] = os.getenv("MAIL_SERVER", "smtp.sendgrid.net")
+app.config["MAIL_PORT"] = int(os.getenv("MAIL_PORT", "587"))
+app.config["MAIL_USE_TLS"] = os.getenv("MAIL_USE_TLS", "True").lower() == "true"
+app.config["MAIL_USERNAME"] = os.getenv("MAIL_USERNAME", "apikey")
+app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD", os.getenv("SENDGRIP_API_KEY", ""))  # compatibilidade
+app.config["MAIL_DEFAULT_SENDER"] = os.getenv("MAIL_DEFAULT_SENDER", "contact@spero-restoration.com")
+
+mail = Mail(app)
+
+# -----------------------------------------------------------------------------
+# UPLOAD (painel admin) — salva em /static/uploads
+# -----------------------------------------------------------------------------
+UPLOAD_FOLDER = os.path.join(app.static_folder, "uploads")
+ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif", "webp"}
+
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+def allowed_file(filename: str) -> bool:
+    return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+
+# -----------------------------------------------------------------------------
+# PÁGINAS PÚBLICAS
+# -----------------------------------------------------------------------------
 @app.route("/")
-def index():
+def index_page():
     return render_template("index.html")
 
 @app.route("/about")
-def about():
+def about_page():
     return render_template("about.html")
 
 @app.route("/services")
-def services():
+def services_page():
     return render_template("services.html")
 
 @app.route("/contact", methods=["GET", "POST"])
-def contact():
+def contact_page():
     if request.method == "POST":
-        name = request.form.get("name")
-        email = request.form.get("email")
-        phone = request.form.get("phone")
-        message = request.form.get("message")
+        name = request.form.get("name", "").strip()
+        email = request.form.get("email", "").strip()
+        phone = request.form.get("phone", "").strip()
+        service = request.form.get("service", "").strip()
+        message = request.form.get("message", "").strip()
+
+        # e-mail vai para contact@ + cópia opcional
+        to_main = os.getenv("CONTACT_TO", "contact@spero-restoration.com")
+        cc_addr = os.getenv("CONTACT_CC", "roberto.maffra@gmail.com")
 
         try:
-            send_email(name, email, phone, message)
-            flash("success")
-            return render_template("contact.html", success=True)
+            msg = Message(
+                subject=f"[Spero] New Contact: {name or 'Website'}",
+                recipients=[to_main],
+                cc=[cc_addr] if cc_addr else None,
+                body=(
+                    f"Name: {name}\n"
+                    f"Email: {email}\n"
+                    f"Phone: {phone}\n"
+                    f"Service: {service}\n\n"
+                    f"Message:\n{message}"
+                )
+            )
+            mail.send(msg)
+            flash("Your message was sent. We’ll contact you shortly.", "success")
+            return redirect(url_for("thank_you"))
         except Exception as e:
-            print("Error sending email:", e)
-            flash("error")
-            return render_template("contact.html", success=False)
+            print(f"[Email] error: {e}")
+            flash("We couldn't send your message right now. Please call us.", "danger")
+            return redirect(url_for("contact_page"))
+
     return render_template("contact.html")
 
-@app.route("/privacy")
-def privacy():
-    return render_template("privacy.html")
+@app.route("/thank-you")
+def thank_you():
+    return render_template("thank-you.html")
 
-@app.route("/terms")
-def terms():
-    return render_template("terms.html")
+# -----------------------------------------------------------------------------
+# ADMIN — login / logout / dashboard
+# -----------------------------------------------------------------------------
+def is_authed() -> bool:
+    return request.cookies.get("admin_auth") == "true"
 
-@app.route("/admin")
-def admin():
-    return render_template("admin.html")
+@app.route("/admin-login", methods=["GET", "POST"])
+def admin_login():
+    error = None
+    if request.method == "POST":
+        username = request.form.get("username", "")
+        password = request.form.get("password", "")
 
-# ---------------------------
-# EMAIL HANDLER (SENDGRID)
-# ---------------------------
-def send_email(name, email, phone, message):
-    sg_api = os.getenv("SENDGRID_API_KEY")
-    if not sg_api:
-        raise ValueError("SENDGRID_API_KEY missing in environment")
+        admin_user = os.getenv("ADMIN_USER", "RobertoMaffra")
+        admin_pass = os.getenv("ADMIN_PASSWORD", "SperoSecure!2025")
 
-    subject = f"New Contact Form Submission from {name}"
-    content = f"""
-    Name: {name}
-    Email: {email}
-    Phone: {phone}
-    Message:
-    {message}
-    """
+        if username == admin_user and password == admin_pass:
+            resp = make_response(redirect(url_for("admin_dashboard")))
+            # cookie de 1h, httpOnly e samesite=Lax
+            resp.set_cookie("admin_auth", "true", max_age=3600, httponly=True, samesite="Lax")
+            flash("Login successful!", "success")
+            return resp
+        else:
+            error = "Invalid username or password."
+            flash(error, "danger")
 
-    mail = Mail(
-        from_email="contact@spero-restoration.com",
-        to_emails=["contact@spero-restoration.com", "roberto.maffra@gmail.com"],
-        subject=subject,
-        plain_text_content=content
-    )
+    return render_template("admin_login.html", error=error)
 
-    sg = SendGridAPIClient(sg_api)
-    sg.send(mail)
+@app.route("/admin-logout")
+def admin_logout():
+    resp = make_response(redirect(url_for("admin_login")))
+    resp.set_cookie("admin_auth", "", expires=0)
+    flash("You have been logged out successfully.", "info")
+    return resp
 
-# ---------------------------
-# SITEMAP & ROBOTS
-# ---------------------------
-@app.route("/sitemap.xml")
-def sitemap():
-    pages = [
-        {"loc": url_for("index", _external=True)},
-        {"loc": url_for("about", _external=True)},
-        {"loc": url_for("services", _external=True)},
-        {"loc": url_for("contact", _external=True)},
-        {"loc": url_for("privacy", _external=True)},
-        {"loc": url_for("terms", _external=True)},
-    ]
-    xml = render_template("sitemap.xml", pages=pages)
-    return app.response_class(xml, mimetype="application/xml")
-
-@app.route("/robots.txt")
-def robots():
-    return app.send_static_file("robots.txt")
-
-# ---------------------------
-# CACHE CONTROL
-# ---------------------------
-@app.after_request
-def add_header(response):
-    response.headers["Cache-Control"] = "public, max-age=3600"
-    return response
-
-# ---------------------------
-# RUN
-# ---------------------------
-
-from werkzeug.utils import secure_filename
-
-# ---------------------------
-# ADMIN PANEL CONFIG
-# ---------------------------
-UPLOAD_FOLDER = os.path.join("static", "uploads")
-ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "webp"}
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-
-ADMIN_USER = os.getenv("ADMIN_USER", "RobertoMaffra")
-ADMIN_PASS = os.getenv("ADMIN_PASS", "Spero123!")
-
-def allowed_file(filename):
-    return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
-
-# ======================================================
-# CONFIGURAÇÃO DE E-MAIL E SENDGRID
-# ======================================================
-from flask_mail import Mail, Message
-
-# Configuração do servidor de e-mail
-app.config['MAIL_SERVER'] = os.getenv("MAIL_SERVER", "smtp.sendgrid.net")
-app.config['MAIL_PORT'] = int(os.getenv("MAIL_PORT", 587))
-app.config['MAIL_USE_TLS'] = os.getenv("MAIL_USE_TLS", "True").lower() == "true"
-app.config['MAIL_USERNAME'] = os.getenv("MAIL_USERNAME", "apikey")
-app.config['MAIL_PASSWORD'] = os.getenv("SENDGRID_API_KEY", "")
-app.config['MAIL_DEFAULT_SENDER'] = os.getenv("MAIL_DEFAULT_SENDER", "contact@spero-restoration.com")
-
-mail = Mail(app)
-compress = Compress(app)
-
-# ======================================================
-# ROTA DE TESTE DE E-MAIL
-# ======================================================
-
-# ======================================================
-# CONFIGURAÇÃO DE E-MAIL E SENDGRID
-# ======================================================
-from flask_mail import Mail, Message
-
-# Configuração do servidor de e-mail
-app.config["MAIL_SERVER"] = os.getenv("MAIL_SERVER", "smtp.sendgrid.net")
-app.config["MAIL_PORT"] = int(os.getenv("MAIL_PORT", 587))
-app.config["MAIL_USE_TLS"] = os.getenv("MAIL_USE_TLS", "True").lower() == "true"
-app.config["MAIL_USERNAME"] = os.getenv("MAIL_USERNAME", "apikey")
-app.config["MAIL_PASSWORD"] = os.getenv("SENDGRID_API_KEY", "")
-app.config["MAIL_DEFAULT_SENDER"] = os.getenv(
-    "MAIL_DEFAULT_SENDER", "contact@spero-restoration.com"
-)
-
-mail = Mail(app)
-compress = Compress(app)
-
-# ======================================================
-# ROTA DE TESTE DE E-MAIL
-# ======================================================
-@app.route("/test-email")
-def test_email():
-    try:
-        msg = Message(
-            "Test Email from Spero Restoration",
-            recipients=["contact@spero-restoration.com"],
-            body="This is a test email from your deployed Render app."
-        )
-        mail.send(msg)
-        return "✅ Test email sent successfully!"
-    except Exception as e:
-        print(f"Email error: {e}")
-        return f"❌ Error sending email: {e}"
-
-
-# ======================================================
-# ADMIN DASHBOARD (GALERIA + UPLOADS)
-# ======================================================
 @app.route("/admin")
 def admin_dashboard():
+    if not is_authed():
+        return redirect(url_for("admin_login"))
+
+    # lista de uploads (somente arquivos permitidos)
     try:
-        upload_folder = os.path.join(app.static_folder, "uploads")
-        if not os.path.exists(upload_folder):
-            os.makedirs(upload_folder)
-
-        uploads = os.listdir(upload_folder)
-        uploads = [f for f in uploads if not f.startswith(".")]
-
-        return render_template(
-            "admin.html",
-            uploads=uploads,
-            ADMIN_USER=os.getenv("ADMIN_USER")
-        )
-
+        files = [
+            f for f in os.listdir(UPLOAD_FOLDER)
+            if os.path.isfile(os.path.join(UPLOAD_FOLDER, f))
+            and allowed_file(f)
+        ]
     except Exception as e:
-        print(f"⚠️ Error in admin_dashboard: {e}")
-        flash("Error loading dashboard.", "error")
-        return redirect(url_for("index"))
+        print(f"[Admin] error listing uploads: {e}")
+        files = []
 
+    # URL pública para imagem: /static/uploads/<file>
+    return render_template(
+        "admin.html",
+        uploads=files,
+        ADMIN_USER=os.getenv("ADMIN_USER", "admin")
+    )
 
-# ======================================================
-# UPLOAD DE IMAGENS (PAINEL ADMIN)
-# ======================================================
+# Upload via formulário do admin.html (POST)
 @app.route("/upload", methods=["POST"])
 def upload_file():
-    auth = request.cookies.get("admin_auth")
-    if auth != "true":
+    if not is_authed():
         return redirect(url_for("admin_login"))
 
     if "file" not in request.files:
@@ -265,55 +212,43 @@ def upload_file():
 
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
-        filepath = os.path.join(app.static_folder, "uploads", filename)
+        filepath = os.path.join(UPLOAD_FOLDER, filename)
         file.save(filepath)
-        flash("✅ File uploaded successfully", "success")
+        flash("File uploaded successfully!", "success")
+        return redirect(url_for("admin_dashboard"))
 
+    flash("Invalid file type.", "danger")
     return redirect(url_for("admin_dashboard"))
 
+# Opcional: servir uploads direto (útil para preview em alguns ambientes)
+@app.route("/uploads/<path:filename>")
+def serve_upload(filename):
+    return send_from_directory(UPLOAD_FOLDER, filename)
 
-# ======================================================
-# ADMIN LOGIN SYSTEM
-# ======================================================
-from flask import make_response
+# -----------------------------------------------------------------------------
+# DIAGNÓSTICO
+# -----------------------------------------------------------------------------
+@app.route("/test-email")
+def test_email():
+    try:
+        to_main = os.getenv("CONTACT_TO", "contact@spero-restoration.com")
+        msg = Message(
+            subject="[Spero] Test Email",
+            recipients=[to_main],
+            body="Test email from deployed app."
+        )
+        mail.send(msg)
+        return "✅ Test email sent successfully!"
+    except Exception as e:
+        return f"❌ Email error: {e}"
 
-@app.route("/admin-login", methods=["GET", "POST"])
-def admin_login():
-    error = None
-    if request.method == "POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
+@app.route("/healthz")
+def healthz():
+    return jsonify(ok=True), 200
 
-        # Variáveis de ambiente configuradas no Render
-        admin_user = os.getenv("ADMIN_USER", "RobertoMaffra")
-        admin_pass = os.getenv("ADMIN_PASSWORD", "SperoSecure!2025")
-
-        if username == admin_user and password == admin_pass:
-            resp = make_response(redirect(url_for("admin_dashboard")))
-            resp.set_cookie("admin_auth", "true", max_age=3600, httponly=True, samesite="Lax")
-            flash("✅ Login successful! Welcome to admin dashboard.", "success")
-            return resp
-        else:
-            flash("❌ Invalid username or password.", "danger")
-
-    return render_template("admin_login.html", error=error)
-
-
-# ======================================================
-# ADMIN LOGOUT
-# ======================================================
-@app.route("/admin-logout")
-def admin_logout():
-    resp = make_response(redirect(url_for("admin_login")))
-    resp.set_cookie("admin_auth", "", expires=0)
-    flash("You have been logged out successfully.", "info")
-    return resp
-
-
-# ======================================================
-# APP EXECUTION
-# ======================================================
+# -----------------------------------------------------------------------------
+# GUNICORN ENTRYPOINT LOCAL (Render usa gunicorn externo)
+# -----------------------------------------------------------------------------
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
-
