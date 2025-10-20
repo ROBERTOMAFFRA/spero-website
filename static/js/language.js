@@ -1,0 +1,1 @@
+console.log('language.js loaded');
