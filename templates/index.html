@@ -1,1 +1,74 @@
-<!DOCTYPE html><html><head><title>Spero Restoration Corp</title></head><body><h1>Home</h1></body></html>
+{% extends "base.html" %}
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-overlay">
+        <div class="hero-content">
+            <h1>{{ _("Professional Water, Mold & Fire Restoration in Orlando") }}</h1>
+            <p>{{ _("We restore homes and businesses with care, speed, and certified expertise — 24/7 emergency response.") }}</p>
+            <a href="/contact?lang={{ lang }}" class="btn-primary">{{ _("Get a Free Estimate") }}</a>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about" class="about-section">
+    <div class="container">
+        <h2>{{ _("About Spero Restoration") }}</h2>
+        <p>{{ _("With years of experience in water damage, mold remediation, and fire restoration, we are Orlando’s trusted specialists in residential and commercial recovery.") }}</p>
+        <p>{{ _("Our certified team delivers quick response and guaranteed satisfaction.") }}</p>
+    </div>
+</section>
+
+<!-- SERVICES SECTION -->
+<section id="services" class="services-section">
+    <div class="container">
+        <h2>{{ _("Our Services") }}</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="/static/images/water-damage.webp" alt="Water Damage Restoration">
+                <h3>{{ _("Water Damage") }}</h3>
+                <p>{{ _("Emergency water removal, drying, and structural repair to prevent further damage.") }}</p>
+            </div>
+            <div class="service-card">
+                <img src="/static/images/mold-removal.webp" alt="Mold Remediation">
+                <h3>{{ _("Mold Remediation") }}</h3>
+                <p>{{ _("Certified mold inspection, containment, and air quality restoration for healthy living.") }}</p>
+            </div>
+            <div class="service-card">
+                <img src="/static/images/fire-restoration.webp" alt="Fire & Smoke Restoration">
+                <h3>{{ _("Fire & Smoke Restoration") }}</h3>
+                <p>{{ _("Complete cleaning, deodorization, and structural recovery after fire incidents.") }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS SECTION -->
+<section id="testimonials" class="testimonials-section">
+    <div class="container">
+        <h2>{{ _("What Our Clients Say") }}</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <p>"{{ _("Spero Restoration responded immediately after our water leak. Excellent service and professionalism!") }}"</p>
+                <span>- Maria G., Clermont</span>
+            </div>
+            <div class="testimonial">
+                <p>"{{ _("They handled mold removal quickly and safely. Highly recommend!") }}"</p>
+                <span>- John S., Windermere</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section id="cta" class="cta-section">
+    <div class="container">
+        <h2>{{ _("Need Immediate Help?") }}</h2>
+        <p>{{ _("Contact our 24/7 emergency team and get your property restored fast!") }}</p>
+        <a href="/contact?lang={{ lang }}" class="btn-secondary">{{ _("Contact Us Now") }}</a>
+    </div>
+</section>
+
+{% endblock %}
