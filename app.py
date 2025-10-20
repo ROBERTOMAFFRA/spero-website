@@ -1,183 +1,176 @@
-import os
-import json
-from flask import Flask, render_template, request, redirect, url_for, flash, make_response
-from flask_compress import Compress
-from werkzeug.utils import secure_filename
-from dotenv import load_dotenv
-from flask_mail import Mail, Message
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spero Restoration Corp | Water, Fire & Mold Restoration Orlando</title>
+  <meta name="description" content="Spero Restoration Corp — Orlando’s trusted experts for water, fire, and mold damage restoration, and home remodeling. Serving Windermere, Lake Nona, and Winter Garden.">
+  <meta name="keywords" content="water damage restoration Orlando, mold remediation, fire repair, home remodeling, Windermere, Lake Nona, Winter Garden, Clermont, Florida restoration services">
 
-# =======================================
-# CONFIGURAÇÕES BÁSICAS
-# =======================================
-load_dotenv()
+  <!-- Open Graph -->
+  <meta property="og:title" content="Spero Restoration Corp | Restoration & Remodeling Experts">
+  <meta property="og:description" content="Water, fire, and mold restoration experts serving Orlando, Windermere, Lake Nona, and surrounding areas.">
+  <meta property="og:image" content="https://spero-restoration.com/static/images/banner.png">
+  <meta property="og:url" content="https://spero-restoration.com/">
+  <meta property="og:type" content="website">
 
-app = Flask(__name__, template_folder="templates", static_folder="static")
-app.secret_key = os.getenv("SECRET_KEY", "spero_secret_key")
-Compress(app)
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Spero Restoration Corp">
+  <meta name="twitter:description" content="Restoration & Remodeling Experts serving Central Florida.">
+  <meta name="twitter:image" content="https://spero-restoration.com/static/images/banner.png">
 
-# =======================================
-# SUPORTE MULTI-IDIOMA
-# =======================================
-LANG_FILES = {
-    "en": "static/lang/en.json",
-    "es": "static/lang/es.json",
-    "pt": "static/lang/pt.json"
-}
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-def load_language(lang_code):
-    try:
-        with open(LANG_FILES.get(lang_code, LANG_FILES["en"]), encoding="utf-8") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        return {}
+  <!-- Structured Data: Local Business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Spero Restoration Corp",
+    "image": "https://spero-restoration.com/static/images/logo.png",
+    "@id": "https://spero-restoration.com",
+    "url": "https://spero-restoration.com",
+    "telephone": "+1-407-724-6310",
+    "email": "contact@spero-restoration.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Orlando, FL",
+      "addressLocality": "Orlando",
+      "addressRegion": "FL",
+      "postalCode": "32819",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 28.5383,
+      "longitude": -81.3792
+    },
+    "areaServed": ["Orlando", "Windermere", "Lake Nona", "Winter Garden", "Clermont"],
+    "priceRange": "$$",
+    "sameAs": [
+      "https://www.facebook.com/sperorestoration",
+      "https://www.instagram.com/sperorestoration"
+    ]
+  }
+  </script>
+</head>
 
-@app.context_processor
-def inject_lang():
-    lang = request.args.get("lang", "en")
-    return {"lang": lang, "t": load_language(lang)}
+<body>
+  <!-- HEADER -->
+  <header>
+    <a href="{{ url_for('index') }}">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
+    </a>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('services') }}">Services</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-# =======================================
-# ROTA PÚBLICA (HOME)
-# =======================================
-@app.route("/")
-def index():
-    return render_template("index.html")
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1>Restoration & Remodeling Experts</h1>
+    <p>Serving Orlando, Windermere, Lake Nona, and Winter Garden</p>
+    <a href="{{ url_for('contact') }}" class="btn-primary">Schedule Inspection</a>
+  </section>
 
-# =======================================
-# CONTATO / SOBRE / PÁGINAS ESTÁTICAS
-# =======================================
-@app.route("/about")
-def about():
-    return render_template("about.html")
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>
+      Spero Restoration Corp is a licensed and insured company providing complete restoration and remodeling solutions across Central Florida. 
+      We specialize in water, fire, and mold damage restoration — restoring your property and peace of mind.
+    </p>
+  </section>
 
-@app.route("/services")
-def services():
-    return render_template("services.html")
+  <!-- SERVICES -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="service-card">
+        <img src="{{ url_for('static', filename='images/water.png') }}" alt="Water Damage Restoration">
+        <h3>Water Damage Restoration</h3>
+        <p>Rapid response water removal and drying services to protect your home and prevent long-term damage.</p>
+      </div>
+      <div class="service-card">
+        <img src="{{ url_for('static', filename='images/mold.png') }}" alt="Mold Remediation">
+        <h3>Mold Remediation</h3>
+        <p>Certified mold detection, removal, and air quality improvement services for a healthy home.</p>
+      </div>
+      <div class="service-card">
+        <img src="{{ url_for('static', filename='images/fire.png') }}" alt="Fire & Smoke Repair">
+        <h3>Fire & Smoke Repair</h3>
+        <p>Professional cleanup, repair, and odor removal to restore your property after fire damage.</p>
+      </div>
+      <div class="service-card">
+        <img src="{{ url_for('static', filename='images/remodel.png') }}" alt="Home Remodeling">
+        <h3>Home Remodeling</h3>
+        <p>From design to finishing touches, we bring your dream renovation to life with expert craftsmanship.</p>
+      </div>
+    </div>
+  </section>
 
-@app.route("/contact")
-def contact():
-    return render_template("contact.html")
+  <!-- REVIEWS SECTION -->
+  <section id="reviews">
+    <h2>What Our Clients Say</h2>
+    <div class="reviews">
+      <div class="review">
+        <p>"Spero Restoration exceeded expectations. Fast, professional, and truly cared about our home!"</p>
+        <div class="stars">★★★★★</div>
+        <h4>- Sarah, Windermere</h4>
+      </div>
+      <div class="review">
+        <p>"Outstanding service! They handled our water damage efficiently and kept us updated throughout."</p>
+        <div class="stars">★★★★★</div>
+        <h4>- John, Lake Nona</h4>
+      </div>
+    </div>
+  </section>
 
-@app.route("/privacy")
-def privacy():
-    return render_template("privacy.html")
+  <!-- FAQ SECTION -->
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>How soon can you respond to an emergency?</h3>
+      <p>We offer 24/7 emergency restoration response throughout Orlando and Central Florida.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do you work with insurance companies?</h3>
+      <p>Yes, we work directly with all major insurance carriers to simplify your claim process.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What areas do you serve?</h3>
+      <p>We proudly serve Orlando, Windermere, Lake Nona, Clermont, and Winter Garden areas.</p>
+    </div>
+  </section>
 
-@app.route("/terms")
-def terms():
-    return render_template("terms.html")
+  <!-- CALL TO ACTION -->
+  <section class="contact-cta">
+    <h2>Need Immediate Assistance?</h2>
+    <p>Contact us today for 24/7 emergency restoration and expert remodeling support.</p>
+    <a href="{{ url_for('contact') }}" class="btn-primary">Request Inspection</a>
+  </section>
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template("404.html"), 404
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Spero Restoration Corp | Orlando, FL | (407) 724-6310</p>
+    <p><a href="{{ url_for('privacy') }}">Privacy Policy</a> | <a href="{{ url_for('terms') }}">Terms of Service</a></p>
+  </footer>
 
-# =======================================
-# CONFIGURAÇÃO DE E-MAIL (SENDGRID)
-# =======================================
-app.config["MAIL_SERVER"] = os.getenv("MAIL_SERVER", "smtp.sendgrid.net")
-app.config["MAIL_PORT"] = int(os.getenv("MAIL_PORT", 587))
-app.config["MAIL_USE_TLS"] = os.getenv("MAIL_USE_TLS", "True").lower() == "true"
-app.config["MAIL_USERNAME"] = os.getenv("MAIL_USERNAME", "apikey")
-app.config["MAIL_PASSWORD"] = os.getenv("SENDGRID_API_KEY", "")
-app.config["MAIL_DEFAULT_SENDER"] = os.getenv("MAIL_DEFAULT_SENDER", "contact@spero-restoration.com")
+  <!-- WhatsApp & Call Floating Buttons -->
+  <a href="https://wa.me/14077246310" class="whatsapp-float" target="_blank">
+    <img src="{{ url_for('static', filename='images/whatsapp-icon.png') }}" alt="Chat on WhatsApp">
+  </a>
 
-mail = Mail(app)
+  <a href="tel:4077246310" class="call-float">
+    📞 Call Now
+  </a>
 
-@app.route("/test-email")
-def test_email():
-    try:
-        msg = Message(
-            "Test Email from Spero Restoration",
-            recipients=["contact@spero-restoration.com"],
-            body="This is a test email from your deployed Render app."
-        )
-        mail.send(msg)
-        return "✅ Test email sent successfully!"
-    except Exception as e:
-        print(f"Email error: {e}")
-        return f"❌ Error sending email: {e}"
-
-# =======================================
-# SISTEMA DE LOGIN ADMIN
-# =======================================
-@app.route("/admin-login", methods=["GET", "POST"])
-def admin_login():
-    error = None
-    if request.method == "POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
-
-        admin_user = os.getenv("ADMIN_USER", "RobertoMaffra")
-        admin_pass = os.getenv("ADMIN_PASSWORD", "SperoSecure!2025")
-
-        if username == admin_user and password == admin_pass:
-            resp = make_response(redirect(url_for("admin_dashboard")))
-            resp.set_cookie("admin_auth", "true", max_age=3600, httponly=True, samesite="Lax")
-            flash("✅ Login successful! Welcome to admin dashboard.", "success")
-            return resp
-        else:
-            flash("❌ Invalid username or password.", "danger")
-            error = "Invalid credentials."
-
-    return render_template("admin_login.html", error=error)
-
-# =======================================
-# ADMIN LOGOUT
-# =======================================
-@app.route("/admin-logout")
-def admin_logout():
-    resp = make_response(redirect(url_for("admin_login")))
-    resp.set_cookie("admin_auth", "", expires=0)
-    flash("You have been logged out successfully.", "info")
-    return resp
-
-# =======================================
-# ADMIN DASHBOARD
-# =======================================
-@app.route("/admin")
-def admin_dashboard():
-    try:
-        auth = request.cookies.get("admin_auth")
-        if auth != "true":
-            return redirect(url_for("admin_login"))
-
-        upload_folder = os.path.join(app.static_folder, "uploads")
-        if not os.path.exists(upload_folder):
-            os.makedirs(upload_folder)
-
-        uploads = [f for f in os.listdir(upload_folder) if not f.startswith(".")]
-        return render_template("admin.html", uploads=uploads, ADMIN_USER=os.getenv("ADMIN_USER"))
-    except Exception as e:
-        print(f"⚠️ Error in admin_dashboard: {e}")
-        flash("Error loading dashboard.", "error")
-        return redirect(url_for("index"))
-
-# =======================================
-# UPLOAD DE IMAGENS (PAINEL ADMIN)
-# =======================================
-@app.route("/upload", methods=["POST"])
-def upload_file():
-    auth = request.cookies.get("admin_auth")
-    if auth != "true":
-        return redirect(url_for("admin_login"))
-
-    if "file" not in request.files:
-        flash("No file part", "warning")
-        return redirect(url_for("admin_dashboard"))
-
-    file = request.files["file"]
-    if file.filename == "":
-        flash("No selected file", "warning")
-        return redirect(url_for("admin_dashboard"))
-
-    filename = secure_filename(file.filename)
-    filepath = os.path.join(app.static_folder, "uploads", filename)
-    file.save(filepath)
-    flash("✅ File uploaded successfully", "success")
-    return redirect(url_for("admin_dashboard"))
-
-# =======================================
-# EXECUÇÃO DO APP
-# =======================================
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+</body>
+</html>
