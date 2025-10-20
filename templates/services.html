@@ -4,16 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services | Spero Restoration Corp</title>
-  <meta name="description" content="Explore Spero Restoration’s full range of services — water, fire, mold, and remodeling in Orlando and Central Florida.">
-  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
   <header>
-    <a href="{{ url_for('index_page') }}">
-      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
-    </a>
+    <a href="{{ url_for('index_page') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo"></a>
     <nav>
       <ul>
         <li><a href="{{ url_for('index_page') }}">Home</a></li>
@@ -24,39 +19,26 @@
     </nav>
   </header>
 
-  <section class="hero services-hero">
+  <section class="page-hero">
     <h1>Our Services</h1>
-    <p>Comprehensive restoration and remodeling for residential and commercial clients.</p>
   </section>
 
-  <section class="services-list">
-    <div class="service">
-      <img src="{{ url_for('static', filename='images/water.png') }}" alt="Water Damage Restoration">
-      <h2>Water Damage Restoration</h2>
-      <p>Quick water extraction, drying, and moisture control to prevent secondary damage and mold growth.</p>
-    </div>
+  <section class="content">
+    <h2>Water Damage Restoration</h2>
+    <p>24/7 emergency response with advanced drying equipment and moisture control.</p>
 
-    <div class="service">
-      <img src="{{ url_for('static', filename='images/mold.png') }}" alt="Mold Remediation">
-      <h2>Mold Remediation</h2>
-      <p>Safe, certified mold testing, removal, and prevention for a healthy living environment.</p>
-    </div>
+    <h2>Fire & Smoke Damage</h2>
+    <p>Smoke removal, structural repair, and full restoration solutions.</p>
 
-    <div class="service">
-      <img src="{{ url_for('static', filename='images/fire.png') }}" alt="Fire & Smoke Damage">
-      <h2>Fire & Smoke Damage Repair</h2>
-      <p>Cleaning, restoration, and deodorization of structures and belongings after fire incidents.</p>
-    </div>
+    <h2>Mold Remediation</h2>
+    <p>Certified mold detection, air testing, and sanitization to ensure a safe environment.</p>
 
-    <div class="service">
-      <img src="{{ url_for('static', filename='images/remodel.png') }}" alt="Home Remodeling">
-      <h2>Remodeling & Renovations</h2>
-      <p>From kitchens to bathrooms, we create beautiful, lasting improvements to your property.</p>
-    </div>
+    <h2>Home Remodeling</h2>
+    <p>Complete renovations for kitchens, bathrooms, and interiors with modern design.</p>
   </section>
 
   <footer>
-    <p>&copy; 2025 Spero Restoration Corp | Orlando, FL</p>
+    <p>&copy; 2025 Spero Restoration Corp</p>
   </footer>
 </body>
 </html>
