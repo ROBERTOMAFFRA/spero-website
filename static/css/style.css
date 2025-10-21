@@ -1,8 +1,3 @@
-/* =========================================
-   SPERO RESTORATION - FINAL VISUAL LAYOUT
-   Gradient + Responsive + Scroll + SEO
-========================================= */
-
 html {
   scroll-behavior: smooth;
 }
@@ -11,31 +6,32 @@ body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   background: #f9fbfc;
-  color: #333;
+  color: #222;
+  line-height: 1.6;
 }
 
 /* Header */
 header {
   background: linear-gradient(90deg, #004e92, #000428);
   color: white;
-  padding: 15px 60px;
+  padding: 18px 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 999;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
 }
 
 header img {
-  height: 45px;
+  height: 50px;
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  gap: 25px;
+  gap: 30px;
   margin: 0;
   padding: 0;
 }
@@ -44,29 +40,16 @@ nav ul li a {
   color: white;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
   color: #00bfff;
 }
 
-.btn-primary {
-  background: #00bfff;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background 0.3s;
-}
-
-.btn-primary:hover {
-  background: #0088cc;
-}
-
-/* Hero */
+/* Hero Section */
 .hero {
-  background: url('../images/banner.webp') center/cover no-repeat;
+  background: url('../images/banner.png') center/cover no-repeat;
   height: 90vh;
   display: flex;
   align-items: center;
@@ -83,7 +66,7 @@ nav ul li a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.55);
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3));
 }
 
 .hero-overlay {
@@ -94,22 +77,46 @@ nav ul li a:hover {
 }
 
 .hero h1 {
-  font-size: 2.8em;
+  font-size: 3em;
   font-weight: 700;
-  margin-bottom: 10px;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
 
 .hero p {
-  font-size: 1.2em;
-  margin-bottom: 25px;
+  font-size: 1.3em;
+  margin-bottom: 30px;
+  color: #e6f6ff;
+}
+
+.btn-primary {
+  background: #00bfff;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: #0088cc;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Sections */
+section {
+  padding: 90px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Services */
-section {
-  padding: 80px 20px;
-  max-width: 1100px;
-  margin: 0 auto;
+#services h2 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 50px;
+  color: #003366;
 }
 
 .service-grid {
@@ -121,18 +128,21 @@ section {
 
 .service {
   background: white;
-  border-radius: 10px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  padding: 30px;
   text-align: center;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .service:hover {
   transform: translateY(-8px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
 .service img {
+  width: 90px;
+  height: 90px;
   margin-bottom: 15px;
 }
 
@@ -140,10 +150,20 @@ section {
 #about {
   background: #eef5fb;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 12px;
+  padding: 70px 30px;
+  margin-bottom: 60px;
+}
+
+#about h2 {
+  color: #004e92;
 }
 
 /* Contact Form */
+#contact {
+  text-align: center;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -151,16 +171,28 @@ form {
   gap: 15px;
   background: #f0f6fa;
   padding: 40px;
-  border-radius: 8px;
+  border-radius: 12px;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-form input, form textarea {
+form input, form textarea, form select {
   width: 100%;
-  max-width: 400px;
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 1em;
+}
+
+form button {
+  width: 100%;
+  max-width: 200px;
+}
+
+form select:focus, form input:focus, form textarea:focus {
+  border-color: #00bfff;
+  outline: none;
 }
 
 /* Footer */
@@ -168,7 +200,7 @@ footer {
   background: #001f3f;
   color: white;
   text-align: center;
-  padding: 30px 15px;
+  padding: 35px 15px;
   font-size: 0.9em;
 }
 
