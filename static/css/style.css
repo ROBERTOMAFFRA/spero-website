@@ -1,270 +1,306 @@
-/* 🌐 General Reset */
+/* ==================================================
+   SPERO RESTORATION - GLOBAL STYLE
+   Optimized for SEO, Accessibility, and Performance
+   ================================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* -------------------------------------
+   BODY & GLOBAL SETTINGS
+-------------------------------------- */
 body {
-    color: #333;
-    background-color: #fff;
+    font-family: 'Arial', sans-serif;
+    color: #1a1a1a;
+    background-color: #f7f9fb;
+    line-height: 1.6;
     scroll-behavior: smooth;
 }
 
-/* 🔵 Header */
-.main-header {
-    background-color: #003366;
-    color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+h1, h2, h3 {
+    color: #0d47a1;
 }
 
-.main-header .container {
-    width: 90%;
-    margin: 0 auto;
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: #1565c0;
+}
+
+/* -------------------------------------
+   HEADER
+-------------------------------------- */
+.site-header {
+    background-color: #0d47a1;
+    color: white;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo img {
-    height: 55px;
-    filter: drop-shadow(0 0 2px #000);
+    height: 50px;
+    width: auto;
 }
 
-.main-nav a {
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
     color: white;
-    text-decoration: none;
-    margin-left: 25px;
-    font-size: 1rem;
+    font-weight: bold;
     transition: color 0.3s ease;
 }
 
-.main-nav a:hover {
-    color: #ffcc00;
+.nav-links a:hover {
+    color: #90caf9;
 }
 
-/* 🖼️ Hero Section */
+/* -------------------------------------
+   HERO SECTION
+-------------------------------------- */
 .hero {
-    height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
-                url('../images/banner.png') center/cover no-repeat;
+    height: 85vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: white;
     text-align: center;
-    padding: 0 20px;
-    color: #fff;
-    margin-top: 70px;
+    padding: 20px;
 }
 
-.hero h1 {
-    font-size: 2.5rem;
+.hero-overlay h1 {
+    font-size: 2.8rem;
     margin-bottom: 15px;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
 }
 
-.hero p {
+.hero-overlay p {
     font-size: 1.1rem;
-    margin-bottom: 30px;
+    max-width: 700px;
+    margin-bottom: 20px;
 }
 
 .btn-primary {
-    background-color: #007bff;
-    color: #fff;
-    padding: 12px 25px;
-    text-decoration: none;
-    border-radius: 4px;
+    background-color: #1976d2;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 6px;
     font-weight: bold;
-    transition: background 0.3s ease;
+    text-transform: uppercase;
+    border: none;
+    transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #1565c0;
+    transform: translateY(-2px);
 }
 
-/* 🧰 Services */
-.services {
-    padding: 80px 20px;
+/* -------------------------------------
+   SERVICES SECTION
+-------------------------------------- */
+.services-section {
+    padding: 60px 20px;
     text-align: center;
-    background-color: #f7f7f7;
+    background-color: #ffffff;
 }
 
-.services h2 {
+.services-section h2 {
+    margin-bottom: 30px;
     font-size: 2rem;
-    margin-bottom: 40px;
-    color: #003366;
 }
 
-.service-grid {
+.services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 30px;
-    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: auto;
 }
 
 .service-item {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 25px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-    width: 180px;
+    background-color: #e3f2fd;
+    border-radius: 8px;
+    padding: 25px 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
-.service-item img {
-    width: 60px;
-    margin-bottom: 10px;
+.service-item h3 {
+    color: #0d47a1;
 }
 
-.service-item p {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #003366;
-}
-
-/* 📝 About */
-.about {
-    padding: 80px 20px;
+/* -------------------------------------
+   CONTACT FORM
+-------------------------------------- */
+.contact-section {
+    padding: 60px 20px;
+    background-color: #f0f4f8;
     text-align: center;
-    background-color: #fff;
 }
 
-.about h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #003366;
-}
-
-.about p {
-    font-size: 1.1rem;
-    max-width: 700px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-/* 📞 Contact */
-.contact {
-    padding: 80px 20px;
-    text-align: center;
-    background-color: #f7f7f7;
-}
-
-.contact h2 {
-    color: #003366;
-    margin-bottom: 30px;
+.contact-section h2 {
+    margin-bottom: 25px;
     font-size: 2rem;
 }
 
 form {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    max-width: 750px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-form input,
-form select,
-form textarea {
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+input, select, textarea {
+    width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 6px;
     font-size: 1rem;
+    transition: border-color 0.3s ease;
 }
 
-form button {
-    background-color: #007bff;
+input:focus, textarea:focus, select:focus {
+    border-color: #1976d2;
+    outline: none;
+}
+
+button {
+    background-color: #1976d2;
     color: white;
-    padding: 14px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 12px 30px;
+    border-radius: 6px;
     font-weight: bold;
-    transition: background 0.3s ease;
+    border: none;
+    transition: background-color 0.3s ease;
 }
 
-form button:hover {
-    background-color: #0056b3;
+button:hover {
+    background-color: #0d47a1;
 }
 
-/* ⚫ Footer */
+/* -------------------------------------
+   FOOTER
+-------------------------------------- */
 .site-footer {
-    background-color: #003366;
+    background-color: #0d47a1;
     color: white;
-    padding: 20px 0;
+    padding: 25px 10px;
     text-align: center;
     position: relative;
 }
 
 .footer-container {
-    width: 90%;
-    margin: 0 auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    gap: 15px;
 }
 
-.footer-links a {
-    color: #ffcc00;
+.footer-container a {
+    color: #e3f2fd;
     margin: 0 10px;
-    text-decoration: none;
-    font-size: 0.95rem;
+    transition: color 0.3s ease;
 }
 
-.footer-links a:hover {
-    text-decoration: underline;
-}
-
-/* 🔐 Admin Button (only visible on /preview) */
-.footer-admin {
-    position: absolute;
-    right: 20px;
-    bottom: 15px;
+.footer-container a:hover {
+    color: #bbdefb;
 }
 
 .admin-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    text-decoration: none;
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+}
+
+.admin-btn a {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
     transition: background 0.3s ease;
-    opacity: 0.85;
 }
 
-.admin-btn:hover {
-    background-color: #0056b3;
-    opacity: 1;
+.admin-btn a:hover {
+    background: rgba(255,255,255,0.3);
 }
 
-/* 📱 Responsiveness */
+/* -------------------------------------
+   RESPONSIVE DESIGN
+-------------------------------------- */
 @media (max-width: 768px) {
-    .hero h1 {
+    .hero-overlay h1 {
         font-size: 2rem;
     }
-    .main-nav a {
-        margin-left: 15px;
-        font-size: 0.9rem;
+
+    .services-grid {
+        grid-template-columns: 1fr 1fr;
     }
+
+    form {
+        padding: 20px;
+    }
+
     .footer-container {
         flex-direction: column;
         text-align: center;
-        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-grid {
+        grid-template-columns: 1fr;
     }
 }
