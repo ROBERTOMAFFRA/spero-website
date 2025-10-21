@@ -1,7 +1,21 @@
 User-agent: *
-Disallow: /preview
-Disallow: /admin
 Allow: /
 
 Sitemap: https://spero-restoration.com/sitemap.xml
-Host: spero-restoration.com
+
+# Prevent crawlers from accessing system files
+Disallow: /__pycache__/
+Disallow: /env/
+Disallow: /venv/
+Disallow: /maintenance
+
+# SEO settings
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Contact info for search engines
+User-agent: *
+Crawl-delay: 2
