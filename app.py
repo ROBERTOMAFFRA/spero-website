@@ -1,37 +1,69 @@
-from flask import Flask, render_template, url_for, redirect
+from flask import Flask, render_template, send_from_directory
+from flask_compress import Compress
+from flask_talisman import Talisman
 import os
 
-# Inicializa o app com caminhos corretos
-app = Flask(__name__, static_folder="static", template_folder="templates")
+app = Flask(__name__)
+Compress(app)
+Talisman(app, content_security_policy=None)
 
-# Variável de ambiente controla se o site está em manutenção
-MAINTENANCE_MODE = os.getenv("MAINTENANCE_MODE", "on")  # 'on' ou 'off'
+# ==================================================
+#  MAINTENANCE MODE
+# ==================================================
+MAINTENANCE_MODE = os.getenv("MAINTENANCE_MODE", "False").lower() == "true"
 
-@app.route("/")
+@app.route('/')
 def home():
-    # Se estiver em manutenção, mostra página especial
-    if MAINTENANCE_MODE.lower() == "on":
-        return render_template("maintenance.html")
-    return render_template("index.html")
+    if MAINTENANCE_MODE:
+        return render_template('maintenance.html')
+    return render_template('index.html')
 
-# Rota de visualização privada para revisão
-@app.route("/preview")
+@app.route('/preview')
 def preview():
-    return render_template("index.html")
+    return render_template('index.html')
 
-# Sitemap e robots continuam automáticos
-@app.route("/sitemap.xml")
+# ==================================================
+#  SITEMAP ROUTE (SEO)
+# ==================================================
+@app.route('/sitemap.xml')
 def sitemap():
-    return app.send_static_file("sitemap.xml")
+    return render_template('sitemap_template.xml')
 
-@app.route("/robots.txt")
+# ==================================================
+#  LEGAL PAGES (NEW)
+# ==================================================
+@app.route('/terms')
+def terms():
+    return render_template('terms.html')
+
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html')
+
+# ==================================================
+#  STATIC FILES (ICONS, IMAGES, ETC)
+# ==================================================
+@app.route('/robots.txt')
 def robots():
-    return app.send_static_file("robots.txt")
+    return send_from_directory(app.static_folder, 'robots.txt')
 
-# Página 404 amigável
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(app.static_folder, 'images/favicon.ico')
+
+# ==================================================
+#  ERROR HANDLERS
+# ==================================================
 @app.errorhandler(404)
-def page_not_found(e):
-    return render_template("404.html"), 404
+def not_found_error(e):
+    return render_template('404.html'), 404
 
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.errorhandler(500)
+def internal_error(e):
+    return render_template('500.html'), 500
+
+# ==================================================
+#  RUN
+# ==================================================
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=10000, debug=True)
