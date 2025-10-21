@@ -1,71 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | Spero Restoration</title>
-    <meta name="description" content="Learn how Spero Restoration collects, uses, and protects your personal data.">
-    <meta name="robots" content="index,follow">
-    <link rel="canonical" href="https://spero-restoration.com/privacy">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 40px auto;
-            padding: 0 20px;
-            color: #333;
-            max-width: 900px;
-            line-height: 1.7;
-        }
-        h1 {
-            color: #0d47a1;
-            margin-bottom: 20px;
-        }
-        h2 {
-            margin-top: 30px;
-            color: #1565c0;
-        }
-        a {
-            color: #1565c0;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            margin-top: 40px;
-            font-size: 0.9rem;
-            color: #777;
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-    <h1>Privacy Policy</h1>
-    <p>At <strong>Spero Restoration</strong>, we respect your privacy and are committed to protecting the personal information you share with us. This Privacy Policy explains how we collect, use, and safeguard your data.</p>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-    <h2>1. Information We Collect</h2>
-    <p>We may collect personal information such as your name, phone number, email address, and message details when you submit a contact form or request service.</p>
+    {% for page in pages %}
+    <url>
+        <loc>{{ page.loc }}</loc>
+        <lastmod>{{ lastmod }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>
+            {% if page.loc.endswith('/') %}
+                1.0
+            {% elif 'services' in page.loc %}
+                0.9
+            {% elif 'contact' in page.loc %}
+                0.8
+            {% else %}
+                0.7
+            {% endif %}
+        </priority>
 
-    <h2>2. How We Use Your Information</h2>
-    <p>Your data is used solely to respond to your requests, provide restoration services, and improve our website and customer experience.</p>
-
-    <h2>3. Data Security</h2>
-    <p>We implement industry-standard security measures to protect your data but cannot guarantee absolute security over the Internet.</p>
-
-    <h2>4. Sharing of Information</h2>
-    <p>We do not sell, rent, or trade your personal information. Data may be shared only with trusted partners essential for providing services you request.</p>
-
-    <h2>5. Updates</h2>
-    <p>This Privacy Policy may be updated periodically. Please review this page regularly to stay informed.</p>
-
-    <h2>6. Contact Us</h2>
-    <p>For any questions about our privacy practices, contact us at 
-    <a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a>.</p>
-
-    <footer>
-        <p><a href="{{ url_for('home') }}">← Back to Home</a></p>
-        <p>© 2025 Spero Restoration Corp. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+        <!-- Multilingual hreflang setup -->
+        <xhtml:link rel="alternate" hreflang="en" href="{{ page.loc }}" />
+        <xhtml:link rel="alternate" hreflang="es" href="{{ page.loc.replace('.com', '.com/es') }}" />
+        <xhtml:link rel="alternate" hreflang="pt" href="{{ page.loc.replace('.com', '.com/pt') }}" />
+    </url>
+    {% endfor %}
+</urlset>
