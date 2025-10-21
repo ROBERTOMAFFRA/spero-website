@@ -1,62 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- =====================================================
-         500 PAGE – SPERO RESTORATION vFinal
-         Optimized for SEO and User Confidence
-    ====================================================== -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internal Server Error | Spero Restoration</title>
-    <meta name="description" content="Something went wrong on our end. Please try again later or contact Spero Restoration for assistance with your service request.">
-    <meta name="robots" content="noindex, follow">
-    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            color: #333;
-            text-align: center;
-            font-family: "Poppins", Arial, sans-serif;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .error-box {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        h1 {
-            font-size: 5rem;
-            margin-bottom: 0.5rem;
-            color: #e63946;
-        }
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        a.btn {
-            background-color: #1d3557;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s ease;
-        }
-        a.btn:hover {
-            background-color: #457b9d;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>500 - Server Error | Spero Restoration</title>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    .error-page { text-align:center; padding:100px 20px; }
+    .error-page h1 { font-size:5em; color:#004e92; }
+    .error-page p { font-size:1.2em; margin-top:10px; color:#555; }
+    .error-page a { margin-top:30px; display:inline-block; background:#00bfff; color:#fff; padding:12px 25px; border-radius:6px; text-decoration:none; }
+    .error-page a:hover { background:#0088cc; }
+  </style>
 </head>
 <body>
-    <div class="error-box">
-        <img src="{{ url_for('static', filename='images/logo-whitebg.png') }}" alt="Spero Restoration" height="70">
-        <h1>500</h1>
-        <p>Something went wrong on our end.<br>
-        We’re working to fix it. Please try again later.</p>
-        <a href="{{ url_for('index') }}" class="btn">Return Home</a>
-    </div>
+  <div class="error-page">
+    <h1>500</h1>
+    <p>Sorry, something went wrong on our server.</p>
+    <a href="/">Return to Home</a>
+  </div>
 </body>
 </html>
