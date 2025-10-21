@@ -1,65 +1,126 @@
-# ================================================================
-# SPERO RESTORATION vFinal – SEO MASTER PLAN
-# Full WebApp Flask Structure with Multilingual Routing
-# ================================================================
-
-from flask import Flask, render_template, send_from_directory
-from dotenv import load_dotenv
+from flask import Flask, render_template, request, jsonify, Response, url_for
 import os
+from dotenv import load_dotenv
+from flask_compress import Compress
+from flask_talisman import Talisman
 
-# ------------------------------------------------------------
-# 1️⃣ INITIAL SETUP
-# ------------------------------------------------------------
+# ------------------------------------
+# Inicialização
+# ------------------------------------
 load_dotenv()
 app = Flask(__name__)
 
-# ------------------------------------------------------------
-# 2️⃣ HOME ROUTES (Multilingual)
-# ------------------------------------------------------------
-@app.route('/')
-def index():
-    return render_template('index.html')
+# Compressão GZIP + Brotli
+Compress(app)
 
-@app.route('/es/')
-def index_es():
-    return render_template('index-es.html')
+# Segurança e SEO Headers
+Talisman(
+    app,
+    content_security_policy={
+        "default-src": "'self'",
+        "img-src": "'self' data: https://www.googletagmanager.com https://www.google-analytics.com",
+        "script-src": "'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
+        "style-src": "'self' 'unsafe-inline'",
+        "connect-src": "'self' https://www.google-analytics.com",
+        "frame-src": "https://www.googletagmanager.com"
+    },
+    force_https=True
+)
 
-@app.route('/pt/')
-def index_pt():
-    return render_template('index-pt.html')
+# ------------------------------------
+# Rotas principais
+# ------------------------------------
+@app.route("/")
+def home():
+    return render_template("index.html")
 
+@app.route("/privacy")
+def privacy():
+    return render_template("privacy.html")
 
-# ------------------------------------------------------------
-# 3️⃣ STATIC & MEDIA FILES
-# ------------------------------------------------------------
-@app.route('/robots.txt')
-def robots():
-    return send_from_directory(app.static_folder, 'robots.txt', mimetype='text/plain')
+@app.route("/terms")
+def terms():
+    return render_template("terms.html")
 
-@app.route('/sitemap.xml')
-def sitemap():
-    return send_from_directory(app.static_folder, 'sitemap.xml', mimetype='application/xml')
+@app.route("/admin")
+def admin():
+    return render_template("admin.html")
 
+# ------------------------------------
+# API: formulário de contato
+# ------------------------------------
+@app.route("/send_message", methods=["POST"])
+def send_message():
+    name = request.form.get("name", "")
+    email = request.form.get("email", "")
+    phone = request.form.get("phone", "")
+    service = request.form.get("service", "")
+    message = request.form.get("message", "")
 
-# ------------------------------------------------------------
-# 4️⃣ CUSTOM ERROR HANDLERS
-# ------------------------------------------------------------
+    # Log básico (futuro: integração com SendGrid)
+    print("=== New Website Lead ===")
+    print(f"Name: {name}")
+    print(f"Email: {email}")
+    print(f"Phone: {phone}")
+    print(f"Service: {service}")
+    print(f"Message: {message}")
+    print("========================")
+
+    return jsonify({"status": "success", "message": "Form submitted successfully."}), 200
+
+# ------------------------------------
+# SEO: Sitemap dinâmico e Robots.txt
+# ------------------------------------
+@app.route("/sitemap.xml")
+def sitemap_xml():
+    pages = [
+        url_for('home', _external=True),
+        url_for('privacy', _external=True),
+        url_for('terms', _external=True),
+    ]
+    xml = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+    ]
+    for p in pages:
+        xml.append(f"<url><loc>{p}</loc></url>")
+    xml.append("</urlset>")
+    return Response("\n".join(xml), mimetype="application/xml")
+
+@app.route("/robots.txt")
+def robots_txt():
+    content = (
+        "User-agent: *\n"
+        "Allow: /\n"
+        "Sitemap: https://spero-restoration.com/sitemap.xml\n"
+    )
+    return Response(content, mimetype="text/plain")
+
+# ------------------------------------
+# Healthcheck (Render e Monitoramento)
+# ------------------------------------
+@app.route("/health")
+def health():
+    return jsonify({"status": "ok"}), 200
+
+# ------------------------------------
+# Tratamento de erros
+# ------------------------------------
 @app.errorhandler(404)
-def not_found_error(error):
-    return render_template('404.html'), 404
+def not_found(e):
+    return render_template("404.html"), 404
 
 @app.errorhandler(500)
-def internal_error(error):
-    return render_template('500.html'), 500
+def server_error(e):
+    return render_template("500.html"), 500
 
 @app.errorhandler(503)
-def maintenance_mode(error):
-    return render_template('503.html'), 503
+def maintenance(e):
+    return render_template("maintenance.html"), 503
 
-
-# ------------------------------------------------------------
-# 5️⃣ LAUNCH
-# ------------------------------------------------------------
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 10000))
-    app.run(host='0.0.0.0', port=port, debug=False)
+# ------------------------------------
+# Execução local
+# ------------------------------------
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
