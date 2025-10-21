@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terms of Use | Spero Restoration</title>
-  <meta name="robots" content="index, follow">
+  <meta name="description" content="Read the official Terms of Use of Spero Restoration, outlining service guidelines and client responsibilities." />
+  <link rel="canonical" href="https://spero-restoration.com/terms" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
-  <h1>Terms of Use</h1>
-  <p>Use of this website implies acceptance of the terms and conditions established by Spero Restoration Corp.</p>
-  <p><a href="{{ url_for('home') }}">← Back to Home</a></p>
+  <header>
+    <div class="logo">
+      <a href="/"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration"></a>
+    </div>
+  </header>
+
+  <main style="padding: 60px 10%; max-width: 900px; margin: auto;">
+    <h1>Terms of Use</h1>
+    <p>Welcome to Spero Restoration. By accessing our website, you agree to the following terms and conditions.</p>
+
+    <h2>1. General Conditions</h2>
+    <p>Our website is intended for informational purposes only. We reserve the right to modify or remove content at any time without notice.</p>
+
+    <h2>2. Services and Information</h2>
+    <p>All services listed are subject to availability and may vary depending on location and regulatory requirements.</p>
+
+    <h2>3. Limitation of Liability</h2>
+    <p>Spero Restoration is not responsible for any direct or indirect damages resulting from use of this website.</p>
+
+    <h2>4. Contact</h2>
+    <p>For questions about these Terms, please contact us at <a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a>.</p>
+  </main>
+
+  <footer>
+    <p>© 2025 Spero Restoration Corp. All rights reserved.</p>
+    <p><a href="{{ url_for('privacy') }}">Privacy Policy</a></p>
+  </footer>
 </body>
 </html>
