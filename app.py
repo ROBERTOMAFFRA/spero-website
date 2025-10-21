@@ -1,75 +1,56 @@
-from flask import Flask, render_template, send_from_directory, request, jsonify
-from datetime import datetime
+from flask import Flask, render_template, send_from_directory
+from flask_compress import Compress
+from flask_talisman import Talisman
 import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 app = Flask(__name__)
+Compress(app)
+Talisman(app, content_security_policy=None)
 
-# ============================================================
-# 🔧 CONFIGURAÇÕES GERAIS
-# ============================================================
-app.config['TEMPLATES_AUTO_RELOAD'] = True
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+# ====== CONFIGURAÇÕES ======
+MAINTENANCE_MODE = True  # Altere para False quando quiser liberar o site
+CONTACT_EMAIL = "contact@spero-restoration.com"
+CONTACT_PHONE = "(407) 724-6310"
 
-# ============================================================
-# 🔒 MODO MANUTENÇÃO (ativo)
-# ============================================================
-@app.route('/')
-def home():
-    # Exibe página de manutenção (503)
-    return render_template('maintenance.html'), 503
 
-# ============================================================
-# 📜 PÁGINAS SECUNDÁRIAS (ativas no backend, mas ocultas)
-# ============================================================
-@app.route('/index')
+# ====== ROTAS ======
+@app.route("/")
 def index():
-    return render_template('index.html')
+    if MAINTENANCE_MODE:
+        return render_template("maintenance.html", phone=CONTACT_PHONE, email=CONTACT_EMAIL)
+    return render_template("index.html", phone=CONTACT_PHONE, email=CONTACT_EMAIL)
 
-@app.route('/terms')
+
+@app.route("/preview")
+def preview():
+    """Permite visualizar o site mesmo em modo manutenção"""
+    return render_template("index.html", phone=CONTACT_PHONE, email=CONTACT_EMAIL)
+
+
+@app.route("/terms")
 def terms():
-    return render_template('terms.html')
+    return render_template("terms.html")
 
-@app.route('/privacy')
+
+@app.route("/privacy")
 def privacy():
-    return render_template('privacy.html')
+    return render_template("privacy.html")
 
-# ============================================================
-# 🤖 ARQUIVOS TÉCNICOS
-# ============================================================
-@app.route('/robots.txt')
-def robots_txt():
-    return send_from_directory('.', 'robots.txt')
 
-@app.route('/sitemap.xml')
+@app.route("/sitemap.xml")
 def sitemap():
-    pages = [
-        {'loc': 'https://spero-restoration.com/'},
-        {'loc': 'https://spero-restoration.com/index'},
-        {'loc': 'https://spero-restoration.com/terms'},
-        {'loc': 'https://spero-restoration.com/privacy'}
-    ]
-    lastmod = datetime.now().date()
-    return render_template('sitemap_template.xml', pages=pages, lastmod=lastmod), 200, {
-        'Content-Type': 'application/xml'
-    }
+    return render_template("sitemap_template.xml"), 200, {"Content-Type": "application/xml"}
 
-# ============================================================
-# 🛠️ ERROS PADRONIZADOS
-# ============================================================
-@app.errorhandler(404)
-def not_found_error(error):
-    return render_template('404.html'), 404
 
-@app.errorhandler(500)
-def internal_error(error):
-    return render_template('500.html'), 500
+@app.route("/robots.txt")
+def robots():
+    return send_from_directory(app.static_folder, "robots.txt")
 
-@app.errorhandler(503)
-def maintenance_error(error):
-    return render_template('maintenance.html'), 503
 
-# ============================================================
-# 🚀 EXECUÇÃO LOCAL
-# ============================================================
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=10000, debug=True)
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port, debug=True)
