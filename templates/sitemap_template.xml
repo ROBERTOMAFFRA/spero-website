@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset 
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
     {% for page in pages %}
     <url>
         <loc>{{ page.loc }}</loc>
         <lastmod>{{ lastmod }}</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <priority>
+            {% if page.loc.endswith('/') %}
+                1.0
+            {% elif 'services' in page.loc %}
+                0.9
+            {% elif 'contact' in page.loc %}
+                0.8
+            {% else %}
+                0.7
+            {% endif %}
+        </priority>
+
+        <!-- Multilingual hreflang setup -->
+        <xhtml:link rel="alternate" hreflang="en" href="{{ page.loc }}" />
+        <xhtml:link rel="alternate" hreflang="es" href="{{ page.loc.replace('.com', '.com/es') }}" />
+        <xhtml:link rel="alternate" hreflang="pt" href="{{ page.loc.replace('.com', '.com/pt') }}" />
     </url>
     {% endfor %}
 </urlset>
