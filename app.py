@@ -1,92 +1,75 @@
-from flask import Flask, render_template, send_from_directory, make_response
-from flask_compress import Compress
-from flask_talisman import Talisman
-import os
+from flask import Flask, render_template, send_from_directory, request, jsonify
 from datetime import datetime
+import os
 
-# ==================================================
-# INITIAL CONFIGURATION
-# ==================================================
-app = Flask(__name__, static_folder="static", template_folder="templates")
+app = Flask(__name__)
 
-# Performance and Security Enhancements
-Compress(app)
-Talisman(
-    app,
-    content_security_policy=None,
-    force_https=True,
-    strict_transport_security=True,
-)
+# ============================================================
+# 🔧 CONFIGURAÇÕES GERAIS
+# ============================================================
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
-# ==================================================
-# GLOBAL VARIABLES
-# ==================================================
-MAINTENANCE_MODE = os.getenv("MAINTENANCE_MODE", "False").lower() == "true"
-
-# ==================================================
-# MAIN ROUTES
-# ==================================================
-@app.route("/")
+# ============================================================
+# 🔒 MODO MANUTENÇÃO (ativo)
+# ============================================================
+@app.route('/')
 def home():
-    if MAINTENANCE_MODE:
-        return render_template("maintenance.html")
-    return render_template("index.html")
+    # Exibe página de manutenção (503)
+    return render_template('maintenance.html'), 503
 
-@app.route("/preview")
-def preview():
-    # For internal use (bypasses maintenance mode)
-    return render_template("index.html")
+# ============================================================
+# 📜 PÁGINAS SECUNDÁRIAS (ativas no backend, mas ocultas)
+# ============================================================
+@app.route('/index')
+def index():
+    return render_template('index.html')
 
-# ==================================================
-# LEGAL ROUTES
-# ==================================================
-@app.route("/terms")
+@app.route('/terms')
 def terms():
-    return render_template("terms.html")
+    return render_template('terms.html')
 
-@app.route("/privacy")
+@app.route('/privacy')
 def privacy():
-    return render_template("privacy.html")
+    return render_template('privacy.html')
 
-# ==================================================
-# SITEMAP & ROBOTS (SEO)
-# ==================================================
-@app.route("/sitemap.xml")
+# ============================================================
+# 🤖 ARQUIVOS TÉCNICOS
+# ============================================================
+@app.route('/robots.txt')
+def robots_txt():
+    return send_from_directory('.', 'robots.txt')
+
+@app.route('/sitemap.xml')
 def sitemap():
     pages = [
-        {"loc": "https://spero-restoration.com/"},
-        {"loc": "https://spero-restoration.com/terms"},
-        {"loc": "https://spero-restoration.com/privacy"},
+        {'loc': 'https://spero-restoration.com/'},
+        {'loc': 'https://spero-restoration.com/index'},
+        {'loc': 'https://spero-restoration.com/terms'},
+        {'loc': 'https://spero-restoration.com/privacy'}
     ]
-    sitemap_xml = render_template("sitemap_template.xml", pages=pages, lastmod=datetime.now().date())
-    resp = make_response(sitemap_xml)
-    resp.headers["Content-Type"] = "application/xml"
-    return resp
+    lastmod = datetime.now().date()
+    return render_template('sitemap_template.xml', pages=pages, lastmod=lastmod), 200, {
+        'Content-Type': 'application/xml'
+    }
 
-@app.route("/robots.txt")
-def robots():
-    return send_from_directory(app.static_folder, "robots.txt")
-
-# ==================================================
-# STATIC FILES
-# ==================================================
-@app.route("/favicon.ico")
-def favicon():
-    return send_from_directory(app.static_folder, "images/favicon.ico")
-
-# ==================================================
-# ERROR HANDLERS
-# ==================================================
+# ============================================================
+# 🛠️ ERROS PADRONIZADOS
+# ============================================================
 @app.errorhandler(404)
-def not_found_error(e):
-    return render_template("404.html"), 404
+def not_found_error(error):
+    return render_template('404.html'), 404
 
 @app.errorhandler(500)
-def internal_error(e):
-    return render_template("500.html"), 500
+def internal_error(error):
+    return render_template('500.html'), 500
 
-# ==================================================
-# RUN
-# ==================================================
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000, debug=True)
+@app.errorhandler(503)
+def maintenance_error(error):
+    return render_template('maintenance.html'), 503
+
+# ============================================================
+# 🚀 EXECUÇÃO LOCAL
+# ============================================================
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=10000, debug=True)
