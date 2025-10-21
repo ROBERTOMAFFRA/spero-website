@@ -1,8 +1,3 @@
-# ==================================================
-# Spero Restoration - Robots.txt
-# Optimized for Google, Bing, Yahoo, DuckDuckGo
-# ==================================================
-
 User-agent: *
 Disallow: /preview
 Disallow: /admin
@@ -10,31 +5,3 @@ Allow: /
 
 Sitemap: https://spero-restoration.com/sitemap.xml
 Host: spero-restoration.com
-
-# Crawl-delay (optional - recommended for shared hosts)
-Crawl-delay: 5
-
-# ==================================================
-# Indexing Rules
-# ==================================================
-User-agent: Googlebot
-Allow: /
-Disallow: /static/tmp/
-Disallow: /error/
-Disallow: /maintenance
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 5
-
-# ==================================================
-# Media and Files
-# ==================================================
-User-agent: *
-Allow: /static/images/
-Allow: /static/css/
-Allow: /static/js/
-
-# ==================================================
-# End of file
-# ==================================================
