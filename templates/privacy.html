@@ -2,47 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Privacy Policy - Spero Restoration</title>
+    <meta name="robots" content="noindex,follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | Spero Restoration</title>
-    <meta name="description" content="Privacy policy explaining how Spero Restoration collects, uses, and protects user information.">
-    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 40px;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #0d47a1;
+        }
+        a {
+            color: #1565c0;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
+    <h1>Privacy Policy</h1>
+    <p>Your privacy is important to us. This Privacy Policy explains how Spero Restoration collects, uses, and protects your personal information.</p>
 
-<header class="main-header">
-    <div class="container">
-        <div class="logo">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
-        </div>
-    </div>
-</header>
+    <h2>Information We Collect</h2>
+    <p>We may collect your name, email, phone number, and message details through our website forms to provide restoration services and customer support.</p>
 
-<section class="about" style="margin-top: 120px;">
-    <h2>Privacy Policy</h2>
-    <p>
-        Spero Restoration respects your privacy and is committed to protecting your personal data. This policy outlines how we collect and use information when you visit our website or contact us.
-    </p>
-    <p>
-        We collect personal details such as name, email, and phone number only for the purpose of responding to inquiries or providing requested services.
-    </p>
-    <p>
-        We do not share your information with third parties, except as required by law or to deliver specific services you request.
-    </p>
-    <p>
-        By using this website, you consent to the collection and use of your information as described in this policy. Updates to this policy will be reflected on this page.
-    </p>
-</section>
+    <h2>How We Use Your Information</h2>
+    <p>We use collected data to respond to inquiries, process service requests, and improve our website and customer experience.</p>
 
-<footer class="site-footer">
-    <div class="container footer-container">
-        <p>© {{ current_year }} Spero Restoration. All rights reserved.</p>
-        <div class="footer-links">
-            <a href="{{ url_for('terms') }}">Terms of Use</a>
-            <a href="{{ url_for('privacy') }}">Privacy Policy</a>
-        </div>
-    </div>
-</footer>
+    <h2>Data Security</h2>
+    <p>We implement security measures to protect your data but cannot guarantee absolute protection due to the nature of the Internet.</p>
 
+    <h2>Contact Us</h2>
+    <p>If you have questions about our privacy policy, contact <a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a>.</p>
+
+    <p><a href="{{ url_for('home') }}">← Back to Home</a></p>
 </body>
 </html>
