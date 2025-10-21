@@ -1,126 +1,98 @@
-from flask import Flask, render_template, request, jsonify, Response, url_for
-import os
-from dotenv import load_dotenv
+from flask import Flask, render_template, request, jsonify, url_for, abort, make_response
 from flask_compress import Compress
 from flask_talisman import Talisman
+from datetime import datetime
+import os
 
-# ------------------------------------
-# Inicialização
-# ------------------------------------
-load_dotenv()
+# --- Inicialização do app ---
 app = Flask(__name__)
-
-# Compressão GZIP + Brotli
 Compress(app)
+Talisman(app, content_security_policy=None)
 
-# Segurança e SEO Headers
-Talisman(
-    app,
-    content_security_policy={
-        "default-src": "'self'",
-        "img-src": "'self' data: https://www.googletagmanager.com https://www.google-analytics.com",
-        "script-src": "'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
-        "style-src": "'self' 'unsafe-inline'",
-        "connect-src": "'self' https://www.google-analytics.com",
-        "frame-src": "https://www.googletagmanager.com"
-    },
-    force_https=True
-)
+# --- Variável de controle de manutenção ---
+MAINTENANCE_MODE = True  # 🔒 alterar para False para liberar o site
 
-# ------------------------------------
-# Rotas principais
-# ------------------------------------
+# --- Rotas principais ---
+@app.before_request
+def check_maintenance_mode():
+    # Permite acessar o /preview mesmo com modo manutenção ativo
+    if MAINTENANCE_MODE and request.path != "/preview":
+        resp = make_response(render_template("maintenance.html", current_year=datetime.now().year), 503)
+        resp.headers["Retry-After"] = "86400"  # 24 horas
+        return resp
+
 @app.route("/")
-def home():
-    return render_template("index.html")
+def index():
+    return render_template("index.html", current_year=datetime.now().year)
 
 @app.route("/privacy")
 def privacy():
-    return render_template("privacy.html")
+    return render_template("privacy.html", current_year=datetime.now().year)
 
 @app.route("/terms")
 def terms():
-    return render_template("terms.html")
+    return render_template("terms.html", current_year=datetime.now().year)
 
 @app.route("/admin")
 def admin():
-    return render_template("admin.html")
+    return render_template("admin.html", current_year=datetime.now().year)
 
-# ------------------------------------
-# API: formulário de contato
-# ------------------------------------
+@app.route("/preview")
+def preview():
+    """
+    🔍 Rota especial para visualização do site mesmo em modo manutenção.
+    Acesse https://spero-restoration.com/preview
+    """
+    return render_template("index.html", current_year=datetime.now().year)
+
+# --- Formulário de envio ---
 @app.route("/send_message", methods=["POST"])
 def send_message():
-    name = request.form.get("name", "")
-    email = request.form.get("email", "")
-    phone = request.form.get("phone", "")
-    service = request.form.get("service", "")
-    message = request.form.get("message", "")
-
-    # Log básico (futuro: integração com SendGrid)
+    data = request.get_json()
     print("=== New Website Lead ===")
-    print(f"Name: {name}")
-    print(f"Email: {email}")
-    print(f"Phone: {phone}")
-    print(f"Service: {service}")
-    print(f"Message: {message}")
-    print("========================")
+    print(f"Name: {data.get('name')}")
+    print(f"Email: {data.get('email')}")
+    print(f"Phone: {data.get('phone')}")
+    print(f"Service: {data.get('service')}")
+    print(f"Message: {data.get('message')}")
+    print("=========================")
+    return jsonify({"status": "success", "message": "Form submitted successfully."})
 
-    return jsonify({"status": "success", "message": "Form submitted successfully."}), 200
-
-# ------------------------------------
-# SEO: Sitemap dinâmico e Robots.txt
-# ------------------------------------
+# --- Sitemap dinâmico ---
 @app.route("/sitemap.xml")
-def sitemap_xml():
+def sitemap():
     pages = [
-        url_for('home', _external=True),
-        url_for('privacy', _external=True),
-        url_for('terms', _external=True),
+        {"loc": url_for("index", _external=True)},
+        {"loc": url_for("privacy", _external=True)},
+        {"loc": url_for("terms", _external=True)},
+        {"loc": url_for("admin", _external=True)},
     ]
-    xml = [
-        '<?xml version="1.0" encoding="UTF-8"?>',
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
-    ]
-    for p in pages:
-        xml.append(f"<url><loc>{p}</loc></url>")
-    xml.append("</urlset>")
-    return Response("\n".join(xml), mimetype="application/xml")
+    template = render_template("sitemap_template.xml", pages=pages, lastmod=datetime.now().date())
+    resp = make_response(template)
+    resp.headers["Content-Type"] = "application/xml"
+    return resp
 
+# --- Robots.txt dinâmico ---
 @app.route("/robots.txt")
-def robots_txt():
+def robots():
     content = (
         "User-agent: *\n"
-        "Allow: /\n"
-        "Sitemap: https://spero-restoration.com/sitemap.xml\n"
+        "Disallow: /\n"  # bloqueia indexação enquanto em manutenção
+        "Sitemap: https://spero-restoration.com/sitemap.xml"
     )
-    return Response(content, mimetype="text/plain")
+    resp = make_response(content)
+    resp.headers["Content-Type"] = "text/plain"
+    return resp
 
-# ------------------------------------
-# Healthcheck (Render e Monitoramento)
-# ------------------------------------
-@app.route("/health")
-def health():
-    return jsonify({"status": "ok"}), 200
-
-# ------------------------------------
-# Tratamento de erros
-# ------------------------------------
+# --- Erros personalizados ---
 @app.errorhandler(404)
 def not_found(e):
-    return render_template("404.html"), 404
+    return render_template("404.html", current_year=datetime.now().year), 404
 
 @app.errorhandler(500)
 def server_error(e):
-    return render_template("500.html"), 500
+    return render_template("500.html", current_year=datetime.now().year), 500
 
-@app.errorhandler(503)
-def maintenance(e):
-    return render_template("maintenance.html"), 503
-
-# ------------------------------------
-# Execução local
-# ------------------------------------
+# --- Execução local ---
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=10000, debug=True)
