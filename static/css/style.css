@@ -1,256 +1,270 @@
-/* ================================================
-   SPERO RESTORATION - STYLE vFinal SEO Pro
-   Clean, Responsive & SEO-Optimized Layout
-================================================ */
-
-/* --- Reset --- */
+/* 🌐 General Reset */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-html, body {
-  font-family: 'Segoe UI', Tahoma, sans-serif;
-  scroll-behavior: smooth;
-  background-color: #ffffff;
-  color: #222;
+body {
+    color: #333;
+    background-color: #fff;
+    scroll-behavior: smooth;
 }
 
-/* --- General Links --- */
-a {
-  color: #0056b3;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-a:hover { color: #007fff; }
-
-/* --- Header / Navbar --- */
-header.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 40px;
-  background: #001f3f;
-  color: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+/* 🔵 Header */
+.main-header {
+    background-color: #003366;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-header .logo-wrap img {
-  width: 170px;
-  height: auto;
-  filter: brightness(1.1) invert(0);
+.main-header .container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-header nav ul {
-  list-style: none;
-  display: flex;
-  gap: 30px;
+.logo img {
+    height: 55px;
+    filter: drop-shadow(0 0 2px #000);
 }
 
-header nav a {
-  color: #fff;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-header nav a:hover { color: #00b4ff; }
-
-/* --- Hero Banner --- */
-.hero {
-  position: relative;
-  width: 100%;
-  height: 90vh;
-  background: url("/static/images/banner.png") center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #fff;
-}
-
-.hero-overlay {
-  background: rgba(0, 0, 0, 0.55);
-  padding: 40px;
-  border-radius: 12px;
-  max-width: 800px;
-}
-
-.hero-overlay h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-.hero-overlay p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-}
-.btn-primary {
-  background: #007fff;
-  color: #fff;
-  padding: 14px 34px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.btn-primary:hover {
-  background: #00b4ff;
-}
-
-/* --- Services Section --- */
-#services {
-  text-align: center;
-  padding: 80px 20px;
-  background: #f7f9fb;
-}
-#services h2 {
-  font-size: 2.3rem;
-  color: #001f3f;
-  margin-bottom: 50px;
-}
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 40px;
-  justify-content: center;
-}
-.service {
-  background: #fff;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-}
-.service:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
-.service img {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 15px;
-}
-.service h3 {
-  color: #001f3f;
-  font-size: 1.1rem;
-}
-
-/* --- About Section --- */
-#about {
-  padding: 80px 20px;
-  background: #ffffff;
-  text-align: center;
-  line-height: 1.6;
-}
-#about h2 {
-  font-size: 2.3rem;
-  color: #001f3f;
-  margin-bottom: 30px;
-}
-#about p {
-  max-width: 900px;
-  margin: 0 auto;
-  font-size: 1.1rem;
-  color: #444;
-}
-
-/* --- Contact Section --- */
-#contact {
-  padding: 80px 20px;
-  background: #f1f5f8;
-  text-align: center;
-}
-#contact h2 {
-  font-size: 2.3rem;
-  color: #001f3f;
-  margin-bottom: 30px;
-}
-form#quote {
-  display: flex;
-  flex-direction: column;
-  max-width: 600px;
-  margin: 0 auto;
-  gap: 15px;
-}
-form#quote input,
-form#quote select,
-form#quote textarea {
-  padding: 12px 16px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  width: 100%;
-}
-form#quote select {
-  background-color: #fff;
-  color: #333;
-  cursor: pointer;
-}
-form#quote textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-form#quote .terms {
-  font-size: 0.9rem;
-  color: #666;
-  margin-top: 10px;
-}
-
-/* --- Footer --- */
-footer {
-  background: #001f3f;
-  color: #fff;
-  text-align: center;
-  padding: 40px 20px;
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-footer a {
-  color: #00b4ff;
-}
-footer .footer-links a {
-  color: #cce6ff;
-}
-footer .footer-links a:hover {
-  text-decoration: underline;
-}
-footer .social {
-  margin-top: 10px;
-}
-footer .phone-email {
-  margin-top: 8px;
-  font-weight: 500;
-}
-
-/* --- Responsive Adjustments --- */
-@media (max-width: 768px) {
-  header.navbar {
-    flex-direction: column;
-    padding: 20px;
-  }
-  header nav ul {
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 15px;
-  }
-  .hero-overlay h1 {
-    font-size: 2.2rem;
-  }
-  .hero-overlay p {
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
     font-size: 1rem;
-  }
-  .service-grid {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 25px;
-  }
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: #ffcc00;
+}
+
+/* 🖼️ Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+                url('../images/banner.png') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    color: #fff;
+    margin-top: 70px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* 🧰 Services */
+.services {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #f7f7f7;
+}
+
+.services h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: #003366;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    justify-items: center;
+}
+
+.service-item {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    width: 180px;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+}
+
+.service-item img {
+    width: 60px;
+    margin-bottom: 10px;
+}
+
+.service-item p {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #003366;
+}
+
+/* 📝 About */
+.about {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.about h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #003366;
+}
+
+.about p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* 📞 Contact */
+.contact {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #f7f7f7;
+}
+
+.contact h2 {
+    color: #003366;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form input,
+form select,
+form textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* ⚫ Footer */
+.site-footer {
+    background-color: #003366;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+.footer-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: #ffcc00;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* 🔐 Admin Button (only visible on /preview) */
+.footer-admin {
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+}
+
+.admin-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    opacity: 0.85;
+}
+
+.admin-btn:hover {
+    background-color: #0056b3;
+    opacity: 1;
+}
+
+/* 📱 Responsiveness */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .main-nav a {
+        margin-left: 15px;
+        font-size: 0.9rem;
+    }
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
 }
