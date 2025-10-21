@@ -1,130 +1,179 @@
-/* =========================================================
-   SPERO RESTORATION | Global Stylesheet
-   vFinal – SEO Master Plan
-   Author: Spero Restoration Corp.
-   ========================================================= */
-
-/* ------------------------------
-   1️⃣ Base Setup
---------------------------------*/
-:root {
-  --primary-color: #0077b6;     /* Azul principal - água */
-  --secondary-color: #00b4d8;   /* Azul claro */
-  --accent-color: #90e0ef;      /* Toque brilhante */
-  --dark-color: #03045e;        /* Azul escuro profundo */
-  --light-color: #f8f9fa;       /* Fundo claro */
-  --text-color: #333333;        /* Texto padrão */
-  --gray-color: #6c757d;
-  --font-primary: 'Poppins', 'Segoe UI', Arial, sans-serif;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* =========================================
+   SPERO RESTORATION - FINAL VISUAL LAYOUT
+   Gradient + Responsive + Scroll + SEO
+========================================= */
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: var(--font-primary);
-  color: var(--text-color);
-  background-color: var(--light-color);
-  line-height: 1.6;
-  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: #f9fbfc;
+  color: #333;
 }
 
-/* ------------------------------
-   2️⃣ Header
---------------------------------*/
+/* Header */
 header {
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(90deg, #004e92, #000428);
   color: white;
-  padding: 1rem 2rem;
+  padding: 15px 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
 }
 
-header h1 {
-  font-size: 1.6rem;
-  letter-spacing: 1px;
-  font-weight: 600;
+header img {
+  height: 45px;
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
 }
 
-nav a {
+nav ul li a {
   color: white;
   text-decoration: none;
   font-weight: 500;
-  transition: opacity 0.3s ease;
+  transition: color 0.3s;
 }
 
-nav a:hover {
-  opacity: 0.8;
+nav ul li a:hover {
+  color: #00bfff;
 }
 
-/* ------------------------------
-   3️⃣ Hero Section
---------------------------------*/
-main {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: linear-gradient(to bottom right, #f8f9fa, #e3f2fd);
-}
-
-main h2 {
-  font-size: 2.2rem;
-  color: var(--dark-color);
-  margin-bottom: 1rem;
-}
-
-main p {
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin: 0 auto;
-  color: var(--gray-color);
-}
-
-/* Call-to-action button */
 .btn-primary {
-  display: inline-block;
-  background: var(--primary-color);
+  background: #00bfff;
   color: white;
-  padding: 0.8rem 1.8rem;
-  margin-top: 2rem;
-  border-radius: 6px;
+  padding: 10px 20px;
+  border-radius: 5px;
   text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  transition: background 0.3s;
 }
 
 .btn-primary:hover {
-  background: var(--dark-color);
+  background: #0088cc;
 }
 
-/* ------------------------------
-   4️⃣ Footer
---------------------------------*/
-footer {
-  background-color: var(--dark-color);
+/* Hero */
+.hero {
+  background: url('../images/banner.webp') center/cover no-repeat;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
   text-align: center;
-  padding: 1.5rem;
-  font-size: 0.9rem;
-  margin-top: 4rem;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  max-width: 800px;
+}
+
+.hero h1 {
+  font-size: 2.8em;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 25px;
+}
+
+/* Services */
+section {
+  padding: 80px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 35px;
+  justify-items: center;
+}
+
+.service {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  padding: 25px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.service:hover {
+  transform: translateY(-8px);
+}
+
+.service img {
+  margin-bottom: 15px;
+}
+
+/* About */
+#about {
+  background: #eef5fb;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* Contact Form */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  background: #f0f6fa;
+  padding: 40px;
+  border-radius: 8px;
+}
+
+form input, form textarea {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+/* Footer */
+footer {
+  background: #001f3f;
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+  font-size: 0.9em;
 }
 
 footer a {
-  color: var(--accent-color);
+  color: #00bfff;
   text-decoration: none;
 }
 
@@ -132,31 +181,18 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* ------------------------------
-   5️⃣ Responsive
---------------------------------*/
+/* Responsive */
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
   nav ul {
     flex-direction: column;
-    gap: 0.8rem;
-    width: 100%;
-    margin-top: 0.5rem;
+    gap: 10px;
   }
 
-  main h2 {
-    font-size: 1.8rem;
+  .hero h1 {
+    font-size: 2em;
   }
 
-  main p {
-    font-size: 1rem;
-  }
-
-  .btn-primary {
-    padding: 0.7rem 1.4rem;
+  .service {
+    width: 90%;
   }
 }
