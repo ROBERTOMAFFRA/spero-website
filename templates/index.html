@@ -3,17 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spero Restoration | Orlando Restoration Experts</title>
-  <meta name="description" content="Spero Restoration specializes in water, fire, and mold restoration services in Orlando, FL. Fast response, certified technicians, and guaranteed quality.">
+  <title>Spero Restoration | Orlando Water, Fire & Mold Experts</title>
+
+  <!-- ✅ SEO Essentials -->
+  <meta name="description" content="Spero Restoration offers professional water, fire, mold remediation, and remodeling services in Orlando and Central Florida. Fast response and guaranteed quality.">
+  <meta name="keywords" content="water damage, fire restoration, mold remediation, remodeling, Orlando restoration, emergency repair, Spero Restoration">
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://spero-restoration.com/" />
+
+  <!-- ✅ Open Graph -->
+  <meta property="og:title" content="Spero Restoration | Orlando Restoration Experts">
+  <meta property="og:description" content="Restoring homes, rebuilding hope. Certified experts in water, fire, and mold damage restoration across Central Florida.">
+  <meta property="og:image" content="{{ url_for('static', filename='images/banner.png') }}">
+  <meta property="og:url" content="https://spero-restoration.com">
+  <meta property="og:type" content="website">
+
+  <!-- ✅ Favicon & Styles -->
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+  <!-- ✅ Google Analytics & Tag Manager -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script>
+
+  <!-- ✅ JSON-LD Schema (Organization) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Spero Restoration",
+    "image": "https://spero-restoration.com/static/images/logo.png",
+    "telephone": "+14077246310",
+    "email": "contact@spero-restoration.com",
+    "url": "https://spero-restoration.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Orlando",
+      "addressRegion": "FL",
+      "addressCountry": "US"
+    },
+    "sameAs": [
+      "https://www.facebook.com/",
+      "https://www.instagram.com/",
+      "https://www.linkedin.com/"
+    ]
+  }
+  </script>
 </head>
+
 <body>
+  <!-- ====== HEADER ====== -->
   <header>
     <div class="logo">
-      <img src="{{ url_for('static', filename='images/logo-web.png') }}" alt="Spero Restoration Logo">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
     </div>
     <nav>
       <ul>
@@ -24,14 +71,16 @@
     </nav>
   </header>
 
+  <!-- ====== HERO SECTION ====== -->
   <section id="hero">
     <img src="{{ url_for('static', filename='images/banner.png') }}" alt="Restoration Banner" class="banner">
     <div class="hero-text">
-      <h1>Restoring Homes, Restoring Hope</h1>
-      <p>Professional water, fire, mold & remodeling services in Orlando and Central Florida.</p>
+      <h1>Restoring Homes, Rebuilding Hope</h1>
+      <p>Experts in water, fire, mold & remodeling across Central Florida.</p>
     </div>
   </section>
 
+  <!-- ====== SERVICES ====== -->
   <section id="services">
     <h2>Our Services</h2>
     <div class="service-grid">
@@ -62,10 +111,10 @@
     </div>
   </section>
 
+  <!-- ====== FOOTER ====== -->
   <footer>
-    <p>© 2025 Spero Restoration Corp. All rights reserved. | 
-    <a href="{{ url_for('terms') }}">Terms</a> | 
-    <a href="{{ url_for('privacy') }}">Privacy</a></p>
+    <p>© 2025 Spero Restoration Corp. All rights reserved.</p>
+    <p><a href="{{ url_for('terms') }}">Terms of Use</a> | <a href="{{ url_for('privacy') }}">Privacy Policy</a></p>
   </footer>
 </body>
 </html>
