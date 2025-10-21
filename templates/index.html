@@ -1,52 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spero Restoration | Water, Fire & Mold Experts in Orlando</title>
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-  
-  <!-- Meta SEO -->
-  <meta name="description" content="Spero Restoration provides expert water, fire, mold, and biohazard restoration services in Orlando. 24/7 emergency response.">
-  <meta property="og:title" content="Spero Restoration | Water, Fire & Mold Experts in Orlando">
-  <meta property="og:description" content="Fast, professional restoration services for water, fire, mold, and biohazard damage in Orlando and nearby areas.">
-  <meta property="og:image" content="{{ url_for('static', filename='images/logo.png') }}">
-  <meta property="og:url" content="https://spero-restoration.com">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- JSON-LD Schema -->
+  <title>Spero Restoration | Water, Fire & Mold Experts in Orlando</title>
+  <meta name="description" content="Spero Restoration offers 24/7 professional water damage, fire restoration, mold remediation, biohazard cleanup and reconstruction services in Orlando, FL. Call 40772456310." />
+  <meta name="keywords" content="water damage, fire restoration, mold removal, biohazard, reconstruction, Orlando restoration, emergency cleanup" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Canonical & Alternate (hreflang) -->
+  <link rel="canonical" href="https://spero-restoration.com/" />
+  <link rel="alternate" hreflang="en" href="https://spero-restoration.com/" />
+  <link rel="alternate" hreflang="es" href="https://spero-restoration.com/es/" />
+  <link rel="alternate" hreflang="pt" href="https://spero-restoration.com/pt/" />
+  <link rel="alternate" hreflang="x-default" href="https://spero-restoration.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Spero Restoration | Water, Fire & Mold Experts in Orlando" />
+  <meta property="og:description" content="Fast, reliable and certified restoration services: Water, Fire, Mold, Biohazard and Reconstruction. Call 40772456310." />
+  <meta property="og:image" content="/static/images/banner.png" />
+  <meta property="og:url" content="https://spero-restoration.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Spero Restoration | Water, Fire & Mold Experts in Orlando" />
+  <meta name="twitter:description" content="Orlando’s leading experts in water, fire, mold, biohazard and reconstruction restoration." />
+  <meta name="twitter:image" content="/static/images/banner.png" />
+
+  <!-- Favicon & Branding -->
+  <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon" />
+  <meta property="og:logo" content="/static/images/logo.png" />
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
+
+  <!-- Google Site Verification (placeholder) -->
+  <meta name="google-site-verification" content="PASTE_YOUR_GSC_CODE_HERE" />
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { anonymize_ip: true });
+  </script>
+
+  <!-- Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-XXXXXXX');
+  </script>
+
+  <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Spero Restoration",
-    "url": "https://spero-restoration.com",
-    "image": "https://spero-restoration.com/static/images/logo.png",
-    "telephone": "+1 407-000-0000",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Orlando",
-      "addressRegion": "FL",
-      "addressCountry": "USA"
-    },
-    "openingHours": "Mo-Su 00:00-23:59",
-    "sameAs": [
-      "https://www.facebook.com/",
-      "https://www.instagram.com/",
-      "https://www.linkedin.com/"
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://spero-restoration.com/#org",
+        "name": "Spero Restoration",
+        "url": "https://spero-restoration.com",
+        "logo": "https://spero-restoration.com/static/images/logo.png",
+        "sameAs": [
+          "https://www.facebook.com/",
+          "https://www.instagram.com/",
+          "https://www.linkedin.com/"
+        ]
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://spero-restoration.com/#local",
+        "name": "Spero Restoration",
+        "url": "https://spero-restoration.com",
+        "image": "https://spero-restoration.com/static/images/logo.png",
+        "telephone": "+140772456310",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Orlando",
+          "addressRegion": "FL",
+          "addressCountry": "US"
+        },
+        "openingHours": "Mo-Su 00:00-23:59",
+        "priceRange": "$$"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://spero-restoration.com/#website",
+        "url": "https://spero-restoration.com",
+        "name": "Spero Restoration",
+        "inLanguage": "en",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://spero-restoration.com/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
     ]
   }
   </script>
 
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+
   <!-- Header -->
-  <header>
-    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
+  <header class="navbar">
+    <div class="logo-wrap">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo" />
+    </div>
     <nav>
       <ul>
         <li><a href="#services">Services</a></li>
@@ -56,7 +132,7 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
     <div class="hero-overlay">
       <h1>Restoring Homes, Rebuilding Hope</h1>
@@ -69,46 +145,28 @@
   <section id="services">
     <h2>Our Services</h2>
     <div class="service-grid">
-      <div class="service">
-        <img src="{{ url_for('static', filename='images/water-damage.png') }}" alt="Water Damage">
-        <h3>Water Damage</h3>
-      </div>
-      <div class="service">
-        <img src="{{ url_for('static', filename='images/fire-restoration.png') }}" alt="Fire Restoration">
-        <h3>Fire Restoration</h3>
-      </div>
-      <div class="service">
-        <img src="{{ url_for('static', filename='images/mold-removal.png') }}" alt="Mold Remediation">
-        <h3>Mold Remediation</h3>
-      </div>
-      <div class="service">
-        <img src="{{ url_for('static', filename='images/restoration.png') }}" alt="Restoration">
-        <h3>Restoration</h3>
-      </div>
-      <div class="service">
-        <img src="{{ url_for('static', filename='images/biohazard.png') }}" alt="Biohazard">
-        <h3>Biohazard</h3>
-      </div>
-      <div class="service">
-        <img src="{{ url_for('static', filename='images/reconstruction.png') }}" alt="Reconstruction">
-        <h3>Reconstruction</h3>
-      </div>
+      <div class="service"><img src="{{ url_for('static', filename='images/water.png') }}" alt="Water Damage" /><h3>Water Damage</h3></div>
+      <div class="service"><img src="{{ url_for('static', filename='images/fire.png') }}" alt="Fire Restoration" /><h3>Fire Restoration</h3></div>
+      <div class="service"><img src="{{ url_for('static', filename='images/mofo.png') }}" alt="Mold Remediation" /><h3>Mold Remediation</h3></div>
+      <div class="service"><img src="{{ url_for('static', filename='images/disaster.png') }}" alt="Restoration" /><h3>Restoration</h3></div>
+      <div class="service"><img src="{{ url_for('static', filename='images/biohazard.png') }}" alt="Biohazard" /><h3>Biohazard</h3></div>
+      <div class="service"><img src="{{ url_for('static', filename='images/remodeling.png') }}" alt="Reconstruction" /><h3>Reconstruction</h3></div>
     </div>
   </section>
 
   <!-- About -->
   <section id="about">
     <h2>About Us</h2>
-    <p>At Spero Restoration, we provide professional and reliable restoration services across Orlando and Central Florida. Our certified team handles water damage, fire recovery, mold remediation, and more — restoring your property safely and efficiently.</p>
+    <p>Spero Restoration provides fast, reliable and certified restoration services across Orlando and Central Florida. Our experienced team handles water, fire, mold, biohazard, and full reconstruction projects with professionalism and care. Available 24/7 — call <strong>40772456310</strong>.</p>
   </section>
 
   <!-- Contact -->
   <section id="contact">
     <h2>Request a Free Quote</h2>
     <form id="quote" method="POST" action="/send_message">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="tel" name="phone" placeholder="Your Phone Number" pattern="[0-9+\-\(\)\s]{7,}" required>
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="tel" name="phone" placeholder="Your Phone Number" pattern="[0-9+\-\(\)\s]{7,}" required />
       <select name="service" required>
         <option value="">Select Service Type</option>
         <option value="Water Damage">Water Damage</option>
@@ -120,14 +178,20 @@
       </select>
       <textarea name="message" placeholder="Describe your issue..." required></textarea>
       <button type="submit" class="btn-primary">Send Message</button>
+      <p class="terms">By submitting, you agree to our <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms of Service</a>.</p>
     </form>
   </section>
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2025 Spero Restoration. All rights reserved.</p>
-    <a href="#contact">Get a Quote</a>
+    <p class="footer-links"><a href="/privacy">Privacy Policy</a> • <a href="/terms">Terms of Service</a></p>
+    <p class="social">Follow us: 
+      <a href="https://www.facebook.com/" target="_blank">Facebook</a> | 
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a> | 
+      <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+    </p>
+    <p class="phone-email">Phone: <a href="tel:+140772456310">+1 40772456310</a> • Email: <a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a></p>
   </footer>
-
 </body>
 </html>
