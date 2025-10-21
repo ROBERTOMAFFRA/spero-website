@@ -1,172 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- ==================================================
+         META & SEO CONFIGURATION
+    ================================================== -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spero Restoration | Water, Fire & Mold Experts</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- ✅ SEO Essentials -->
-    <meta name="description" content="Spero Restoration specializes in Water Damage, Fire Damage, Mold Remediation, Biohazard Cleanup, Remodeling and Disaster Recovery across Central Florida.">
-    <link rel="canonical" href="https://spero-restoration.com/" />
-    <meta name="robots" content="index, follow" />
+    <title>Spero Restoration | Water, Fire, Mold & Biohazard Services in Florida</title>
 
-    <!-- ✅ Open Graph -->
-    <meta property="og:title" content="Spero Restoration | Water, Fire & Mold Experts" />
-    <meta property="og:description" content="Professional restoration and remodeling services in Orlando, FL. Available 24/7 for emergencies." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://spero-restoration.com/" />
+    <meta name="description" content="Spero Restoration provides expert water damage, fire remediation, mold removal, biohazard cleanup, and remodeling services throughout Florida. Available 24/7." />
+    <meta name="keywords" content="water damage restoration, fire damage, mold remediation, biohazard cleanup, remodeling, Spero Restoration, Florida" />
+    <meta name="author" content="Spero Restoration" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Spero Restoration | Water, Fire, Mold & Biohazard Experts" />
+    <meta property="og:description" content="Trusted restoration and remodeling specialists serving all of Florida." />
     <meta property="og:image" content="{{ url_for('static', filename='images/banner.png') }}" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://spero-restoration.com/" />
+    <meta property="og:type" content="website" />
 
-    <!-- ✅ Multilingual Tags -->
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Spero Restoration | 24/7 Restoration Experts" />
+    <meta name="twitter:description" content="Water, fire, and mold restoration specialists in Florida." />
+    <meta name="twitter:image" content="{{ url_for('static', filename='images/banner.png') }}" />
+
+    <!-- Canonical & Hreflang -->
+    <link rel="canonical" href="https://spero-restoration.com/" />
     <link rel="alternate" hreflang="en" href="https://spero-restoration.com/" />
     <link rel="alternate" hreflang="es" href="https://spero-restoration.com/es/" />
     <link rel="alternate" hreflang="pt" href="https://spero-restoration.com/pt/" />
 
-    <!-- ✅ GA4 / GTM (placeholder) -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+    <!-- Google Tag Manager -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXX');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXX');
     </script>
 
-    <!-- ✅ Schema JSON-LD -->
+    <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Spero Restoration",
-      "image": "https://spero-restoration.com/static/images/logo.png",
-      "telephone": "+1-407-724-56310",
-      "email": "contact@spero-restoration.com",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Orlando",
-        "addressRegion": "FL",
-        "postalCode": "32801",
-        "addressCountry": "US"
-      },
-      "url": "https://spero-restoration.com",
-      "sameAs": [
-        "https://www.facebook.com/sperorestoration",
-        "https://www.instagram.com/sperorestoration",
-        "https://www.linkedin.com/company/sperorestoration"
-      ],
-      "description": "Professional Water, Fire, Mold, Biohazard and Remodeling services in Orlando, FL."
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Spero Restoration",
+        "image": "https://spero-restoration.com/static/images/banner.png",
+        "telephone": "+140772456310",
+        "email": "contact@spero-restoration.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Orlando",
+            "addressRegion": "FL",
+            "addressCountry": "US"
+        },
+        "url": "https://spero-restoration.com/",
+        "sameAs": [
+            "https://www.instagram.com/sperorestoration",
+            "https://www.facebook.com/sperorestoration",
+            "https://www.linkedin.com/company/sperorestoration"
+        ],
+        "openingHours": "Mo-Su 00:00-23:59",
+        "description": "Spero Restoration specializes in water damage, fire restoration, mold remediation, biohazard cleanup, and remodeling services across Florida."
     }
     </script>
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}">
 </head>
-<body>
 
-    <!-- 🔵 Header -->
-    <header class="main-header">
-        <div class="container">
+<body>
+    <!-- ==================================================
+         HEADER
+    ================================================== -->
+    <header class="site-header">
+        <div class="container header-container">
             <div class="logo">
-                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
+                <img src="{{ url_for('static', filename='images/logo-web.png') }}" alt="Spero Restoration Logo">
             </div>
-            <nav class="main-nav">
-                <a href="#services">Services</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
             </nav>
         </div>
     </header>
 
-    <!-- 🖼️ Banner -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Restoring Homes, Rebuilding Trust</h1>
-            <p>Water Damage • Fire Damage • Mold Remediation • Biohazard • Disaster Recovery • Remodeling</p>
-            <a href="#contact" class="btn-primary">Get a Free Quote</a>
+    <!-- ==================================================
+         HERO SECTION
+    ================================================== -->
+    <section class="hero" style="background-image:url('{{ url_for('static', filename='images/banner.png') }}');">
+        <div class="hero-overlay">
+            <h1>Restoration. Remodeling. Reliability.</h1>
+            <p>Experts in Water, Fire, Mold, Biohazard & Remodeling — Available 24/7 in Florida.</p>
+            <a href="#contact" class="btn-primary">Request a Quote</a>
         </div>
     </section>
 
-    <!-- 🧰 Services -->
-    <section id="services" class="services">
+    <!-- ==================================================
+         SERVICES SECTION
+    ================================================== -->
+    <section id="services" class="services-section">
         <h2>Our Services</h2>
-        <div class="service-grid">
-            <div class="service-item"><img src="{{ url_for('static', filename='images/water.png') }}"><p>Water Damage</p></div>
-            <div class="service-item"><img src="{{ url_for('static', filename='images/fire.png') }}"><p>Fire Damage</p></div>
-            <div class="service-item"><img src="{{ url_for('static', filename='images/mofo.png') }}"><p>Mold Remediation</p></div>
-            <div class="service-item"><img src="{{ url_for('static', filename='images/disaster.png') }}"><p>Disaster Recovery</p></div>
-            <div class="service-item"><img src="{{ url_for('static', filename='images/biohazard.png') }}"><p>Biohazard Cleanup</p></div>
-            <div class="service-item"><img src="{{ url_for('static', filename='images/remodeling.png') }}"><p>Remodeling</p></div>
+        <div class="services-grid">
+            <div class="service-item"><h3>Water Damage</h3></div>
+            <div class="service-item"><h3>Fire Damage</h3></div>
+            <div class="service-item"><h3>Mold Remediation</h3></div>
+            <div class="service-item"><h3>Biohazard Cleanup</h3></div>
+            <div class="service-item"><h3>Remodeling</h3></div>
+            <div class="service-item"><h3>Restoration</h3></div>
         </div>
     </section>
 
-    <!-- 📝 About -->
-    <section id="about" class="about">
-        <h2>About Spero Restoration</h2>
-        <p>We are a professional restoration and remodeling company serving the Greater Orlando area. Our mission is to restore your property quickly, efficiently, and safely — so you can get back to what truly matters.</p>
-    </section>
-
-    <!-- 📞 Contact -->
-    <section id="contact" class="contact">
-        <h2>Request a Free Quote</h2>
-        <form id="quoteForm">
-            <input type="text" id="name" placeholder="Full Name" required>
-            <input type="email" id="email" placeholder="Email Address" required>
-            <input type="tel" id="phone" placeholder="Phone Number" required>
-            <select id="service" required>
-                <option value="">Select a Service</option>
-                <option>Water Damage</option>
-                <option>Fire Damage</option>
-                <option>Mold Remediation</option>
-                <option>Biohazard</option>
-                <option>Remodeling</option>
-                <option>Disaster Recovery</option>
-            </select>
-            <textarea id="message" placeholder="Describe your situation..." rows="4" required></textarea>
-            <button type="submit" class="btn-primary">Send Message</button>
+    <!-- ==================================================
+         CONTACT FORM
+    ================================================== -->
+    <section id="contact" class="contact-section">
+        <h2>Request Service</h2>
+        <form method="POST" action="https://formsubmit.co/contact@spero-restoration.com">
+            <input type="hidden" name="_next" value="https://spero-restoration.com/thank-you">
+            <input type="hidden" name="_bcc" value="roberto.maffra@gmail.com">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="tel" name="phone" placeholder="Phone (407) 724-56310" required>
+            </div>
+            <div class="form-group">
+                <select name="service" required>
+                    <option value="" disabled selected>Select Service</option>
+                    <option value="Water Damage">Water Damage</option>
+                    <option value="Fire Damage">Fire Damage</option>
+                    <option value="Mold Remediation">Mold Remediation</option>
+                    <option value="Biohazard Cleanup">Biohazard Cleanup</option>
+                    <option value="Remodeling">Remodeling</option>
+                    <option value="Restoration">Restoration</option>
+                </select>
+                <textarea name="message" rows="4" placeholder="Describe your issue..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Send Request</button>
         </form>
-        <div id="responseMessage"></div>
     </section>
 
-    <!-- ⚫ Footer -->
+    <!-- ==================================================
+         FOOTER
+    ================================================== -->
     <footer class="site-footer">
-        <div class="container footer-container">
-            <p>© {{ current_year }} Spero Restoration. All rights reserved.</p>
-            <div class="footer-links">
+        <div class="footer-container">
+            <div class="footer-left">
+                <p>© 2025 <strong>Spero Restoration Corp</strong>. All rights reserved.</p>
+            </div>
+            <div class="footer-center">
                 <a href="{{ url_for('terms') }}">Terms of Use</a>
                 <a href="{{ url_for('privacy') }}">Privacy Policy</a>
             </div>
-            {% if request.path == '/preview' %}
-            <div class="footer-admin">
-                <a href="{{ url_for('admin') }}" class="admin-btn">Admin</a>
+            <div class="footer-right">
+                <a href="https://www.instagram.com/sperorestoration" target="_blank">Instagram</a>
+                <a href="https://www.facebook.com/sperorestoration" target="_blank">Facebook</a>
+                <a href="https://www.linkedin.com/company/sperorestoration" target="_blank">LinkedIn</a>
             </div>
-            {% endif %}
+        </div>
+        <div class="admin-btn">
+            <a href="/admin">Admin</a>
         </div>
     </footer>
-
-    <!-- ✅ Script: AJAX do formulário -->
-    <script>
-        document.getElementById("quoteForm").addEventListener("submit", async (e) => {
-            e.preventDefault();
-            const data = {
-                name: document.getElementById("name").value,
-                email: document.getElementById("email").value,
-                phone: document.getElementById("phone").value,
-                service: document.getElementById("service").value,
-                message: document.getElementById("message").value
-            };
-
-            const response = await fetch("/send_message", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
-            });
-
-            const result = await response.json();
-            const messageDiv = document.getElementById("responseMessage");
-            messageDiv.textContent = result.message;
-            messageDiv.style.color = result.status === "success" ? "green" : "red";
-        });
-    </script>
-
 </body>
 </html>
