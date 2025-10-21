@@ -1,35 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>503 - Maintenance Mode | Spero Restoration</title>
-  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <style>
-    .maintenance { text-align:center; padding:100px 20px; }
-    .maintenance h1 { font-size:4em; color:#004e92; }
-    .maintenance p { font-size:1.2em; margin-top:10px; color:#555; }
-    .maintenance .loader {
-      border: 6px solid #f3f3f3;
-      border-top: 6px solid #004e92;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      animation: spin 1.5s linear infinite;
-      margin: 30px auto;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spero Restoration | Maintenance Mode</title>
+
+    <!-- SEO-safe meta -->
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="Retry-After" content="86400">
+    <meta property="og:title" content="Spero Restoration - Maintenance">
+    <meta property="og:description" content="We’re performing final updates to improve your experience. Please check back soon.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://spero-restoration.com/">
+    <meta property="og:image" content="{{ url_for('static', filename='images/banner.png') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+                        url('{{ url_for("static", filename="images/banner.png") }}') center/cover no-repeat;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .logo {
+            width: 220px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .notify {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .notify:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-  <div class="maintenance">
-    <h1>We'll be right back!</h1>
-    <p>Our website is currently under scheduled maintenance.<br>We’ll be back online shortly.</p>
-    <div class="loader"></div>
-  </div>
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo" class="logo">
+    <h1>🚧 We’re performing final updates to improve your experience.</h1>
+    <p>Spero Restoration will be back shortly with an even better website.<br>
+       Thank you for your patience!</p>
+    <button class="notify" disabled>Notify Me When Live</button>
+
+    <div class="footer">
+        © {{ current_year }} Spero Restoration. All rights reserved.
+    </div>
 </body>
 </html>
