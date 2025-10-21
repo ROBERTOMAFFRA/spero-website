@@ -1,168 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- =========================================================
-       SPERO RESTORATION vFinal – SEO MASTER PLAN
-       Optimized Index Page – One Page Scroll Layout
-  ============================================================ -->
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spero Restoration | Water, Fire, Mold & Biohazard Experts in Orlando</title>
-  <meta name="description" content="Professional restoration company in Orlando offering 24/7 water damage, mold remediation, fire, biohazard and full restoration services. Call Spero Restoration today.">
-  <meta name="keywords" content="water damage, fire restoration, mold remediation, biohazard cleanup, reconstruction, Spero Restoration Orlando, 24/7 restoration Florida">
-  <meta name="author" content="Spero Restoration Corp">
-  <meta name="robots" content="index, follow">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Spero Restoration – Water, Fire, Mold & Biohazard Experts in Orlando">
-  <meta property="og:description" content="Trusted restoration specialists in Orlando, available 24/7 for water, fire, mold, biohazard and reconstruction emergencies.">
-  <meta property="og:image" content="{{ url_for('static', filename='images/logo-whitebg.png') }}">
-  <meta property="og:url" content="https://spero-restoration.com">
-  <meta property="og:type" content="website">
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://spero-restoration.com">
-
-  <!-- Multilingual alternate links -->
-  <link rel="alternate" hreflang="en" href="https://spero-restoration.com/">
-  <link rel="alternate" hreflang="es" href="https://spero-restoration.com/es/">
-  <link rel="alternate" hreflang="pt" href="https://spero-restoration.com/pt/">
-  <link rel="alternate" hreflang="x-default" href="https://spero-restoration.com/">
-
+  <title>Spero Restoration | Water, Fire & Mold Experts in Orlando</title>
+  
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  
+  <!-- Meta SEO -->
+  <meta name="description" content="Spero Restoration provides expert water, fire, mold, and biohazard restoration services in Orlando. 24/7 emergency response.">
+  <meta property="og:title" content="Spero Restoration | Water, Fire & Mold Experts in Orlando">
+  <meta property="og:description" content="Fast, professional restoration services for water, fire, mold, and biohazard damage in Orlando and nearby areas.">
+  <meta property="og:image" content="{{ url_for('static', filename='images/logo.png') }}">
+  <meta property="og:url" content="https://spero-restoration.com">
+  <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
-  <!-- JSON-LD SCHEMA -->
+  <!-- JSON-LD Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://spero-restoration.com/#organization",
-        "name": "Spero Restoration",
-        "url": "https://spero-restoration.com",
-        "logo": "https://spero-restoration.com/static/images/logo-whitebg.png",
-        "description": "Professional restoration company in Orlando, Florida specializing in water, fire, mold, and biohazard remediation.",
-        "foundingDate": "2015",
-        "email": "contact@spero-restoration.com",
-        "telephone": "+1-407-555-1024",
-        "sameAs": [
-          "https://www.facebook.com/sperorestoration",
-          "https://www.instagram.com/sperorestoration",
-          "https://www.linkedin.com/company/sperorestoration"
-        ],
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Orlando, Florida",
-          "addressLocality": "Orlando",
-          "addressRegion": "FL",
-          "postalCode": "32801",
-          "addressCountry": "US"
-        }
-      }
+    "@type": "LocalBusiness",
+    "name": "Spero Restoration",
+    "url": "https://spero-restoration.com",
+    "image": "https://spero-restoration.com/static/images/logo.png",
+    "telephone": "+1 407-000-0000",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Orlando",
+      "addressRegion": "FL",
+      "addressCountry": "USA"
+    },
+    "openingHours": "Mo-Su 00:00-23:59",
+    "sameAs": [
+      "https://www.facebook.com/",
+      "https://www.instagram.com/",
+      "https://www.linkedin.com/"
     ]
   }
   </script>
-</head>
 
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
 <body>
-  <!-- HEADER -->
+
+  <!-- Header -->
   <header>
-    <img src="{{ url_for('static', filename='images/logo-dark.png') }}" alt="Spero Restoration Logo">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spero Restoration Logo">
     <nav>
       <ul>
-        <li><a href="#hero">Home</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="#quote" class="btn-primary">Get a Quote</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- HERO -->
-  <section id="hero" class="hero">
+  <!-- Hero Section -->
+  <section class="hero">
     <div class="hero-overlay">
-      <h1>Restoring Homes, Rebuilding Peace of Mind</h1>
-      <p>Water • Fire • Mold • Restoration • Biohazard • Reconstruction</p>
-      <a href="#quote" class="btn-primary">Request Free Estimate</a>
+      <h1>Restoring Homes, Rebuilding Hope</h1>
+      <p>Water • Fire • Mold • Biohazard • Restoration • Reconstruction</p>
+      <a href="#contact" class="btn-primary">Get a Quote</a>
     </div>
   </section>
 
-  <!-- SERVICES -->
+  <!-- Services -->
   <section id="services">
     <h2>Our Services</h2>
     <div class="service-grid">
-
       <div class="service">
-        <img src="{{ url_for('static', filename='images/water.svg') }}" alt="Water Damage Icon" height="60">
+        <img src="{{ url_for('static', filename='images/water-damage.png') }}" alt="Water Damage">
         <h3>Water Damage</h3>
-        <p>Fast and efficient water extraction, drying, and restoration for residential and commercial properties.</p>
       </div>
-
       <div class="service">
-        <img src="{{ url_for('static', filename='images/fire.svg') }}" alt="Fire Restoration Icon" height="60">
+        <img src="{{ url_for('static', filename='images/fire-restoration.png') }}" alt="Fire Restoration">
         <h3>Fire Restoration</h3>
-        <p>Complete fire and smoke damage cleanup, odor removal, and structural recovery.</p>
       </div>
-
       <div class="service">
-        <img src="{{ url_for('static', filename='images/mold.svg') }}" alt="Mold Remediation Icon" height="60">
+        <img src="{{ url_for('static', filename='images/mold-removal.png') }}" alt="Mold Remediation">
         <h3>Mold Remediation</h3>
-        <p>Certified mold inspection, removal, and purification for a safe and healthy environment.</p>
       </div>
-
       <div class="service">
-        <img src="{{ url_for('static', filename='images/restoration.svg') }}" alt="Restoration Icon" height="60">
+        <img src="{{ url_for('static', filename='images/restoration.png') }}" alt="Restoration">
         <h3>Restoration</h3>
-        <p>Comprehensive restoration services for homes and businesses affected by water, fire, or storm damage.</p>
       </div>
-
       <div class="service">
-        <img src="{{ url_for('static', filename='images/biohazard.svg') }}" alt="Biohazard Icon" height="60">
+        <img src="{{ url_for('static', filename='images/biohazard.png') }}" alt="Biohazard">
         <h3>Biohazard</h3>
-        <p>Specialized cleaning and decontamination for biohazardous materials, ensuring safety and compliance.</p>
       </div>
-
       <div class="service">
-        <img src="{{ url_for('static', filename='images/reconstruction.svg') }}" alt="Reconstruction Icon" height="60">
+        <img src="{{ url_for('static', filename='images/reconstruction.png') }}" alt="Reconstruction">
         <h3>Reconstruction</h3>
-        <p>Full structural rebuilding and remodeling with high-quality materials and expert craftsmanship.</p>
       </div>
-
     </div>
   </section>
 
-  <!-- ABOUT -->
+  <!-- About -->
   <section id="about">
     <h2>About Us</h2>
-    <p>At Spero Restoration, we combine cutting-edge technology and certified expertise to restore properties affected by water, fire, mold, and biohazard. Our mission is to deliver fast, reliable, and compassionate service to every client across Central Florida.</p>
+    <p>At Spero Restoration, we provide professional and reliable restoration services across Orlando and Central Florida. Our certified team handles water damage, fire recovery, mold remediation, and more — restoring your property safely and efficiently.</p>
   </section>
 
-  <!-- CONTACT -->
+  <!-- Contact -->
   <section id="contact">
     <h2>Request a Free Quote</h2>
-    <form id="quote" method="POST" action="/send_email">
+    <form id="quote" method="POST" action="/send_message">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
+      <input type="tel" name="phone" placeholder="Your Phone Number" pattern="[0-9+\-\(\)\s]{7,}" required>
+      <select name="service" required>
+        <option value="">Select Service Type</option>
+        <option value="Water Damage">Water Damage</option>
+        <option value="Fire Restoration">Fire Restoration</option>
+        <option value="Mold Remediation">Mold Remediation</option>
+        <option value="Restoration">Restoration</option>
+        <option value="Biohazard">Biohazard</option>
+        <option value="Reconstruction">Reconstruction</option>
+      </select>
       <textarea name="message" placeholder="Describe your issue..." required></textarea>
       <button type="submit" class="btn-primary">Send Message</button>
     </form>
   </section>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Spero Restoration Corp. All rights reserved.</p>
-    <p><a href="mailto:contact@spero-restoration.com">contact@spero-restoration.com</a> |
-      <a href="https://instagram.com/sperorestoration" target="_blank">Instagram</a> |
-      <a href="https://facebook.com/sperorestoration" target="_blank">Facebook</a> |
-      <a href="https://linkedin.com/company/sperorestoration" target="_blank">LinkedIn</a>
-    </p>
+    <p>&copy; 2025 Spero Restoration. All rights reserved.</p>
+    <a href="#contact">Get a Quote</a>
   </footer>
+
 </body>
 </html>
