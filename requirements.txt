@@ -1,28 +1,6 @@
-# --- Core Framework ---
 Flask==3.0.3
 gunicorn==23.0.0
-python-dotenv==1.0.1
-
-# --- SEO / Web Structure ---
-beautifulsoup4==4.12.3
-lxml==5.3.0
-flask-sitemap==0.4.0
-
-# --- Marketing / Analytics / Integrations ---
-requests==2.32.3
-sendgrid==6.11.0
-hubspot-api-client==8.2.0
-google-analytics-data==0.18.7
-google-api-python-client==2.151.0
-
-# --- AI / Automation (para geração automática de conteúdo e sitemap inteligente) ---
-openai==1.52.0
-python-slugify==8.0.4
-
-# --- Performance / Security ---
 Flask-Compress==1.15
 Flask-Talisman==1.1.0
-flask-caching==2.2.0
-
-# --- Utilidades ---
-pytz==2024.1
+python-dotenv==1.0.1
+requests==2.32.3
